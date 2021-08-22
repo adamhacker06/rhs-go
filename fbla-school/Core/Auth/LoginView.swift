@@ -15,7 +15,7 @@ struct LoginView: View {
     
     var body: some View {
         ZStack {
-            Color.secondary.ignoresSafeArea()
+            Color.theme.lightBlue.ignoresSafeArea()
             VStack(spacing: 0) {
                 Spacer()
                 Image("rhs_blue")
@@ -25,16 +25,22 @@ struct LoginView: View {
                     .padding()
                     .background(
                         
-                        Color(.systemBlue)
+                        Color.white
                             .cornerRadius(20)
-                            .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                            .shadow(radius: 10)
                         
                     )
                 
                 Spacer()
                 
-                Button("Sign up with Google") {
-                    authObj.signIn()
+                
+                Button(action: {authObj.signIn()}) {
+        
+                    Label(
+                        title: { Text("Sign In With Google").bold() },
+                        icon: {  }
+                    )
+                    
                 }
                 .buttonStyle(AuthenticationButtonStyle())
                 
@@ -49,10 +55,9 @@ struct AuthenticationButtonStyle: ButtonStyle {
         configuration.label
             .foregroundColor(.white)
             .padding()
-            .frame(maxWidth: .infinity)
-            .background(Color(.systemTeal))
-            .cornerRadius(12)
-            .padding()
+            .frame(maxWidth: Screen.main.bounds.width * 0.75)
+            .background(Color.theme.lapiz)
+            .cornerRadius(13)
     }
 }
 

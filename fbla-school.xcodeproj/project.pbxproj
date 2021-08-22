@@ -29,7 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E0664A9326CF392600DDAEE4 /* fbla-school.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "fbla-school.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E0664A9326CF392600DDAEE4 /* Redwood HS Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Redwood HS Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0664A9626CF392600DDAEE4 /* fbla_schoolApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fbla_schoolApp.swift; sourceTree = "<group>"; };
 		E0664A9826CF392600DDAEE4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E0664A9A26CF392700DDAEE4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -75,7 +75,7 @@
 		E0664A9426CF392600DDAEE4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E0664A9326CF392600DDAEE4 /* fbla-school.app */,
+				E0664A9326CF392600DDAEE4 /* Redwood HS Helper.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -177,9 +177,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E0664A9226CF392600DDAEE4 /* fbla-school */ = {
+		E0664A9226CF392600DDAEE4 /* Redwood HS Helper */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E0664AA226CF392700DDAEE4 /* Build configuration list for PBXNativeTarget "fbla-school" */;
+			buildConfigurationList = E0664AA226CF392700DDAEE4 /* Build configuration list for PBXNativeTarget "Redwood HS Helper" */;
 			buildPhases = (
 				E0664A8F26CF392600DDAEE4 /* Sources */,
 				E0664A9026CF392600DDAEE4 /* Frameworks */,
@@ -189,7 +189,7 @@
 			);
 			dependencies = (
 			);
-			name = "fbla-school";
+			name = "Redwood HS Helper";
 			packageProductDependencies = (
 				E0C8361726D1C4A900295174 /* FirebaseAuth */,
 				E0C8361926D1C4A900295174 /* FirebaseFirestore */,
@@ -198,7 +198,7 @@
 				E0C8362126D1C63100295174 /* FirebaseAnalytics */,
 			);
 			productName = "fbla-school";
-			productReference = E0664A9326CF392600DDAEE4 /* fbla-school.app */;
+			productReference = E0664A9326CF392600DDAEE4 /* Redwood HS Helper.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -232,7 +232,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E0664A9226CF392600DDAEE4 /* fbla-school */,
+				E0664A9226CF392600DDAEE4 /* Redwood HS Helper */,
 			);
 		};
 /* End PBXProject section */
@@ -446,7 +446,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E0664AA226CF392700DDAEE4 /* Build configuration list for PBXNativeTarget "fbla-school" */ = {
+		E0664AA226CF392700DDAEE4 /* Build configuration list for PBXNativeTarget "Redwood HS Helper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E0664AA326CF392700DDAEE4 /* Debug */,
