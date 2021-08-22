@@ -38,7 +38,9 @@ struct LoginView: View {
         
                     Label(
                         title: { Text("Sign In With Google").bold() },
-                        icon: {  }
+                        icon: { Image("google-logo").resizable().aspectRatio(contentMode: .fit).frame(height: 25)
+                            .padding(.trailing)
+                        }
                     )
                     
                 }

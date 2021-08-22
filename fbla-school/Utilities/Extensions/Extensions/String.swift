@@ -7,15 +7,15 @@
 
 import SwiftUI
 
+// String extension for use with String value types
 public extension String {
     
+    // Returns a Date from the String executed on. If failed, returns Jan 1 1900.
     func toDate() -> Date {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM/yyyy HH:mm"
         
-        print(Date(timeIntervalSince1970: -2207520000).asLongDateString())
-        
-        return formatter.date(from: self) ?? Date(timeIntervalSince1970: -2207520000)
+        return formatter.date(from: self) ?? Date(timeIntervalSince1970: -2208960000)
     }
     
 }

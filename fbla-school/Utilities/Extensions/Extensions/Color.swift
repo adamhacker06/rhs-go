@@ -7,12 +7,13 @@
 
 import SwiftUI
 
+// Color extension for use with Color value types
 extension Color {
     
+    // Initializes the color theme
     static let theme = ColorTheme()
-    static let emptyField = Color("EmptyField")
     
-    // Get color from hex method
+    // Get color from hex
     init(hex: UInt, alpha: Double = 1) {
         self.init(
             .sRGB,
@@ -24,6 +25,7 @@ extension Color {
     }
 }
 
+// Struct containing the color theme
 struct ColorTheme {
     
     let accent = Color("AccentColor")
@@ -47,6 +49,7 @@ struct ColorTheme {
     
     let lightBlue = Color("LightBlueColor")
     
+    // An array containing all of the colors in the theme
     var asArray: [Color] {
         return [accent, blue, blueInversed, gray, red, redInversed, spanishBlue, lightBlue, lapiz, lightGreen, lightGreenInversed, green, greenInversed]
     }

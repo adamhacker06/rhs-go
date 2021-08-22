@@ -7,15 +7,16 @@
 
 import SwiftUI
 
+// Date extension for use with Date value types
 public extension Date {
     
+    // Stores the int value of the past year (Ex: Current year is 2022, value returns 2021)
     static let lastYear = Date().getComponentFromDate(for: .year) - 1
     
+    // Stores the int value of the current year (Ex: Current year is 2022, value returns 2022)
     static let thisYear = Date().getComponentFromDate(for: .year)
     
-    static let currentLastGraduationYear = Date.thisYear + 14
-    
-    /// Creates a Date from the specified components. If failed, returns the current date and time.
+    // Returns a Date from the specified components. If failed, returns original Date the modifier was executed on
     func fromDateComponents(month: Int, day: Int, year: Int, hour: Int = 0, minute: Int = 0) -> Date {
         var dateComponents = DateComponents()
         dateComponents.year = year
@@ -27,9 +28,10 @@ public extension Date {
 
         // Create date from components
         let userCalendar = Calendar(identifier: .gregorian)
-        return userCalendar.date(from: dateComponents) ?? Date()
+        return userCalendar.date(from: dateComponents) ?? self
     }
     
+    // Returns an Int representing the specificed component of the Date executed on
     func getComponentFromDate(for selected: Calendar.Component) -> Int {
         
         let components = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: self)
@@ -59,12 +61,12 @@ public extension Date {
         return returnedComponent
     }
     
+    // Returns the computed property of the age of the Date executed on
     var age: Int {
         return Calendar.current.dateComponents([.year], from: self, to: Date()).year!
     }
     
-    
-    
+    // Returns a String of the Date executed on
     func asLongDateString() -> String {
         
         var longDateString: String {
@@ -75,22 +77,5 @@ public extension Date {
         
         return longDateString
     }
-    
-    func yearAsInt() -> Int {
-        
-        var yearString: String {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy"
-            return formatter.string(from: self)
-        }
-        
-        return Int(yearString) ?? 2021
-        
-    }
-    
-    func matchesDefault() -> Bool {
-        return self.asLongDateString() == Date().fromDateComponents(month: 1, day: 1, year: 2000).asLongDateString()
-    }
-    
     
 }

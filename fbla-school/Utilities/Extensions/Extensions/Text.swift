@@ -7,7 +7,10 @@
 
 import SwiftUI
 
+// Text extension for use with Text value types
 extension Text {
+    
+    // Returns a modified Text on the Text executed on with some general modifies
     func generalModifiers() -> some View {
         return self
             .lineLimit(1)
