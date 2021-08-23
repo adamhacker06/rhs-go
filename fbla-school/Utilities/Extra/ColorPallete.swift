@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// A utility for viewing the color theme
 struct ColorPallete: View {
     
     let colors = Color.theme
