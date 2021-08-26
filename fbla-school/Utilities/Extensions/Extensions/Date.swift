@@ -78,4 +78,8 @@ public extension Date {
         return longDateString
     }
     
+    // Default date checker
+    func matchesDefault() -> Bool {
+        return self.asLongDateString() == Date().fromDateComponents(month: 1, day: 1, year: 2000).asLongDateString()
+    }
 }

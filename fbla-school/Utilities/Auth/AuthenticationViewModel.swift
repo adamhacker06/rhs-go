@@ -9,10 +9,13 @@ import SwiftUI
 import Firebase
 import GoogleSignIn
 
-class AuthenticationViewModel: NSObject, ObservableObject {
+class AuthenticationViewModel: ObservableObject {
     
     // Stores and creates the Google Sign-In configuration value to be used throughout the Google Sign-In process
     let signInConfig = GIDConfiguration.init(clientID: (FirebaseApp.app()?.options.clientID!)!)
+    
+    // Return
+    @Published var user: User?
     
     // A custom enum for defining sign-in state
     enum SignInState {
@@ -35,6 +38,9 @@ class AuthenticationViewModel: NSObject, ObservableObject {
                     
                     // If there is no error, sign the user in using Firebase
                     self?.firebaseAuth(withUser: user!)
+                    
+                    self?.user = User(withUser: user!)
+                    
                 } else {
                     
                     // If there is an error, print the error out to the console
@@ -64,7 +70,7 @@ class AuthenticationViewModel: NSObject, ObservableObject {
                 // User is logged in if there is no error automatically
                 
                 // Change the sign-in state to signedIn
-                self.state = .signedIn
+                withAnimation { self.state = .signedIn }
             }
         }
     }
@@ -89,4 +95,15 @@ class AuthenticationViewModel: NSObject, ObservableObject {
         }
     }
     
+}
+
+struct GeneralButtonStylr: ButtonStyle {
+    func makeBody(configuration: Self.Configuration) -> some View {
+        configuration.label
+            .foregroundColor(.white)
+            .padding(15)
+            .frame(maxWidth: Screen.main.bounds.width * 0.75)
+            .background(Color.theme.lapiz)
+            .cornerRadius(13)
+    }
 }
