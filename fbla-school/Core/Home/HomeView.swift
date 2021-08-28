@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import GoogleSignIn
 
 struct HomeView: View {
     
@@ -14,7 +15,9 @@ struct HomeView: View {
     var body: some View {
         VStack {
             
-            Text(authObj.user!.profileInfo.firstName!)
+            Text("Welcome " + authObj.user!.profileInfo.firstName!)
+                .font(.title)
+                .foregroundColor(.black)
             
             Button("Sign out") {
                 authObj.signOut()
@@ -29,6 +32,7 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeView().environmentObject(AuthenticationViewModel(withDevUser: DevUser(email: "test@test.com ", firstName: "Adam", lastName: "Hacker")))
+        
     }
 }

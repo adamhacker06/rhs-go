@@ -17,6 +17,18 @@ class AuthenticationViewModel: ObservableObject {
     // Return
     @Published var user: User?
     
+    init(withUser user: User?) {
+        self.user = user
+    }
+
+    init(withDevUser user: DevUser) {
+        self.user = User(withDevUser: user)
+    }
+    
+    convenience init() {
+        self.init(withUser: nil)
+    }
+    
     // A custom enum for defining sign-in state
     enum SignInState {
         case signedIn
@@ -97,7 +109,8 @@ class AuthenticationViewModel: ObservableObject {
     
 }
 
-struct GeneralButtonStylr: ButtonStyle {
+
+struct GeneralButtonStyle: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
             .foregroundColor(.white)

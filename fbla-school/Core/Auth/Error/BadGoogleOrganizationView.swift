@@ -38,7 +38,7 @@ struct BadGoogleOrganizationView: View {
                     Button("Sign Out") {
                         authObj.signOut()
                     }
-                    .buttonStyle(GeneralButtonStylr())
+                    .buttonStyle(GeneralButtonStyle())
                     Spacer()
                 }
                 .foregroundColor(.white)

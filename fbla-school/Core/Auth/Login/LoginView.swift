@@ -69,7 +69,7 @@ extension LoginView {
             )
             
         }
-        .buttonStyle(GeneralButtonStylr())
+        .buttonStyle(GeneralButtonStyle())
         .overlay(
         
             Text("Tip: sign in with your school account!")

@@ -19,6 +19,7 @@ struct fbla_schoolApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(viewModel)
+                .preferredColorScheme(.light)
         }
     }
     

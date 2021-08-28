@@ -24,6 +24,8 @@
 		E06B709926D331F9000D944C /* CustomDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06B709826D331F9000D944C /* CustomDivider.swift */; };
 		E08519A126D3201800A21A14 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E08519A026D3201800A21A14 /* GoogleService-Info.plist */; };
 		E08AF9A626D761E20070A252 /* BadGoogleOrganizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08AF9A526D761E20070A252 /* BadGoogleOrganizationView.swift */; };
+		E08AF9A826D9B4A10070A252 /* public-sans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E08AF9A726D9B4A10070A252 /* public-sans.ttf */; };
+		E08AF9AA26D9B8510070A252 /* Allison-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E08AF9A926D9B8510070A252 /* Allison-Regular.ttf */; };
 		E0AB6A5C26D1DF4900B35EA4 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB6A5B26D1DF4900B35EA4 /* AuthenticationViewModel.swift */; };
 		E0AB6A6526D20EB100B35EA4 /* ColorPallete.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB6A6426D20EB100B35EA4 /* ColorPallete.swift */; };
 		E0AB6A6E26D20F0800B35EA4 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB6A6826D20F0800B35EA4 /* Date.swift */; };
@@ -59,6 +61,8 @@
 		E06B709826D331F9000D944C /* CustomDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDivider.swift; sourceTree = "<group>"; };
 		E08519A026D3201800A21A14 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E08AF9A526D761E20070A252 /* BadGoogleOrganizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadGoogleOrganizationView.swift; sourceTree = "<group>"; };
+		E08AF9A726D9B4A10070A252 /* public-sans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "public-sans.ttf"; sourceTree = "<group>"; };
+		E08AF9A926D9B8510070A252 /* Allison-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Allison-Regular.ttf"; sourceTree = "<group>"; };
 		E0AB6A5B26D1DF4900B35EA4 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		E0AB6A6426D20EB100B35EA4 /* ColorPallete.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPallete.swift; sourceTree = "<group>"; };
 		E0AB6A6826D20F0800B35EA4 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
@@ -134,6 +138,8 @@
 				E0AB6A5D26D20ACA00B35EA4 /* Utilities */,
 				E0664AA526CF407200DDAEE4 /* Core */,
 				E0664A9A26CF392700DDAEE4 /* Assets.xcassets */,
+				E08AF9A726D9B4A10070A252 /* public-sans.ttf */,
+				E08AF9A926D9B8510070A252 /* Allison-Regular.ttf */,
 				E0664A9F26CF392700DDAEE4 /* Info.plist */,
 				E08519A026D3201800A21A14 /* GoogleService-Info.plist */,
 				E0664A9C26CF392700DDAEE4 /* Preview Content */,
@@ -324,7 +330,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0664A9E26CF392700DDAEE4 /* Preview Assets.xcassets in Resources */,
+				E08AF9AA26D9B8510070A252 /* Allison-Regular.ttf in Resources */,
 				E08519A126D3201800A21A14 /* GoogleService-Info.plist in Resources */,
+				E08AF9A826D9B4A10070A252 /* public-sans.ttf in Resources */,
 				E0664A9B26CF392700DDAEE4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

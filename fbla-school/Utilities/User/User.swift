@@ -10,14 +10,20 @@ import GoogleSignIn
 
 class User: ObservableObject {
     
-    let user: GIDGoogleUser
+    let googleUser: GIDGoogleUser?
     let profileInfo: GoogleProfileInfo
     
     init(withUser user: GIDGoogleUser) {
-        self.user = user
+        
+        self.googleUser = user
         self.profileInfo = GoogleProfileInfo(withUser: user)
+        
     }
     
+    init(withDevUser user: DevUser) {
+        self.profileInfo = GoogleProfileInfo(withDevUser: user)
+        self.googleUser = nil
+    }
 }
 
 struct GoogleProfileInfo {
@@ -28,9 +34,32 @@ struct GoogleProfileInfo {
     let lastName: String?
     
     init(withUser user: GIDGoogleUser) {
-        self.emailAddress = user.profile!.email
-        self.fullName = user.profile!.name
-        self.firstName = user.profile!.givenName ?? nil
-        self.lastName = user.profile!.familyName ?? nil
+        
+            self.emailAddress = user.profile!.email
+            self.fullName = user.profile!.name
+            self.firstName = user.profile!.givenName ?? nil
+            self.lastName = user.profile!.familyName ?? nil
+    }
+     
+    init(withDevUser user: DevUser) {
+        self.emailAddress = user.emailAddress
+        self.fullName = user.fullName
+        self.firstName = user.firstName
+        self.lastName = user.lastName
+        
+    }
+}
+
+struct DevUser {
+    let emailAddress: String
+    let fullName: String
+    let firstName: String?
+    let lastName: String?
+    
+    init(email: String, firstName: String, lastName: String) {
+        self.emailAddress = email
+        self.fullName = firstName + " " + lastName
+        self.firstName = firstName
+        self.lastName = lastName
     }
 }
