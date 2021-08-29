@@ -24,7 +24,7 @@ struct DateInputField: View {
         ZStack(alignment: .leading) {
             Text(title)
                 .fontWeight(date.matchesDefault() ? .none : .bold)
-                .foregroundColor(date.matchesDefault() ? Color(.placeholderText) : .theme.spanishBlue)
+                .foregroundColor(date.matchesDefault() ? Color(.placeholderText) : .theme.lightBlue)
                 .offset(y: date.matchesDefault() ? -7 : -25)
                 .scaleEffect(date.matchesDefault() ? 1 : 0.8, anchor: .leading)
             

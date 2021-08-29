@@ -13,18 +13,45 @@ struct HomeView: View {
     @EnvironmentObject var authObj: AuthenticationViewModel
     
     var body: some View {
-        VStack {
-            
-            Text("Welcome " + authObj.user!.profileInfo.firstName!)
-                .font(.title)
-                .foregroundColor(.black)
-            
-            Button("Sign out") {
-                authObj.signOut()
-            }
-            
-            Button("Share to instagram") {
-                shareToInstagram()
+        ZStack {
+            Color.theme.purple.ignoresSafeArea()
+            VStack {
+                
+                VStack(spacing: 20) {
+                    HStack(spacing: 0) {
+                        VStack(alignment: .leading, spacing: 0) {
+                            Text("Welcome Back,")
+                            Text(authObj.user!.profileInfo.firstName!)
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .font(.system(size: 24, weight:.bold))
+                        
+                        Circle()
+                            .strokeBorder(Color.theme.lightPurple, lineWidth: 2)
+                            .background(Circle().foregroundColor(.white))
+                            .frame(maxWidth: 50, maxHeight: 50)
+                        
+                    }
+                    
+                    Text("Next class: Foundations of Business")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.bottom, 5)
+                    
+                }
+                .padding(.top, getSafeArea().top == 0 ? 0 : 20)
+                .padding([.bottom, .horizontal], 20)
+                .foregroundColor(.white)
+                
+                VStack {
+                    
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(Color.white
+                                .cornerRadius(30, corners: [.topLeft, .topRight])
+                                .shadow(color: .black.opacity(0.15), radius: 20, x: 0, y: -15)
+                                .ignoresSafeArea()
+                )
+                
             }
         }
     }
@@ -32,7 +59,10 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView().environmentObject(AuthenticationViewModel(withDevUser: DevUser(email: "test@test.com ", firstName: "Adam", lastName: "Hacker")))
+        HomeView().environmentObject(AuthenticationViewModel(withDevUser: DevUser(email: "test@test.com", firstName: "Adam", lastName: "Hacker")))
+        
+        HomeView().environmentObject(AuthenticationViewModel(withDevUser: DevUser(email: "test@test.com", firstName: "Adam", lastName: "Hacker")))
+            .previewDevice("iPod touch (7th generation)")
         
     }
 }

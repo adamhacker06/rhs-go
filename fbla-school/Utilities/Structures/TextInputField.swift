@@ -22,7 +22,7 @@ struct TextInputField: View {
         ZStack(alignment: .leading) {
             Text(title)
                 .fontWeight(text.isEmpty ? .none : .bold)
-                .foregroundColor(text.isEmpty ? Color(.placeholderText) : .theme.spanishBlue)
+                .foregroundColor(text.isEmpty ? Color(.placeholderText) : .theme.lightBlue)
                 .offset(y: text.isEmpty ? -7 : -25)
                 .scaleEffect(text.isEmpty ? 1 : 0.8, anchor: .leading)
             

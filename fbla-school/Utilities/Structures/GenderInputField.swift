@@ -24,7 +24,7 @@ struct GenderInputField: View {
         ZStack(alignment: .leading) {
             Text(title)
                 .fontWeight(gender.isEmpty ? .none : .bold)
-                .foregroundColor(gender.isEmpty ? Color(.placeholderText) : .theme.spanishBlue)
+                .foregroundColor(gender.isEmpty ? Color(.placeholderText) : .theme.lightBlue)
                 .offset(y: gender.isEmpty ? -7 : -25)
                 .scaleEffect(gender.isEmpty ? 1 : 0.8, anchor: .leading)
             

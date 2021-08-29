@@ -28,30 +28,40 @@ extension Color {
 // Struct containing the color theme
 struct ColorTheme {
     
-    let accent = Color("AccentColor")
+//    let accent = Color("AccentColor")
+//
+//    let gray = Color("GrayColor")
+//
+//    let blue = Color("BlueColor")
+//    let blueInversed = Color("BlueColorInversed")
+//
+//    let red = Color("RedColor")
+//    let redInversed = Color("RedColorInversed")
+//
+//    let green = Color("GreenColor")
+//    let greenInversed = Color("GreenColorInversed")
+//
+//    let lightGreen = Color("LighGreenColor")
+//    let lightGreenInversed = Color("LightGreenColorInversed")
+//
+//    let spanishBlue = Color("SpanishBlueColor")
+//    let lapiz = Color("LapizColor")
+//
+//    let lightBlue = Color("LightBlueColor")
     
-    let gray = Color("GrayColor")
-    
-    let blue = Color("BlueColor")
-    let blueInversed = Color("BlueColorInversed")
-    
-    let red = Color("RedColor")
-    let redInversed = Color("RedColorInversed")
-    
-    let green = Color("GreenColor")
-    let greenInversed = Color("GreenColorInversed")
-    
-    let lightGreen = Color("LighGreenColor")
-    let lightGreenInversed = Color("LightGreenColorInversed")
-    
-    let spanishBlue = Color("SpanishBlueColor")
     let lapiz = Color("LapizColor")
     
+    let black = Color("BlackColor")
+    let white = Color("WhiteColor")
+    let darkGreen = Color("DarkGreenColor")
+    let lightGreen = Color("LightGreenColor")
+    let purple = Color("PurpleColor")
+    let lightPurple = Color("LightPurpleColor")
     let lightBlue = Color("LightBlueColor")
+    let skyBlue = Color("SkyBlueColor")
     
-    // An array containing all of the colors in the theme
     var asArray: [Color] {
-        return [accent, blue, blueInversed, gray, red, redInversed, spanishBlue, lightBlue, lapiz, lightGreen, lightGreenInversed, green, greenInversed]
+        return [lapiz, black, white, darkGreen, lightGreen, purple, lightPurple, lightBlue, skyBlue]
     }
     
 }

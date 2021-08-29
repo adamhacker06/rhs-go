@@ -24,7 +24,7 @@ struct NumberInputField: View {
         ZStack(alignment: .leading) {
             Text(title)
                 .fontWeight(number.matchesYear(for: Date.lastYear) ? .none : .bold)
-                .foregroundColor(number.matchesYear(for: Date.lastYear) ? Color(.placeholderText) : .theme.spanishBlue)
+                .foregroundColor(number.matchesYear(for: Date.lastYear) ? Color(.placeholderText) : .theme.lightBlue)
                 .offset(y: number.matchesYear(for: Date.lastYear) ? -7 : -25)
                 .scaleEffect(number.matchesYear(for: Date.lastYear) ? 1 : 0.8, anchor: .leading)
             

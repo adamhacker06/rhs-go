@@ -26,7 +26,7 @@ struct PullDownIndicator: View {
 struct PullDownIndicator_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
-            Color.theme.accent.ignoresSafeArea()
+            Color.theme.black.ignoresSafeArea()
             PullDownIndicator(color: .white)
         }
     }

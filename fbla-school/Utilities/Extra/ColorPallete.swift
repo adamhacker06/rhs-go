@@ -23,7 +23,7 @@ struct ColorPallete: View {
     var body: some View {
         ZStack {
             
-            Color.theme.blueInversed.ignoresSafeArea()
+            Color.gray.ignoresSafeArea()
             
             LazyVGrid(columns: grid) {
                 ForEach(colors.asArray.indices) { index in
