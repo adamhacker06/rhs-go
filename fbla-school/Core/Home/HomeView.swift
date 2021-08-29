@@ -10,7 +10,7 @@ import GoogleSignIn
 
 struct HomeView: View {
     
-    @EnvironmentObject var authObj: AuthenticationViewModel
+    @EnvironmentObject var data: DataManager
     
     var body: some View {
         ZStack {
@@ -21,11 +21,10 @@ struct HomeView: View {
                     HStack(spacing: 0) {
                         VStack(alignment: .leading, spacing: 0) {
                             Text("Welcome Back,")
-                            Text(authObj.user!.profileInfo.firstName!)
+                            Text(data.auth.user!.profileInfo.firstName!)
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .font(.system(size: 24, weight:.bold))
-                        
+                        .font(.custom("PublicSans-Bold", size: 24))
                         Circle()
                             .strokeBorder(Color.theme.lightPurple, lineWidth: 2)
                             .background(Circle().foregroundColor(.white))
@@ -35,15 +34,18 @@ struct HomeView: View {
                     
                     Text("Next class: Foundations of Business")
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.bottom, 5)
+                        .padding(.bottom, 10)
                     
                 }
-                .padding(.top, getSafeArea().top == 0 ? 0 : 20)
+                .padding(.top, getSafeArea().top == 0 ? 0 : 10)
                 .padding([.bottom, .horizontal], 20)
                 .foregroundColor(.white)
                 
                 VStack {
-                    
+                    ScrollView(.vertical, showsIndicators: false){
+                        YourDayView()
+                        Spacer()
+                    }
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(Color.white
@@ -51,7 +53,6 @@ struct HomeView: View {
                                 .shadow(color: .black.opacity(0.15), radius: 20, x: 0, y: -15)
                                 .ignoresSafeArea()
                 )
-                
             }
         }
     }
@@ -59,10 +60,10 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView().environmentObject(AuthenticationViewModel(withDevUser: DevUser(email: "test@test.com", firstName: "Adam", lastName: "Hacker")))
+        HomeView().environmentObject(DataManager(withDevUser: DevUser(email: "test@test.com", firstName: "Adam", lastName: "Hacker")))
         
-        HomeView().environmentObject(AuthenticationViewModel(withDevUser: DevUser(email: "test@test.com", firstName: "Adam", lastName: "Hacker")))
+        HomeView().environmentObject(DataManager(withDevUser: DevUser(email: "test@test.com", firstName: "Adam", lastName: "Hacker")))
             .previewDevice("iPod touch (7th generation)")
-        
+
     }
 }

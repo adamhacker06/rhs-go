@@ -14,7 +14,7 @@ class AuthenticationViewModel: ObservableObject {
     // Stores and creates the Google Sign-In configuration value to be used throughout the Google Sign-In process
     let signInConfig = GIDConfiguration.init(clientID: (FirebaseApp.app()?.options.clientID!)!)
     
-    // Return
+    // User Object
     @Published var user: User?
     
     init(withUser user: User?) {

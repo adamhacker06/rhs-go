@@ -11,7 +11,7 @@ typealias Screen = UIScreen
 
 struct LoginView: View {
     
-    @EnvironmentObject var authObj: AuthenticationViewModel
+    @EnvironmentObject var data: DataManager
     
     var body: some View {
         ZStack {
@@ -59,7 +59,7 @@ extension LoginView {
     }
     
     private var googleSignInButton: some View {
-        Button(action: { authObj.signIn() }) {
+        Button(action: { data.auth.signIn() }) {
 
             Label (
                 title: { Text("Sign In With Google").bold().lineLimit(1).minimumScaleFactor(0.5) },
@@ -97,9 +97,9 @@ extension LoginView {
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            ContentView().environmentObject(AuthenticationViewModel())
-            ContentView().environmentObject(AuthenticationViewModel()).previewDevice("iPod touch (7th generation)")
-            ContentView().environmentObject(AuthenticationViewModel()).previewDevice("iPhone SE (2nd generation)")
+            ContentView().environmentObject(DataManager())
+            ContentView().environmentObject(DataManager()).previewDevice("iPod touch (7th generation)")
+            ContentView().environmentObject(DataManager()).previewDevice("iPhone SE (2nd generation)")
         }
     }
 }

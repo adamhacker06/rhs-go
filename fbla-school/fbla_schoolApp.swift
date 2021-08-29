@@ -13,12 +13,12 @@ import GoogleSignIn
 struct fbla_schoolApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    @StateObject var viewModel = AuthenticationViewModel()
+    @StateObject var data = DataManager()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(viewModel)
+                .environmentObject(data)
                 .preferredColorScheme(.light)
         }
     }

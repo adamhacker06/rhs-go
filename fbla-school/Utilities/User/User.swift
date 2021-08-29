@@ -13,6 +13,8 @@ class User: ObservableObject {
     let googleUser: GIDGoogleUser?
     let profileInfo: GoogleProfileInfo
     
+//    let schedule:
+    
     init(withUser user: GIDGoogleUser) {
         
         self.googleUser = user
@@ -24,6 +26,16 @@ class User: ObservableObject {
         self.profileInfo = GoogleProfileInfo(withDevUser: user)
         self.googleUser = nil
     }
+}
+
+struct Schedule {
+    var prefirst: SchoolClass
+    var first: SchoolClass
+    var second: SchoolClass
+    var third: SchoolClass
+    var fourth: SchoolClass
+    var fifth: SchoolClass
+    var sixth: SchoolClass
 }
 
 struct GoogleProfileInfo {

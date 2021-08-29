@@ -1,0 +1,981 @@
+{
+  "subjects": [
+    {
+      "ASB": [
+        {
+          "teacher": "Haily Aston",
+          "namePrefix": "Mrs.",
+          "className": "ASB"
+        }
+      ]
+    },
+    {
+      "CTE": [
+        {
+          "teacher": "Jacob Avila",
+          "namePrefix": "Mr.",
+          "className": "Foundations of Business"
+        },
+        {
+          "teacher": "Jacob Avila",
+          "namePrefix": "Mr.",
+          "className": "Digital Literacy"
+        },
+        {
+          "teacher": "Jacob Avila",
+          "namePrefix": "Mr.",
+          "className": "Empowering Entrepreneurs"
+        },
+        {
+          "teacher": "Pam Buldo",
+          "namePrefix": "Mrs.",
+          "className": "Life Managment"
+        },
+        {
+          "teacher": "Pam Buldo",
+          "namePrefix": "Mrs.",
+          "className": "Human Development"
+        },
+        {
+          "teacher": "John Coon",
+          "namePrefix": "Mr.",
+          "className": "Ag Mechanics 1"
+        },
+        {
+          "teacher": "John Coon",
+          "namePrefix": "Mr.",
+          "className": "Ag Mechanics 2"
+        },
+        {
+          "teacher": "John Coon",
+          "namePrefix": "Mr.",
+          "className": "Ag Mechanics 3"
+        },
+        {
+          "teacher": "John Coon",
+          "namePrefix": "Mr.",
+          "className": "Ag Mechanics 4"
+        },
+        {
+          "teacher": "Ken Cox",
+          "namePrefix": "Mr.",
+          "className": "Introduction to Auto"
+        },
+        {
+          "teacher": "Ken Cox",
+          "namePrefix": "Mr.",
+          "className": "Advance Auto-Mechanics"
+        },
+        {
+          "teacher": "Jeff Eastman",
+          "namePrefix": "Mr.",
+          "className": "Wood Production Construction"
+        },
+        {
+          "teacher": "Diana Garcia",
+          "namePrefix": "Mrs.",
+          "className": "Culinary Arts"
+        },
+        {
+          "teacher": "Diana Garcia",
+          "namePrefix": "Mrs.",
+          "className": "Foods and Nutrition"
+        },
+        {
+          "teacher": "Diana Garcia",
+          "namePrefix": "Mrs.",
+          "className": "Food Services and Hospitality"
+        },
+        {
+          "teacher": "William Henshaw",
+          "namePrefix": "Mr.",
+          "className": "Introduction to Video"
+        },
+        {
+          "teacher": "William Henshaw",
+          "namePrefix": "Mr.",
+          "className": "Advance Film Making"
+        },
+        {
+          "teacher": "William Henshaw",
+          "namePrefix": "Mr.",
+          "className": "Digital Media"
+        },
+        {
+          "teacher": "Robert Rooney",
+          "namePrefix": "Mr.",
+          "className": "Introduction to Metal"
+        },
+        {
+          "teacher": "Robert Rooney",
+          "namePrefix": "Mr.",
+          "className": "Metal Manufacturing"
+        }
+      ]
+    },
+    {
+      "English": [
+        {
+          "teacher": "Melissa Adalian",
+          "namePrefix": "Mrs.",
+          "className": "English 1 Honors"
+        },
+        {
+          "teacher": "Theresa Audino",
+          "namePrefix": "Ms.",
+          "className": "Expository Reading & Writing"
+        },
+        {
+          "teacher": "Theresa Audino",
+          "namePrefix": "Ms.",
+          "className": "COS English"
+        },
+        {
+          "teacher": "Jason Cain",
+          "namePrefix": "Mr.",
+          "className": "Expository Reading & Writing"
+        },
+        {
+          "teacher": "Jason Cain",
+          "namePrefix": "Mr.",
+          "className": "English 2"
+        },
+        {
+          "teacher": "Georgette Cheatwood",
+          "namePrefix": "Mrs.",
+          "className": "English 1 Honors"
+        },
+        {
+          "teacher": "David Clements",
+          "namePrefix": "Mr.",
+          "className": "English 1"
+        },
+        {
+          "teacher": "Amanda Fariss",
+          "namePrefix": "Mrs.",
+          "className": "English 1"
+        },
+        {
+          "teacher": "Amanda Fariss",
+          "namePrefix": "Mrs.",
+          "className": "Reading Improvement"
+        },
+        {
+          "teacher": "Kelli Feehan",
+          "namePrefix": "Mrs.",
+          "className": "English 2 Honors"
+        },
+        {
+          "teacher": "Elizabeth Forsythe",
+          "namePrefix": "Mrs.",
+          "className": "American Literature and Composition"
+        },
+        {
+          "teacher": "Stacy Gonzales",
+          "namePrefix": "Mrs.",
+          "className": "English 1"
+        },
+        {
+          "teacher": "Mieke Howell",
+          "namePrefix": "Ms.",
+          "className": "English 1"
+        },
+        {
+          "teacher": "Ashley Jurica",
+          "namePrefix": "Mrs.",
+          "className": "American Literature and Composition"
+        },
+        {
+          "teacher": "Melissa Link",
+          "namePrefix": "Mrs.",
+          "className": "Expository Reading and Writing (ERWC)"
+        },
+        {
+          "teacher": "Nick Miller",
+          "namePrefix": "Mr.",
+          "className": "AP English Literature"
+        },
+        {
+          "teacher": "Nick Miller",
+          "namePrefix": "Mr.",
+          "className": "Journalism"
+        },
+        {
+          "teacher": "Tina Moran",
+          "namePrefix": "Ms.",
+          "className": "American Lit"
+        },
+        {
+          "teacher": "Michael McNitt",
+          "namePrefix": "Mr.",
+          "className": "English 2 Honors"
+        },
+        {
+          "teacher": "Ana Romo",
+          "namePrefix": "Mrs.",
+          "className": "ELD Academic Assist"
+        },
+        {
+          "teacher": "Nicole Vieira",
+          "namePrefix": "Mrs.",
+          "className": "English 2 Honors"
+        },
+        {
+          "teacher": "Nicole Vieira",
+          "namePrefix": "Mrs.",
+          "className": "AP Literature"
+        }
+      ]
+    },
+    {
+      "Foreign Language": [
+        {
+          "teacher": "Lizbeth Browning",
+          "namePrefix": "Mrs.",
+          "className": "Spanish 3"
+        },
+        {
+          "teacher": "Lizbeth Browning",
+          "namePrefix": "Mrs.",
+          "className": "Ap Spanish Language"
+        },
+        {
+          "teacher": "Calvin Feehan",
+          "namePrefix": "Mr.",
+          "className": "Spanish 1"
+        },
+        {
+          "teacher": "Calvin Feehan",
+          "namePrefix": "Mr.",
+          "className": "Spanish 2"
+        },
+        {
+          "teacher": "Daniel Guerrero",
+          "namePrefix": "Mr.",
+          "className": "Spanish 2"
+        },
+        {
+          "teacher": "Martha Loera",
+          "namePrefix": "Mrs.",
+          "className": "Literatuure for SS"
+        },
+        {
+          "teacher": "Martha Loera",
+          "namePrefix": "Mrs.",
+          "className": "AP Spanish Literature and Culture"
+        },
+        {
+          "teacher": "Martha Loera",
+          "namePrefix": "Mrs.",
+          "className": "Spanish 3"
+        },
+        {
+          "teacher": "Luz Medina",
+          "namePrefix": "Mrs.",
+          "className": "Spanish 1 (SS)"
+        },
+        {
+          "teacher": "Luz Medina",
+          "namePrefix": "Mrs.",
+          "className": "Spanish 2 (SS)"
+        },
+        {
+          "teacher": "Jean Newman",
+          "namePrefix": "Mrs.",
+          "className": "French 1"
+        },
+        {
+          "teacher": "Jean Newman",
+          "namePrefix": "Mrs.",
+          "className": "French 2"
+        },
+        {
+          "teacher": "Jean Newman",
+          "namePrefix": "Mrs.",
+          "className": "French 3"
+        },
+        {
+          "teacher": "Jean Newman",
+          "namePrefix": "Mrs.",
+          "className": "French 4"
+        },
+        {
+          "teacher": "Rosalba Perez-Montes",
+          "namePrefix": "Mrs.",
+          "className": "Spanish 1"
+        },
+        {
+          "teacher": "Victoria Sanchez",
+          "namePrefix": "Mrs.",
+          "className": "Spanish 1"
+        },
+        {
+          "teacher": "David Sandoval",
+          "namePrefix": "Mr.",
+          "className": "Spanish 2"
+        }
+      ]
+    },
+    {
+      "Math": [
+        {
+          "teacher": "Samuel Adalian",
+          "namePrefix": "Mr.",
+          "className": "Int. Math 1"
+        },
+        {
+          "teacher": "Samuel Adalian",
+          "namePrefix": "Mr.",
+          "className": "Math Assist"
+        },
+        {
+          "teacher": "Natalie Blair",
+          "namePrefix": "Mrs.",
+          "className": "Ap Statistics"
+        },
+        {
+          "teacher": "Natalie Blair",
+          "namePrefix": "Mrs.",
+          "className": "Math 3"
+        },
+        {
+          "teacher": "Ryan Blair",
+          "namePrefix": "Mr.",
+          "className": "Math 2"
+        },
+        {
+          "teacher": "Russell Brown",
+          "namePrefix": "Mr.",
+          "className": "Pre-Calculus"
+        },
+        {
+          "teacher": "John Buenafe",
+          "namePrefix": "Mr.",
+          "className": "Int. Math 3 Honors"
+        },
+        {
+          "teacher": "John Buenafe",
+          "namePrefix": "Mr.",
+          "className": "Pre-Calculus"
+        },
+        {
+          "teacher": "Sergio Dussan",
+          "namePrefix": "Mr.",
+          "className": "Math 1"
+        },
+        {
+          "teacher": "Sergio Dussan",
+          "namePrefix": "Mr.",
+          "className": "Math 2"
+        },
+        {
+          "teacher": "Sergio Dussan",
+          "namePrefix": "Mr.",
+          "className": "Math Assist"
+        },
+        {
+          "teacher": "Shannon Fox",
+          "namePrefix": "Mrs.",
+          "className": "Math 1"
+        },
+        {
+          "teacher": "Shannon Fox",
+          "namePrefix": "Mrs.",
+          "className": "Math 1 Assist"
+        },
+        {
+          "teacher": "Patrica Jordan",
+          "namePrefix": "Ms.",
+          "className": "Math 1"
+        },
+        {
+          "teacher": "Patrica Jordan",
+          "namePrefix": "Ms.",
+          "className": "Math 1 Assist"
+        },
+        {
+          "teacher": "Leanora Kasun",
+          "namePrefix": "Mrs.",
+          "className": "AP Calculus"
+        },
+        {
+          "teacher": "Leanora Kasun",
+          "namePrefix": "Mrs.",
+          "className": "AP Physics"
+        },
+        {
+          "teacher": "Leanora Kasun",
+          "namePrefix": "Mrs.",
+          "className": "Math 2 Honors"
+        },
+        {
+          "teacher": "Walter Kasun",
+          "namePrefix": "Mr.",
+          "className": "Math 3 Honors"
+        },
+        {
+          "teacher": "Walter Kasun",
+          "namePrefix": "Mr.",
+          "className": "Pre-Calculus"
+        },
+        {
+          "teacher": "Rich James",
+          "namePrefix": "Mr.",
+          "className": "Math 1"
+        },
+        {
+          "teacher": "Rodrigo Miguel",
+          "namePrefix": "Mr.",
+          "className": "Math 2"
+        },
+        {
+          "teacher": "Brenda Miligan",
+          "namePrefix": "Mrs.",
+          "className": "Math 1"
+        },
+        {
+          "teacher": "Brenda Miligan",
+          "namePrefix": "Mrs.",
+          "className": "Math 3"
+        },
+        {
+          "teacher": "Bill Phelps",
+          "namePrefix": "Mr.",
+          "className": "Math 1"
+        },
+        {
+          "teacher": "Cindy Spalding",
+          "namePrefix": "Mrs.",
+          "className": "Math 1"
+        },
+        {
+          "teacher": "Javier Quezada",
+          "namePrefix": "Mr.",
+          "className": "Math 3 Honors"
+        }
+      ]
+    },
+    {
+      "PE": [
+        {
+          "teacher": "Darryl Hardwick",
+          "namePrefix": "Mr.",
+          "className": "PE 2"
+        },
+        {
+          "teacher": "Darryl Hardwick",
+          "namePrefix": "Mr.",
+          "className": "Weight Training"
+        },
+        {
+          "teacher": "Brian MacDonald",
+          "namePrefix": "Mr.",
+          "className": "PE 2"
+        },
+        {
+          "teacher": "Brian MacDonald",
+          "namePrefix": "Mr.",
+          "className": "Core PE"
+        },
+        {
+          "teacher": "Brian MacDonald",
+          "namePrefix": "Mr.",
+          "className": "Weight Training"
+        },
+        {
+          "teacher": "Travis Roebuck",
+          "namePrefix": "Mr.",
+          "className": "Core PE"
+        },
+        {
+          "teacher": "Kevin Scharton",
+          "namePrefix": "Mr.",
+          "className": "Weight Training"
+        },
+        {
+          "teacher": "Kevin Scharton",
+          "namePrefix": "Mr.",
+          "className": "Integrated Core PE"
+        },
+        {
+          "teacher": "Cole Sprague",
+          "namePrefix": "Mr.",
+          "className": "Core PE"
+        },
+        {
+          "teacher": "Dave Watts",
+          "namePrefix": "Mr.",
+          "className": "Integrated Core PE"
+        },
+        {
+          "teacher": "Victoria Wall",
+          "namePrefix": "Mrs.",
+          "className": "Core PE"
+        },
+        {
+          "teacher": "Victoria Wall",
+          "namePrefix": "Mrs.",
+          "className": "Sports Therapy and Fitness"
+        }
+      ]
+    },
+    {
+      "Science": [
+        {
+          "teacher": "Susan Batchelor",
+          "namePrefix": "Ms.",
+          "className": "Biology"
+        },
+        {
+          "teacher": "Lizel Bettencourt",
+          "namePrefix": "Mrs.",
+          "className": "Chemistry"
+        },
+        {
+          "teacher": "Lizel Bettencourt",
+          "namePrefix": "Mrs.",
+          "className": "AP Chemistry"
+        },
+        {
+          "teacher": "Colleen Duerksen",
+          "namePrefix": "Mrs.",
+          "className": "Biology"
+        },
+        {
+          "teacher": "Joe Hawthorne",
+          "namePrefix": "Mr.",
+          "className": "Health"
+        },
+        {
+          "teacher": "Joe Hawthorne",
+          "namePrefix": "Mr.",
+          "className": "Physical Earth Science"
+        },
+        {
+          "teacher": "McKenzie Langlie",
+          "namePrefix": "Ms.",
+          "className": "Biology"
+        },
+        {
+          "teacher": "Mary Laufer",
+          "namePrefix": "Mrs.",
+          "className": "Chemistry"
+        },
+        {
+          "teacher": "Michaela Sanchez",
+          "namePrefix": "Ms.",
+          "className": "Health"
+        },
+        {
+          "teacher": "Samantha Stuller",
+          "namePrefix": "Mrs.",
+          "className": "Physical Earth Science"
+        },
+        {
+          "teacher": "Samantha Stuller",
+          "namePrefix": "Mrs.",
+          "className": "Biology"
+        },
+        {
+          "teacher": "Mike White",
+          "namePrefix": "Mr.",
+          "className": "Chemistry"
+        },
+        {
+          "teacher": "Mike White",
+          "namePrefix": "Mr.",
+          "className": "AP Environmental Science"
+        },
+        {
+          "teacher": "Jonathan Woodbury",
+          "namePrefix": "Mr.",
+          "className": "Biology"
+        },
+        {
+          "teacher": "Jonathan Woodbury",
+          "namePrefix": "Mr.",
+          "className": "AP Biology"
+        }
+      ]
+    },
+    {
+      "Social Science": [
+        {
+          "teacher": "Zach Adams",
+          "namePrefix": "Mr.",
+          "className": "World History"
+        },
+        {
+          "teacher": "Alyssa Aguilar",
+          "namePrefix": "Ms.",
+          "className": "World History"
+        },
+        {
+          "teacher": "Jennifer Brooks",
+          "namePrefix": "Ms.",
+          "className": "US History"
+        },
+        {
+          "teacher": "Sal Cazarez",
+          "namePrefix": "Mr.",
+          "className": "US History"
+        },
+        {
+          "teacher": "Ross Eskridge",
+          "namePrefix": "Mr.",
+          "className": "AP US History"
+        },
+        {
+          "teacher": "Sal Cazarez",
+          "namePrefix": "Mr.",
+          "className": "Economics"
+        },
+        {
+          "teacher": "Eric Fuller",
+          "namePrefix": "Mr.",
+          "className": "Economics"
+        },
+        {
+          "teacher": "Eric Fuller",
+          "namePrefix": "Mr.",
+          "className": "Civics"
+        },
+        {
+          "teacher": "Celina Hinojosa",
+          "namePrefix": "Mrs.",
+          "className": "World History"
+        },
+        {
+          "teacher": "Celina Hinojosa",
+          "namePrefix": "Mrs.",
+          "className": "AP European History"
+        },
+        {
+          "teacher": "Jacob Huerta",
+          "namePrefix": "Mr.",
+          "className": "US History"
+        },
+        {
+          "teacher": "Jacob Huerta",
+          "namePrefix": "Mr.",
+          "className": "Ethnic Studies"
+        },
+        {
+          "teacher": "Roy Orosco",
+          "namePrefix": "Mr.",
+          "className": "World History"
+        },
+        {
+          "teacher": "Roy Orosco",
+          "namePrefix": "Mr.",
+          "className": "AP European History"
+        },
+        {
+          "teacher": "Cole Schieferle",
+          "namePrefix": "Mr.",
+          "className": "Economics"
+        },
+        {
+          "teacher": "Cole Schieferle",
+          "namePrefix": "Mr.",
+          "className": "AP Government and Politics"
+        },
+        {
+          "teacher": "Jason Vieira",
+          "namePrefix": "Mr.",
+          "className": "AP US History"
+        }
+      ]
+    },
+    {
+      "Special Education": [
+        {
+          "teacher": "Michelle Avila",
+          "namePrefix": "Mr.",
+          "className": "English 1 S"
+        },
+        {
+          "teacher": "Michelle Avila",
+          "namePrefix": "Mrs.",
+          "className": "Life Skills 3 S"
+        },
+        {
+          "teacher": "Joey Chica",
+          "namePrefix": "Mr.",
+          "className": "US History S"
+        },
+        {
+          "teacher": "Joey Chica",
+          "namePrefix": "Mr.",
+          "className": "World History 1 S"
+        },
+        {
+          "teacher": "Erika Villar",
+          "namePrefix": "Mr.",
+          "className": "English 2 S"
+        },
+        {
+          "teacher": "Julie Fulmer",
+          "namePrefix": "Mrs.",
+          "className": "English 4 S"
+        },
+        {
+          "teacher": "Julie Fulmer",
+          "namePrefix": "Mrs.",
+          "className": "Economics S"
+        },
+        {
+          "teacher": "Julie Fulmer",
+          "namePrefix": "Mrs.",
+          "className": "Civics S"
+        },
+        {
+          "teacher": "Kari Latimer",
+          "namePrefix": "Ms.",
+          "className": "English 2 S"
+        },
+        {
+          "teacher": "Kari Latimer",
+          "namePrefix": "Ms.",
+          "className": "American Literature S"
+        },
+        {
+          "teacher": "Brad Pendergast",
+          "namePrefix": "Mr.",
+          "className": "Int. Math 1 S"
+        },
+        {
+          "teacher": "Rachel Oliverira",
+          "namePrefix": "Mrs.",
+          "className": "Int. Math 1 S"
+        }
+      ]
+    },
+    {
+      "Visual and Performing Arts": [
+        {
+          "teacher": "Elisa Bardonnex",
+          "namePrefix": "Mrs.",
+          "className": "Introduction to Dance"
+        },
+        {
+          "teacher": "Elisa Bardonnex",
+          "namePrefix": "Mrs.",
+          "className": "Intermediate Dance"
+        },
+        {
+          "teacher": "Elisa Bardonnex",
+          "namePrefix": "Mrs.",
+          "className": "International Dance"
+        },
+        {
+          "teacher": "Mel Carrillo",
+          "namePrefix": "Mr.",
+          "className": "Vocal Ensemble"
+        },
+        {
+          "teacher": "Mel Carrillo",
+          "namePrefix": "Mr.",
+          "className": "Bass Clef Choir"
+        },
+        {
+          "teacher": "Mel Carrillo",
+          "namePrefix": "Mr.",
+          "className": "Beginner Soprano/Alto"
+        },
+        {
+          "teacher": "Mel Carrillo",
+          "namePrefix": "Mr.",
+          "className": "Intermediate Soprano/Alto"
+        },
+        {
+          "teacher": "Stacy Galvan",
+          "namePrefix": "Mrs.",
+          "className": "Drama 1"
+        },
+        {
+          "teacher": "Stacy Galvan",
+          "namePrefix": "Mrs.",
+          "className": "Drama 2"
+        },
+        {
+          "teacher": "Stacy Galvan",
+          "namePrefix": "Mrs.",
+          "className": "Drama 3"
+        },
+        {
+          "teacher": "Stacy Galvan",
+          "namePrefix": "Mrs.",
+          "className": "Stagecraft"
+        },
+        {
+          "teacher": "Steve Harris",
+          "namePrefix": "Mr.",
+          "className": "Studio Art 1"
+        },
+        {
+          "teacher": "Steve Harris",
+          "namePrefix": "Mr.",
+          "className": "Studio Art 2"
+        },
+        {
+          "teacher": "Steve Harris",
+          "namePrefix": "Mr.",
+          "className": "Studio Art 3"
+        },
+        {
+          "teacher": "Steve Harris",
+          "namePrefix": "Mr.",
+          "className": "Studio Art 4"
+        },
+        {
+          "teacher": "Michele Lapp",
+          "namePrefix": "Mrs.",
+          "className": "Advance Dance"
+        },
+        {
+          "teacher": "Michele Lapp",
+          "namePrefix": "Mrs.",
+          "className": "Dance Performance"
+        },
+        {
+          "teacher": "Michele Lapp",
+          "namePrefix": "Mrs.",
+          "className": "Intermediate Dance"
+        },
+        {
+          "teacher": "Michele Lapp",
+          "namePrefix": "Mrs.",
+          "className": "Hip Hop Dance"
+        },
+        {
+          "teacher": "Jordan Ray",
+          "namePrefix": "Mr.",
+          "className": "Jazz Band"
+        },
+        {
+          "teacher": "Jordan Ray",
+          "namePrefix": "Mr.",
+          "className": "Intermediate Band"
+        },
+        {
+          "teacher": "Jordan Ray",
+          "namePrefix": "Mr.",
+          "className": "Advanced Band"
+        },
+        {
+          "teacher": "Jordan Ray",
+          "namePrefix": "Mr.",
+          "className": "Wind Ensemble"
+        },
+        {
+          "teacher": "Lyssa Yates",
+          "namePrefix": "Mrs.",
+          "className": "3D Art 1"
+        },
+        {
+          "teacher": "Lyssa Yates",
+          "namePrefix": "Mrs.",
+          "className": "3D Art 2"
+        },
+        {
+          "teacher": "Lyssa Yates",
+          "namePrefix": "Mrs.",
+          "className": "3D Art 3"
+        },
+        {
+          "teacher": "Lyssa Yates",
+          "namePrefix": "Mrs.",
+          "className": "3D Art 4"
+        },
+        {
+          "teacher": "Rodney Yokota",
+          "namePrefix": "Mr.",
+          "className": "Advance Orchestra"
+        },
+        {
+          "teacher": "Rodney Yokota",
+          "namePrefix": "Mr.",
+          "className": "Orchestra"
+        }
+      ]
+    },
+    {
+      "Academies": [
+        {
+          "teacher": "Robert Rooney",
+          "namePrefix": "Mr.",
+          "className": "Construction Management"
+        },
+        {
+          "teacher": "Ryan Blair",
+          "namePrefix": "Mr.",
+          "className": "Introduction to Engineering"
+        },
+        {
+          "teacher": "Russell Brown",
+          "namePrefix": "Mr.",
+          "className": "Civil Engineering and Architecture"
+        },
+        {
+          "teacher": "Russell Brown",
+          "namePrefix": "Mr.",
+          "className": "Engineering Design and Development"
+        },
+        {
+          "teacher": "Zach Adams",
+          "namePrefix": "Mr.",
+          "className": "Foundations of Law"
+        },
+        {
+          "teacher": "Zach Adams",
+          "namePrefix": "Mr.",
+          "className": "Civil Law"
+        },
+        {
+          "teacher": "Jennifer Brooks",
+          "namePrefix": "Ms.",
+          "className": "Foundations of Law"
+        },
+        {
+          "teacher": "Sal Cazarez",
+          "namePrefix": "Mr.",
+          "className": "Constitutional Law"
+        }
+      ]
+    },
+    {
+      "Other": [
+        {
+          "teacher": "Tina Moran",
+          "namePrefix": "Ms.",
+          "className": "AVID"
+        },
+        {
+          "teacher": "Ana Romo",
+          "namePrefix": "Mrs.",
+          "className": "AVID"
+        },
+        {
+          "teacher": "Calvin Feehan",
+          "namePrefix": "Mr.",
+          "className": "Yearbook"
+        },
+        {
+          "teacher": "Travis Roebuck",
+          "namePrefix": "Mr.",
+          "className": "AVID"
+        },
+        {
+          "teacher": "Shaun Ball",
+          "namePrefix": "Ms.",
+          "className": "College and Careers"
+        }
+      ]
+    }
+  ]
+}
+
+
+
+
