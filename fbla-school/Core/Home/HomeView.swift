@@ -21,15 +21,16 @@ struct HomeView: View {
                     HStack(spacing: 0) {
                         VStack(alignment: .leading, spacing: 0) {
                             Text("Welcome Back,")
-                            Text(data.auth.user!.profileInfo.firstName!)
+                            Text(data.user!.profileInfo.firstName!)
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .font(.custom("PublicSans-Bold", size: 24))
+                        
                         Circle()
                             .strokeBorder(Color.theme.lightPurple, lineWidth: 2)
                             .background(Circle().foregroundColor(.white))
                             .frame(maxWidth: 50, maxHeight: 50)
-                        
+    
                     }
                     
                     Text("Next class: Foundations of Business")
@@ -37,12 +38,12 @@ struct HomeView: View {
                         .padding(.bottom, 10)
                     
                 }
-                .padding(.top, getSafeArea().top == 0 ? 0 : 10)
+                .padding(.top, 20)
                 .padding([.bottom, .horizontal], 20)
                 .foregroundColor(.white)
                 
                 VStack {
-                    ScrollView(.vertical, showsIndicators: false){
+                    ScrollView(.vertical, showsIndicators: false) {
                         YourDayView()
                         Spacer()
                     }
@@ -60,7 +61,13 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView().environmentObject(DataManager(withDevUser: DevUser(email: "test@test.com", firstName: "Adam", lastName: "Hacker")))
+        
+        NavigationView {
+            HomeView()
+                .environmentObject(DataManager(withDevUser: DevUser(email: "test@test.com", firstName: "Adam", lastName: "Hacker")))
+                .navigationBarTitle("")
+                .navigationBarHidden(true)
+        }
         
         HomeView().environmentObject(DataManager(withDevUser: DevUser(email: "test@test.com", firstName: "Adam", lastName: "Hacker")))
             .previewDevice("iPod touch (7th generation)")

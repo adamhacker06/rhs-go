@@ -13,29 +13,25 @@ class User: ObservableObject {
     let googleUser: GIDGoogleUser?
     let profileInfo: GoogleProfileInfo
     
-//    let schedule:
+    let schedule: [ClassPeriod:SchoolClass]?
+    
+    var hasPrefirst: Bool {
+        guard let _ = schedule?[ClassPeriod.prefirst] else { return false }
+        return true
+    }
     
     init(withUser user: GIDGoogleUser) {
-        
         self.googleUser = user
         self.profileInfo = GoogleProfileInfo(withUser: user)
-        
+        self.schedule = nil
     }
     
-    init(withDevUser user: DevUser) {
-        self.profileInfo = GoogleProfileInfo(withDevUser: user)
+    init(withDevUser user: DevUser, schedule: [ClassPeriod:SchoolClass]? = nil) {
         self.googleUser = nil
+        self.profileInfo = GoogleProfileInfo(withDevUser: user)
+        self.schedule = schedule
     }
-}
-
-struct Schedule {
-    var prefirst: SchoolClass
-    var first: SchoolClass
-    var second: SchoolClass
-    var third: SchoolClass
-    var fourth: SchoolClass
-    var fifth: SchoolClass
-    var sixth: SchoolClass
+    
 }
 
 struct GoogleProfileInfo {
@@ -46,7 +42,6 @@ struct GoogleProfileInfo {
     let lastName: String?
     
     init(withUser user: GIDGoogleUser) {
-        
             self.emailAddress = user.profile!.email
             self.fullName = user.profile!.name
             self.firstName = user.profile!.givenName ?? nil
@@ -58,7 +53,6 @@ struct GoogleProfileInfo {
         self.fullName = user.fullName
         self.firstName = user.firstName
         self.lastName = user.lastName
-        
     }
 }
 

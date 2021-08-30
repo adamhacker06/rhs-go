@@ -14,11 +14,13 @@ struct fbla_schoolApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @StateObject var data = DataManager()
+    @StateObject var auth = AuthenticationViewModel()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(data)
+                .environmentObject(auth)
                 .preferredColorScheme(.light)
         }
     }

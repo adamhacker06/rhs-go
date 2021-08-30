@@ -61,6 +61,7 @@
 		E0F40D1F26DC23C600AE9DD7 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F40D1E26DC23C600AE9DD7 /* test.swift */; };
 		E0F40D2A26DC31DC00AE9DD7 /* Subjects.json in Resources */ = {isa = PBXBuildFile; fileRef = E0F40D2926DC31DC00AE9DD7 /* Subjects.json */; };
 		E0F40D2D26DC330A00AE9DD7 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F40D2C26DC330A00AE9DD7 /* DataManager.swift */; };
+		E0F40D3026DC6A0B00AE9DD7 /* EditScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F40D2F26DC6A0B00AE9DD7 /* EditScheduleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -115,6 +116,7 @@
 		E0F40D1E26DC23C600AE9DD7 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		E0F40D2926DC31DC00AE9DD7 /* Subjects.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Subjects.json; sourceTree = "<group>"; };
 		E0F40D2C26DC330A00AE9DD7 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		E0F40D2F26DC6A0B00AE9DD7 /* EditScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScheduleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +205,7 @@
 			children = (
 				E0AB6A5E26D20AD900B35EA4 /* Auth */,
 				E0AB6A6126D20B6800B35EA4 /* Home */,
+				E0F40D2E26DC69FA00AE9DD7 /* Edit Schedule */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -359,6 +362,14 @@
 			path = "Data Manager";
 			sourceTree = "<group>";
 		};
+		E0F40D2E26DC69FA00AE9DD7 /* Edit Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				E0F40D2F26DC6A0B00AE9DD7 /* EditScheduleView.swift */,
+			);
+			path = "Edit Schedule";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -462,6 +473,7 @@
 				E06B709926D331F9000D944C /* CustomDivider.swift in Sources */,
 				E0F40D1526DB495F00AE9DD7 /* YourDayView.swift in Sources */,
 				E0AB6A5C26D1DF4900B35EA4 /* AuthenticationViewModel.swift in Sources */,
+				E0F40D3026DC6A0B00AE9DD7 /* EditScheduleView.swift in Sources */,
 				E06B709426D3251A000D944C /* PullDownIndicator.swift in Sources */,
 				E0AB6A6E26D20F0800B35EA4 /* Date.swift in Sources */,
 				E0AB6A7326D20F0800B35EA4 /* Color.swift in Sources */,

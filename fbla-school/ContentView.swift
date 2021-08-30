@@ -10,28 +10,32 @@ import SwiftUI
 struct ContentView: View {
     
     // Grabs the auth object from the environment
-    @EnvironmentObject var authObj: AuthenticationViewModel
+    @EnvironmentObject var data: DataManager
+    @EnvironmentObject var auth: AuthenticationViewModel
     
     var body: some View {
         
         ZStack {
             
             // Switches between the SignedIn state
-            switch authObj.state {
+            switch auth.state {
             
             case .signedIn:
                 
-                if !authObj.user!.profileInfo.emailAddress.contains("@vusd.us") && !authObj.user!.profileInfo.emailAddress.contains("@vusd.org") {
+                if !data.user!.profileInfo.emailAddress.contains("@vusd.us") && !data.user!.profileInfo.emailAddress.contains("@vusd.org") {
                     
                     BadGoogleOrganizationView()
                     
                 } else {
-                    HomeView()
-                        .environmentObject(authObj.user!)
+                    NavigationView {
+                        HomeView()
+                            .environmentObject(data.user!)
+                            .navigationTitle("")
+                            .navigationBarHidden(true)
+                    }
+                    
                 }
                 
-                
-            
             case .signedOut:
                 LoginView()
                     .transition(AnyTransition.opacity)

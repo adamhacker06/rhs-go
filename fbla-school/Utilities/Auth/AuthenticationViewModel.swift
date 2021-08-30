@@ -14,21 +14,6 @@ class AuthenticationViewModel: ObservableObject {
     // Stores and creates the Google Sign-In configuration value to be used throughout the Google Sign-In process
     let signInConfig = GIDConfiguration.init(clientID: (FirebaseApp.app()?.options.clientID!)!)
     
-    // User Object
-    @Published var user: User?
-    
-    init(withUser user: User?) {
-        self.user = user
-    }
-
-    init(withDevUser user: DevUser) {
-        self.user = User(withDevUser: user)
-    }
-    
-    convenience init() {
-        self.init(withUser: nil)
-    }
-    
     // A custom enum for defining sign-in state
     enum SignInState {
         case signedIn
@@ -39,7 +24,7 @@ class AuthenticationViewModel: ObservableObject {
     @Published var state: SignInState = .signedOut
     
     // Handles the sign in process
-    func signIn() {
+    func signIn(completion: @escaping (User) -> Void) {
         
         // Checks if there is a user logged in
         if GIDSignIn.sharedInstance.currentUser == nil {
@@ -51,7 +36,7 @@ class AuthenticationViewModel: ObservableObject {
                     // If there is no error, sign the user in using Firebase
                     self?.firebaseAuth(withUser: user!)
                     
-                    self?.user = User(withUser: user!)
+                    completion(User(withUser: user!))
                     
                 } else {
                     

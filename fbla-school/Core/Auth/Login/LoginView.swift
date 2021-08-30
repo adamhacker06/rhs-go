@@ -12,6 +12,7 @@ typealias Screen = UIScreen
 struct LoginView: View {
     
     @EnvironmentObject var data: DataManager
+    @EnvironmentObject var auth: AuthenticationViewModel
     
     var body: some View {
         ZStack {
@@ -59,7 +60,10 @@ extension LoginView {
     }
     
     private var googleSignInButton: some View {
-        Button(action: { data.auth.signIn() }) {
+        Button(action: { auth.signIn { user in
+            print("Running func")
+            data.user = user
+        } }) {
 
             Label (
                 title: { Text("Sign In With Google").bold().lineLimit(1).minimumScaleFactor(0.5) },
