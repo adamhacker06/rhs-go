@@ -10,26 +10,35 @@ import SwiftUI
 struct EditScheduleView: View {
     
     @EnvironmentObject var data: DataManager
+    @State var test: Bool = false
+    @State var showPrefirst: Bool = false
     
     var body: some View {
         ZStack {
             Color.theme.lapiz.ignoresSafeArea()
             VStack(spacing: 0) {
                 
-                VStack(alignment: .leading, spacing: 0) {
+                HStack(spacing: 0) {
                     
-                    Text("Your Schedule")
-                        .font(.custom("PublicSans-SemiBold", size: 24))
+                    Image(systemName: "chevron.left")
                         .foregroundColor(.white)
-                        .frame(maxWidth: .infinity, alignment: .leading)
                     
-                    Rectangle()
-                        .frame(maxWidth: 100, maxHeight: 5)
-                        .foregroundColor(.white)
-                        .padding(.top, 3)
-                    
+                    VStack(alignment: .trailing, spacing: 0) {
+                        
+                        Text("Your Schedule")
+                            .font(.custom("PublicSans-SemiBold", size: 24))
+                            .foregroundColor(.white)
+                            //.frame(maxWidth: .infinity, alignment: .leading)
+                        
+                        Rectangle()
+                            .foregroundColor(.white)
+                            .padding(.top, 3)
+                            .frame(maxWidth: 100, maxHeight: 5)
+                        
+                    }
+                    .frame(maxWidth: .infinity, alignment: .trailing)
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
+                .frame(maxWidth: .infinity, alignment: .trailing)
                 
                 HStack(spacing: 10) {
                     Text("Include Prefirst")
@@ -37,8 +46,7 @@ struct EditScheduleView: View {
                         .foregroundColor(.white)
                         .padding(.vertical, 15)
                     
-                    Circle()
-                        .frame(maxWidth:16, maxHeight: 16)
+                    ToggleField(isOn: $showPrefirst)
                     
                 }
                 .padding(.horizontal, 20)
@@ -51,13 +59,14 @@ struct EditScheduleView: View {
                             
                             VStack(spacing: 0) {
                                 
-                                EditSchedulePeriodView(period: ClassPeriod(rawValue: classPeriod)!)
+                                EditSchedulePeriodView(period: ClassPeriod(rawValue: classPeriod)!, test: $test)
 //                                    .padding(.top, data.user!.hasPrefirst ? (classPeriod > 0 ? 10 : 0) : (classPeriod > 1 ? 10 : 0))
                                 
                                 if classPeriod < 6 {
                                     Rectangle()
                                         .frame(width: .infinity, height: 5)
                                         .foregroundColor(Color(hex: 0xE5E5E5))
+                                        .padding(.bottom, 10)
                                 }
                             }
                         }
@@ -71,7 +80,7 @@ struct EditScheduleView: View {
                 .ignoresSafeArea()
                 
             }
-            .padding([.horizontal, .top], 20)
+            .padding(.horizontal, 20)
         }
     }
 }
@@ -81,6 +90,7 @@ struct EditSchedulePeriodView: View {
     @EnvironmentObject var data: DataManager
     
     let period: ClassPeriod
+    @Binding var test: Bool
     
     var body: some View {
         
@@ -95,11 +105,14 @@ struct EditSchedulePeriodView: View {
                     Text("Custom")
                         .font(.custom("PublicSans-Regular", size: 12))
                     
-                    Circle()
-                        .frame(width: 16, height: 16)
+                    Button(action: { test.toggle() }, label: {
+                        ToggleField(isOn: $test)
+                    })
+                    
                 }
+                
             }
-            .padding(.vertical, 10)
+            .padding(.vertical, 0)
             
             HStack(spacing: 0) {
                 VStack(spacing: 8) {
@@ -136,7 +149,7 @@ struct EditSchedulePeriodView: View {
             .padding(10)
             .foregroundColor(.white)
             .background(Color.theme.lapiz.cornerRadius(5))
-            .padding(.bottom, 10)
+            .padding(.vertical, 10)
         }
     }
 }
@@ -146,5 +159,9 @@ struct EditScheduleView_Previews: PreviewProvider {
         EditScheduleView().environmentObject(DataManager(withDevUser: DevUser(email: "test@test.com", firstName: "Adam", lastName: "Hacker")
                                                          , schedule: [.prefirst:SchoolClass(teacher: "Mr. Gurerro", namePrefix: .mr, className: "Spanish 2")]
         ))
+        
+        EditScheduleView().environmentObject(DataManager(withDevUser: DevUser(email: "test@test.com", firstName: "Adam", lastName: "Hacker")
+                                                         , schedule: [.prefirst:SchoolClass(teacher: "Mr. Gurerro", namePrefix: .mr, className: "Spanish 2")]
+        )).previewDevice("iPod touch (7th generation)")
     }
 }

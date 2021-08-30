@@ -42,6 +42,7 @@
 		E08AF9CD26DB2C530070A252 /* PublicSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E08AF9BB26DB2C530070A252 /* PublicSans-Medium.ttf */; };
 		E08AF9CE26DB2C530070A252 /* PublicSans-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E08AF9BC26DB2C530070A252 /* PublicSans-Black.ttf */; };
 		E08AF9CF26DB2C530070A252 /* PublicSans-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E08AF9BD26DB2C530070A252 /* PublicSans-MediumItalic.ttf */; };
+		E0916D7026DCA3E800CD13FB /* ToggleField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0916D6F26DCA3E800CD13FB /* ToggleField.swift */; };
 		E0AB6A5C26D1DF4900B35EA4 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB6A5B26D1DF4900B35EA4 /* AuthenticationViewModel.swift */; };
 		E0AB6A6526D20EB100B35EA4 /* ColorPallete.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB6A6426D20EB100B35EA4 /* ColorPallete.swift */; };
 		E0AB6A6E26D20F0800B35EA4 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB6A6826D20F0800B35EA4 /* Date.swift */; };
@@ -102,6 +103,7 @@
 		E08AF9BB26DB2C530070A252 /* PublicSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PublicSans-Medium.ttf"; sourceTree = "<group>"; };
 		E08AF9BC26DB2C530070A252 /* PublicSans-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PublicSans-Black.ttf"; sourceTree = "<group>"; };
 		E08AF9BD26DB2C530070A252 /* PublicSans-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PublicSans-MediumItalic.ttf"; sourceTree = "<group>"; };
+		E0916D6F26DCA3E800CD13FB /* ToggleField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleField.swift; sourceTree = "<group>"; };
 		E0AB6A5B26D1DF4900B35EA4 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		E0AB6A6426D20EB100B35EA4 /* ColorPallete.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPallete.swift; sourceTree = "<group>"; };
 		E0AB6A6826D20F0800B35EA4 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				E06B709026D3251A000D944C /* VisualEffectView.swift */,
 				E06B709126D3251A000D944C /* TextInputField.swift */,
 				E06B709826D331F9000D944C /* CustomDivider.swift */,
+				E0916D6F26DCA3E800CD13FB /* ToggleField.swift */,
 			);
 			path = Structures;
 			sourceTree = "<group>";
@@ -470,6 +473,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0916D7026DCA3E800CD13FB /* ToggleField.swift in Sources */,
 				E06B709926D331F9000D944C /* CustomDivider.swift in Sources */,
 				E0F40D1526DB495F00AE9DD7 /* YourDayView.swift in Sources */,
 				E0AB6A5C26D1DF4900B35EA4 /* AuthenticationViewModel.swift in Sources */,
