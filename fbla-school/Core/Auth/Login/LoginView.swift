@@ -12,7 +12,7 @@ typealias Screen = UIScreen
 struct LoginView: View {
     
     @EnvironmentObject var data: DataManager
-    @EnvironmentObject var auth: AuthenticationViewModel
+    @EnvironmentObject var auth: AuthManager
     
     var body: some View {
         ZStack {
@@ -21,20 +21,23 @@ struct LoginView: View {
             VStack(spacing: 0) {
                 
                 logo
-                
-                VStack(spacing: 0) {
-                    googleSignInButton
-                   
-                }
-                .frame(maxWidth: .infinity, maxHeight: Screen.main.bounds.height * 0.25, alignment: .center)
-                .padding(.bottom, getSafeArea().bottom)
-                .background(
-                    signInBackground
-                )
-                .cornerRadius(25, corners: [.topLeft, .topRight])
-                .shadow(color: .white.opacity(0.3), radius: 20)
-                .offset(CGSize(width: 0, height: getSafeArea().bottom))
-                
+                    
+                    VStack(spacing: 20) {
+                        
+                        googleSignInButton
+                        
+                        emailSignInButton
+                        
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: Screen.main.bounds.height * 0.25, alignment: .center)
+                    .padding(.vertical, getSafeArea().bottom > 0 ? getSafeArea().bottom : 20)
+                    .padding(.top, getSafeArea().bottom == 0 ? 10 : 0)
+                    .background(
+                        signInBackground
+                    )
+                    .cornerRadius(25, corners: [.topLeft, .topRight])
+                    .shadow(color: .white.opacity(0.3), radius: 20)
+                    .offset(CGSize(width: 0, height: getSafeArea().bottom))
             }
         }
     }
@@ -59,33 +62,62 @@ extension LoginView {
         .frame(maxWidth: .infinity, maxHeight: Screen.main.bounds.height * 0.75, alignment: .center)
     }
     
+    private var emailSignInButton: some View {
+        Button(action: {
+            
+        }, label: {
+            
+            HStack(spacing: 0) {
+                
+                Image(systemName: "envelope")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(maxWidth: 30)
+                    
+                
+                Text("Sign in with Email")
+                    .bold()
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.5)
+                    .frame(maxWidth: .infinity)
+                
+            }
+           
+        })
+        .buttonStyle(GeneralButtonStyle())
+    }
+    
     private var googleSignInButton: some View {
         Button(action: { auth.signIn { user in
-            print("Running func")
             data.user = user
         } }) {
-
-            Label (
-                title: { Text("Sign In With Google").bold().lineLimit(1).minimumScaleFactor(0.5) },
-                icon: { Image("google-logo").resizable().aspectRatio(contentMode: .fit).frame(maxHeight: 30).clipped()
-                    
-                }
-            )
             
+            HStack(spacing: 0) {
+                Image("google-logo")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(maxWidth: 30)
+                
+                Text("Sign in with Google")
+                    .bold()
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.5)
+                    .frame(maxWidth: .infinity)
+            }
         }
         .buttonStyle(GeneralButtonStyle())
-        .overlay(
-        
-            Text("Tip: sign in with your school account!")
-                .font(.subheadline)
-                .minimumScaleFactor(0.5)
-                .lineLimit(1)
-                .foregroundColor(Color(.placeholderText))
-                .frame(maxWidth: Screen.main.bounds.width * 0.7)
-                .multilineTextAlignment(.center)
-                .offset(y: 50)
-        
-        )
+        //        .overlay(
+        //
+        //            Text("Sign in with your school account!")
+        //                .font(.subheadline)
+        //                .minimumScaleFactor(0.5)
+        //                .lineLimit(1)
+        //                .foregroundColor(Color(.placeholderText))
+        //                .frame(maxWidth: Screen.main.bounds.width * 0.7)
+        //                .multilineTextAlignment(.center)
+        //                .offset(y: 50)
+        //
+        //        )
     }
     
     private var signInBackground: some View {
@@ -101,9 +133,17 @@ extension LoginView {
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            ContentView().environmentObject(DataManager())
-            ContentView().environmentObject(DataManager()).previewDevice("iPod touch (7th generation)")
-            ContentView().environmentObject(DataManager()).previewDevice("iPhone SE (2nd generation)")
+            ContentView()
+                .environmentObject(DataManager())
+                .environmentObject(AuthManager())
+            
+            ContentView()
+                .environmentObject(DataManager()).previewDevice("iPod touch (7th generation)")
+                .environmentObject(AuthManager())
+            
+            ContentView()
+                .environmentObject(DataManager()).previewDevice("iPhone SE (2nd generation)")
+                .environmentObject(AuthManager())
         }
     }
 }

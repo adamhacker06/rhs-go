@@ -11,9 +11,25 @@ import GoogleSignIn
 struct HomeView: View {
     
     @EnvironmentObject var data: DataManager
+    @EnvironmentObject var auth: AuthManager
+    
+    @State private var showEditSchedule: Bool = false
     
     var body: some View {
         ZStack {
+            
+            NavigationLink(
+                destination:
+                    EditScheduleView()
+                    .navigationTitle("")
+                    .navigationBarHidden(true)
+                ,
+                isActive: $showEditSchedule,
+                label: {
+                    Text("")
+                        .hidden()
+                })
+            
             Color.theme.purple.ignoresSafeArea()
             VStack {
                 
@@ -44,7 +60,7 @@ struct HomeView: View {
                 
                 VStack {
                     ScrollView(.vertical, showsIndicators: false) {
-                        YourDayView()
+                        YourDayView(showEditSchedule: $showEditSchedule)
                         Spacer()
                     }
                 }

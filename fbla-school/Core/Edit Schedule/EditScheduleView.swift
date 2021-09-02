@@ -10,6 +10,8 @@ import SwiftUI
 struct EditScheduleView: View {
     
     @EnvironmentObject var data: DataManager
+    @Environment(\.presentationMode) var presentationMode
+    
     @State var test: Bool = false
     @State var showPrefirst: Bool = false
     
@@ -20,8 +22,10 @@ struct EditScheduleView: View {
                 
                 HStack(spacing: 0) {
                     
-                    Image(systemName: "chevron.left")
-                        .foregroundColor(.white)
+                    Button(action: { presentationMode.wrappedValue.dismiss() }, label: {
+                        Image(systemName: "chevron.left")
+                            .foregroundColor(.white)
+                    })
                     
                     VStack(alignment: .trailing, spacing: 0) {
                         
@@ -64,7 +68,7 @@ struct EditScheduleView: View {
                                 
                                 if classPeriod < 6 {
                                     Rectangle()
-                                        .frame(width: .infinity, height: 5)
+                                        .frame(maxWidth: .infinity, maxHeight: 5)
                                         .foregroundColor(Color(hex: 0xE5E5E5))
                                         .padding(.bottom, 10)
                                 }
@@ -157,11 +161,11 @@ struct EditSchedulePeriodView: View {
 struct EditScheduleView_Previews: PreviewProvider {
     static var previews: some View {
         EditScheduleView().environmentObject(DataManager(withDevUser: DevUser(email: "test@test.com", firstName: "Adam", lastName: "Hacker")
-                                                         , schedule: [.prefirst:SchoolClass(teacher: "Mr. Gurerro", namePrefix: .mr, className: "Spanish 2")]
+                                                         , schedule: [.fourth:SchoolClass(teacher: "Mr. Gurerro", namePrefix: .mr, className: "Spanish 2")]
         ))
         
         EditScheduleView().environmentObject(DataManager(withDevUser: DevUser(email: "test@test.com", firstName: "Adam", lastName: "Hacker")
-                                                         , schedule: [.prefirst:SchoolClass(teacher: "Mr. Gurerro", namePrefix: .mr, className: "Spanish 2")]
+                                                         , schedule: [.fourth:SchoolClass(teacher: "Mr. Gurerro", namePrefix: .mr, className: "Spanish 2")]
         )).previewDevice("iPod touch (7th generation)")
     }
 }

@@ -43,7 +43,11 @@
 		E08AF9CE26DB2C530070A252 /* PublicSans-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E08AF9BC26DB2C530070A252 /* PublicSans-Black.ttf */; };
 		E08AF9CF26DB2C530070A252 /* PublicSans-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E08AF9BD26DB2C530070A252 /* PublicSans-MediumItalic.ttf */; };
 		E0916D7026DCA3E800CD13FB /* ToggleField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0916D6F26DCA3E800CD13FB /* ToggleField.swift */; };
-		E0AB6A5C26D1DF4900B35EA4 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB6A5B26D1DF4900B35EA4 /* AuthenticationViewModel.swift */; };
+		E0916D7326E04C8A00CD13FB /* ArticlesParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0916D7226E04C8A00CD13FB /* ArticlesParser.swift */; };
+		E0916D7526E04CA300CD13FB /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0916D7426E04CA300CD13FB /* Article.swift */; };
+		E0916D7826E04CFC00CD13FB /* GiganteaFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0916D7726E04CFC00CD13FB /* GiganteaFeed.swift */; };
+		E0916D7A26E04FBE00CD13FB /* GiganteaFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0916D7926E04FBE00CD13FB /* GiganteaFeedViewModel.swift */; };
+		E0AB6A5C26D1DF4900B35EA4 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB6A5B26D1DF4900B35EA4 /* AuthManager.swift */; };
 		E0AB6A6526D20EB100B35EA4 /* ColorPallete.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB6A6426D20EB100B35EA4 /* ColorPallete.swift */; };
 		E0AB6A6E26D20F0800B35EA4 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB6A6826D20F0800B35EA4 /* Date.swift */; };
 		E0AB6A6F26D20F0800B35EA4 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB6A6926D20F0800B35EA4 /* View.swift */; };
@@ -104,7 +108,11 @@
 		E08AF9BC26DB2C530070A252 /* PublicSans-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PublicSans-Black.ttf"; sourceTree = "<group>"; };
 		E08AF9BD26DB2C530070A252 /* PublicSans-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PublicSans-MediumItalic.ttf"; sourceTree = "<group>"; };
 		E0916D6F26DCA3E800CD13FB /* ToggleField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleField.swift; sourceTree = "<group>"; };
-		E0AB6A5B26D1DF4900B35EA4 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
+		E0916D7226E04C8A00CD13FB /* ArticlesParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesParser.swift; sourceTree = "<group>"; };
+		E0916D7426E04CA300CD13FB /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
+		E0916D7726E04CFC00CD13FB /* GiganteaFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiganteaFeed.swift; sourceTree = "<group>"; };
+		E0916D7926E04FBE00CD13FB /* GiganteaFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiganteaFeedViewModel.swift; sourceTree = "<group>"; };
+		E0AB6A5B26D1DF4900B35EA4 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		E0AB6A6426D20EB100B35EA4 /* ColorPallete.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPallete.swift; sourceTree = "<group>"; };
 		E0AB6A6826D20F0800B35EA4 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		E0AB6A6926D20F0800B35EA4 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
@@ -208,6 +216,7 @@
 				E0AB6A5E26D20AD900B35EA4 /* Auth */,
 				E0AB6A6126D20B6800B35EA4 /* Home */,
 				E0F40D2E26DC69FA00AE9DD7 /* Edit Schedule */,
+				E0916D7626E04CE200CD13FB /* News */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -268,9 +277,28 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		E0916D7126E04C7400CD13FB /* Article */ = {
+			isa = PBXGroup;
+			children = (
+				E0916D7226E04C8A00CD13FB /* ArticlesParser.swift */,
+				E0916D7426E04CA300CD13FB /* Article.swift */,
+			);
+			path = Article;
+			sourceTree = "<group>";
+		};
+		E0916D7626E04CE200CD13FB /* News */ = {
+			isa = PBXGroup;
+			children = (
+				E0916D7726E04CFC00CD13FB /* GiganteaFeed.swift */,
+				E0916D7926E04FBE00CD13FB /* GiganteaFeedViewModel.swift */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
 		E0AB6A5D26D20ACA00B35EA4 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				E0916D7126E04C7400CD13FB /* Article */,
 				E0F40D2B26DC32FE00AE9DD7 /* Data Manager */,
 				E0F40D1B26DC1E1F00AE9DD7 /* JSON */,
 				E013743526D7527E00CA5CB7 /* User */,
@@ -313,7 +341,7 @@
 		E0AB6A6326D20E8E00B35EA4 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				E0AB6A5B26D1DF4900B35EA4 /* AuthenticationViewModel.swift */,
+				E0AB6A5B26D1DF4900B35EA4 /* AuthManager.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -474,9 +502,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0916D7026DCA3E800CD13FB /* ToggleField.swift in Sources */,
+				E0916D7826E04CFC00CD13FB /* GiganteaFeed.swift in Sources */,
 				E06B709926D331F9000D944C /* CustomDivider.swift in Sources */,
 				E0F40D1526DB495F00AE9DD7 /* YourDayView.swift in Sources */,
-				E0AB6A5C26D1DF4900B35EA4 /* AuthenticationViewModel.swift in Sources */,
+				E0AB6A5C26D1DF4900B35EA4 /* AuthManager.swift in Sources */,
 				E0F40D3026DC6A0B00AE9DD7 /* EditScheduleView.swift in Sources */,
 				E06B709426D3251A000D944C /* PullDownIndicator.swift in Sources */,
 				E0AB6A6E26D20F0800B35EA4 /* Date.swift in Sources */,
@@ -497,9 +526,12 @@
 				E013743426D7474D00CA5CB7 /* AddToInstagramStory.swift in Sources */,
 				E0AB6A7026D20F0800B35EA4 /* Int.swift in Sources */,
 				E0F40D1F26DC23C600AE9DD7 /* test.swift in Sources */,
+				E0916D7A26E04FBE00CD13FB /* GiganteaFeedViewModel.swift in Sources */,
 				E06B709526D3251A000D944C /* NumberInputField.swift in Sources */,
 				E06B709626D3251A000D944C /* VisualEffectView.swift in Sources */,
+				E0916D7526E04CA300CD13FB /* Article.swift in Sources */,
 				E06B709226D3251A000D944C /* GenderInputField.swift in Sources */,
+				E0916D7326E04C8A00CD13FB /* ArticlesParser.swift in Sources */,
 				E0F40D2D26DC330A00AE9DD7 /* DataManager.swift in Sources */,
 				E013743726D7528700CA5CB7 /* User.swift in Sources */,
 			);

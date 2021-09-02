@@ -9,7 +9,7 @@ import SwiftUI
 
 struct BadGoogleOrganizationView: View {
     
-    @EnvironmentObject var authObj: AuthenticationViewModel
+    @EnvironmentObject var authObj: AuthManager
     
     var body: some View {
         ZStack {
@@ -58,7 +58,7 @@ struct BadGoogleOrganizationView: View {
 
 struct BadGoogleOrganizationView_Previews: PreviewProvider {
     static var previews: some View {
-        BadGoogleOrganizationView().environmentObject(AuthenticationViewModel())
-        BadGoogleOrganizationView().environmentObject(AuthenticationViewModel()).previewDevice("iPod touch (7th generation)")
+        BadGoogleOrganizationView().environmentObject(AuthManager())
+        BadGoogleOrganizationView().environmentObject(AuthManager()).previewDevice("iPod touch (7th generation)")
     }
 }

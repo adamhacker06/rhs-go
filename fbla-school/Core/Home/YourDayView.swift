@@ -10,6 +10,7 @@ import SwiftUI
 struct YourDayView: View {
     
     @EnvironmentObject var data: DataManager
+    @Binding var showEditSchedule: Bool
     
     var body: some View {
         VStack(spacing: 0) {
@@ -37,6 +38,7 @@ struct YourDayView: View {
                     Button(action: {
                         
                         // Edit schedule
+                        showEditSchedule = true
                         
                     }) {
                         Text("Click here to set up a schedule")
@@ -97,7 +99,7 @@ struct YourDayView_Previews: PreviewProvider {
             let data = DataManager(withDevUser: DevUser(email: "test@test.com", firstName: "Adam", lastName: "Hacker"), schedule: nil)
             let data2 = DataManager(withDevUser: DevUser(email: "test@test.com", firstName: "Adam", lastName: "Hacker"), schedule: [.first:SchoolClass(teacher: "Mr. Guerror", namePrefix: .mr, className: "Spanish 2")])
             
-            YourDayView().environmentObject(data2)
+            YourDayView(showEditSchedule: .constant(false)).environmentObject(data2)
         }
     }
 }

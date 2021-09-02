@@ -7,9 +7,10 @@
 
 import SwiftUI
 import Firebase
+import FirebaseAuth
 import GoogleSignIn
 
-class AuthenticationViewModel: ObservableObject {
+class AuthManager: ObservableObject {
     
     // Stores and creates the Google Sign-In configuration value to be used throughout the Google Sign-In process
     let signInConfig = GIDConfiguration.init(clientID: (FirebaseApp.app()?.options.clientID!)!)
@@ -91,6 +92,7 @@ class AuthenticationViewModel: ObservableObject {
             print(signOutError.localizedDescription)
         }
     }
+    
     
 }
 

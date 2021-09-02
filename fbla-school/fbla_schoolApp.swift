@@ -14,7 +14,7 @@ struct fbla_schoolApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @StateObject var data = DataManager()
-    @StateObject var auth = AuthenticationViewModel()
+    @StateObject var auth = AuthManager()
     
     var body: some Scene {
         WindowGroup {

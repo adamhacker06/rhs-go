@@ -11,7 +11,7 @@ struct ContentView: View {
     
     // Grabs the auth object from the environment
     @EnvironmentObject var data: DataManager
-    @EnvironmentObject var auth: AuthenticationViewModel
+    @EnvironmentObject var auth: AuthManager
     
     var body: some View {
         
@@ -33,14 +33,18 @@ struct ContentView: View {
                             .navigationTitle("")
                             .navigationBarHidden(true)
                     }
-                    
                 }
                 
             case .signedOut:
                 LoginView()
                     .transition(AnyTransition.opacity)
                     .zIndex(1.0)
-                
+            
+            }
+        }
+        .onAppear {
+            data.listenForUser { (signInState) in
+                auth.state = signInState
             }
         }
     }
@@ -48,6 +52,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environmentObject(AuthenticationViewModel())
+        ContentView().environmentObject(AuthManager())
     }
 }

@@ -6,12 +6,16 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 import GoogleSignIn
 import Combine
 
 class DataManager: ObservableObject {
     
-    @Published var user: User?
+    var didChange = PassthroughSubject<DataManager, Never>()
+    @Published var user: User? { didSet { self.didChange.send(self) }}
+    
+    var handle: AuthStateDidChangeListenerHandle?
     
     convenience init() {
         self.init(withUser: nil)
@@ -24,4 +28,26 @@ class DataManager: ObservableObject {
     init(withDevUser user: DevUser, schedule: [ClassPeriod:SchoolClass]? = nil) {
         self.user = User(withDevUser: user, schedule: schedule)
     }
+    
+    deinit {
+        unbind()
+    }
+    
+    func listenForUser(completion: @escaping (AuthManager.SignInState) -> Void) {
+        handle = Auth.auth().addStateDidChangeListener({ (auth, user) in
+            if let user = user {
+                self.user = User(withDevUser: DevUser(email: user.email!, firstName: user.displayName!, lastName: user.displayName!))
+                completion(.signedIn)
+            } else {
+                print("No user found")
+            }
+        })
+    }
+    
+    func unbind() {
+        if let handle = handle {
+            Auth.auth().removeStateDidChangeListener(handle)
+        }
+    }
+    
 }
