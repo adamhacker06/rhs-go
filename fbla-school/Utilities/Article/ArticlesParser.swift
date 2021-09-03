@@ -55,6 +55,9 @@ extension ArticlesParser: XMLParserDelegate {
         case "category":
             self.textStore = ""
             
+        case "content:encoded":
+            self.textStore = ""
+            
         default:
             break
         }
@@ -80,19 +83,20 @@ extension ArticlesParser: XMLParserDelegate {
             nextArticle?.publishedDate = dateFormater.date(from: textStore)!
             
         case "category":
-            if textStore == "Covid-19" || textStore == "Sports" || textStore == "Clubs & Lifestyles" || textStore == "Arts and Entertainment" || textStore == "Opinion" || textStore == "Photo Gallery" || textStore == "Government & Politics" {
+            if textStore == "Covid-19" || textStore == "Sports" || textStore == "Clubs & Lifestyles" || textStore == "Arts and Entertainment" || textStore == "Opinion" || textStore == "Photo Gallery" || textStore == "Government & Politics" || textStore == "Humans of Redwood" {
                 nextArticle?.category = textStore
             }
+            
+        case "content:encoded":
+            nextArticle?.htmlContent = textStore
             
         default:
             break
         }
-        
     }
     
     // Parses data
     func parser(_ parser: XMLParser, foundCharacters string: String) {
-        
         textStore += string
     }
     

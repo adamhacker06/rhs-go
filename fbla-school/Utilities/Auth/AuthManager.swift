@@ -92,10 +92,7 @@ class AuthManager: ObservableObject {
             print(signOutError.localizedDescription)
         }
     }
-    
-    
 }
-
 
 struct GeneralButtonStyle: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {

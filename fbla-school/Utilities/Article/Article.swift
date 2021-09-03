@@ -12,4 +12,7 @@ struct Article {
     var author = ""
     var publishedDate = Date()
     var category = ""
+    var htmlContent = ""
+    
+    var paragraphContent: [String] = []
 }

@@ -9,8 +9,7 @@ import SwiftUI
 import Firebase
 import GoogleSignIn
 
-@main
-struct fbla_schoolApp: App {
+@main struct fbla_schoolApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @StateObject var data = DataManager()
@@ -18,10 +17,16 @@ struct fbla_schoolApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environmentObject(data)
-                .environmentObject(auth)
-                .preferredColorScheme(.light)
+//            ContentView()
+//                .environmentObject(data)
+//                .environmentObject(auth)
+//                .preferredColorScheme(.light)
+            
+            NavigationView {
+                GiganteaFeed()
+                    .navigationTitle("")
+                    .navigationBarHidden(true)
+            }
         }
     }
     
