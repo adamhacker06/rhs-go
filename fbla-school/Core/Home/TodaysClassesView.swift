@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct YourDayView: View {
+struct TodaysClassesView: View {
     
     @EnvironmentObject var data: DataManager
     @Binding var showEditSchedule: Bool
@@ -15,7 +15,7 @@ struct YourDayView: View {
     var body: some View {
         VStack(spacing: 0) {
             HStack(spacing: 0) {
-                Text("Your Day")
+                Text("Today's Classes")
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .foregroundColor(.white)
                     .font(.custom("PublicSans-SemiBold", size: 18))
@@ -24,7 +24,7 @@ struct YourDayView: View {
                     .foregroundColor(.white)
             }
             
-            CustomDivider(color: .theme.lightBlue, thickness: 5)
+            CustomDivider(color: .white, thickness: 5)
                 .padding(.top, 5)
             
             VStack(spacing: 0) {
@@ -42,6 +42,7 @@ struct YourDayView: View {
                         
                     }) {
                         Text("Click here to set up a schedule")
+                            .font(.system(size: 16))
                             .foregroundColor(.white)
                             .underline()
                             .multilineTextAlignment(.center)
@@ -99,7 +100,7 @@ struct YourDayView_Previews: PreviewProvider {
             let data = DataManager(withDevUser: DevUser(email: "test@test.com", firstName: "Adam", lastName: "Hacker"), schedule: nil)
             let data2 = DataManager(withDevUser: DevUser(email: "test@test.com", firstName: "Adam", lastName: "Hacker"), schedule: [.first:SchoolClass(teacher: "Mr. Guerror", namePrefix: .mr, className: "Spanish 2")])
             
-            YourDayView(showEditSchedule: .constant(false)).environmentObject(data2)
+            TodaysClassesView(showEditSchedule: .constant(false)).environmentObject(data2)
         }
     }
 }

@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import GoogleSignIn
+//import GoogleSignIn
 
 struct HomeView: View {
     
@@ -60,7 +60,12 @@ struct HomeView: View {
                 
                 VStack {
                     ScrollView(.vertical, showsIndicators: false) {
-                        YourDayView(showEditSchedule: $showEditSchedule)
+                        TodaysClassesView(showEditSchedule: $showEditSchedule)
+
+                        Button("Sign out") {
+                            auth.signOut()
+                        }
+                        
                         Spacer()
                     }
                 }

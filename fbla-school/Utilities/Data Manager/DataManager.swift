@@ -14,6 +14,7 @@ class DataManager: ObservableObject {
     
     var didChange = PassthroughSubject<DataManager, Never>()
     @Published var user: User? { didSet { self.didChange.send(self) }}
+    @Published var database = DatabaseManager.shared { didSet { self.didChange.send(self) }}
     
     var handle: AuthStateDidChangeListenerHandle?
     

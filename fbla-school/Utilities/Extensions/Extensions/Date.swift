@@ -25,7 +25,7 @@ public extension Date {
         dateComponents.timeZone = TimeZone(abbreviation: "PST")
         dateComponents.hour = hour
         dateComponents.minute = minute
-
+        
         // Create date from components
         let userCalendar = Calendar(identifier: .gregorian)
         return userCalendar.date(from: dateComponents) ?? self
@@ -44,13 +44,13 @@ public extension Date {
             
         case .month:
             returnedComponent = components.month!
-        
+            
         case .day:
             returnedComponent = components.day!
             
         case .hour:
             returnedComponent = components.hour!
-        
+            
         case .minute:
             returnedComponent = components.minute!
             
@@ -63,7 +63,12 @@ public extension Date {
     
     // Returns the computed property of the age of the Date executed on
     var age: Int {
-        return Calendar.current.dateComponents([.year], from: self, to: Date()).year!
+        Calendar.current.dateComponents([.year], from: self, to: Date()).year!
+    }
+    
+    static var currentWeekNumber: Int {
+        Calendar.current.component(.weekOfMonth, from: Date())
+        
     }
     
     // Returns a String of the Date executed on

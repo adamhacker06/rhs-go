@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Firebase
+import FirebaseDatabase
 import GoogleSignIn
 
 @main struct fbla_schoolApp: App {
@@ -23,9 +24,10 @@ import GoogleSignIn
 //                .preferredColorScheme(.light)
             
             NavigationView {
-                GiganteaFeed()
-                    .navigationTitle("")
-                    .navigationBarHidden(true)
+                AllFoodView()
+                    .environmentObject(data)
+                    .navigationTitle("Foods")
+                    .preferredColorScheme(.light)
             }
         }
     }
@@ -35,6 +37,7 @@ import GoogleSignIn
         func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
 
             FirebaseApp.configure()
+            Database.database().isPersistenceEnabled = true
             
             return true
         }

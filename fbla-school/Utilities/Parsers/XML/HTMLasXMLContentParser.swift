@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// Meant to extract the HTML paragraph contents of the XML  data inputted
 class HTMLasXMLContentParser: XMLParser {
     
     var paragraphs: [String] = []
@@ -16,7 +17,6 @@ class HTMLasXMLContentParser: XMLParser {
         super.init(data: data)
         self.delegate = self
     }
-    
 }
 
 extension HTMLasXMLContentParser: XMLParserDelegate {
@@ -33,7 +33,6 @@ extension HTMLasXMLContentParser: XMLParserDelegate {
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         switch elementName {
         case "p":
-//            self.paragraphs += "<p>" + textStore + "</p>"
             paragraphs.append(textStore)
             
         default:

@@ -83,7 +83,7 @@ extension ArticlesParser: XMLParserDelegate {
             nextArticle?.publishedDate = dateFormater.date(from: textStore)!
             
         case "category":
-            if textStore == "Covid-19" || textStore == "Sports" || textStore == "Clubs & Lifestyles" || textStore == "Arts and Entertainment" || textStore == "Opinion" || textStore == "Photo Gallery" || textStore == "Government & Politics" || textStore == "Humans of Redwood" {
+            if GiganteaCategories.allCases.contains(where: { $0.rawValue == textStore } ) {
                 nextArticle?.category = textStore
             }
             
@@ -110,4 +110,15 @@ extension ArticlesParser: XMLParserDelegate {
         
         textStore += string
     }
+}
+
+enum GiganteaCategories: String, CaseIterable {
+    case covid19 = "Covid-19"
+    case sports = "Sports"
+    case clubsAndLifestyle = "Clubs & Lifestyles"
+    case artsAndEntertainment = "Arts and Entertainment"
+    case opinion = "Opinion"
+    case photoGallery = "Photo Gallery"
+    case government = "Government & Politics"
+    case humansOfRedwood = "Humans of Redwood"
 }

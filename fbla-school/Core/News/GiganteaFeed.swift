@@ -7,40 +7,6 @@
 
 import SwiftUI
 
-//struct ArticleView: View {
-//
-//    let string: String
-//
-//    var body: some View {
-//        HTMLView(htmlString: string)
-//            .onAppear() {
-//                print(string)
-//            }
-//    }
-//}
-
-struct ArticleView: View {
-    
-    let article: Article
-    
-    var body: some View {
-        ScrollView(.vertical, showsIndicators: false) {
-            VStack(alignment: .leading) {
-                ForEach(article.paragraphContent.indices) { index in
-                    Text(article.paragraphContent[index])
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .foregroundColor(.theme.lapiz)
-                        .padding(.bottom)
-                    
-                    
-                }
-            }
-            .padding()
-        }
-        .navigationTitle(article.title)
-    }
-}
-
 extension String {
     func asXMLDatafromString() -> Data {
         return Data(
@@ -53,7 +19,7 @@ extension String {
 
 struct GiganteaFeed: View {
     
-    @ObservedObject var gigantea = GiganteaFeedViewModel()
+    @StateObject var gigantea = GiganteaFeedViewModel()
     
     var url: URL
     var data: Data
@@ -82,17 +48,28 @@ struct GiganteaFeed: View {
     
     var body: some View {
         ZStack {
-            Color.theme.lapiz.ignoresSafeArea()
+            Color.theme.candyPurple.ignoresSafeArea()
             ScrollView {
                 VStack(spacing: 20) {
-                    
-                    Button("Debug") {
-                        print(gigantea.articles[2].paragraphContent)
-                    }
                     
                     NavigationLink(destination: EmptyView()) {
                         EmptyView()
                     }
+                    
+                    VStack(alignment: .trailing, spacing: 0) {
+                        
+                        Text("The Redwood Gigantea")
+                            .font(.custom("PublicSans-SemiBold", size: 25))
+                            .foregroundColor(.white)
+                            //.frame(maxWidth: .infinity, alignment: .leading)
+                        
+                        Rectangle()
+                            .foregroundColor(.white)
+                            .padding(.top, 3)
+                            .frame(maxWidth: 100, maxHeight: 5)
+                        
+                    }
+                    .frame(maxWidth: .infinity, alignment: .trailing)
                     
                     ForEach(gigantea.articles.indices) { index in
                         NavigationLink(
@@ -103,29 +80,36 @@ struct GiganteaFeed: View {
                             label: {
                                 VStack(alignment: .leading, spacing: 0) {
                                     
+                                    // Category
                                     Text(gigantea.articles[index].category)
                                         .foregroundColor(.theme.lapiz)
-                                        .font(.title2)
-                                        .bold()
+                                        .font(.custom("PublicSans-Bold", size: 24))
                                         .padding(.bottom, 10)
                                     
+                                    // Divider
                                     CustomDivider(color: .theme.lapiz, thickness: 2)
                                         .padding(.bottom, 10)
                                     
+                                    // Title
                                     Text(gigantea.articles[index].title)
-                                        .foregroundColor(.theme.lapiz)
-                                        .bold()
-                                        .padding(.bottom, 3)
+                                        .foregroundColor(.theme.purple)
+                                        .font(.custom("PublicSans-SemiBold", size: 16))
+                                        .padding(.bottom, 5)
                                     
+                                    // Author
                                     Text("by \(gigantea.articles[index].author)")
+                                        .foregroundColor(.theme.lightPurple)
+                                        .font(.custom("PublicSans-Regular", size: 14))
+                                    
                                 }
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .padding()
-                                .background(Color.theme.lightBlue.ignoresSafeArea().cornerRadius(15))
-                                .padding(.horizontal, 20)
+                                .background(Color.white.ignoresSafeArea().cornerRadius(15))
+                                
                             })
                     }
                 }
+                .padding(.horizontal, 20)
             }
         }
     }

@@ -27,6 +27,8 @@ class AuthManager: ObservableObject {
     // Handles the sign in process
     func signIn(completion: @escaping (User) -> Void) {
         
+        print("Signing in..")
+        
         // Checks if there is a user logged in
         if GIDSignIn.sharedInstance.currentUser == nil {
             

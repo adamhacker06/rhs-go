@@ -10,7 +10,7 @@ import SwiftUI
 struct EditScheduleView: View {
     
     @EnvironmentObject var data: DataManager
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     @State var test: Bool = false
     @State var showPrefirst: Bool = false
@@ -30,7 +30,7 @@ struct EditScheduleView: View {
                     VStack(alignment: .trailing, spacing: 0) {
                         
                         Text("Your Schedule")
-                            .font(.custom("PublicSans-SemiBold", size: 24))
+                            .font(.custom("PublicSans-SemiBold", size: 32))
                             .foregroundColor(.white)
                             //.frame(maxWidth: .infinity, alignment: .leading)
                         
@@ -46,7 +46,7 @@ struct EditScheduleView: View {
                 
                 HStack(spacing: 10) {
                     Text("Include Prefirst")
-                        .font(.custom("PublicSans-Regular", size: 15))
+                        .font(.custom("PublicSans-Regular", size: 16))
                         .foregroundColor(.white)
                         .padding(.vertical, 15)
                     
@@ -84,6 +84,7 @@ struct EditScheduleView: View {
                 .ignoresSafeArea()
                 
             }
+            .padding(.top, 10)
             .padding(.horizontal, 20)
         }
     }

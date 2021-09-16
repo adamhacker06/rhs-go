@@ -28,27 +28,6 @@ extension Color {
 // Struct containing the color theme
 struct ColorTheme {
     
-//    let accent = Color("AccentColor")
-//
-//    let gray = Color("GrayColor")
-//
-//    let blue = Color("BlueColor")
-//    let blueInversed = Color("BlueColorInversed")
-//
-//    let red = Color("RedColor")
-//    let redInversed = Color("RedColorInversed")
-//
-//    let green = Color("GreenColor")
-//    let greenInversed = Color("GreenColorInversed")
-//
-//    let lightGreen = Color("LighGreenColor")
-//    let lightGreenInversed = Color("LightGreenColorInversed")
-//
-//    let spanishBlue = Color("SpanishBlueColor")
-//    let lapiz = Color("LapizColor")
-//
-//    let lightBlue = Color("LightBlueColor")
-    
     let lapiz = Color("LapizColor")
     
     let black = Color("BlackColor")
@@ -59,9 +38,12 @@ struct ColorTheme {
     let lightPurple = Color("LightPurpleColor")
     let lightBlue = Color("LightBlueColor")
     let skyBlue = Color("SkyBlueColor")
+    let candyPurple = Color("CandyPurpleColor")
+    let orange = Color("OrangeColor")
+    let darkRed = Color("DarkRedColor")
     
     var asArray: [Color] {
-        return [lapiz, black, white, darkGreen, lightGreen, purple, lightPurple, lightBlue, skyBlue]
+        return [lapiz, black, white, darkGreen, lightGreen, purple, lightPurple, candyPurple, lightBlue, skyBlue]
     }
     
 }
