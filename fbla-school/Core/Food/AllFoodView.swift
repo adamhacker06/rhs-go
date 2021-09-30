@@ -24,13 +24,17 @@ struct AllFoodView: View {
                 
             }
         }
-        .onAppear {
+        .onAppear { 
+//            data.database.getDataFromGitHub { jsonData in
+//                foods = data.database.parseFoodData(jsonData: jsonData)
+//            }
+            
             data.database.fetch { (returnedFoods, error) in
                 if let error = error {
                     print(error.localizedDescription)
                     return
                 }
-                
+
                 if let returnedFoods = returnedFoods {
                     foods = returnedFoods
                 }

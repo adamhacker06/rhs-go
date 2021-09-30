@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Food: Identifiable {
+struct Food: Identifiable, Codable {
     
     let id = UUID().uuidString
     
@@ -20,9 +20,23 @@ struct Food: Identifiable {
     var protein: String?
     var carbs: String?
     var transFat: String?
+    
+    enum CodingKeys: String, CodingKey {
+        
+        // Map the JSON key "url" to the Swift property name "htmlLink"
+        case name
+        case portion = "po"
+        case calories = "ca"
+        case sugars = "s"
+        case protein = "pr"
+        case carbs = "cb"
+        case transFat = "tf"
+        case type = "ty"
+        
+    }
 }
 
-enum FoodType: String, CaseIterable {
+enum FoodType: String, CaseIterable, Codable {
     case entree, side
 }
 

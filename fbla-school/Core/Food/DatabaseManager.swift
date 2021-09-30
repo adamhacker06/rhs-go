@@ -129,4 +129,21 @@ class DatabaseManager: ObservableObject {
             completion(nil, error)
         }
     }
+    
+    //--//
+    
+    func getDataFromGitHub(completion: @escaping (Data) -> () ) {
+        
+        completion(try! Data(contentsOf: URL(string: "https://adamhacker06.github.io/data/food.json")!))
+        
+    }
+
+    func parseFoodData(jsonData: Data) -> [Food] {
+        
+        let decoder = JSONDecoder()
+        
+        let foods: [Food] = try! decoder.decode([Food].self, from: jsonData)
+        
+        return foods
+    }
 }
