@@ -1,0 +1,85 @@
+{
+   "foods":{
+      "chicken burger":{
+         "ca":"390",
+         "cb":"42,0",
+         "po":"1 serving",
+         "pr":"20,0",
+         "s":"3,0",
+         "tf":"16,5",
+         "ty":"entree"
+      },
+      "pizza wedge":{
+         "po":"1 serving",
+         "ca":"328",
+         "s":"5,0",
+         "pr":"18,81",
+         "cb":"34,58",
+         "tf":"12,85",
+         "ty":"entree"
+      },
+      "chicken & potato bowl":{
+         "po":"1 bowl",
+         "ca":"636",
+         "s":"5,0",
+         "pr":"27,54",
+         "cb":"65,99",
+         "tf":"28,44",
+         "ty":"entree"
+      },
+      "caesar salad":{
+         "po":"1 serving",
+         "ca":"698",
+         "s":"5,0",
+         "pr":"44,0",
+         "cb":"27,96",
+         "tf":"46,8",
+         "ty":"entree"
+      },
+      "vegetarian salad":{
+         "po":"1 serving",
+         "ca":"578",
+         "s":"8,0",
+         "pr":"30,61",
+         "cb":"44,37",
+         "tf":"34,27",
+         "ty":"entree"
+      },
+      "turkey & cheese croissant":{
+         "po":"1 sandwich",
+         "ca":"287",
+         "s":"4,0",
+         "pr":"21,67",
+         "cb":"25,33",
+         "tf":"11,25",
+         "ty":"entree"
+      },
+      "turkey & cheese sub sandwich":{
+         "po":"1 sandwich",
+         "ca":"298",
+         "s":"6,0",
+         "pr":"21,83",
+         "cb":"34,17",
+         "tf":"9,0",
+         "ty":"entree"
+      },
+      "chinese chicken wrap":{
+         "po":"1 wrap",
+         "ca":"784",
+         "s":"27,0",
+         "pr":"30,55",
+         "cb":"85,14",
+         "tf":"39,88",
+         "ty":"entree"
+      },
+      "western burger":{
+         "po":"1 burger",
+         "ca":"385",
+         "s":"8,0",
+         "pr":"21,35",
+         "cb":"45,33",
+         "tf":"13,29",
+         "ty":"entree"
+      }
+   }
+}
