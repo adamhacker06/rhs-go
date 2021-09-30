@@ -6,16 +6,35 @@
 //
 
 import SwiftUI
+import simd
+
+extension View {
+    func onFoodNutritionOverflow(completion: @escaping (Bool) -> ()) -> some View {
+        onPreferenceChange(FoodNutritionOverflowPreferenceKey.self) { result in
+            completion(result)
+        }
+    }
+    
+    func onFoodScrollResting(completion: @escaping (Bool) -> ()) -> some View {
+        onPreferenceChange(FoodInfoScrollViewAtStartingPreferenceKey.self) { result in
+            completion(result)
+        }
+    }
+}
 
 struct FoodInfoView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
+    @State private var isOverflown: Bool = false
+    @State private var isScrollAtResting: Bool = true
     
     let food: Food
     
     var body: some View {
         
         ZStack {
+            
             Color.white.ignoresSafeArea()
             VStack(spacing: 0) {
                 
@@ -65,6 +84,7 @@ struct FoodInfoView: View {
                     CustomDivider(color: .theme.darkRed, thickness: 5)
                     
                     ScrollView(.vertical, showsIndicators: false) {
+                        
                         VStack(spacing: 10) {
                             FoodNutritionLabel(nutritionType: .portion, value: food.portion ?? "Unknown")
                             FoodNutritionLabel(nutritionType: .calories, value: food.calories ?? "Unknown")
@@ -72,13 +92,35 @@ struct FoodInfoView: View {
                             FoodNutritionLabel(nutritionType: .proteins, value: food.protein ?? "Unknown")
                             FoodNutritionLabel(nutritionType: .carbs, value: food.carbs ?? "Unknown")
                             FoodNutritionLabel(nutritionType: .transFat, value: food.transFat ?? "Unknown")
+                                .background(
+                                    GeometryReader { geo in
+                                        Color.clear.preference(key: FoodNutritionOverflowPreferenceKey.self, value: (Screen.main.bounds.height - getSafeArea().bottom < geo.frame(in: .global).maxY ? true : false))
+                                    }
+                                )
                         }
-                        .padding(.top, 20)
+                        .padding(.vertical, 20)
+                        .background(
+                            GeometryReader { geo in
+                                
+                                Color.clear.preference(key: FoodInfoScrollViewAtStartingPreferenceKey.self, value: geo.frame(in: .named("scroll")).minY == 0 ? true : false)
+                                
+                            }
+                        )
                     }
+                    .coordinateSpace(name: "scroll")
+                    .onFoodNutritionOverflow { result in
+                        isOverflown = result
+                    }
+                    .onFoodScrollResting { result in
+                        isScrollAtResting = result
+                    }
+                    .disabled(!isOverflown && isScrollAtResting)
+                    
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .padding([.horizontal, .top], 20)
                 .background(Color.orange.cornerRadius(30, corners: [.topLeft, .topRight]).shadow(color: .black.opacity(0.15), radius: 10, x: 0, y: -4).ignoresSafeArea())
+                
             }
             .navigationTitle("")
             .navigationBarHidden(true)
@@ -86,8 +128,28 @@ struct FoodInfoView: View {
     }
 }
 
+struct FoodNutritionOverflowPreferenceKey: PreferenceKey {
+    
+    static var defaultValue: Bool = false
+    
+    static func reduce(value: inout Bool, nextValue: () -> Bool) {
+        value = nextValue()
+    }
+    
+}
+
+struct FoodInfoScrollViewAtStartingPreferenceKey: PreferenceKey {
+    
+    static var defaultValue: Bool = true
+    
+    static func reduce(value: inout Bool, nextValue: () -> Bool) {
+        value = nextValue()
+    }
+    
+}
+
 struct FoodInfoView_Previews: PreviewProvider {
     static var previews: some View {
-        FoodInfoView(food: Development.chickenSandwich).previewDevice("iPhone 12")
+        FoodInfoView(food: Development.chickenSandwich).previewDevice("iPhone SE (2nd generation)")
     }
 }
