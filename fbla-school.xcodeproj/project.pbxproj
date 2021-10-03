@@ -15,6 +15,7 @@
 		E065E1662709721D0095F676 /* LaunchStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E065E1652709721D0095F676 /* LaunchStoryboard.storyboard */; };
 		E065E1682709FFFC0095F676 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E065E1672709FFFC0095F676 /* LaunchView.swift */; };
 		E065E16A270A264E0095F676 /* TodaysFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E065E169270A264E0095F676 /* TodaysFoodView.swift */; };
+		E065E16E270A74C00095F676 /* FoodUserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E065E16D270A74C00095F676 /* FoodUserDefaultsManager.swift */; };
 		E0664A9726CF392600DDAEE4 /* fbla_schoolApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0664A9626CF392600DDAEE4 /* fbla_schoolApp.swift */; };
 		E0664A9926CF392600DDAEE4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0664A9826CF392600DDAEE4 /* ContentView.swift */; };
 		E0664A9B26CF392700DDAEE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0664A9A26CF392700DDAEE4 /* Assets.xcassets */; };
@@ -95,6 +96,7 @@
 		E065E1652709721D0095F676 /* LaunchStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchStoryboard.storyboard; sourceTree = "<group>"; };
 		E065E1672709FFFC0095F676 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		E065E169270A264E0095F676 /* TodaysFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaysFoodView.swift; sourceTree = "<group>"; };
+		E065E16D270A74C00095F676 /* FoodUserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodUserDefaultsManager.swift; sourceTree = "<group>"; };
 		E0664A9326CF392600DDAEE4 /* Redwood HS Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Redwood HS Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0664A9626CF392600DDAEE4 /* fbla_schoolApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fbla_schoolApp.swift; sourceTree = "<group>"; };
 		E0664A9826CF392600DDAEE4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -318,6 +320,7 @@
 				E0BD57F826E8200F000420BE /* FoodNutritionLabel.swift */,
 				E0BD57FA26E82029000420BE /* FoodInfoView.swift */,
 				E0BD57FF26E83958000420BE /* Food.swift */,
+				E065E16D270A74C00095F676 /* FoodUserDefaultsManager.swift */,
 			);
 			path = Food;
 			sourceTree = "<group>";
@@ -635,6 +638,7 @@
 				E06B708A26D32427000D944C /* HomeView.swift in Sources */,
 				E02A205B26E29BDA00E90417 /* HTMLasXMLContentParser.swift in Sources */,
 				E0664A9726CF392600DDAEE4 /* fbla_schoolApp.swift in Sources */,
+				E065E16E270A74C00095F676 /* FoodUserDefaultsManager.swift in Sources */,
 				E013743426D7474D00CA5CB7 /* AddToInstagramStory.swift in Sources */,
 				E0AB6A7026D20F0800B35EA4 /* Int.swift in Sources */,
 				E0F40D1F26DC23C600AE9DD7 /* test.swift in Sources */,

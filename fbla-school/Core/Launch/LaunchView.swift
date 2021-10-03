@@ -7,9 +7,15 @@
 
 import SwiftUI
 
+
+
 struct LaunchView: View {
     
+    @EnvironmentObject var data: DataManager
+    
     @Binding var finishedLoading: Bool
+    
+    @State private var finishedUserDefaultsLoading: Bool = false
     
     @State private var loadingText: [String] = "Loading your info...".map { String($0) }
     @State private var currentCharIndex: Int = 0
@@ -36,29 +42,65 @@ struct LaunchView: View {
                             .foregroundColor(.white)
                             .font(.custom("PublicSans-Bold", size: 32))
                             .offset(y: currentCharIndex == charIndex ? -5 : 0)
-                            
+                        
                     }
                 }
                     .offset(y: 80)
             )
         }
         .onReceive(charTimer) { _ in
-            withAnimation {
+            timerHandler()
+        }
+        .onAppear {
+            finishedUserDefaultsLoading = foodUserDefaultsHandler()
+        }
+    }
+    
+    func foodUserDefaultsHandler() -> Bool {
+        
+        guard let foodManager = FoodUserDefaultsManager.get() else {
+            
+            data.database.fetchFromFirebase { (food, error) in
                 
-                if finishedRotations == 3 {
-                    withAnimation { finishedLoading = true }
+                if let error = error {
+                    print(error.localizedDescription)
+                    data.foodDataManager = FoodUserDefaultsManager(lastUpdated: Date(), foods: nil)
+                    FoodUserDefaultsManager.set(manager: data.foodDataManager)
+                    return
                 }
                 
-                if currentCharIndex > loadingText.count - 1 {
-                    
-                    currentCharIndex = 0
-                    finishedRotations += 1
-                    
-                } else {
-                    
-                    currentCharIndex += 1
-                    
+                if let food = food {
+                    data.foodDataManager = FoodUserDefaultsManager(lastUpdated: Date(), foods: food)
+                    FoodUserDefaultsManager.set(manager: data.foodDataManager)
                 }
+            }
+            
+            return true
+            
+        }
+        
+        data.foodDataManager = foodManager
+        
+        return true
+        
+    }
+    
+    func timerHandler() {
+        withAnimation {
+            
+            if finishedRotations > 2 && finishedUserDefaultsLoading {
+                withAnimation { finishedLoading = true }
+            }
+            
+            if currentCharIndex > loadingText.count - 1 {
+                
+                currentCharIndex = 0
+                finishedRotations += 1
+                
+            } else {
+                
+                currentCharIndex += 1
+                
             }
         }
     }
@@ -67,5 +109,6 @@ struct LaunchView: View {
 struct LaunchView_Previews: PreviewProvider {
     static var previews: some View {
         LaunchView(finishedLoading: .constant(false))
+            .environmentObject(DataManager())
     }
 }
