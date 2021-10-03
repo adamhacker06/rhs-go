@@ -8,6 +8,35 @@
 import SwiftUI
 //import GoogleSignIn
 
+extension HomeView {
+    private var headerComponents: some View {
+        VStack(spacing: 20) {
+            HStack(spacing: 0) {
+                VStack(alignment: .leading, spacing: 0) {
+                    Text("Welcome Back,")
+                    Text(data.user!.profileInfo.firstName!)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .font(.custom("PublicSans-Bold", size: 24))
+                
+                Circle()
+                    .strokeBorder(Color.theme.lightPurple, lineWidth: 2)
+                    .background(Circle().foregroundColor(.white))
+                    .frame(maxWidth: 50, maxHeight: 50)
+
+            }
+            
+            Text("Next class: Foundations of Business")
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.bottom, 10)
+            
+        }
+        .padding(.top, 20)
+        .padding([.bottom, .horizontal], 20)
+        .foregroundColor(.white)
+    }
+}
+
 struct HomeView: View {
     
     @EnvironmentObject var data: DataManager
@@ -31,32 +60,10 @@ struct HomeView: View {
                 })
             
             Color.theme.purple.ignoresSafeArea()
+            
             VStack {
                 
-                VStack(spacing: 20) {
-                    HStack(spacing: 0) {
-                        VStack(alignment: .leading, spacing: 0) {
-                            Text("Welcome Back,")
-                            Text(data.user!.profileInfo.firstName!)
-                        }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .font(.custom("PublicSans-Bold", size: 24))
-                        
-                        Circle()
-                            .strokeBorder(Color.theme.lightPurple, lineWidth: 2)
-                            .background(Circle().foregroundColor(.white))
-                            .frame(maxWidth: 50, maxHeight: 50)
-    
-                    }
-                    
-                    Text("Next class: Foundations of Business")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.bottom, 10)
-                    
-                }
-                .padding(.top, 20)
-                .padding([.bottom, .horizontal], 20)
-                .foregroundColor(.white)
+                headerComponents
                 
                 VStack {
                     ScrollView(.vertical, showsIndicators: false) {
