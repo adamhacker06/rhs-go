@@ -33,6 +33,7 @@ struct ContentView: View {
                             .navigationTitle("")
                             .navigationBarHidden(true)
                     }
+                    .navigationViewStyle(.stack)
                 }
                 
             case .signedOut:

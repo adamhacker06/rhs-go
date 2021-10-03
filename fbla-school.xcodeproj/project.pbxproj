@@ -10,6 +10,10 @@
 		E013743426D7474D00CA5CB7 /* AddToInstagramStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E013743326D7474D00CA5CB7 /* AddToInstagramStory.swift */; };
 		E013743726D7528700CA5CB7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E013743626D7528700CA5CB7 /* User.swift */; };
 		E02A205B26E29BDA00E90417 /* HTMLasXMLContentParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02A205A26E29BDA00E90417 /* HTMLasXMLContentParser.swift */; };
+		E065E16127094C4F0095F676 /* FoodInfoScrollViewAtStartingPreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = E065E16027094C4F0095F676 /* FoodInfoScrollViewAtStartingPreferenceKey.swift */; };
+		E065E16327094C820095F676 /* FoodNutritionOverflowPreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = E065E16227094C820095F676 /* FoodNutritionOverflowPreferenceKey.swift */; };
+		E065E1662709721D0095F676 /* LaunchStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E065E1652709721D0095F676 /* LaunchStoryboard.storyboard */; };
+		E065E1682709FFFC0095F676 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E065E1672709FFFC0095F676 /* LaunchView.swift */; };
 		E0664A9726CF392600DDAEE4 /* fbla_schoolApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0664A9626CF392600DDAEE4 /* fbla_schoolApp.swift */; };
 		E0664A9926CF392600DDAEE4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0664A9826CF392600DDAEE4 /* ContentView.swift */; };
 		E0664A9B26CF392700DDAEE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0664A9A26CF392700DDAEE4 /* Assets.xcassets */; };
@@ -85,6 +89,10 @@
 		E013743326D7474D00CA5CB7 /* AddToInstagramStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToInstagramStory.swift; sourceTree = "<group>"; };
 		E013743626D7528700CA5CB7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E02A205A26E29BDA00E90417 /* HTMLasXMLContentParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLasXMLContentParser.swift; sourceTree = "<group>"; };
+		E065E16027094C4F0095F676 /* FoodInfoScrollViewAtStartingPreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodInfoScrollViewAtStartingPreferenceKey.swift; sourceTree = "<group>"; };
+		E065E16227094C820095F676 /* FoodNutritionOverflowPreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodNutritionOverflowPreferenceKey.swift; sourceTree = "<group>"; };
+		E065E1652709721D0095F676 /* LaunchStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchStoryboard.storyboard; sourceTree = "<group>"; };
+		E065E1672709FFFC0095F676 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		E0664A9326CF392600DDAEE4 /* Redwood HS Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Redwood HS Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0664A9626CF392600DDAEE4 /* fbla_schoolApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fbla_schoolApp.swift; sourceTree = "<group>"; };
 		E0664A9826CF392600DDAEE4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -193,6 +201,24 @@
 			path = User;
 			sourceTree = "<group>";
 		};
+		E065E15F27094C3B0095F676 /* Persistance Keys */ = {
+			isa = PBXGroup;
+			children = (
+				E065E16027094C4F0095F676 /* FoodInfoScrollViewAtStartingPreferenceKey.swift */,
+				E065E16227094C820095F676 /* FoodNutritionOverflowPreferenceKey.swift */,
+			);
+			path = "Persistance Keys";
+			sourceTree = "<group>";
+		};
+		E065E164270971F00095F676 /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				E065E1652709721D0095F676 /* LaunchStoryboard.storyboard */,
+				E065E1672709FFFC0095F676 /* LaunchView.swift */,
+			);
+			path = Launch;
+			sourceTree = "<group>";
+		};
 		E0664A8A26CF392600DDAEE4 = {
 			isa = PBXGroup;
 			children = (
@@ -237,6 +263,7 @@
 		E0664AA526CF407200DDAEE4 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				E065E164270971F00095F676 /* Launch */,
 				E0AB6A5E26D20AD900B35EA4 /* Auth */,
 				E0AB6A6126D20B6800B35EA4 /* Home */,
 				E0F40D2E26DC69FA00AE9DD7 /* Edit Schedule */,
@@ -282,6 +309,7 @@
 		E073579A26E687C8005F2BE5 /* Food */ = {
 			isa = PBXGroup;
 			children = (
+				E065E15F27094C3B0095F676 /* Persistance Keys */,
 				E073579B26E68E39005F2BE5 /* DatabaseManager.swift */,
 				E08ADE7A26E6C50C00AF8700 /* AllFoodView.swift */,
 				E0BD57F626E81FEA000420BE /* FoodTileView.swift */,
@@ -543,6 +571,7 @@
 				E08519A126D3201800A21A14 /* GoogleService-Info.plist in Resources */,
 				E08AF9BE26DB2C530070A252 /* PublicSans-ExtraBold.ttf in Resources */,
 				E0664A9B26CF392700DDAEE4 /* Assets.xcassets in Resources */,
+				E065E1662709721D0095F676 /* LaunchStoryboard.storyboard in Resources */,
 				E08AF9C926DB2C530070A252 /* PublicSans-LightItalic.ttf in Resources */,
 				E08AF9CC26DB2C530070A252 /* PublicSans-Bold.ttf in Resources */,
 				E08AF9CE26DB2C530070A252 /* PublicSans-Black.ttf in Resources */,
@@ -575,9 +604,12 @@
 				E0F40D1526DB495F00AE9DD7 /* TodaysClassesView.swift in Sources */,
 				E0AB6A5C26D1DF4900B35EA4 /* AuthManager.swift in Sources */,
 				E0F40D3026DC6A0B00AE9DD7 /* EditScheduleView.swift in Sources */,
+				E065E16327094C820095F676 /* FoodNutritionOverflowPreferenceKey.swift in Sources */,
 				E06B709426D3251A000D944C /* PullDownIndicator.swift in Sources */,
 				E0BD57F926E8200F000420BE /* FoodNutritionLabel.swift in Sources */,
 				E073579326E347CA005F2BE5 /* ArticleView.swift in Sources */,
+				E065E16127094C4F0095F676 /* FoodInfoScrollViewAtStartingPreferenceKey.swift in Sources */,
+				E065E1682709FFFC0095F676 /* LaunchView.swift in Sources */,
 				E0AB6A6E26D20F0800B35EA4 /* Date.swift in Sources */,
 				E0AB6A7326D20F0800B35EA4 /* Color.swift in Sources */,
 				E0BD57FB26E82029000420BE /* FoodInfoView.swift in Sources */,

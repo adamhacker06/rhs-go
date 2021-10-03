@@ -36,8 +36,7 @@ struct FoodMemoryCache {
 }
 
 class DatabaseManager: ObservableObject {
-    
-    static let shared = DatabaseManager()
+      
     var db = Database.database().reference()
     
     @Published var cache = FoodMemoryCache()

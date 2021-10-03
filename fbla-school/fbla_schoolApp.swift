@@ -16,18 +16,29 @@ import GoogleSignIn
     @StateObject var data = DataManager()
     @StateObject var auth = AuthManager()
     
+    @State private var finishedLoading: Bool = false
+    
     var body: some Scene {
         WindowGroup {
-//            ContentView()
-//                .environmentObject(data)
-//                .environmentObject(auth)
-//                .preferredColorScheme(.light)
-            
-            NavigationView {
-                AllFoodView()
+            ZStack {
+                ContentView()
                     .environmentObject(data)
-                    .navigationTitle("Foods")
+                    .environmentObject(auth)
                     .preferredColorScheme(.light)
+                
+    //            NavigationView {
+    //                AllFoodView()
+    //                    .environmentObject(data)
+    //                    .navigationTitle("Foods")
+    //                    .preferredColorScheme(.light)
+    //            }
+                
+                if !finishedLoading {
+                    LaunchView(finishedLoading: $finishedLoading)
+                        .zIndex(1)
+                        .transition(.opacity)
+                        .environmentObject(data)
+                }
             }
         }
     }
@@ -37,7 +48,6 @@ import GoogleSignIn
         func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
 
             FirebaseApp.configure()
-            Database.database().isPersistenceEnabled = true
             
             return true
         }

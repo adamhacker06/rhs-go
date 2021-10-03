@@ -8,7 +8,26 @@
 import SwiftUI
 
 // Date extension for use with Date value types
-public extension Date {
+extension Date {
+    
+    static let cal = Calendar(identifier: .gregorian)
+    
+    static var currentFoodWeek: FoodWeek {
+        
+        let components = Date.cal.dateComponents([.weekOfYear], from: firstDayOfSchool, to: Date())
+        
+        if components.weekOfYear! == 0 {
+            return .first
+        } else {
+            return .second
+        }
+    }
+    
+    static var firstDayOfSchool: Date {
+        
+        Date.cal.date(from: DateComponents(calendar: Date.cal, year: 2021, month: 8, day: 12))!
+        
+    }
     
     // Stores the int value of the past year (Ex: Current year is 2022, value returns 2021)
     static let lastYear = Date().getComponentFromDate(for: .year) - 1

@@ -128,26 +128,6 @@ struct FoodInfoView: View {
     }
 }
 
-struct FoodNutritionOverflowPreferenceKey: PreferenceKey {
-    
-    static var defaultValue: Bool = false
-    
-    static func reduce(value: inout Bool, nextValue: () -> Bool) {
-        value = nextValue()
-    }
-    
-}
-
-struct FoodInfoScrollViewAtStartingPreferenceKey: PreferenceKey {
-    
-    static var defaultValue: Bool = true
-    
-    static func reduce(value: inout Bool, nextValue: () -> Bool) {
-        value = nextValue()
-    }
-    
-}
-
 struct FoodInfoView_Previews: PreviewProvider {
     static var previews: some View {
         FoodInfoView(food: Development.chickenSandwich).previewDevice("iPhone SE (2nd generation)")
