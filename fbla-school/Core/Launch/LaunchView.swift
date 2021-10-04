@@ -56,30 +56,42 @@ struct LaunchView: View {
         }
     }
     
+    func fetchingHandler() {
+        data.database.fetchFromFirebase { (food, error) in
+            
+            if let error = error {
+                print(error.localizedDescription)
+                data.foodDataManager = FoodUserDefaultsManager(lastUpdated: Date(), foods: nil)
+                FoodUserDefaultsManager.set(manager: data.foodDataManager)
+                return
+            }
+            
+            if let food = food {
+                data.foodDataManager = FoodUserDefaultsManager(lastUpdated: Date(), foods: food)
+                FoodUserDefaultsManager.set(manager: data.foodDataManager)
+            }
+        }
+    }
+    
     func foodUserDefaultsHandler() -> Bool {
         
         guard let foodManager = FoodUserDefaultsManager.get() else {
             
-            data.database.fetchFromFirebase { (food, error) in
-                
-                if let error = error {
-                    print(error.localizedDescription)
-                    data.foodDataManager = FoodUserDefaultsManager(lastUpdated: Date(), foods: nil)
-                    FoodUserDefaultsManager.set(manager: data.foodDataManager)
-                    return
-                }
-                
-                if let food = food {
-                    data.foodDataManager = FoodUserDefaultsManager(lastUpdated: Date(), foods: food)
-                    FoodUserDefaultsManager.set(manager: data.foodDataManager)
-                }
-            }
+            fetchingHandler()
             
             return true
             
         }
         
-        data.foodDataManager = foodManager
+        if (foodManager.lastUpdated.asLongDateString() == Date().asLongDateString()) && (foodManager.foods != nil) {
+            
+            data.foodDataManager = foodManager
+            
+            return true
+            
+        }
+            
+        fetchingHandler()
         
         return true
         

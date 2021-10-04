@@ -12,33 +12,56 @@ struct TodaysFoodView: View {
     
     var foods: [Food]
     
+    @State private var showAllFood: Bool = false
+    
     var body: some View {
         
-        VStack(alignment: .leading, spacing: 20) {
-            VStack(spacing: 5) {
-                Text("Today's Lunch | Sep. 20")
-                    .font(.custom("PublicSans-SemiBold", size: 18))
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                
-                CustomDivider(color: .white, thickness: 5)
-            }
-            .padding(.horizontal, 20)
+        ZStack {
             
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 15) {
-                    ForEach(foods.indices, id: \.self) { index in
-                        
-                        FoodHomeTileView(food: foods[index])
-                        
-                    }
+            NavigationLink(
+                "",
+                isActive: $showAllFood) {
+                    AllFoodView()
                 }
-                .padding(.leading, 20)
-            }
             
-        }
-        .padding(.vertical, 20)
+            VStack(alignment: .leading, spacing: 20) {
+                VStack(spacing: 5) {
+                    HStack(alignment: .lastTextBaseline, spacing: 0) {
+                        Text("Today's Lunch | \(Date().withCustomFormat("MMM d."))")
+                            .font(.custom("PublicSans-SemiBold", size: 18))
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        
+                        Spacer()
+                        
+                        Text("See more")
+                            .underline()
+                            .foregroundColor(.white)
+                            .font(.custom("PublicSans-Normal", size: 16))
+                            .onTapGesture {
+                                showAllFood = true
+                            }
+                    }
+                    
+                    CustomDivider(color: .white, thickness: 5)
+                }
+                .padding(.horizontal, 20)
+                
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 15) {
+                        ForEach(foods.indices, id: \.self) { index in
+                            
+                            FoodHomeTileView(food: foods[index])
+                            
+                        }
+                    }
+                    .padding(.horizontal, 20)
+                }
+                
+            }
+            .padding(.vertical, 20)
         .background( Color.theme.darkRed )
+        }
         
     }
 }

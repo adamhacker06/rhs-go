@@ -11,33 +11,14 @@ struct AllFoodView: View {
     
     @EnvironmentObject var data: DataManager
     
-    @State private var foods = [Food]()
-    // @State private var isInit = false
-    
     var body: some View {
         
         VStack(spacing: 0) {
             
-            ForEach(foods.indices, id: \.self) { index in
+            ForEach(data.foodDataManager.foods!.indices, id: \.self) { index in
                 
-                FoodTileView(food: foods[index])
+                FoodTileView(food: data.foodDataManager.foods![index])
                 
-            }
-        }
-        .onAppear { 
-//            data.database.getDataFromGitHub { jsonData in
-//                foods = data.database.parseFoodData(jsonData: jsonData)
-//            }
-            
-            data.database.fetch { (returnedFoods, error) in
-                if let error = error {
-                    print(error.localizedDescription)
-                    return
-                }
-
-                if let returnedFoods = returnedFoods {
-                    foods = returnedFoods
-                }
             }
         }
     }

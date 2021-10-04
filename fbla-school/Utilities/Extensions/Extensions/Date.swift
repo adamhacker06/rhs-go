@@ -108,6 +108,12 @@ extension Date {
         return formatter.string(from: self)
     }
     
+    func withCustomFormat(_ format: String) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        return formatter.string(from: self)
+    }
+    
     // Default date checker
     func matchesDefault() -> Bool {
         return self.asLongDateString() == Date().fromDateComponents(month: 1, day: 1, year: 2000).asLongDateString()
