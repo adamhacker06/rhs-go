@@ -10,16 +10,38 @@ import simd
 
 struct TodaysFoodView: View {
     
-    let foods: [Food]
+    var foods: [Food]
+    
+    @State private var showAllFood: Bool = false
     
     var body: some View {
         
+        ZStack {
+            
+            NavigationLink(
+                "",
+                isActive: $showAllFood) {
+                    AllFoodView()
+                }
+            
             VStack(alignment: .leading, spacing: 20) {
                 VStack(spacing: 5) {
-                    Text("Today's Lunch | Sep. 20")
-                        .font(.custom("PublicSans-SemiBold", size: 18))
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                    HStack(alignment: .lastTextBaseline, spacing: 0) {
+                        Text("Today's Lunch | \(Date().withCustomFormat("MMM d."))")
+                            .font(.custom("PublicSans-SemiBold", size: 18))
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        
+                        Spacer()
+                        
+                        Text("See more")
+                            .underline()
+                            .foregroundColor(.white)
+                            .font(.custom("PublicSans-Normal", size: 16))
+                            .onTapGesture {
+                                showAllFood = true
+                            }
+                    }
                     
                     CustomDivider(color: .white, thickness: 5)
                 }
@@ -27,19 +49,20 @@ struct TodaysFoodView: View {
                 
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 15) {
-                        ForEach(foods.indices) { index in
+                        ForEach(foods.indices, id: \.self) { index in
                             
                             FoodHomeTileView(food: foods[index])
                             
                         }
                     }
-                    .padding(.leading, 20)
+                    .padding(.horizontal, 20)
                 }
                 
             }
             .padding(.vertical, 20)
-            .background( Color.theme.darkRed )
-            
+        .background( Color.theme.darkRed )
+        }
+        
     }
 }
 
@@ -49,9 +72,16 @@ struct FoodHomeTileView: View {
     
     var body: some View {
         VStack(spacing: 10) {
+            
+            
             RoundedRectangle(cornerRadius: 15)
-                .frame(maxWidth: 125, maxHeight: 105)
+                .frame(idealWidth: 125, maxWidth: .infinity, idealHeight: 105)
                 .foregroundColor(.white)
+                .overlay(
+                
+                    EmptyView()
+                    
+                )
             
             Text(food.name!)
                 .foregroundColor(.white)

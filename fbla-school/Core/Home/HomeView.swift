@@ -23,7 +23,7 @@ extension HomeView {
                     .strokeBorder(Color.theme.lightPurple, lineWidth: 2)
                     .background(Circle().foregroundColor(.white))
                     .frame(maxWidth: 50, maxHeight: 50)
-
+                
             }
             
             Text("Next class: Foundations of Business")
@@ -43,6 +43,8 @@ struct HomeView: View {
     @EnvironmentObject var auth: AuthManager
     
     @State private var showEditSchedule: Bool = false
+    
+    @State private var foods: [Food] = []
     
     var body: some View {
         ZStack {
@@ -68,7 +70,9 @@ struct HomeView: View {
                 VStack {
                     ScrollView(.vertical, showsIndicators: false) {
                         TodaysClassesView(showEditSchedule: $showEditSchedule)
-
+                        
+                        TodaysFoodView(foods: data.foodDataManager.foods ?? [Development.chickenSandwich])
+                        
                         Button("Sign out") {
                             auth.signOut()
                         }
@@ -83,6 +87,23 @@ struct HomeView: View {
                                 .ignoresSafeArea()
                 )
             }
+            //            .onAppear {
+            //    //            data.database.getDataFromGitHub { jsonData in
+            //    //                foods = data.database.parseFoodData(jsonData: jsonData)
+            //    //            }
+            //
+            //                data.database.fetch { (returnedFoods, error) in
+            //                    if let error = error {
+            //                        print(error.localizedDescription)
+            //                        return
+            //                    }
+            //
+            //                    if let returnedFoods = returnedFoods {
+            //                        foods = returnedFoods
+            //
+            //                    }
+            //                }
+            //            }
         }
     }
 }
@@ -99,6 +120,6 @@ struct HomeView_Previews: PreviewProvider {
         
         HomeView().environmentObject(DataManager(withDevUser: DevUser(email: "test@test.com", firstName: "Adam", lastName: "Hacker")))
             .previewDevice("iPod touch (7th generation)")
-
+        
     }
 }
