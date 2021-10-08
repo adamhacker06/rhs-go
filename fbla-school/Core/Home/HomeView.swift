@@ -31,9 +31,17 @@ extension HomeView {
                 .padding(.bottom, 10)
             
         }
-        .padding(.top, 20)
-        .padding([.bottom, .horizontal], 20)
+        .padding(.horizontal, 20)
+        .padding(.vertical, 10)
         .foregroundColor(.white)
+    }
+}
+
+struct HomeScrollTopOffsetPreferenceKey: PreferenceKey {
+    static var defaultValue: CGFloat = 0
+    
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+        value = nextValue()
     }
 }
 
@@ -43,23 +51,18 @@ struct HomeView: View {
     @EnvironmentObject var auth: AuthManager
     
     @State private var showEditSchedule: Bool = false
+    @State private var showAllFood: Bool = false
     
     @State private var foods: [Food] = []
     
+    @State private var topOffset: CGFloat = 0
+    
+    @State private var showNavbar: Bool = false
+    
+    @State private var showGigante: Bool = false
+    
     var body: some View {
         ZStack {
-            
-            NavigationLink(
-                destination:
-                    EditScheduleView()
-                    .navigationTitle("")
-                    .navigationBarHidden(true)
-                ,
-                isActive: $showEditSchedule,
-                label: {
-                    Text("")
-                        .hidden()
-                })
             
             Color.theme.purple.ignoresSafeArea()
             
@@ -67,18 +70,26 @@ struct HomeView: View {
                 
                 headerComponents
                 
-                VStack {
-                    ScrollView(.vertical, showsIndicators: false) {
-                        TodaysClassesView(showEditSchedule: $showEditSchedule)
+                ScrollView(.vertical, showsIndicators: false) {
+                    VStack(spacing: 20) {
                         
-                        TodaysFoodView(foods: data.foodDataManager.foods ?? [Development.chickenSandwich])
+                        TodaysClassesView(showEditSchedule: $showEditSchedule)
+                            .padding(.horizontal, 20)
+                        
+                        TodaysFoodView(foods: $data.foodDataManager.foods)
+                        
+//                        NavigationLink(isActive: $showGigante) {
+//                            GiganteaFeed()
+//                        } label: {
+//                            Text("HEY")
+//                        }
+
                         
                         Button("Sign out") {
                             auth.signOut()
                         }
-                        
-                        Spacer()
                     }
+                    .padding(.top, 20)
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(Color.white
@@ -87,23 +98,6 @@ struct HomeView: View {
                                 .ignoresSafeArea()
                 )
             }
-            //            .onAppear {
-            //    //            data.database.getDataFromGitHub { jsonData in
-            //    //                foods = data.database.parseFoodData(jsonData: jsonData)
-            //    //            }
-            //
-            //                data.database.fetch { (returnedFoods, error) in
-            //                    if let error = error {
-            //                        print(error.localizedDescription)
-            //                        return
-            //                    }
-            //
-            //                    if let returnedFoods = returnedFoods {
-            //                        foods = returnedFoods
-            //
-            //                    }
-            //                }
-            //            }
         }
     }
 }
@@ -114,12 +108,9 @@ struct HomeView_Previews: PreviewProvider {
         NavigationView {
             HomeView()
                 .environmentObject(DataManager(withDevUser: DevUser(email: "test@test.com", firstName: "Adam", lastName: "Hacker")))
+                .environmentObject(AuthManager())
                 .navigationBarTitle("")
                 .navigationBarHidden(true)
         }
-        
-        HomeView().environmentObject(DataManager(withDevUser: DevUser(email: "test@test.com", firstName: "Adam", lastName: "Hacker")))
-            .previewDevice("iPod touch (7th generation)")
-        
     }
 }

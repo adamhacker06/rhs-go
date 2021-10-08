@@ -79,7 +79,6 @@ struct EditScheduleView: View {
                     .padding(20)
                     
                 }
-                .navigationViewStyle(StackNavigationViewStyle())
                 .background(Color.white.cornerRadius(25, corners: [.topLeft, .topRight]))
                 .ignoresSafeArea()
                 

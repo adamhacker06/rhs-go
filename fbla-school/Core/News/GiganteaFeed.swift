@@ -21,6 +21,8 @@ struct GiganteaFeed: View {
     
     @StateObject var gigantea = GiganteaFeedViewModel()
     
+    @State private var articleStore: [Article] = []
+    
     var url: URL
     var data: Data
 
@@ -28,6 +30,9 @@ struct GiganteaFeed: View {
         
         self.url = URL(string: "https://redwoodgigantea.com/feed/")!
         self.data = try! Data(contentsOf: url)
+        
+        self.articleStore = []
+        
         let parser = ArticlesParser(data: data)
         
         if parser.parse() {
@@ -40,7 +45,7 @@ struct GiganteaFeed: View {
                     parser.articles[i].paragraphContent = paragraphsParser.paragraphs
                 }
                 
-                gigantea.articles.append(parser.articles[i])
+                articleStore.append(parser.articles[i])
                 
             }
         }
@@ -54,6 +59,8 @@ struct GiganteaFeed: View {
                     
                     NavigationLink(destination: EmptyView()) {
                         EmptyView()
+                            .navigationTitle("")
+                            .navigationBarHidden(true)
                     }
                     
                     VStack(alignment: .trailing, spacing: 0) {
@@ -75,6 +82,8 @@ struct GiganteaFeed: View {
                         NavigationLink(
                             destination:
                                 ArticleView(article: gigantea.articles[index])
+                                .navigationTitle("")
+                                .navigationBarHidden(true)
                                 .navigationBarTitleDisplayMode(.inline),
                             
                             label: {
@@ -111,6 +120,9 @@ struct GiganteaFeed: View {
                 }
                 .padding(.horizontal, 20)
             }
+        }
+        .onAppear {
+            gigantea.articles = articleStore
         }
     }
 }

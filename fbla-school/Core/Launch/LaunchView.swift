@@ -57,7 +57,7 @@ struct LaunchView: View {
     }
     
     func fetchingHandler() {
-        data.database.fetchFromFirebase { (food, error) in
+        data.database.fetchFromFirebase(week: .first, day: Date()) { (food, error) in
             
             if let error = error {
                 print(error.localizedDescription)
@@ -68,6 +68,7 @@ struct LaunchView: View {
             
             if let food = food {
                 data.foodDataManager = FoodUserDefaultsManager(lastUpdated: Date(), foods: food)
+                
                 FoodUserDefaultsManager.set(manager: data.foodDataManager)
             }
         }
@@ -78,19 +79,19 @@ struct LaunchView: View {
         guard let foodManager = FoodUserDefaultsManager.get() else {
             
             fetchingHandler()
-            
+
             return true
-            
+
+        }
+
+        if (foodManager.lastUpdated.asLongDateString() == Date().asLongDateString()) && (foodManager.foods != nil) {
+
+            data.foodDataManager = foodManager
+
+            return true
+
         }
         
-        if (foodManager.lastUpdated.asLongDateString() == Date().asLongDateString()) && (foodManager.foods != nil) {
-            
-            data.foodDataManager = foodManager
-            
-            return true
-            
-        }
-            
         fetchingHandler()
         
         return true
@@ -100,7 +101,7 @@ struct LaunchView: View {
     func timerHandler() {
         withAnimation {
             
-            if finishedRotations > 2 && finishedUserDefaultsLoading {
+            if finishedRotations > 1 && finishedUserDefaultsLoading {
                 withAnimation { finishedLoading = true }
             }
             

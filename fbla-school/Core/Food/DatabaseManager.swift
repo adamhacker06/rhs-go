@@ -35,6 +35,42 @@ struct FoodMemoryCache {
     }
 }
 
+enum WeekDay: String {
+    
+    init(date: Date) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE"
+        let dayInWeek = dateFormatter.string(from: date)
+        
+        switch dayInWeek {
+        case "Monday":
+            self.init(rawValue: "m")!
+            
+        case "Tuesady":
+            self.init(rawValue: "t")!
+            
+        case "Wednesday":
+            self.init(rawValue: "w")!
+            
+        case "Thursday":
+            self.init(rawValue: "th")!
+            
+        case "Friday":
+            self.init(rawValue: "f")!
+             
+        default:
+            self.init(rawValue: "invalid")!
+        }
+    }
+    
+    case monday = "m"
+    case tuesday = "t"
+    case wednesday = "w"
+    case thursday = "th"
+    case friday = "f"
+    case invalid = "invalid"
+}
+
 class DatabaseManager: ObservableObject {
       
     var db = Database.database().reference()
@@ -58,7 +94,7 @@ class DatabaseManager: ObservableObject {
             completion(cachedFoods, nil)
             
         } else {
-            fetchFromFirebase { (foods, error) in
+            fetchFromFirebase(week: .first, day: Date()) { (foods, error) in
           
                 if let error = error {
                     completion(nil, error)
@@ -74,13 +110,16 @@ class DatabaseManager: ObservableObject {
         }
     }
     
-    func fetchFromFirebase(completion: @escaping ([Food]?, Error?) -> Void) {
+    func fetchFromFirebase(week: FoodWeek, day: Date, completion: @escaping ([Food]?, Error?) -> Void) {
+        
         print("Fetching from Firebase...")
-        db.child("foods").observe(.value, with: { snapshot in
+        
+        db.child("foods").child("1").child(WeekDay.init(date: day).rawValue).observe(DataEventType.value, with: { snapshot in
             
             var foods = [Food]()
             var nextFood = Food()
             
+            // possible error handling here
             let value = snapshot.value as! Dictionary<String, Dictionary<String, String>>
             
             for (foodName, content) in value {

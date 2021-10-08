@@ -15,7 +15,7 @@ struct AllFoodView: View {
         
         VStack(spacing: 0) {
             
-            ForEach(data.foodDataManager.foods!.indices, id: \.self) { index in
+            ForEach(data.foodDataManager.foods?.indices ?? [].indices, id: \.self) { index in
                 
                 FoodTileView(food: data.foodDataManager.foods![index])
                 

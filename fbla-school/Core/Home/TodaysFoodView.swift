@@ -10,7 +10,7 @@ import simd
 
 struct TodaysFoodView: View {
     
-    var foods: [Food]
+    @Binding var foods: [Food]?
     
     @State private var showAllFood: Bool = false
     
@@ -22,6 +22,7 @@ struct TodaysFoodView: View {
                 "",
                 isActive: $showAllFood) {
                     AllFoodView()
+                        
                 }
             
             VStack(alignment: .leading, spacing: 20) {
@@ -48,21 +49,26 @@ struct TodaysFoodView: View {
                 .padding(.horizontal, 20)
                 
                 ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 15) {
-                        ForEach(foods.indices, id: \.self) { index in
-                            
-                            FoodHomeTileView(food: foods[index])
-                            
+                    HStack(alignment: .center, spacing: 15) {
+                        
+                        if let foods = foods {
+                            ForEach(foods.indices, id: \.self) { index in
+                                
+                                FoodHomeTileView(food: foods[index])
+                                
+                            }
+                        } else {
+                            Text("Unable to get today's lunch")
+                                .frame(maxWidth: .infinity, alignment: .center)
+                                .foregroundColor(.white)
                         }
                     }
                     .padding(.horizontal, 20)
                 }
-                
             }
             .padding(.vertical, 20)
-        .background( Color.theme.darkRed )
+            .background( Color.theme.darkRed )
         }
-        
     }
 }
 
@@ -78,7 +84,7 @@ struct FoodHomeTileView: View {
                 .frame(idealWidth: 125, maxWidth: .infinity, idealHeight: 105)
                 .foregroundColor(.white)
                 .overlay(
-                
+                    
                     EmptyView()
                     
                 )
@@ -94,6 +100,6 @@ struct FoodHomeTileView: View {
 
 struct TodaysFoodView_Previews: PreviewProvider {
     static var previews: some View {
-        TodaysFoodView(foods: [Development.chickenSandwich, Development.chickenSandwich, Development.chickenSandwich])
+        TodaysFoodView(foods: .constant([Development.chickenSandwich, Development.chickenSandwich, Development.chickenSandwich]))
     }
 }

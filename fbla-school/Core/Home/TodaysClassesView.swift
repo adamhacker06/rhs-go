@@ -14,6 +14,7 @@ struct TodaysClassesView: View {
     
     var body: some View {
         VStack(spacing: 0) {
+            
             HStack(spacing: 0) {
                 Text("Today's Classes")
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -35,20 +36,23 @@ struct TodaysClassesView: View {
                             .padding(.top, 18)
                     }
                 } else {
-                    Button(action: {
-                        
-                        // Edit schedule
-                        showEditSchedule = true
-                        
-                    }) {
-                        Text("Click here to set up a schedule")
-                            .font(.system(size: 16))
-                            .foregroundColor(.white)
-                            .underline()
-                            .multilineTextAlignment(.center)
-                    }
-                    .padding(.top, 18)
-                
+                    
+                    NavigationLink(
+                        destination:
+                            EditScheduleView()
+                            .navigationTitle("")
+                            .navigationBarHidden(true)
+                        ,
+                        isActive: $showEditSchedule,
+                        label: {
+                            Text("Click here to set up a schedule")
+                                .font(.system(size: 16))
+                                .foregroundColor(.white)
+                                .underline()
+                                .multilineTextAlignment(.center)
+                        })
+                        .padding(.top, 18)
+                    
                 }
             }
         }
@@ -57,7 +61,7 @@ struct TodaysClassesView: View {
         .padding(.bottom, 18)
         .background(Color.theme.lapiz)
         .cornerRadius(10)
-        .padding(20)
+        
         
     }
 }

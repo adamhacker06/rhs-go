@@ -13,13 +13,15 @@ struct ContentView: View {
     @EnvironmentObject var data: DataManager
     @EnvironmentObject var auth: AuthManager
     
+    @State private var navBarHidden: Bool = true
+    
     var body: some View {
         
         ZStack {
             
             // Switches between the SignedIn state
             switch auth.state {
-            
+                
             case .signedIn:
                 
                 if !data.user!.profileInfo.emailAddress.contains("@vusd.us") && !data.user!.profileInfo.emailAddress.contains("@vusd.org") {
@@ -29,18 +31,18 @@ struct ContentView: View {
                 } else {
                     NavigationView {
                         HomeView()
-                            .environmentObject(data.user!)
+                            .navigationViewStyle(.stack)
                             .navigationTitle("")
                             .navigationBarHidden(true)
+                            .environmentObject(data.user!)
                     }
-                    .navigationViewStyle(.stack)
                 }
                 
             case .signedOut:
                 LoginView()
                     .transition(AnyTransition.opacity)
                     .zIndex(1.0)
-            
+                
             }
         }
         .onAppear {

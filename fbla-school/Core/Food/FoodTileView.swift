@@ -13,7 +13,9 @@ struct FoodTileView: View {
     
     var body: some View {
         NavigationLink(
-            destination: FoodInfoView(food: food),
+            destination: FoodInfoView(food: food)
+                .navigationTitle("")
+                .navigationBarHidden(true),
             label: {
                 TileBody
             })
@@ -24,7 +26,6 @@ extension FoodTileView {
     private var TileBody: some View {
         VStack {
             Text(food.name!)
-            Text(food.portion ?? "Unknown")
         }
     }
 }
