@@ -41,12 +41,13 @@ enum WeekDay: String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE"
         let dayInWeek = dateFormatter.string(from: date)
+        print("DAY IN WEEK \(dayInWeek)")
         
         switch dayInWeek {
         case "Monday":
             self.init(rawValue: "m")!
             
-        case "Tuesady":
+        case "Tuesday":
             self.init(rawValue: "t")!
             
         case "Wednesday":
@@ -57,7 +58,7 @@ enum WeekDay: String {
             
         case "Friday":
             self.init(rawValue: "f")!
-             
+            
         default:
             self.init(rawValue: "invalid")!
         }
@@ -72,7 +73,7 @@ enum WeekDay: String {
 }
 
 class DatabaseManager: ObservableObject {
-      
+    
     var db = Database.database().reference()
     
     @Published var cache = FoodMemoryCache()
@@ -95,7 +96,7 @@ class DatabaseManager: ObservableObject {
             
         } else {
             fetchFromFirebase(week: .first, day: Date()) { (foods, error) in
-          
+                
                 if let error = error {
                     completion(nil, error)
                 } else {
@@ -110,17 +111,70 @@ class DatabaseManager: ObservableObject {
         }
     }
     
+    enum FirebaseFoodFetchError: Error {
+        case invalidDay
+        case invalidData
+        case invalidReferenceDate
+        case invalidReferenceWeek
+    }
+    
+    func dateFromDashedStringFormat(string: String) -> (Date?, FirebaseFoodFetchError?) {
+        let formatter = DateFormatter()
+        
+        formatter.dateFormat = "M-dd-yy"
+        
+        guard let day = formatter.date(from: string) else { return (nil, FirebaseFoodFetchError.invalidReferenceDate)}
+        
+        return (day, nil)
+    }
+    
+    func fetchReferenceFoodWeek(completion: @escaping (FoodWeek?, FirebaseFoodFetchError?) -> Void) {
+        
+        db.child("meta").child("week").observeSingleEvent(of: .value) { snapshot in
+            
+            guard let result = snapshot.value else { completion(nil, .invalidReferenceWeek); return }
+            
+            if let referenceWeek = FoodWeek(withFirebaseInterpretation: "\(result)") {
+                completion(referenceWeek, nil)
+                return
+            }
+            
+            completion(nil, FirebaseFoodFetchError.invalidReferenceWeek)
+        }
+    }
+    
+    func fetchReference(completion: @escaping (Date?, FirebaseFoodFetchError?) -> Void) {
+        db.child("meta").child("ref").observeSingleEvent(of: .value) { [weak self] snapshot in
+            
+            guard let result = snapshot.value else { completion(nil, .invalidReferenceDate); return }
+            
+            let ref = self?.dateFromDashedStringFormat(string: "\(result)")
+            completion(ref?.0, ref?.1)
+            
+        }
+    }
+    
     func fetchFromFirebase(week: FoodWeek, day: Date, completion: @escaping ([Food]?, Error?) -> Void) {
+        
+                if WeekDay.init(date: day) == .invalid {
+                    
+                    completion(nil, FirebaseFoodFetchError.invalidDay)
+                    return
+                }
         
         print("Fetching from Firebase...")
         
-        db.child("foods").child("1").child(WeekDay.init(date: day).rawValue).observe(DataEventType.value, with: { snapshot in
+        db.child("foods").child("\(week.rawValue + 1)").child(WeekDay.init(date: day).rawValue).observe(DataEventType.value) { snapshot in
             
             var foods = [Food]()
             var nextFood = Food()
             
-            // possible error handling here
-            let value = snapshot.value as! Dictionary<String, Dictionary<String, String>>
+            guard let value = snapshot.value as? Dictionary<String, Dictionary<String, String>> else {
+                
+                completion(nil, FirebaseFoodFetchError.invalidData)
+                return
+                
+            }
             
             for (foodName, content) in value {
                 
@@ -129,7 +183,7 @@ class DatabaseManager: ObservableObject {
                 for (dataType, data) in content {
                     
                     switch dataType {
-                    
+                        
                     case "ty":
                         nextFood.type = FoodType.init(rawValue: data)
                         
@@ -162,10 +216,7 @@ class DatabaseManager: ObservableObject {
             
             completion(foods, nil)
             
-        }) { error in
-            print(error.localizedDescription)
-            completion(nil, error)
-        }
+        }   
     }
     
     //--//
@@ -175,7 +226,7 @@ class DatabaseManager: ObservableObject {
         completion(try! Data(contentsOf: URL(string: "https://adamhacker06.github.io/data/food.json")!))
         
     }
-
+    
     func parseFoodData(jsonData: Data) -> [Food] {
         
         let decoder = JSONDecoder()

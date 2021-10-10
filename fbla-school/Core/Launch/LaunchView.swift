@@ -56,20 +56,67 @@ struct LaunchView: View {
         }
     }
     
+    func getCurrentFoodWeek(targetDate: Date, refDate: Date, refFoodWeek: FoodWeek) -> FoodWeek {
+        let cal = Calendar(identifier: .gregorian)
+        
+        let components = cal.dateComponents(
+            [.weekOfYear],
+            from: cal.date(byAdding: DateComponents(weekday: cal.dateComponents([.weekday], from: refDate).weekday! * -1 + 1, weekOfYear: refFoodWeek == .second ? -1 : 0 ),
+            to: refDate)!,
+            to: targetDate)
+        
+        if components.weekOfYear! % 2 == 0 {
+            return(.first)
+        } else {
+            return(.second)
+        }
+    }
+    
     func fetchingHandler() {
-        data.database.fetchFromFirebase(week: .first, day: Date()) { (food, error) in
-            
+        
+        let targetDate = Date()
+        
+        data.database.fetchReference { (refDate, error) in
             if let error = error {
-                print(error.localizedDescription)
+                print(error)
                 data.foodDataManager = FoodUserDefaultsManager(lastUpdated: Date(), foods: nil)
                 FoodUserDefaultsManager.set(manager: data.foodDataManager)
                 return
             }
             
-            if let food = food {
-                data.foodDataManager = FoodUserDefaultsManager(lastUpdated: Date(), foods: food)
+            if let refDate = refDate {
                 
-                FoodUserDefaultsManager.set(manager: data.foodDataManager)
+                data.database.fetchReferenceFoodWeek { (refWeek, error) in
+                    if let error = error {
+                        print(error)
+                        data.foodDataManager = FoodUserDefaultsManager(lastUpdated: Date(), foods: nil)
+                        FoodUserDefaultsManager.set(manager: data.foodDataManager)
+                        return
+                    }
+                    
+                    if let refWeek = refWeek {
+                        
+                        let foodWeek = getCurrentFoodWeek(targetDate: targetDate, refDate: refDate, refFoodWeek: refWeek)
+                        
+                        print("FOOD WEEK: \(foodWeek)")
+                        
+                        data.database.fetchFromFirebase(week: foodWeek, day: targetDate) { (food, error) in
+                            
+                            if let error = error {
+                                print(error)
+                                data.foodDataManager = FoodUserDefaultsManager(lastUpdated: Date(), foods: nil)
+                                FoodUserDefaultsManager.set(manager: data.foodDataManager)
+                                return
+                            }
+                            
+                            if let food = food {
+                                data.foodDataManager = FoodUserDefaultsManager(lastUpdated: Date(), foods: food)
+                                
+                                FoodUserDefaultsManager.set(manager: data.foodDataManager)
+                            }
+                        }
+                    }
+                }
             }
         }
     }
@@ -77,7 +124,7 @@ struct LaunchView: View {
     func foodUserDefaultsHandler() -> Bool {
         
         guard let foodManager = FoodUserDefaultsManager.get() else {
-            
+
             fetchingHandler()
 
             return true

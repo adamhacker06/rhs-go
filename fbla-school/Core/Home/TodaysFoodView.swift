@@ -28,6 +28,7 @@ struct TodaysFoodView: View {
             VStack(alignment: .leading, spacing: 20) {
                 VStack(spacing: 5) {
                     HStack(alignment: .lastTextBaseline, spacing: 0) {
+                        
                         Text("Today's Lunch | \(Date().withCustomFormat("MMM d."))")
                             .font(.custom("PublicSans-SemiBold", size: 18))
                             .foregroundColor(.white)
@@ -35,13 +36,16 @@ struct TodaysFoodView: View {
                         
                         Spacer()
                         
-                        Text("See more")
-                            .underline()
-                            .foregroundColor(.white)
-                            .font(.custom("PublicSans-Normal", size: 16))
-                            .onTapGesture {
-                                showAllFood = true
-                            }
+                        if let foods = foods {
+                            Text("See more")
+                                .underline()
+                                .foregroundColor(.white)
+                                .font(.custom("PublicSans-Normal", size: 16))
+                                .onTapGesture {
+                                    showAllFood = true
+                                }
+                        }
+
                     }
                     
                     CustomDivider(color: .white, thickness: 5)
@@ -65,6 +69,7 @@ struct TodaysFoodView: View {
                     }
                     .padding(.horizontal, 20)
                 }
+                .disabled(foods == nil ? true : false)
             }
             .padding(.vertical, 20)
             .background( Color.theme.darkRed )
