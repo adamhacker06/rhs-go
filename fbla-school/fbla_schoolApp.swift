@@ -51,6 +51,10 @@ import GoogleSignIn
             
             return true
         }
+        
+        func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any]) -> Bool {
+            return GIDSignIn.sharedInstance.handle(url)
+        }
     }
 }
 

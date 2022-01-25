@@ -17,6 +17,8 @@ class DataManager: ObservableObject {
     @Published var database = DatabaseManager() { didSet { self.didChange.send(self) }}
     @Published var foodDataManager = FoodUserDefaultsManager(lastUpdated: Date(timeIntervalSince1970: 0), foods: nil) { didSet { self.didChange.send(self) }}
     
+    @Published var calendarDataManager = CalendarDefaultsManager(lastUpdated: Date(timeIntervalSince1970: 0), calendar: nil) { didSet { self.didChange.send(self) }}
+    
     var handle: AuthStateDidChangeListenerHandle?
     
     convenience init() {
@@ -38,8 +40,26 @@ class DataManager: ObservableObject {
     func listenForUser(completion: @escaping (AuthManager.SignInState) -> Void) {
         handle = Auth.auth().addStateDidChangeListener({ (auth, user) in
             if let user = user {
+               
+                GIDSignIn.sharedInstance.restorePreviousSignIn { (user, error) in
+                    guard let user = user else {
+                        if let error = error {
+                            print(error)
+                        }
+                        
+                        completion(.signedOut)
+                        return
+                        
+                    }
+                    
+                    self.user?.googleUser = user
+                        
+                }
+                
                 self.user = User(withDevUser: DevUser(email: user.email!, firstName: user.displayName!, lastName: user.displayName!))
                 completion(.signedIn)
+                
+                // FIX THIS
             } else {
                 print("No user found")
             }

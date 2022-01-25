@@ -22,7 +22,7 @@ struct TodaysFoodView: View {
                 "",
                 isActive: $showAllFood) {
                     AllFoodView()
-                        
+                    
                 }
             
             VStack(alignment: .leading, spacing: 20) {
@@ -36,7 +36,7 @@ struct TodaysFoodView: View {
                         
                         Spacer()
                         
-                        if let foods = foods {
+                        if foods != nil {
                             Text("See more")
                                 .underline()
                                 .foregroundColor(.white)
@@ -45,7 +45,7 @@ struct TodaysFoodView: View {
                                     showAllFood = true
                                 }
                         }
-
+                        
                     }
                     
                     CustomDivider(color: .white, thickness: 5)

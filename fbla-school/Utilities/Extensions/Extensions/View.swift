@@ -18,6 +18,10 @@ public extension View {
 // View extension for use with View value types
 public extension View {
     
+    func getRect() -> CGRect {
+        return UIScreen.main.bounds
+    }
+    
     // Returns the size of the safe area
     func getSafeArea() -> UIEdgeInsets {
         return UIApplication.shared.windows.first?.safeAreaInsets ?? UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)

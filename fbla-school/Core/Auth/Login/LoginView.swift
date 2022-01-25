@@ -5,7 +5,10 @@
 //  Created by Adam Hacker on 8/19/21.
 //
 
+import Foundation
 import SwiftUI
+import Firebase
+import GoogleSignIn
 
 typealias Screen = UIScreen
 
@@ -89,7 +92,10 @@ extension LoginView {
     
     private var googleSignInButton: some View {
         Button(action: { auth.signIn { user in
+            print(user.googleUser)
             data.user = user
+            print(data.user?.googleUser)
+            
         } }) {
             
             HStack(spacing: 0) {

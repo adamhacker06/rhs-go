@@ -10,7 +10,7 @@ import GoogleSignIn
 
 class User: ObservableObject {
     
-    let googleUser: GIDGoogleUser?
+    var googleUser: GIDGoogleUser?
     let profileInfo: GoogleProfileInfo
     
     let schedule: [ClassPeriod:SchoolClass]?
@@ -22,6 +22,7 @@ class User: ObservableObject {
     
     init(withUser user: GIDGoogleUser) {
         self.googleUser = user
+        print("LOOK HERE! \(self.googleUser)")
         self.profileInfo = GoogleProfileInfo(withUser: user)
         self.schedule = nil
     }

@@ -10,6 +10,18 @@ import Firebase
 import FirebaseAuth
 import GoogleSignIn
 
+extension AuthManager {
+    func getLoginViewWindow() -> UIViewController {
+        let scenes = UIApplication.shared.connectedScenes
+        guard let windowScene = scenes.first as? UIWindowScene else {
+            return .init()
+        }
+        
+        return windowScene.windows.first?.rootViewController ?? .init()
+        
+    }
+}
+
 class AuthManager: ObservableObject {
     
     // Stores and creates the Google Sign-In configuration value to be used throughout the Google Sign-In process
@@ -33,11 +45,19 @@ class AuthManager: ObservableObject {
         if GIDSignIn.sharedInstance.currentUser == nil {
             
             // If no user is longed in, Google Sign-In starts the sign-in flow
-            GIDSignIn.sharedInstance.signIn(with: signInConfig, presenting: (UIApplication.shared.windows.first?.rootViewController)!) { [weak self] user, error in
+            GIDSignIn.sharedInstance.signIn(with: signInConfig, presenting: getLoginViewWindow()) { [self] user, error in
                 if error == nil {
                     
+                    guard
+                        let authentication = user?.authentication,
+                        let idToken = authentication.idToken
+                        
+                    else {
+                        return
+                    }
+                    
                     // If there is no error, sign the user in using Firebase
-                    self?.firebaseAuth(withUser: user!)
+                    self.firebaseAuth(withUser: user!)
                     
                     completion(User(withUser: user!))
                     

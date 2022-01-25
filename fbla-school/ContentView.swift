@@ -26,7 +26,13 @@ struct ContentView: View {
                 
                 if !data.user!.profileInfo.emailAddress.contains("@vusd.us") && !data.user!.profileInfo.emailAddress.contains("@vusd.org") {
                     
-                    BadGoogleOrganizationView()
+                    //BadGoogleOrganizationView()
+                    
+                    HomeView()
+                        .navigationViewStyle(.stack)
+                        .navigationTitle("")
+                        .navigationBarHidden(true)
+                        .environmentObject(data.user!)
                     
                 } else {
                     NavigationView {
@@ -35,10 +41,15 @@ struct ContentView: View {
                             .navigationTitle("")
                             .navigationBarHidden(true)
                             .environmentObject(data.user!)
+                        
+//                        HTMLTestView()
                     }
+                    
+//                    Sandbox()
                 }
                 
             case .signedOut:
+//                Sandbox()
                 LoginView()
                     .transition(AnyTransition.opacity)
                     .zIndex(1.0)

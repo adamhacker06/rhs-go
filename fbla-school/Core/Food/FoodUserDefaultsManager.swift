@@ -39,3 +39,35 @@ struct FoodUserDefaultsManager: Codable {
     var foods: [Food]?
     
 }
+
+struct CalendarDefaultsManager: Codable {
+    
+    static func get() -> CalendarDefaultsManager? {
+        let defaults = UserDefaults.standard
+        
+        if let managerData = defaults.object(forKey: "calendarManager") as? Data {
+        
+            let decoder = JSONDecoder()
+            
+            if let loadedManager = try? decoder.decode(CalendarDefaultsManager.self, from: managerData) {
+                return loadedManager
+            } else {
+                return nil
+            }
+        } else {
+            return nil
+        }
+    }
+    
+    static func set(manager: CalendarDefaultsManager) {
+        let defaults = UserDefaults.standard
+        let encoder = JSONEncoder()
+        
+        if let encodedManagerData = try? encoder.encode(manager) {
+            defaults.set(encodedManagerData, forKey: "calendarManager")
+        }
+    }
+    
+    var lastUpdated: Date
+    var calendar: GoogleAPICalendar?
+}

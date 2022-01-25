@@ -52,7 +52,7 @@ struct LaunchView: View {
             timerHandler()
         }
         .onAppear {
-            finishedUserDefaultsLoading = foodUserDefaultsHandler()
+            finishedUserDefaultsLoading = foodUserDefaultsHandler() && calendarFetchingHandler()
         }
     }
     
@@ -62,7 +62,7 @@ struct LaunchView: View {
         let components = cal.dateComponents(
             [.weekOfYear],
             from: cal.date(byAdding: DateComponents(weekday: cal.dateComponents([.weekday], from: refDate).weekday! * -1 + 1, weekOfYear: refFoodWeek == .second ? -1 : 0 ),
-            to: refDate)!,
+                           to: refDate)!,
             to: targetDate)
         
         if components.weekOfYear! % 2 == 0 {
@@ -72,9 +72,10 @@ struct LaunchView: View {
         }
     }
     
-    func fetchingHandler() {
+    func foodFetchingHandler() {
         
-        let targetDate = Date()
+        // Make sure to switch date to today
+        let targetDate = Date().fromDateComponents(month: 10, day: 15, year: 2021)
         
         data.database.fetchReference { (refDate, error) in
             if let error = error {
@@ -96,7 +97,7 @@ struct LaunchView: View {
                     
                     if let refWeek = refWeek {
                         
-                        let foodWeek = getCurrentFoodWeek(targetDate: targetDate, refDate: refDate, refFoodWeek: refWeek)
+                        let foodWeek = getCurrentFoodWeek(targetDate:targetDate, refDate: refDate, refFoodWeek: refWeek)
                         
                         print("FOOD WEEK: \(foodWeek)")
                         
@@ -123,27 +124,41 @@ struct LaunchView: View {
     
     func foodUserDefaultsHandler() -> Bool {
         
-        guard let foodManager = FoodUserDefaultsManager.get() else {
-
-            fetchingHandler()
-
-            return true
-
-        }
-
-        if (foodManager.lastUpdated.asLongDateString() == Date().asLongDateString()) && (foodManager.foods != nil) {
-
-            data.foodDataManager = foodManager
-
-            return true
-
-        }
+        //        guard let foodManager = FoodUserDefaultsManager.get() else {
+        //
+        //            fetchingHandler()
+        //
+        //            return true
+        //
+        //        }
+        //
+        //        if (foodManager.lastUpdated.asLongDateString() == Date().asLongDateString()) && (foodManager.foods != nil) {
+        //
+        //            data.foodDataManager = foodManager
+        //
+        //            return true
+        //
+        //        }
         
-        fetchingHandler()
+        foodFetchingHandler()
         
         return true
         
     }
+    
+    func calendarFetchingHandler() -> Bool {
+        CalendarAPIManager.sendPublicGETRequest(apiKey: "AIzaSyDrfhTME72TU21qT28bAvlVNLT24YfTfCE") { (calendar) in
+            
+            data.calendarDataManager = CalendarDefaultsManager(lastUpdated: Date(), calendar: calendar)
+            
+        }
+        
+        return true
+    }
+    
+    //    func calendarJSONDecoder() -> GoogleAPICalendar {
+    //
+    //    }
     
     func timerHandler() {
         withAnimation {

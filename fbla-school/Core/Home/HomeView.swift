@@ -71,29 +71,34 @@ struct HomeView: View {
                 headerComponents
                 
                 ScrollView(.vertical, showsIndicators: false) {
-                    VStack(spacing: 20) {
+                    VStack(spacing: 0) {
                         
-                        TodaysClassesView(showEditSchedule: $showEditSchedule)
-                            .padding(.horizontal, 20)
-                        
-                        TodaysFoodView(foods: $data.foodDataManager.foods)
-                        
-//                        NavigationLink(isActive: $showGigante) {
-//                            GiganteaFeed()
-//                        } label: {
-//                            Text("HEY")
-//                        }
+                        Group {
+                            TodaysClassesView(showEditSchedule: $showEditSchedule)
+                                .padding(.horizontal, 20)
+                            
+                            TodaysFoodView(foods: $data.foodDataManager.foods)
+                            
+    //                        NavigationLink(isActive: $showGigante) {
+    //                            GiganteaFeed()
+    //                        } label: {
+    //                            Text("HEY")
+    //                        }
+                            
+                            TodaysCurrentCalendarView(calendar: $data.calendarDataManager.calendar)
+                                .padding(.horizontal, 20)
 
-                        
-                        Button("Sign out") {
-                            auth.signOut()
+                            Button("Sign out") {
+                                auth.signOut()
+                            }
                         }
+                        .padding(.top, 20)
+                        
                     }
-                    .padding(.top, 20)
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(Color.white
-                                .cornerRadius(30, corners: [.topLeft, .topRight])
+                                .cornerRadius(20, corners: [.topLeft, .topRight])
                                 .shadow(color: .black.opacity(0.15), radius: 20, x: 0, y: -15)
                                 .ignoresSafeArea()
                 )

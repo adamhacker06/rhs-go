@@ -64,10 +64,19 @@ struct FoodInfoView: View {
                 .padding(.horizontal, 20)
                 
                 VStack(spacing: 0) {
-                    Circle()
-                        .foregroundColor(.gray)
-                        .frame(maxWidth: 150, maxHeight: 150)
-                        .padding(.bottom, 15)
+                    
+                    AsyncImage(url: URL(string: "https://picsum.photos/200")) { image in
+                        image
+                            .resizable()
+                            .padding()
+                            .background(Color.gray)
+                            .clipShape(Circle())
+                            .frame(maxWidth: 150, maxHeight: 150)
+                            .padding(.bottom, 15)
+                        
+                    } placeholder: {
+                        ProgressView()
+                    }
                     
                     Text(food.name!)
                         .font(.custom("PublicSans-Medium", size: 24))
