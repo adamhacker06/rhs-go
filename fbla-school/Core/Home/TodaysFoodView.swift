@@ -14,6 +14,9 @@ struct TodaysFoodView: View {
     
     @State private var showAllFood: Bool = false
     
+    @State private var showTargetFood: Bool = false
+    @State private var targetFood: Food = Food(type: .entree, name: "Unknown", portion: "Unknown", calories: "Unknown", sugars: "Unknown", protein: "Unknown", carbs: "Unknown", transFat: "Unknown")
+    
     var body: some View {
         
         ZStack {
@@ -24,6 +27,14 @@ struct TodaysFoodView: View {
                     AllFoodView()
                     
                 }
+           
+            NavigationLink(
+                "",
+                isActive: $showTargetFood) {
+                    FoodInfoView(food: targetFood)
+                    
+                }
+ 
             
             VStack(alignment: .leading, spacing: 20) {
                 VStack(spacing: 5) {
@@ -59,6 +70,10 @@ struct TodaysFoodView: View {
                             ForEach(foods.indices, id: \.self) { index in
                                 
                                 FoodHomeTileView(food: foods[index])
+                                    .onTapGesture {
+                                        targetFood = foods[index]
+                                        showTargetFood = true
+                                    }
                                 
                             }
                         } else {

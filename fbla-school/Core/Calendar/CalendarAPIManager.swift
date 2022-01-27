@@ -53,7 +53,10 @@ struct CalendarAPIManager {
     private static let sessionProcessingQueue = DispatchQueue(label: "SessionProcessingQueue")
     
     static func sendPublicGETRequest(apiKey: String, completion: @escaping (GoogleAPICalendar) -> Void) {
-        let url = URL(string: "https://www.googleapis.com/calendar/v3/calendars/c_74hh9q3ljg9ka060unme3fue48@group.calendar.google.com/events?key=\(apiKey)")
+        
+        print(Date.now.asDashedDateString())
+        
+        let url = URL(string: "https://www.googleapis.com/calendar/v3/calendars/c_74hh9q3ljg9ka060unme3fue48@group.calendar.google.com/events?key=\(apiKey)&orderBy=startTime&singleEvents=true&timeMin=\(Date.now.asDashedDateString())T00:00:00-08:00&maxResults=10")
         
         var request = URLRequest(url: url!)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")

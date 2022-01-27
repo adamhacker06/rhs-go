@@ -102,9 +102,26 @@ extension Date {
         return longDateString
     }
     
-    func asShortTimeString() -> String {
+    func asShortDateString() -> String {
+        var shortDateString: String {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "MM/dd"
+            return formatter.string(from: self)
+        }
+        
+        return shortDateString
+    }
+    
+    
+    func asShortTimeString(showAMPM: Bool) -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm"
+        formatter.dateFormat = "h:mm \(showAMPM ? "a" : "")"
+        return formatter.string(from: self)
+    }
+    
+    func asDashedDateString() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
         return formatter.string(from: self)
     }
     

@@ -48,10 +48,53 @@ struct TodaysCurrentCalendarView: View {
                     
                     if let events = calendar.items {
                         ForEach(events.indices, id: \.self) { index in
-                            
+                            let event = events[index]
                             // Add Tile View for Calendar
-                            Text(events[index].summary)
+                            
+                            HStack(spacing: 5) {
                                 
+                                HStack(spacing: 10) {
+                                    
+                                    if let dateString = event.start.dateTime {
+                                        Text(dateString.toDate(format: .RFC3339).asShortDateString())
+                                            .font(.custom("PublicSans-Medium", size: 20))
+                                            .foregroundColor(Color.theme.white)
+                                    }
+                                    
+                                    VStack(alignment: .leading, spacing: 0) {
+                                        Text(event.summary)
+                                            .font(.custom("PublicSans-Medium", size: 16))
+                                            .foregroundColor(Color.theme.white)
+                                        
+                                        if let location = event.location {
+                                            Text(location.toShortLocationForm())
+                                                .font(.custom("PublicSans-Light", size: 13))
+                                                .foregroundColor(Color.theme.white)
+                                        }
+                                    }
+                                }
+                                
+                                Spacer()
+                                
+                                if let dateString = event.start.dateTime {
+                                    Text(dateString.toDate(format: .RFC3339).asShortTimeString(showAMPM: true))
+                                        .font(.custom("PublicSans-Light", size: 16))
+                                        .foregroundColor(Color.theme.white)
+                                }
+                                    
+                               
+                                
+                            }
+                            .padding(.vertical, index % 2 == 0 ? 5 : 0)
+                            .padding(.horizontal, 5)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .background (
+                                
+                                Color.theme.darkerGreen.cornerRadius(5)
+                                    .opacity(index % 2 == 0 ? 1 : 0)
+                                
+                            )
+                            
                         }
                     } else {
                         Text("Unable to get calendar events")
@@ -61,6 +104,7 @@ struct TodaysCurrentCalendarView: View {
                 }
             } else {
                 Text("Unable to load calendar")
+                    .foregroundColor(Color.theme.white)
             }
             
         }
@@ -78,8 +122,12 @@ extension TodaysCurrentCalendarView {
     }
 }
 
-//struct TodaysCurrentCalendarView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TodaysCurrentCalendarView(calendar: .constant(GoogleAPICalendar(kind: "", etag: "", summary: "", updated: "", timeZone: "", accessRole: "", defaultReminders: [], nextSyncToken: "", events: [Event(kind: "", etag: "", id: "", status: "", htmlLink: "", created: "", updated: "", summary: "Test", creator: Creator(email: "", displayName: ""), organizer: Organizer(email: "", displayName: "", organizerSelf: ""), start: "", end: "", transparency: "", iCalUID: "", sequence: "", eventType: "")])))
-//    }
-//}
+struct TodaysCurrentCalendarView_Previews: PreviewProvider {
+    static var previews: some View {
+        TodaysCurrentCalendarView(calendar: .constant(GoogleAPICalendar(kind: "", etag: "", summary: "", updated: "", timeZone: "", accessRole: "", defaultReminders: [], nextSyncToken: nil, nextPageToken: nil, items: [
+            
+            CalendarItem(kind: "", etag: "", id: "", status: "", htmlLink: "", created: "", updated: "", summary: "Football Game", creator: CalendarCreator(email: "", displayName: ""), organizer: CalendarOrganizer(email: "", displayName: "", organizerSelf: false), start: CalendarDate(date: "", dateTime: nil), end: CalendarDate(date: "", dateTime: nil), transparency: nil, iCalUID: "", sequence: 1, eventType: "", location: "Redwood High School")
+            
+        ])))
+    }
+}

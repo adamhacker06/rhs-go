@@ -10,7 +10,8 @@ struct GoogleAPICalendar: Codable {
     let kind, etag, summary, updated: String
     let timeZone, accessRole: String
     let defaultReminders: [JSONAny]
-    let nextSyncToken: String
+    let nextSyncToken: String?
+    let nextPageToken: String?
     let items: [CalendarItem]
 }
 
@@ -26,6 +27,7 @@ struct CalendarItem: Codable {
     let iCalUID: String
     let sequence: Int
     let eventType: String
+    let location: String?
 }
 
 // MARK: - Creator
@@ -36,6 +38,7 @@ struct CalendarCreator: Codable {
 // MARK: - End
 struct CalendarDate: Codable {
     let date: String?
+    let dateTime: String?
 }
 
 // MARK: - Organizer
