@@ -21,7 +21,7 @@ struct GiganteaFeed: View {
     
     @StateObject var gigantea = GiganteaFeedViewModel()
     
-    @State private var articleStore: [Article] = []
+    @State private var articleStore: [Article]
     
     var url: URL
     var data: Data
@@ -31,7 +31,7 @@ struct GiganteaFeed: View {
         self.url = URL(string: "https://redwoodgigantea.com/feed/")!
         self.data = try! Data(contentsOf: url)
         
-        self.articleStore = []
+        var tempArticleStore: [Article] = []
         
         let parser = ArticlesParser(data: data)
         
@@ -45,10 +45,13 @@ struct GiganteaFeed: View {
                     parser.articles[i].paragraphContent = paragraphsParser.paragraphs
                 }
                 
-                articleStore.append(parser.articles[i])
-                
+                tempArticleStore.append(parser.articles[i])
+
             }
         }
+        
+        _articleStore = State(wrappedValue: tempArticleStore)
+     
     }
     
     var body: some View {
@@ -70,6 +73,10 @@ struct GiganteaFeed: View {
                             .foregroundColor(.white)
                             //.frame(maxWidth: .infinity, alignment: .leading)
                         
+                        Button("Tester") {
+                            print(gigantea.articles)
+                        }
+                        
                         Rectangle()
                             .foregroundColor(.white)
                             .padding(.top, 3)
@@ -78,10 +85,10 @@ struct GiganteaFeed: View {
                     }
                     .frame(maxWidth: .infinity, alignment: .trailing)
                     
-                    ForEach(gigantea.articles.indices) { index in
+                    ForEach(gigantea.articles, id: \.self) { article in
                         NavigationLink(
                             destination:
-                                ArticleView(article: gigantea.articles[index])
+                                ArticleView(article: article)
                                 .navigationTitle("")
                                 .navigationBarHidden(true)
                                 .navigationBarTitleDisplayMode(.inline),
@@ -90,7 +97,7 @@ struct GiganteaFeed: View {
                                 VStack(alignment: .leading, spacing: 0) {
                                     
                                     // Category
-                                    Text(gigantea.articles[index].category)
+                                    Text(article.category)
                                         .foregroundColor(.theme.lapiz)
                                         .font(.custom("PublicSans-Bold", size: 24))
                                         .padding(.bottom, 10)
@@ -100,13 +107,13 @@ struct GiganteaFeed: View {
                                         .padding(.bottom, 10)
                                     
                                     // Title
-                                    Text(gigantea.articles[index].title)
+                                    Text(article.title)
                                         .foregroundColor(.theme.purple)
                                         .font(.custom("PublicSans-SemiBold", size: 16))
                                         .padding(.bottom, 5)
                                     
                                     // Author
-                                    Text("by \(gigantea.articles[index].author)")
+                                    Text("by \(article.author)")
                                         .foregroundColor(.theme.lightPurple)
                                         .font(.custom("PublicSans-Regular", size: 14))
                                     

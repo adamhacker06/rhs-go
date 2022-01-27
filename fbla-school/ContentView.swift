@@ -41,8 +41,7 @@ struct ContentView: View {
                             .navigationTitle("")
                             .navigationBarHidden(true)
                             .environmentObject(data.user!)
-                        
-//                        HTMLTestView()
+
                     }
                     
 //                    Sandbox()

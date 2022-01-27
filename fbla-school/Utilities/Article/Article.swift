@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Article {
+struct Article: Hashable {
     var title = ""
     var author = ""
     var publishedDate = Date()

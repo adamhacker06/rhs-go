@@ -64,6 +64,10 @@ struct HomeView: View {
     var body: some View {
         ZStack {
             
+            NavigationLink("", isActive: $showGigante) {
+                GiganteaFeed()
+            }
+            
             Color.theme.purple.ignoresSafeArea()
             
             VStack {
@@ -79,15 +83,13 @@ struct HomeView: View {
                             
                             TodaysFoodView(foods: $data.foodDataManager.foods)
                             
-    //                        NavigationLink(isActive: $showGigante) {
-    //                            GiganteaFeed()
-    //                        } label: {
-    //                            Text("HEY")
-    //                        }
-                            
                             TodaysCurrentCalendarView(calendar: $data.calendarDataManager.calendar)
                                 .padding(.horizontal, 20)
 
+                            Button("View Articles") {
+                                showGigante = true
+                            }
+                            
                             Button("Sign out") {
                                 auth.signOut()
                             }
