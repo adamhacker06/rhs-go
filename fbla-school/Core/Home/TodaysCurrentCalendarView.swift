@@ -28,7 +28,7 @@ struct TodaysCurrentCalendarView: View {
                         Spacer()
                         
                         if calendar.items.count != 0 {
-                            Text("See more")
+                            Text("See all")
                                 .underline()
                                 .foregroundColor(.white)
                                 .font(.custom("PublicSans-Normal", size: 16))

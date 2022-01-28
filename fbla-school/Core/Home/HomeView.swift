@@ -9,6 +9,20 @@ import SwiftUI
 //import GoogleSignIn
 
 extension HomeView {
+//    private var profilePicture: some View {
+//        if let googleUser = data.user!.googleUser {
+//
+//            if let profile = googleUser.profile {
+//
+//                if let profileURL = profile.imageURL(withDimension: 50) {
+//                    return AsyncImage(url: profileURL)
+//                }
+//            }
+//        }
+//
+//
+//    }
+    
     private var headerComponents: some View {
         VStack(spacing: 20) {
             HStack(spacing: 0) {
@@ -23,6 +37,11 @@ extension HomeView {
                     .strokeBorder(Color.theme.lightPurple, lineWidth: 2)
                     .background(Circle().foregroundColor(.white))
                     .frame(maxWidth: 50, maxHeight: 50)
+//                    .overlay {
+//
+//                        profilePicture
+//
+//                    }
                 
             }
             
@@ -87,7 +106,6 @@ struct HomeView: View {
                                 .padding(.horizontal, 20)
                             
                             LatestArticleView(gigantea: $data.giganteaDataManager.gigantea)
-                                .padding(.horizontal, 20)
                             
                             Button("Sign out") {
                                 auth.signOut()

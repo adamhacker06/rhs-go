@@ -48,7 +48,7 @@ struct TodaysFoodView: View {
                         Spacer()
                         
                         if foods != nil {
-                            Text("See more")
+                            Text("See all")
                                 .underline()
                                 .foregroundColor(.white)
                                 .font(.custom("PublicSans-Normal", size: 16))
