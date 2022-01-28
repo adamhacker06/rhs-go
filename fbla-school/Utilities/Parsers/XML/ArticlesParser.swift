@@ -121,4 +121,5 @@ enum GiganteaCategories: String, CaseIterable {
     case photoGallery = "Photo Gallery"
     case government = "Government & Politics"
     case humansOfRedwood = "Humans of Redwood"
+    case news = "News"
 }

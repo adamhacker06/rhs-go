@@ -85,10 +85,9 @@ struct HomeView: View {
                             
                             TodaysCurrentCalendarView(calendar: $data.calendarDataManager.calendar)
                                 .padding(.horizontal, 20)
-
-                            Button("View Articles") {
-                                showGigante = true
-                            }
+                            
+                            LatestArticleView(gigantea: $data.giganteaDataManager.gigantea)
+                                .padding(.horizontal, 20)
                             
                             Button("Sign out") {
                                 auth.signOut()

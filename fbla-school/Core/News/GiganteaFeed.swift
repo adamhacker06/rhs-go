@@ -19,40 +19,15 @@ extension String {
 
 struct GiganteaFeed: View {
     
-    @StateObject var gigantea = GiganteaFeedViewModel()
+    @EnvironmentObject var data: DataManager
     
-    @State private var articleStore: [Article]
+//    @State private var articleStore: [Article]
     
-    var url: URL
-    var data: Data
-
-    init() {
-        
-        self.url = URL(string: "https://redwoodgigantea.com/feed/")!
-        self.data = try! Data(contentsOf: url)
-        
-        var tempArticleStore: [Article] = []
-        
-        let parser = ArticlesParser(data: data)
-        
-        if parser.parse() {
-            
-            for i in parser.articles.indices {
-                
-                let paragraphsParser = HTMLasXMLContentParser(data: parser.articles[i].htmlContent.asXMLDatafromString())
-                
-                if paragraphsParser.parse() {
-                    parser.articles[i].paragraphContent = paragraphsParser.paragraphs
-                }
-                
-                tempArticleStore.append(parser.articles[i])
-
-            }
-        }
-        
-        _articleStore = State(wrappedValue: tempArticleStore)
-     
-    }
+    @State private var showArticle: Bool = false
+    @State private var targetArticle: Article = Article()
+    
+//    var url: URL
+//    var artdata: Data
     
     var body: some View {
         ZStack {
@@ -60,11 +35,20 @@ struct GiganteaFeed: View {
             ScrollView {
                 VStack(spacing: 20) {
                     
-                    NavigationLink(destination: EmptyView()) {
-                        EmptyView()
-                            .navigationTitle("")
-                            .navigationBarHidden(true)
-                    }
+//                    NavigationLink(destination: EmptyView()) {
+//                        EmptyView()
+//                            .navigationTitle("")
+//                            .navigationBarHidden(true)
+//                    }
+                    
+                    NavigationLink(
+                        "",
+                        isActive: $showArticle) {
+                            ArticleView(article: targetArticle)
+                                .navigationTitle("Article")
+                                .navigationBarTitleDisplayMode(.inline)
+                            
+                        }
                     
                     VStack(alignment: .trailing, spacing: 0) {
                         
@@ -72,10 +56,6 @@ struct GiganteaFeed: View {
                             .font(.custom("PublicSans-SemiBold", size: 25))
                             .foregroundColor(.white)
                             //.frame(maxWidth: .infinity, alignment: .leading)
-                        
-                        Button("Tester") {
-                            print(gigantea.articles)
-                        }
                         
                         Rectangle()
                             .foregroundColor(.white)
@@ -85,51 +65,51 @@ struct GiganteaFeed: View {
                     }
                     .frame(maxWidth: .infinity, alignment: .trailing)
                     
-                    ForEach(gigantea.articles, id: \.self) { article in
-                        NavigationLink(
-                            destination:
-                                ArticleView(article: article)
-                                .navigationTitle("")
-                                .navigationBarHidden(true)
-                                .navigationBarTitleDisplayMode(.inline),
+                    if let gigantea = data.giganteaDataManager.gigantea {
+                        
+                        ForEach(gigantea.articles, id: \.self) { article in
                             
-                            label: {
-                                VStack(alignment: .leading, spacing: 0) {
-                                    
-                                    // Category
-                                    Text(article.category)
-                                        .foregroundColor(.theme.lapiz)
-                                        .font(.custom("PublicSans-Bold", size: 24))
-                                        .padding(.bottom, 10)
-                                    
-                                    // Divider
-                                    CustomDivider(color: .theme.lapiz, thickness: 2)
-                                        .padding(.bottom, 10)
-                                    
-                                    // Title
-                                    Text(article.title)
-                                        .foregroundColor(.theme.purple)
-                                        .font(.custom("PublicSans-SemiBold", size: 16))
-                                        .padding(.bottom, 5)
-                                    
-                                    // Author
-                                    Text("by \(article.author)")
-                                        .foregroundColor(.theme.lightPurple)
-                                        .font(.custom("PublicSans-Regular", size: 14))
-                                    
-                                }
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .padding()
-                                .background(Color.white.ignoresSafeArea().cornerRadius(15))
+                            VStack(alignment: .leading, spacing: 0) {
                                 
-                            })
+                                // Category
+                                Text(article.category)
+                                    .foregroundColor(.theme.lapiz)
+                                    .font(.custom("PublicSans-Bold", size: 24))
+                                    .padding(.bottom, 10)
+                                
+                                // Divider
+                                CustomDivider(color: .theme.lapiz, thickness: 2)
+                                    .padding(.bottom, 10)
+                                
+                                // Title
+                                Text(article.title)
+                                    .foregroundColor(.theme.purple)
+                                    .font(.custom("PublicSans-SemiBold", size: 16))
+                                    .padding(.bottom, 5)
+                                
+                                // Author
+                                Text("by \(article.author)")
+                                    .foregroundColor(.theme.lightPurple)
+                                    .font(.custom("PublicSans-Regular", size: 14))
+                                
+                            }
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding()
+                            .background(Color.white.ignoresSafeArea().cornerRadius(15))
+                            .onTapGesture {
+                                targetArticle = article
+                                showArticle = true
+                            }
+                            
+                        }
+                    } else {
+                        Text("unable to load articles")
                     }
+                    
+                    
                 }
                 .padding(.horizontal, 20)
             }
-        }
-        .onAppear {
-            gigantea.articles = articleStore
         }
     }
 }

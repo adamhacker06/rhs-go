@@ -15,9 +15,12 @@ class DataManager: ObservableObject {
     var didChange = PassthroughSubject<DataManager, Never>()
     @Published var user: User? { didSet { self.didChange.send(self) }}
     @Published var database = DatabaseManager() { didSet { self.didChange.send(self) }}
+    
     @Published var foodDataManager = FoodUserDefaultsManager(lastUpdated: Date(timeIntervalSince1970: 0), foods: nil) { didSet { self.didChange.send(self) }}
     
-    @Published var calendarDataManager = CalendarDefaultsManager(lastUpdated: Date(timeIntervalSince1970: 0), calendar: nil) { didSet { self.didChange.send(self) }}
+    @Published var calendarDataManager = CalendarDataManager(lastUpdated: Date(timeIntervalSince1970: 0), calendar: nil) { didSet { self.didChange.send(self) }}
+    
+    @Published var giganteaDataManager = GiganteaDataManager(lastUpdated: Date(timeIntervalSince1970: 0), gigantea: nil) { didSet { self.didChange.send(self) }}
     
     var handle: AuthStateDidChangeListenerHandle?
     

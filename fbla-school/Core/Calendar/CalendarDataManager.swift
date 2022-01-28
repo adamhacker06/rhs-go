@@ -1,22 +1,22 @@
 //
-//  FoodUserDefaultsManager.swift
+//  CalendarDataManager.swift
 //  Redwood HS Helper
 //
-//  Created by Adam Hacker on 10/3/21.
+//  Created by Adam Hacker on 1/27/22.
 //
 
 import Foundation
 
-struct FoodUserDefaultsManager: Codable {
+struct CalendarDataManager: Codable {
     
-    static func get() -> FoodUserDefaultsManager? {
+    static func get() -> CalendarDataManager? {
         let defaults = UserDefaults.standard
         
-        if let managerData = defaults.object(forKey: "foodManager") as? Data {
+        if let managerData = defaults.object(forKey: "calendarManager") as? Data {
         
             let decoder = JSONDecoder()
             
-            if let loadedManager = try? decoder.decode(FoodUserDefaultsManager.self, from: managerData) {
+            if let loadedManager = try? decoder.decode(CalendarDataManager.self, from: managerData) {
                 return loadedManager
             } else {
                 return nil
@@ -26,16 +26,15 @@ struct FoodUserDefaultsManager: Codable {
         }
     }
     
-    static func set(manager: FoodUserDefaultsManager) {
+    static func set(manager: CalendarDataManager) {
         let defaults = UserDefaults.standard
         let encoder = JSONEncoder()
         
         if let encodedManagerData = try? encoder.encode(manager) {
-            defaults.set(encodedManagerData, forKey: "foodManager")
+            defaults.set(encodedManagerData, forKey: "calendarManager")
         }
     }
     
     var lastUpdated: Date
-    var foods: [Food]?
-    
+    var calendar: GoogleAPICalendar?
 }

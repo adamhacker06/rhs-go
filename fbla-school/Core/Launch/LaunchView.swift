@@ -52,7 +52,7 @@ struct LaunchView: View {
             timerHandler()
         }
         .onAppear {
-            finishedUserDefaultsLoading = foodUserDefaultsHandler() && calendarFetchingHandler()
+            finishedUserDefaultsLoading = foodUserDefaultsHandler() && calendarFetchingHandler() && giganteaFetchingHandler()
         }
     }
     
@@ -149,8 +149,37 @@ struct LaunchView: View {
     func calendarFetchingHandler() -> Bool {
         CalendarAPIManager.sendPublicGETRequest(apiKey: "AIzaSyDrfhTME72TU21qT28bAvlVNLT24YfTfCE") { (calendar) in
             
-            data.calendarDataManager = CalendarDefaultsManager(lastUpdated: Date(), calendar: calendar)
+            data.calendarDataManager = CalendarDataManager(lastUpdated: Date(), calendar: calendar)
             
+        }
+        
+        return true
+    }
+    
+    func giganteaFetchingHandler() -> Bool {
+        
+        GiganteaNetworkManager.subscribeToData { articleData in
+            
+            let parser = ArticlesParser(data: articleData)
+            var articleStore: [Article] = []
+            
+            if parser.parse() {
+                
+                for i in parser.articles.indices {
+                    
+                    let paragraphsParser = HTMLasXMLContentParser(data: parser.articles[i].htmlContent.asXMLDatafromString())
+                    
+                    if paragraphsParser.parse() {
+                        parser.articles[i].paragraphContent = paragraphsParser.paragraphs
+                    }
+                    
+                    articleStore.append(parser.articles[i])
+
+                }
+             
+                data.giganteaDataManager = GiganteaDataManager(lastUpdated: Date(), gigantea: GiganteaModel(articles: articleStore))
+                
+            }
         }
         
         return true

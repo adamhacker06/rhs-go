@@ -50,7 +50,7 @@ struct CalendarAPIManager {
     }
     
     private var cancellable: AnyCancellable?
-    private static let sessionProcessingQueue = DispatchQueue(label: "SessionProcessingQueue")
+    private static let sessionProcessingQueue = DispatchQueue(label: "CalendarSessionProcessingQueue")
     
     static func sendPublicGETRequest(apiKey: String, completion: @escaping (GoogleAPICalendar) -> Void) {
         
@@ -68,8 +68,8 @@ struct CalendarAPIManager {
             })
             .decode(type: GoogleAPICalendar.self, decoder: JSONDecoder())
             .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { (suscriberCompletion) in
-                switch suscriberCompletion {
+            .sink(receiveCompletion: { (subscriberCompletion) in
+                switch subscriberCompletion {
                 case .finished:
                     // do something that you want to do when finished
                     break

@@ -9,11 +9,14 @@ import SwiftUI
 
 struct ArticleView: View {
     
+//    @Binding var showArticle: Bool = true
+    
     let article: Article
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack(alignment: .leading) {
+                
                 ForEach(article.paragraphContent.indices) { index in
                     Text(article.paragraphContent[index])
                         .frame(maxWidth: .infinity, alignment: .leading)

@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-class GiganteaFeedViewModel: ObservableObject {
+struct GiganteaModel: Codable {
     
-    @Published var articles = [Article]()
+    var articles: [Article] = []
     
 }
