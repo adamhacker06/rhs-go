@@ -11,8 +11,16 @@ struct LatestArticleView: View {
     
     @Binding var gigantea: GiganteaModel?
     
+    @State private var showAllArticles: Bool = false
+    
     var body: some View {
-        Group {
+        VStack {
+            
+            NavigationLink("", isActive: $showAllArticles) {
+                GiganteaFeed()
+            }
+
+            
             if let gigantea = gigantea {
                 if let firstArticle = gigantea.articles.first {
                     VStack(spacing: 20) {
@@ -33,6 +41,10 @@ struct LatestArticleView: View {
                                 Text("From the Redwood Gigantea")
                                     .font(.custom("PublicSans-Regular", size: 18))
                                     .foregroundColor(Color.theme.white)
+                                
+                                Button("view all articles") {
+                                    showAllArticles = true
+                                }
                             }
                         }
                         

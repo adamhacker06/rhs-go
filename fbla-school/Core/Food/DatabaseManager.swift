@@ -7,6 +7,7 @@
 
 import Foundation
 import FirebaseDatabase
+import FirebaseDatabaseSwift
 
 struct FoodMemoryCache {
     
@@ -130,7 +131,7 @@ class DatabaseManager: ObservableObject {
     
     func fetchReferenceFoodWeek(completion: @escaping (FoodWeek?, FirebaseFoodFetchError?) -> Void) {
         
-        db.child("meta").child("week").observeSingleEvent(of: .value) { snapshot in
+        db.child("meta").child("week").observeSingleEvent(of: DataEventType.value) { snapshot in
             
             guard let result = snapshot.value else { completion(nil, .invalidReferenceWeek); return }
             
@@ -144,7 +145,7 @@ class DatabaseManager: ObservableObject {
     }
     
     func fetchReference(completion: @escaping (Date?, FirebaseFoodFetchError?) -> Void) {
-        db.child("meta").child("ref").observeSingleEvent(of: .value) { [weak self] snapshot in
+        db.child("meta").child("ref").observeSingleEvent(of: DataEventType.value) { [weak self] snapshot in
             
             guard let result = snapshot.value else { completion(nil, .invalidReferenceDate); return }
             

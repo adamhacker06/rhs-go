@@ -18,33 +18,44 @@ struct Sandbox: View {
     
     var body: some View {
         
-        VStack {
-            if let imageURL = imageURL {
-                if #available(iOS 15.0, *) {
-                    AsyncImage(url: imageURL)
-                }
+//        VStack {
+//            if let imageURL = imageURL {
+//                if #available(iOS 15.0, *) {
+//                    AsyncImage(url: imageURL)
+//                }
+//            } else {
+//                Text("Image loading")
+//            }
+//
+//            Button("Sign Out") {
+//                auth.signOut()
+//            }
+//            Button("test") {
+//                vm.fetchImage(fileRef: "test.png") { url in
+//                    self.imageURL = url
+//                    print("FINISHED")
+//                }
+//            }
+//        }
+//        .onAppear {
+//            print("STRATING")
+//
+//            vm.fetchImage(fileRef: "test.png") { url in
+//                self.imageURL = url
+//                print("FINISHED")
+//            }
+//        }
+        
+        Button("Hello!") {
+            
+            if let jsonData = getSubjectJSONData() {
+                parseSubjectsJSON(data: jsonData)
             } else {
-                Text("Image loading")
+                print("Unable to get data.")
             }
-            
-            Button("Sign Out") {
-                auth.signOut()
-            }
-            Button("test") {
-                vm.fetchImage(fileRef: "test.png") { url in
-                    self.imageURL = url
-                    print("FINISHED")
-                }
-            }
+
         }
-        .onAppear {
-            print("STRATING")
-            
-            vm.fetchImage(fileRef: "test.png") { url in
-                self.imageURL = url
-                print("FINISHED")
-            }
-        }
+        
     }
 }
 

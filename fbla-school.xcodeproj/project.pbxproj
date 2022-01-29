@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E000298327A4FE5800157FE8 /* SubjectsDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E000298227A4FE5800157FE8 /* SubjectsDataManager.swift */; };
 		E00701902797F6BD005EEF41 /* HTMLTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E007018F2797F6BD005EEF41 /* HTMLTestView.swift */; };
 		E013743426D7474D00CA5CB7 /* AddToInstagramStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E013743326D7474D00CA5CB7 /* AddToInstagramStory.swift */; };
 		E013743726D7528700CA5CB7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E013743626D7528700CA5CB7 /* User.swift */; };
@@ -15,6 +16,9 @@
 		E01C400427A3899000CF1E6F /* CalendarDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01C400327A3899000CF1E6F /* CalendarDataManager.swift */; };
 		E01C400627A3C3D300CF1E6F /* LatestArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01C400527A3C3D300CF1E6F /* LatestArticleView.swift */; };
 		E02A205B26E29BDA00E90417 /* HTMLasXMLContentParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02A205A26E29BDA00E90417 /* HTMLasXMLContentParser.swift */; };
+		E05932B427A516F100FEDE11 /* EditSchedulePeriodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05932B327A516F100FEDE11 /* EditSchedulePeriodView.swift */; };
+		E05932B627A5179D00FEDE11 /* EditScheduleSubjectSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05932B527A5179D00FEDE11 /* EditScheduleSubjectSelector.swift */; };
+		E05932B827A51B8100FEDE11 /* ScheduleDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05932B727A51B8100FEDE11 /* ScheduleDataManager.swift */; };
 		E065E16127094C4F0095F676 /* FoodInfoScrollViewAtStartingPreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = E065E16027094C4F0095F676 /* FoodInfoScrollViewAtStartingPreferenceKey.swift */; };
 		E065E16327094C820095F676 /* FoodNutritionOverflowPreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = E065E16227094C820095F676 /* FoodNutritionOverflowPreferenceKey.swift */; };
 		E065E1662709721D0095F676 /* LaunchStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E065E1652709721D0095F676 /* LaunchStoryboard.storyboard */; };
@@ -98,6 +102,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E000298227A4FE5800157FE8 /* SubjectsDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectsDataManager.swift; sourceTree = "<group>"; };
 		E007018F2797F6BD005EEF41 /* HTMLTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLTestView.swift; sourceTree = "<group>"; };
 		E013743326D7474D00CA5CB7 /* AddToInstagramStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToInstagramStory.swift; sourceTree = "<group>"; };
 		E013743626D7528700CA5CB7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -106,6 +111,9 @@
 		E01C400327A3899000CF1E6F /* CalendarDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDataManager.swift; sourceTree = "<group>"; };
 		E01C400527A3C3D300CF1E6F /* LatestArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestArticleView.swift; sourceTree = "<group>"; };
 		E02A205A26E29BDA00E90417 /* HTMLasXMLContentParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLasXMLContentParser.swift; sourceTree = "<group>"; };
+		E05932B327A516F100FEDE11 /* EditSchedulePeriodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSchedulePeriodView.swift; sourceTree = "<group>"; };
+		E05932B527A5179D00FEDE11 /* EditScheduleSubjectSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScheduleSubjectSelector.swift; sourceTree = "<group>"; };
+		E05932B727A51B8100FEDE11 /* ScheduleDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDataManager.swift; sourceTree = "<group>"; };
 		E065E16027094C4F0095F676 /* FoodInfoScrollViewAtStartingPreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodInfoScrollViewAtStartingPreferenceKey.swift; sourceTree = "<group>"; };
 		E065E16227094C820095F676 /* FoodNutritionOverflowPreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodNutritionOverflowPreferenceKey.swift; sourceTree = "<group>"; };
 		E065E1652709721D0095F676 /* LaunchStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchStoryboard.storyboard; sourceTree = "<group>"; };
@@ -201,6 +209,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E000298127A4FE4A00157FE8 /* Subjects */ = {
+			isa = PBXGroup;
+			children = (
+				E000298227A4FE5800157FE8 /* SubjectsDataManager.swift */,
+			);
+			path = Subjects;
+			sourceTree = "<group>";
+		};
 		E007018E2797F6AC005EEF41 /* Test */ = {
 			isa = PBXGroup;
 			children = (
@@ -297,13 +313,14 @@
 		E0664AA526CF407200DDAEE4 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				E088889E279C8E9600653F6B /* Calendar */,
+				E000298127A4FE4A00157FE8 /* Subjects */,
 				E065E164270971F00095F676 /* Launch */,
 				E0AB6A5E26D20AD900B35EA4 /* Auth */,
 				E0AB6A6126D20B6800B35EA4 /* Home */,
 				E0F40D2E26DC69FA00AE9DD7 /* Edit Schedule */,
-				E0916D7626E04CE200CD13FB /* News */,
 				E073579A26E687C8005F2BE5 /* Food */,
+				E088889E279C8E9600653F6B /* Calendar */,
+				E0916D7626E04CE200CD13FB /* News */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -419,6 +436,7 @@
 		E0916D7626E04CE200CD13FB /* News */ = {
 			isa = PBXGroup;
 			children = (
+				E0916D7126E04C7400CD13FB /* Article */,
 				E0916D7726E04CFC00CD13FB /* GiganteaFeed.swift */,
 				E0916D7926E04FBE00CD13FB /* GiganteaModel.swift */,
 				E01C400127A3892E00CF1E6F /* GiganteaDataManager.swift */,
@@ -431,7 +449,6 @@
 			children = (
 				E007018E2797F6AC005EEF41 /* Test */,
 				E073579526E3D03B005F2BE5 /* Parsers */,
-				E0916D7126E04C7400CD13FB /* Article */,
 				E0F40D2B26DC32FE00AE9DD7 /* Data Manager */,
 				E013743526D7527E00CA5CB7 /* User */,
 				E0AB6A6326D20E8E00B35EA4 /* Auth */,
@@ -542,6 +559,9 @@
 			isa = PBXGroup;
 			children = (
 				E0F40D2F26DC6A0B00AE9DD7 /* EditScheduleView.swift */,
+				E05932B327A516F100FEDE11 /* EditSchedulePeriodView.swift */,
+				E05932B527A5179D00FEDE11 /* EditScheduleSubjectSelector.swift */,
+				E05932B727A51B8100FEDE11 /* ScheduleDataManager.swift */,
 			);
 			path = "Edit Schedule";
 			sourceTree = "<group>";
@@ -674,16 +694,19 @@
 				E06F5DC42749DDE400396A18 /* Sandbox.swift in Sources */,
 				E01B5DA02749E9610079B042 /* SandboxViewModel.swift in Sources */,
 				E08AF9A626D761E20070A252 /* BadGoogleOrganizationView.swift in Sources */,
+				E000298327A4FE5800157FE8 /* SubjectsDataManager.swift in Sources */,
 				E0664AA726CF408D00DDAEE4 /* LoginView.swift in Sources */,
 				E0AB6A7126D20F0800B35EA4 /* String.swift in Sources */,
 				E065E16A270A264E0095F676 /* TodaysFoodView.swift in Sources */,
 				E08ADE7B26E6C50C00AF8700 /* AllFoodView.swift in Sources */,
+				E05932B827A51B8100FEDE11 /* ScheduleDataManager.swift in Sources */,
 				E0664A9926CF392600DDAEE4 /* ContentView.swift in Sources */,
 				E0F40D1A26DB6B0D00AE9DD7 /* OtherExtensions.swift in Sources */,
 				E0BD57F726E81FEA000420BE /* FoodTileView.swift in Sources */,
 				E0AB6A6526D20EB100B35EA4 /* ColorPallete.swift in Sources */,
 				E01C400627A3C3D300CF1E6F /* LatestArticleView.swift in Sources */,
 				E0AB6A7226D20F0800B35EA4 /* Text.swift in Sources */,
+				E05932B427A516F100FEDE11 /* EditSchedulePeriodView.swift in Sources */,
 				E0F40D1826DB677800AE9DD7 /* ClassPeriod.swift in Sources */,
 				E073579C26E68E39005F2BE5 /* DatabaseManager.swift in Sources */,
 				E0AB6A6F26D20F0800B35EA4 /* View.swift in Sources */,
@@ -691,6 +714,7 @@
 				E06B708A26D32427000D944C /* HomeView.swift in Sources */,
 				E02A205B26E29BDA00E90417 /* HTMLasXMLContentParser.swift in Sources */,
 				E0664A9726CF392600DDAEE4 /* fbla_schoolApp.swift in Sources */,
+				E05932B627A5179D00FEDE11 /* EditScheduleSubjectSelector.swift in Sources */,
 				E065E16E270A74C00095F676 /* FoodUserDefaultsManager.swift in Sources */,
 				E013743426D7474D00CA5CB7 /* AddToInstagramStory.swift in Sources */,
 				E0AB6A7026D20F0800B35EA4 /* Int.swift in Sources */,

@@ -13,7 +13,7 @@ struct test {
     }
 }
 
-enum ClassPeriod: Int, CaseIterable {
+enum ClassPeriod: Int, Codable, CaseIterable {
     
     enum TimeType {
         case starting

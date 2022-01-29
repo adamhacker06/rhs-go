@@ -12,8 +12,9 @@ struct EditScheduleView: View {
     @EnvironmentObject var data: DataManager
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @State var test: Bool = false
-    @State var showPrefirst: Bool = false
+    @State private var test: Bool = false
+    @State private var showPrefirst: Bool = false
+    @State private var showSheet: Bool = false
     
     var body: some View {
         ZStack {
@@ -89,83 +90,14 @@ struct EditScheduleView: View {
     }
 }
 
-struct EditSchedulePeriodView: View {
-    
-    @EnvironmentObject var data: DataManager
-    
-    let period: ClassPeriod
-    @Binding var test: Bool
-    
-    var body: some View {
-        
-        VStack(spacing: 0) {
-            HStack(spacing: 0) {
-                Text("Period \(period.rawValue)")
-                    .font(.custom("PublicSans-SemiBold", size: 18))
-                    .foregroundColor(.black)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                
-                HStack(spacing: 10) {
-                    Text("Custom")
-                        .font(.custom("PublicSans-Regular", size: 12))
-                    
-                    Button(action: { test.toggle() }, label: {
-                        ToggleField(isOn: $test)
-                    })
-                    
-                }
-                
-            }
-            .padding(.vertical, 0)
-            
-            HStack(spacing: 0) {
-                VStack(spacing: 8) {
-                    Text(period.getTime(for: .starting))
-                        .font(.custom("PublicSans-SemiBold", size: 18))
-                    
-                    Button(action: {
-                        
-                        // Change class
-                        
-                    }, label: {
-                        HStack(spacing: 0) {
-                            Text("Change Class ")
-                            Image(systemName: "chevron.right")
-                        }
-                        .foregroundColor(.theme.lapiz)
-                        .font(.custom("PublicSans-Medium", size: 10))
-                        .padding(5)
-                        .background(Color.white.cornerRadius(5))
-                            
-                    })
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                
-                VStack(spacing: 8) {
-                    Text(data.user!.schedule?[period]?.className ?? "Unselected")
-                        .font(.custom("PublicSans-SemiBold", size: 12))
-                    
-                    Text(data.user!.schedule?[period]?.teacher ?? "")
-                        .font(.custom("PublicSans-Regular", size: 10))
-                }
-                .frame(maxWidth: .infinity, alignment: .trailing)
-            }
-            .padding(10)
-            .foregroundColor(.white)
-            .background(Color.theme.lapiz.cornerRadius(5))
-            .padding(.vertical, 10)
-        }
-    }
-}
-
 struct EditScheduleView_Previews: PreviewProvider {
     static var previews: some View {
         EditScheduleView().environmentObject(DataManager(withDevUser: DevUser(email: "test@test.com", firstName: "Adam", lastName: "Hacker")
                                                          , schedule: [.fourth:SchoolClass(teacher: "Mr. Gurerro", namePrefix: .mr, className: "Spanish 2")]
         ))
         
-        EditScheduleView().environmentObject(DataManager(withDevUser: DevUser(email: "test@test.com", firstName: "Adam", lastName: "Hacker")
-                                                         , schedule: [.fourth:SchoolClass(teacher: "Mr. Gurerro", namePrefix: .mr, className: "Spanish 2")]
-        )).previewDevice("iPod touch (7th generation)")
+//        EditScheduleView().environmentObject(DataManager(withDevUser: DevUser(email: "test@test.com", firstName: "Adam", lastName: "Hacker")
+//                                                         , schedule: [.fourth:SchoolClass(teacher: "Mr. Gurerro", namePrefix: .mr, className: "Spanish 2")]
+//        )).previewDevice("iPod touch (7th generation)")
     }
 }

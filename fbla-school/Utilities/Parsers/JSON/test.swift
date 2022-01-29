@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 struct ClassData: Codable {
     let subjects: [[String: [SchoolClass]]]
@@ -24,6 +26,10 @@ enum NamePrefix: String, Codable {
 }
 
 func parseSubjectsJSON(data: Data) {
+    
+    let db = Firestore.firestore()
+    let collection = db.collection("subjects")
+    
     let decoder = JSONDecoder()
     let data = try? decoder.decode(ClassData.self, from: data)
     
@@ -31,9 +37,22 @@ func parseSubjectsJSON(data: Data) {
         
         for (subjectName, classArray) in subject {
             
+            let subjectPath = collection.document("\(subjectName)")
+            
+//            subjectPath.setData([
+//                "subjectName":subjectName
+//            ])
+            
             print (subjectName)
             
             for schoolClass in classArray {
+//                subjectPath.collection("classes").addDocument(data: [
+//
+//                    "className":schoolClass.className,
+//                    "namePrefix":schoolClass.namePrefix.rawValue,
+//                    "teacher":schoolClass.teacher
+//
+//                ])
                 print(schoolClass.className + " is taught by " + schoolClass.teacher)
             }
         }
