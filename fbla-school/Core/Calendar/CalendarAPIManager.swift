@@ -52,32 +52,38 @@ struct CalendarAPIManager {
     private var cancellable: AnyCancellable?
     private static let sessionProcessingQueue = DispatchQueue(label: "CalendarSessionProcessingQueue")
     
-    static func sendPublicGETRequest(apiKey: String, completion: @escaping (GoogleAPICalendar) -> Void) {
+    static func sendPublicGETRequest(completion: @escaping (GoogleAPICalendar) -> Void) {
         
         print(Date.now.asDashedDateString())
         
-        let url = URL(string: "https://www.googleapis.com/calendar/v3/calendars/c_74hh9q3ljg9ka060unme3fue48@group.calendar.google.com/events?key=\(apiKey)&orderBy=startTime&singleEvents=true&timeMin=\(Date.now.asDashedDateString())T00:00:00-08:00&maxResults=10")
+        if let apiKey = Bundle.main.infoDictionary?["GOOGLE_CALENDAR_API_KEY"] as? String {
+            
+            let url = URL(string: "https://www.googleapis.com/calendar/v3/calendars/c_74hh9q3ljg9ka060unme3fue48@group.calendar.google.com/events?key=\(apiKey)&orderBy=startTime&singleEvents=true&timeMin=\(Date.now.asDashedDateString())T00:00:00-08:00&maxResults=10")
+            
+            var request = URLRequest(url: url!)
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            
+            let _ = URLSession.shared.dataTaskPublisher(for: request)
+                .subscribe(on: Self.sessionProcessingQueue)
+                .map({
+                    return $0.data
+                })
+                .decode(type: GoogleAPICalendar.self, decoder: JSONDecoder())
+                .receive(on: DispatchQueue.main)
+                .sink(receiveCompletion: { (subscriberCompletion) in
+                    switch subscriberCompletion {
+                    case .finished:
+                        // do something that you want to do when finished
+                        break
+                    case .failure(let error):
+                        print("ERROR: \(error)")
+                    }
+                }, receiveValue: { (calendar) in
+                    completion(calendar)
+                })
+        }
         
-        var request = URLRequest(url: url!)
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        let _ = URLSession.shared.dataTaskPublisher(for: request)
-            .subscribe(on: Self.sessionProcessingQueue)
-            .map({
-                return $0.data
-            })
-            .decode(type: GoogleAPICalendar.self, decoder: JSONDecoder())
-            .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { (subscriberCompletion) in
-                switch subscriberCompletion {
-                case .finished:
-                    // do something that you want to do when finished
-                    break
-                case .failure(let error):
-                    print("ERROR: \(error)")
-                }
-            }, receiveValue: { (calendar) in
-                completion(calendar)
-            })
+        
     }
 }

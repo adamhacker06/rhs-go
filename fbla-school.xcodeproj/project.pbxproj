@@ -111,6 +111,7 @@
 		E01C400327A3899000CF1E6F /* CalendarDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDataManager.swift; sourceTree = "<group>"; };
 		E01C400527A3C3D300CF1E6F /* LatestArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestArticleView.swift; sourceTree = "<group>"; };
 		E02A205A26E29BDA00E90417 /* HTMLasXMLContentParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLasXMLContentParser.swift; sourceTree = "<group>"; };
+		E0451C8227A9000300B088C7 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		E05932B327A516F100FEDE11 /* EditSchedulePeriodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSchedulePeriodView.swift; sourceTree = "<group>"; };
 		E05932B527A5179D00FEDE11 /* EditScheduleSubjectSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScheduleSubjectSelector.swift; sourceTree = "<group>"; };
 		E05932B727A51B8100FEDE11 /* ScheduleDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDataManager.swift; sourceTree = "<group>"; };
@@ -298,6 +299,7 @@
 				E0664A9C26CF392700DDAEE4 /* Preview Content */,
 				E06F5DC32749DDE400396A18 /* Sandbox.swift */,
 				E01B5D9F2749E9610079B042 /* SandboxViewModel.swift */,
+				E0451C8227A9000300B088C7 /* Config.xcconfig */,
 			);
 			path = "fbla-school";
 			sourceTree = "<group>";
@@ -739,6 +741,7 @@
 /* Begin XCBuildConfiguration section */
 		E0664AA026CF392700DDAEE4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E0451C8227A9000300B088C7 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -801,6 +804,7 @@
 		};
 		E0664AA126CF392700DDAEE4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E0451C8227A9000300B088C7 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;

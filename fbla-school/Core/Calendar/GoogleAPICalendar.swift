@@ -1,7 +1,4 @@
-// This file was generated from JSON Schema using quicktype, do not modify it directly.
-// To parse the JSON, add this file to your project and do:
-//
-//   let welcome = try? newJSONDecoder().decode(Welcome.self, from: jsonData)
+// This file was generated from JSON Schema using QuickType
 
 import Foundation
 
@@ -60,8 +57,8 @@ class JSONNull: Codable, Hashable {
         return true
     }
 
-    public var hashValue: Int {
-        return 0
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(0)
     }
 
     public init() {}

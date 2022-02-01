@@ -18,7 +18,7 @@ struct HTMLTestView: View {
             Text("Hello!")
             
             Button("Test") {
-                CalendarAPIManager.sendPublicGETRequest(apiKey: "AIzaSyDrfhTME72TU21qT28bAvlVNLT24YfTfCE") { response in
+                CalendarAPIManager.sendPublicGETRequest() { response in
                     print(response)
                 }
             }

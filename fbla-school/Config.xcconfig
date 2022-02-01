@@ -1,0 +1,11 @@
+//
+//  Config.xcconfig
+//  fbla-school
+//
+//  Created by Adam Hacker on 1/31/22.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+GOOGLE_CALENDAR_API_KEY = AIzaSyDrfhTME72TU21qT28bAvlVNLT24YfTfCE

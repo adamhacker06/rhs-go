@@ -147,7 +147,7 @@ struct LaunchView: View {
     }
     
     func calendarFetchingHandler() -> Bool {
-        CalendarAPIManager.sendPublicGETRequest(apiKey: "AIzaSyDrfhTME72TU21qT28bAvlVNLT24YfTfCE") { (calendar) in
+        CalendarAPIManager.sendPublicGETRequest() { (calendar) in
             
             data.calendarDataManager = CalendarDataManager(lastUpdated: Date(), calendar: calendar)
             
