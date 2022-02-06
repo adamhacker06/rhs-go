@@ -16,8 +16,9 @@
 		E01C400427A3899000CF1E6F /* CalendarDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01C400327A3899000CF1E6F /* CalendarDataManager.swift */; };
 		E01C400627A3C3D300CF1E6F /* LatestArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01C400527A3C3D300CF1E6F /* LatestArticleView.swift */; };
 		E02A205B26E29BDA00E90417 /* HTMLasXMLContentParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02A205A26E29BDA00E90417 /* HTMLasXMLContentParser.swift */; };
+		E0451C8427A903ED00B088C7 /* SchoolSubjectItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0451C8327A903ED00B088C7 /* SchoolSubjectItemView.swift */; };
 		E05932B427A516F100FEDE11 /* EditSchedulePeriodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05932B327A516F100FEDE11 /* EditSchedulePeriodView.swift */; };
-		E05932B627A5179D00FEDE11 /* EditScheduleSubjectSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05932B527A5179D00FEDE11 /* EditScheduleSubjectSelector.swift */; };
+		E05932B627A5179D00FEDE11 /* EditScheduleSubjectSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05932B527A5179D00FEDE11 /* EditScheduleSubjectSelectorView.swift */; };
 		E05932B827A51B8100FEDE11 /* ScheduleDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05932B727A51B8100FEDE11 /* ScheduleDataManager.swift */; };
 		E065E16127094C4F0095F676 /* FoodInfoScrollViewAtStartingPreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = E065E16027094C4F0095F676 /* FoodInfoScrollViewAtStartingPreferenceKey.swift */; };
 		E065E16327094C820095F676 /* FoodNutritionOverflowPreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = E065E16227094C820095F676 /* FoodNutritionOverflowPreferenceKey.swift */; };
@@ -112,8 +113,9 @@
 		E01C400527A3C3D300CF1E6F /* LatestArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestArticleView.swift; sourceTree = "<group>"; };
 		E02A205A26E29BDA00E90417 /* HTMLasXMLContentParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLasXMLContentParser.swift; sourceTree = "<group>"; };
 		E0451C8227A9000300B088C7 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		E0451C8327A903ED00B088C7 /* SchoolSubjectItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolSubjectItemView.swift; sourceTree = "<group>"; };
 		E05932B327A516F100FEDE11 /* EditSchedulePeriodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSchedulePeriodView.swift; sourceTree = "<group>"; };
-		E05932B527A5179D00FEDE11 /* EditScheduleSubjectSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScheduleSubjectSelector.swift; sourceTree = "<group>"; };
+		E05932B527A5179D00FEDE11 /* EditScheduleSubjectSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScheduleSubjectSelectorView.swift; sourceTree = "<group>"; };
 		E05932B727A51B8100FEDE11 /* ScheduleDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDataManager.swift; sourceTree = "<group>"; };
 		E065E16027094C4F0095F676 /* FoodInfoScrollViewAtStartingPreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodInfoScrollViewAtStartingPreferenceKey.swift; sourceTree = "<group>"; };
 		E065E16227094C820095F676 /* FoodNutritionOverflowPreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodNutritionOverflowPreferenceKey.swift; sourceTree = "<group>"; };
@@ -562,8 +564,9 @@
 			children = (
 				E0F40D2F26DC6A0B00AE9DD7 /* EditScheduleView.swift */,
 				E05932B327A516F100FEDE11 /* EditSchedulePeriodView.swift */,
-				E05932B527A5179D00FEDE11 /* EditScheduleSubjectSelector.swift */,
+				E05932B527A5179D00FEDE11 /* EditScheduleSubjectSelectorView.swift */,
 				E05932B727A51B8100FEDE11 /* ScheduleDataManager.swift */,
+				E0451C8327A903ED00B088C7 /* SchoolSubjectItemView.swift */,
 			);
 			path = "Edit Schedule";
 			sourceTree = "<group>";
@@ -694,6 +697,7 @@
 				E06B709726D3251A000D944C /* TextInputField.swift in Sources */,
 				E0BD580026E83958000420BE /* Food.swift in Sources */,
 				E06F5DC42749DDE400396A18 /* Sandbox.swift in Sources */,
+				E0451C8427A903ED00B088C7 /* SchoolSubjectItemView.swift in Sources */,
 				E01B5DA02749E9610079B042 /* SandboxViewModel.swift in Sources */,
 				E08AF9A626D761E20070A252 /* BadGoogleOrganizationView.swift in Sources */,
 				E000298327A4FE5800157FE8 /* SubjectsDataManager.swift in Sources */,
@@ -716,7 +720,7 @@
 				E06B708A26D32427000D944C /* HomeView.swift in Sources */,
 				E02A205B26E29BDA00E90417 /* HTMLasXMLContentParser.swift in Sources */,
 				E0664A9726CF392600DDAEE4 /* fbla_schoolApp.swift in Sources */,
-				E05932B627A5179D00FEDE11 /* EditScheduleSubjectSelector.swift in Sources */,
+				E05932B627A5179D00FEDE11 /* EditScheduleSubjectSelectorView.swift in Sources */,
 				E065E16E270A74C00095F676 /* FoodUserDefaultsManager.swift in Sources */,
 				E013743426D7474D00CA5CB7 /* AddToInstagramStory.swift in Sources */,
 				E0AB6A7026D20F0800B35EA4 /* Int.swift in Sources */,

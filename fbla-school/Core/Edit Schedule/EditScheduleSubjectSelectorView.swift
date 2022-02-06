@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum Subjects: String, Identifiable, CaseIterable {
+enum SubjectsEnum: String, Identifiable, CaseIterable {
     case ASB = "ASB"
     case academies = "Academies"
     case CTE = "CTE"
@@ -105,51 +105,77 @@ enum Subjects: String, Identifiable, CaseIterable {
     }
 }
 
-struct SchoolSubjectItemView: View {
+struct EditScheduleFooterCompartmentSizePreferenceKey: PreferenceKey {
     
-    let associatedEnum: Subjects
+    static var defaultValue: CGFloat = .zero
     
-    var body: some View {
-        HStack(alignment: .top) {
-        
-            Text(associatedEnum.emoji)
-                .padding()
-                .shadow(radius: 5)
-                .font(.largeTitle)
-                .frame(maxWidth: 70, maxHeight: 70)
-                .overlay(
-                    Circle().stroke(Color.theme.lapiz, lineWidth: 2)
-                )
-            
-            Spacer(minLength: 30)
-            
-            VStack(alignment: .trailing, spacing: 0) {
-                Text(associatedEnum.rawValue)
-                    .font(.custom("PublicSans-Bold", size: 18))
-                    .foregroundColor(Color.theme.lapiz)
-                
-                Text(associatedEnum.description)
-                    .font(.custom("PublicSans-Light", size: 14))
-                    .foregroundColor(Color.gray)
-                    .multilineTextAlignment(.trailing)
-            }
-        }
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+        value = nextValue()
     }
 }
 
-struct EditScheduleSubjectSelector: View {
+struct EditScheduleSubjectSelectorView: View {
     
     @EnvironmentObject var data: DataManager
+    @Environment(\.presentationMode) var presentationMode
+    
+    @State private var childPaddingSize: CGFloat = .zero
     
     var classPeriod: ClassPeriod
     
     var body: some View {
-        VStack {
-            ScrollView {
-                ForEach(Subjects.allCases) { subjectEnum in
-                    SchoolSubjectItemView(associatedEnum: subjectEnum)
-                        .padding()
+        ZStack {
+            
+            NavigationView {
+                ScrollView {
+                    ForEach(SubjectsEnum.allCases) { subjectEnum in
+                        SchoolSubjectItemView(associatedSubjectEnum: subjectEnum, childPaddingAmount: $childPaddingSize)
+                            .padding()
+                    }
                 }
+                .navigationTitle("")
+                .navigationBarHidden(true)
+            }
+            
+            VStack {
+                
+                Spacer()
+                
+                HStack {
+                    
+//                    Image(systemName: "xmark")
+//                        .resizable()
+//                        .frame(width: 20, height: 20)
+//                        .foregroundColor(Color.theme.darkRed)
+//
+//                    Spacer()
+                    
+                    Text("Editing Period \(classPeriod.rawValue)")
+                        .font(.custom("PublicSans-Bold", size: 24))
+                        .foregroundColor(Color.theme.white)
+                    
+//                    Spacer()
+//
+//                    Image(systemName: "checkmark")
+//                        .resizable()
+//                        .frame(width: 20, height: 20)
+//                        .foregroundColor(Color.theme.darkGreen)
+//
+                    
+                }
+                .padding()
+                .background {
+                    GeometryReader { proxy in
+                        Color.theme.lapiz.cornerRadius(10)
+                            .preference(key: EditScheduleFooterCompartmentSizePreferenceKey.self, value: proxy.size.height)
+                            .onPreferenceChange(EditScheduleFooterCompartmentSizePreferenceKey.self) { preferences in
+                                childPaddingSize = preferences
+                            }
+                    }
+                }
+                .padding()
+                .shadow(radius: 10)
+                
             }
         }
     }
@@ -157,6 +183,7 @@ struct EditScheduleSubjectSelector: View {
 
 struct EditScheduleClassSelector_Previews: PreviewProvider {
     static var previews: some View {
-        EditScheduleSubjectSelector(classPeriod: .first)
+        EditScheduleSubjectSelectorView(classPeriod: .first)
+            .environmentObject(DataManager())
     }
 }

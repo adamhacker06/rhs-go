@@ -37,4 +37,6 @@ struct ScheduleDataManager: Codable {
     
     var lastUpdated: Date
     var schedule: [ClassPeriod:SchoolClass]?
+    
+    var cache = SchoolClassesCache()
 }

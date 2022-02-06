@@ -14,6 +14,7 @@ struct ClassData: Codable {
 }
 
 struct SchoolClass: Codable {
+    @DocumentID var id = UUID().uuidString
     let teacher: String
     let namePrefix: NamePrefix
     let className: String

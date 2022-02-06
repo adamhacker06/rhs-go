@@ -34,6 +34,13 @@ public extension String {
         return string
     }
     
+    func firstName() -> String {
+        self.components(separatedBy: " ")[0]
+    }
+    
+    func lastName() -> String {
+        self.components(separatedBy: " ")[1]
+    }
     
     // note to future adam: you are working on getting the time stuff and date stuff working for the calendar
     

@@ -72,7 +72,7 @@ struct EditSchedulePeriodView: View {
                     }
                     .frame(maxWidth: .infinity, alignment: .trailing)
                     .sheet(isPresented: $showSheet) {
-                        EditScheduleSubjectSelector(classPeriod: period)
+                        EditScheduleSubjectSelectorView(classPeriod: period)
                     }
                     
 //                } else {

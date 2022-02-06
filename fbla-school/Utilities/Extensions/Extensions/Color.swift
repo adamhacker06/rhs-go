@@ -29,6 +29,8 @@ extension Color {
 struct ColorTheme {
     
     let lapiz = Color("LapizColor")
+    let paleBlue = Color("PaleBlueColor")
+    let darkBlue = Color("DarkBlueColor")
     
     let black = Color("BlackColor")
     let white = Color("WhiteColor")
@@ -44,7 +46,7 @@ struct ColorTheme {
     let darkRed = Color("DarkRedColor")
     
     var asArray: [Color] {
-        return [lapiz, black, white, darkerGreen, darkGreen, lightGreen, purple, lightPurple, candyPurple, lightBlue, skyBlue]
+        return [lapiz, black, white, darkerGreen, darkGreen, lightGreen, purple, lightPurple, candyPurple, lightBlue, skyBlue, paleBlue, darkBlue]
     }
     
 }

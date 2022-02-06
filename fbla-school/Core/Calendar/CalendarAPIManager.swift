@@ -82,8 +82,5 @@ struct CalendarAPIManager {
                     completion(calendar)
                 })
         }
-        
-        
-        
     }
 }
