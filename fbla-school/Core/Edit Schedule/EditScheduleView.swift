@@ -60,7 +60,7 @@ struct EditScheduleView: View {
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack(spacing: 0) {
                         
-                        ForEach((data.user!.hasPrefirst ? 0 : 1)..<7) { classPeriod in
+                        ForEach((data.scheduleDataManager.hasPrefirst ? 0 : 1)..<7) { classPeriod in
                             
                             VStack(spacing: 0) {
                                 

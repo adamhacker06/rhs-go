@@ -22,7 +22,7 @@ class DataManager: ObservableObject {
     
     @Published var giganteaDataManager = GiganteaDataManager(lastUpdated: Date(timeIntervalSince1970: 0), gigantea: nil) { didSet { self.didChange.send(self) }}
     
-    @Published var scheduleDataManager = ScheduleDataManager(lastUpdated: Date(timeIntervalSince1970: 0), schedule: nil) { didSet { self.didChange.send(self) }}
+    @Published var scheduleDataManager = ScheduleDataManager(lastUpdated: Date(timeIntervalSince1970: 0)) { didSet { self.didChange.send(self) }}
     
     var handle: AuthStateDidChangeListenerHandle?
     

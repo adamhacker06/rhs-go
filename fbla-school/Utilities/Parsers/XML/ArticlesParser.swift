@@ -26,6 +26,8 @@ class ArticlesParser: XMLParser {
     private var textStore: String = ""
     private var nextArticle: Article? = nil
     
+    private var isInvalidCategoryType: Bool = false
+    
     override init(data: Data) {
         super.init(data: data)
         self.delegate = self
@@ -70,7 +72,13 @@ extension ArticlesParser: XMLParserDelegate {
         switch elementName {
         case "item":
             if let article = nextArticle {
-                self.articles.append(article)
+                
+                if !isInvalidCategoryType {
+                    self.articles.append(article)
+                }
+                
+                isInvalidCategoryType = false
+            
             }
             
         case "title":
@@ -83,7 +91,12 @@ extension ArticlesParser: XMLParserDelegate {
             nextArticle?.publishedDate = dateFormater.date(from: textStore)!
             
         case "category":
-            if GiganteaCategories.allCases.contains(where: { $0.rawValue == textStore } ) {
+            if GiganteaCategories.allCases.contains(where: { $0.rawValue == textStore && !isInvalidCategoryType } ) {
+                
+                if GiganteaCategories.invalidCategories.contains(where: { $0.rawValue == textStore } ) {
+                    isInvalidCategoryType = true
+                }
+                
                 nextArticle?.category = textStore
             }
             
@@ -122,4 +135,9 @@ enum GiganteaCategories: String, CaseIterable {
     case government = "Government & Politics"
     case humansOfRedwood = "Humans of Redwood"
     case news = "News"
+    case podcast = "Podcasts"
+    
+    static var invalidCategories: [GiganteaCategories] {
+        return [.podcast, .photoGallery]
+    }
 }

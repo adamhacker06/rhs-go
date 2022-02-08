@@ -107,6 +107,10 @@ struct HomeView: View {
                             
                             LatestArticleView(gigantea: $data.giganteaDataManager.gigantea)
                             
+                            Button("Print schedule") {
+                                print(data.scheduleDataManager.schedule)
+                            }
+ 
                             Button("Sign out") {
                                 auth.signOut()
                             }

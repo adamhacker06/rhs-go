@@ -33,10 +33,16 @@ struct ScheduleDataManager: Codable {
         if let encodedManagerData = try? encoder.encode(manager) {
             defaults.set(encodedManagerData, forKey: "scheduleManager")
         }
+
     }
     
     var lastUpdated: Date
-    var schedule: [ClassPeriod:SchoolClass]?
+    
+    var schedule: [ClassPeriod:SchoolClass] = [:]
+    var hasPrefirst: Bool {
+        guard let _ = schedule[ClassPeriod.prefirst] else { return false }
+        return true
+    }
     
     var cache = SchoolClassesCache()
 }

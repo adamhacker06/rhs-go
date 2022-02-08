@@ -39,8 +39,12 @@ public extension String {
     }
     
     func lastName() -> String {
-        self.components(separatedBy: " ")[1]
-    }
+        if self.components(separatedBy: " ").count >= 2 {
+            return self.components(separatedBy: " ")[1]
+        } else {
+            return "Error"
+        }
+    } 
     
     // note to future adam: you are working on getting the time stuff and date stuff working for the calendar
     

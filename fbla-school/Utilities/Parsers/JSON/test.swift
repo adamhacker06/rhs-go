@@ -13,8 +13,8 @@ struct ClassData: Codable {
     let subjects: [[String: [SchoolClass]]]
 }
 
-struct SchoolClass: Codable {
-    @DocumentID var id = UUID().uuidString
+struct SchoolClass: Codable, Equatable, Hashable {
+    //@DocumentID var id = UUID().uuidString
     let teacher: String
     let namePrefix: NamePrefix
     let className: String
@@ -24,6 +24,7 @@ enum NamePrefix: String, Codable {
     case mr = "Mr."
     case mrs = "Mrs."
     case ms = "Ms."
+    case none = ""
 }
 
 func parseSubjectsJSON(data: Data) {

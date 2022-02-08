@@ -52,7 +52,7 @@ struct LaunchView: View {
             timerHandler()
         }
         .onAppear {
-            finishedUserDefaultsLoading = foodUserDefaultsHandler() && calendarFetchingHandler() && giganteaFetchingHandler()
+            finishedUserDefaultsLoading = foodUserDefaultsHandler() && calendarFetchingHandler() && giganteaFetchingHandler() && scheduleUserDefaultsHandler()
         }
     }
     
@@ -75,7 +75,7 @@ struct LaunchView: View {
     func foodFetchingHandler() {
         
         // Make sure to switch date to today
-        let targetDate = Date().fromDateComponents(month: 10, day: 15, year: 2021)
+        let targetDate = Date()//.fromDateComponents(month: 10, day: 15, year: 2021)
         
         data.database.fetchReference { (refDate, error) in
             if let error = error {
@@ -183,6 +183,17 @@ struct LaunchView: View {
         }
         
         return true
+    }
+    
+    func scheduleUserDefaultsHandler() -> Bool {
+        guard let scheduleDataManager = ScheduleDataManager.get() else { print("nope"); return true }
+        
+        print("got it!")
+        print(scheduleDataManager)
+        data.scheduleDataManager = scheduleDataManager
+        
+        return true
+        
     }
     
     //    func calendarJSONDecoder() -> GoogleAPICalendar {

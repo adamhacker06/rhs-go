@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		E000298327A4FE5800157FE8 /* SubjectsDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E000298227A4FE5800157FE8 /* SubjectsDataManager.swift */; };
 		E00701902797F6BD005EEF41 /* HTMLTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E007018F2797F6BD005EEF41 /* HTMLTestView.swift */; };
+		E00DB59027B0DFAA001C37CE /* SubjectsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DB58F27B0DFAA001C37CE /* SubjectsEnum.swift */; };
+		E00DB59227B0DFE2001C37CE /* SchoolClassSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00DB59127B0DFE2001C37CE /* SchoolClassSelectionView.swift */; };
 		E013743426D7474D00CA5CB7 /* AddToInstagramStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E013743326D7474D00CA5CB7 /* AddToInstagramStory.swift */; };
 		E013743726D7528700CA5CB7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E013743626D7528700CA5CB7 /* User.swift */; };
 		E01B5DA02749E9610079B042 /* SandboxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01B5D9F2749E9610079B042 /* SandboxViewModel.swift */; };
@@ -105,6 +107,8 @@
 /* Begin PBXFileReference section */
 		E000298227A4FE5800157FE8 /* SubjectsDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectsDataManager.swift; sourceTree = "<group>"; };
 		E007018F2797F6BD005EEF41 /* HTMLTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLTestView.swift; sourceTree = "<group>"; };
+		E00DB58F27B0DFAA001C37CE /* SubjectsEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectsEnum.swift; sourceTree = "<group>"; };
+		E00DB59127B0DFE2001C37CE /* SchoolClassSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolClassSelectionView.swift; sourceTree = "<group>"; };
 		E013743326D7474D00CA5CB7 /* AddToInstagramStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToInstagramStory.swift; sourceTree = "<group>"; };
 		E013743626D7528700CA5CB7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E01B5D9F2749E9610079B042 /* SandboxViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SandboxViewModel.swift; sourceTree = "<group>"; };
@@ -562,11 +566,13 @@
 		E0F40D2E26DC69FA00AE9DD7 /* Edit Schedule */ = {
 			isa = PBXGroup;
 			children = (
+				E05932B727A51B8100FEDE11 /* ScheduleDataManager.swift */,
 				E0F40D2F26DC6A0B00AE9DD7 /* EditScheduleView.swift */,
 				E05932B327A516F100FEDE11 /* EditSchedulePeriodView.swift */,
 				E05932B527A5179D00FEDE11 /* EditScheduleSubjectSelectorView.swift */,
-				E05932B727A51B8100FEDE11 /* ScheduleDataManager.swift */,
 				E0451C8327A903ED00B088C7 /* SchoolSubjectItemView.swift */,
+				E00DB59127B0DFE2001C37CE /* SchoolClassSelectionView.swift */,
+				E00DB58F27B0DFAA001C37CE /* SubjectsEnum.swift */,
 			);
 			path = "Edit Schedule";
 			sourceTree = "<group>";
@@ -675,6 +681,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E00DB59027B0DFAA001C37CE /* SubjectsEnum.swift in Sources */,
 				E0916D7026DCA3E800CD13FB /* ToggleField.swift in Sources */,
 				E0916D7826E04CFC00CD13FB /* GiganteaFeed.swift in Sources */,
 				E06B709926D331F9000D944C /* CustomDivider.swift in Sources */,
@@ -698,6 +705,7 @@
 				E0BD580026E83958000420BE /* Food.swift in Sources */,
 				E06F5DC42749DDE400396A18 /* Sandbox.swift in Sources */,
 				E0451C8427A903ED00B088C7 /* SchoolSubjectItemView.swift in Sources */,
+				E00DB59227B0DFE2001C37CE /* SchoolClassSelectionView.swift in Sources */,
 				E01B5DA02749E9610079B042 /* SandboxViewModel.swift in Sources */,
 				E08AF9A626D761E20070A252 /* BadGoogleOrganizationView.swift in Sources */,
 				E000298327A4FE5800157FE8 /* SubjectsDataManager.swift in Sources */,

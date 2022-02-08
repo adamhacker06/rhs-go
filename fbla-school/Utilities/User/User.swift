@@ -13,24 +13,23 @@ class User: ObservableObject {
     var googleUser: GIDGoogleUser?
     let profileInfo: GoogleProfileInfo
     
-    let schedule: [ClassPeriod:SchoolClass]?
+    //let schedule: [ClassPeriod:SchoolClass]?
     
-    var hasPrefirst: Bool {
-        guard let _ = schedule?[ClassPeriod.prefirst] else { return false }
-        return true
-    }
+//    var hasPrefirst: Bool {
+//        guard let _ = schedule?[ClassPeriod.prefirst] else { return false }
+//        return true
+//    }
     
     init(withUser user: GIDGoogleUser) {
         self.googleUser = user
-        print("LOOK HERE! \(self.googleUser)")
         self.profileInfo = GoogleProfileInfo(withUser: user)
-        self.schedule = nil
+//        self.schedule = nil
     }
     
     init(withDevUser user: DevUser, schedule: [ClassPeriod:SchoolClass]? = nil) {
         self.googleUser = nil
         self.profileInfo = GoogleProfileInfo(withDevUser: user)
-        self.schedule = schedule
+//        self.schedule = schedule
     }
     
 }

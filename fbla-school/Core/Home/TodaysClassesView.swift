@@ -7,6 +7,24 @@
 
 import SwiftUI
 
+extension TodaysClassesView {
+    private func editButton(labelText: String) -> some View {
+        NavigationLink(
+            destination:
+                EditScheduleView()
+                .navigationTitle("")
+                .navigationBarHidden(true)
+            ,
+            isActive: $showEditSchedule,
+            label: {
+                Text(labelText)
+                    .underline()
+                    .foregroundColor(.white)
+                    .font(.custom("PublicSans-Normal", size: 16))
+            })
+    }
+}
+
 struct TodaysClassesView: View {
     
     @EnvironmentObject var data: DataManager
@@ -21,8 +39,10 @@ struct TodaysClassesView: View {
                     .foregroundColor(.white)
                     .font(.custom("PublicSans-SemiBold", size: 18))
                 
-                Image(systemName: "chevron.down")
-                    .foregroundColor(.white)
+                editButton(labelText: "Edit")
+
+//                Image(systemName: "chevron.down")
+//                    .foregroundColor(.white)
             }
             
             CustomDivider(color: .white, thickness: 5)
@@ -30,27 +50,16 @@ struct TodaysClassesView: View {
             
             VStack(spacing: 0) {
                 
-                if let _ = data.user!.schedule {
-                    ForEach((data.user!.hasPrefirst ? 0 : 1)..<7) { classPeriod in
-                        ClassOverView(schoolClass: data.user!.schedule?[ClassPeriod(rawValue: classPeriod)!] ?? SchoolClass(teacher: "Unselected", namePrefix: .mr, className: "Unselected"), classPeriod: ClassPeriod(rawValue: classPeriod)!)
+                if data.scheduleDataManager.schedule != [:] {
+                    
+                    ForEach((data.scheduleDataManager.hasPrefirst ? 0 : 1)..<7) { classPeriod in
+                        ClassOverView(schoolClass: data.scheduleDataManager.schedule[ClassPeriod(rawValue: classPeriod)!] ?? SchoolClass(teacher: "Unselected", namePrefix: .mr, className: "Unselected"), classPeriod: ClassPeriod(rawValue: classPeriod)!)
                             .padding(.top, 18)
                     }
+                    
                 } else {
                     
-                    NavigationLink(
-                        destination:
-                            EditScheduleView()
-                            .navigationTitle("")
-                            .navigationBarHidden(true)
-                        ,
-                        isActive: $showEditSchedule,
-                        label: {
-                            Text("Click here to set up a schedule")
-                                .font(.system(size: 16))
-                                .foregroundColor(.white)
-                                .underline()
-                                .multilineTextAlignment(.center)
-                        })
+                    editButton(labelText: "Click here to set up a schedule")
                         .padding(.top, 18)
                     
                 }
@@ -81,10 +90,11 @@ struct ClassOverView: View {
             VStack(alignment: .trailing, spacing: 4) {
                 Text(schoolClass.className)
                     .foregroundColor(.theme.lapiz)
+                    .multilineTextAlignment(.trailing)
                     .font(.custom("PublicSans-SemiBold", size: 14))
                 
-                Text("Room 8")
-                    .font(.custom("PublicSans-Regular", size: 9))
+                Text(schoolClass.namePrefix.rawValue + " " + schoolClass.teacher.lastName())
+                    .font(.custom("PublicSans-Regular", size: 12))
                     .opacity(schoolClass.className == "Unselected" ? 0 : 1)
                 
             }

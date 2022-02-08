@@ -24,15 +24,15 @@ struct EditSchedulePeriodView: View {
                     .foregroundColor(.black)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
-                HStack(spacing: 10) {
-                    Text("Custom")
-                        .font(.custom("PublicSans-Regular", size: 12))
-                    
-                    Button(action: { test.toggle() }, label: {
-                        ToggleField(isOn: $test)
-                    })
-                    
-                }
+//                HStack(spacing: 10) {
+//                    Text("Custom")
+//                        .font(.custom("PublicSans-Regular", size: 12))
+//
+//                    Button(action: { test.toggle() }, label: {
+//                        ToggleField(isOn: $test)
+//                    })
+//
+//                }
                 
             }
             .padding(.vertical, 0)
@@ -53,7 +53,7 @@ struct EditSchedulePeriodView: View {
                             Image(systemName: "chevron.right")
                         }
                         .foregroundColor(.theme.lapiz)
-                        .font(.custom("PublicSans-Medium", size: 10))
+                        .font(.custom("PublicSans-Medium", size: 14))
                         .padding(5)
                         .background(Color.white.cornerRadius(5))
                             
@@ -62,17 +62,20 @@ struct EditSchedulePeriodView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 
 //                if let schedule = data.scheduleDataManager.schedule {
-                    VStack(spacing: 8) {
+                VStack(alignment: .trailing, spacing: 2) {
                         
-                        Text(data.scheduleDataManager.schedule?[period]?.className ?? "Unselected")
-                            .font(.custom("PublicSans-SemiBold", size: 12))
+                        Text(data.scheduleDataManager.schedule[period]?.className ?? "Unselected")
+                            .font(.custom("PublicSans-SemiBold", size: 16))
+                            .multilineTextAlignment(.trailing)
                         
-                        Text(data.scheduleDataManager.schedule?[period]?.teacher ?? "")
-                            .font(.custom("PublicSans-Regular", size: 10))
+                        Text(data.scheduleDataManager.schedule[period]?.teacher ?? "")
+                            .font(.custom("PublicSans-Regular", size: 14))
+                            .multilineTextAlignment(.trailing)
                     }
                     .frame(maxWidth: .infinity, alignment: .trailing)
                     .sheet(isPresented: $showSheet) {
                         EditScheduleSubjectSelectorView(classPeriod: period)
+                            .environment(\.showingSheet, $showSheet)
                     }
                     
 //                } else {
