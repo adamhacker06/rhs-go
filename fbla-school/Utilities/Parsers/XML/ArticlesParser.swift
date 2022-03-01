@@ -36,7 +36,7 @@ class ArticlesParser: XMLParser {
 
 extension ArticlesParser: XMLParserDelegate {
     
-    // Executes at every tag, if statement only applies if the tag is a opening "item" tag
+    // Executes at every opening tag, if statement only applies if the tag is a opening "item" tag
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
         
         self.currentElement = elementName
@@ -66,7 +66,7 @@ extension ArticlesParser: XMLParserDelegate {
         
     }
     
-    // Executes at every tag, if statement only applies if the tag is a closing "item" tag
+    // Executes at every closing tag, if statement only applies if the tag is a closing "item" tag
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         
         switch elementName {
@@ -136,8 +136,11 @@ enum GiganteaCategories: String, CaseIterable {
     case humansOfRedwood = "Humans of Redwood"
     case news = "News"
     case podcast = "Podcasts"
+    case uncategorized = "Uncategorized"
+    case video = "Video"
     
     static var invalidCategories: [GiganteaCategories] {
-        return [.podcast, .photoGallery]
+        return [.podcast, .photoGallery, .uncategorized, .video]
     }
+    
 }

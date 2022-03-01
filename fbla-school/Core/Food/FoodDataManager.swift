@@ -7,16 +7,16 @@
 
 import Foundation
 
-struct FoodUserDefaultsManager: Codable {
+struct FoodDataManager: Codable {
     
-    static func get() -> FoodUserDefaultsManager? {
+    static func get() -> FoodDataManager? {
         let defaults = UserDefaults.standard
         
         if let managerData = defaults.object(forKey: "foodManager") as? Data {
         
             let decoder = JSONDecoder()
             
-            if let loadedManager = try? decoder.decode(FoodUserDefaultsManager.self, from: managerData) {
+            if let loadedManager = try? decoder.decode(FoodDataManager.self, from: managerData) {
                 return loadedManager
             } else {
                 return nil
@@ -26,7 +26,7 @@ struct FoodUserDefaultsManager: Codable {
         }
     }
     
-    static func set(manager: FoodUserDefaultsManager) {
+    static func set(manager: FoodDataManager) {
         let defaults = UserDefaults.standard
         let encoder = JSONEncoder()
         
@@ -37,5 +37,7 @@ struct FoodUserDefaultsManager: Codable {
     
     var lastUpdated: Date
     var foods: [Food]?
+    
+    var isUpdating: Bool = false
     
 }

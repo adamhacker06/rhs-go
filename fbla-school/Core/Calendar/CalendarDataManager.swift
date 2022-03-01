@@ -37,4 +37,6 @@ struct CalendarDataManager: Codable {
     
     var lastUpdated: Date
     var calendar: GoogleAPICalendar?
+    
+    var isUpdating: Bool = false
 }

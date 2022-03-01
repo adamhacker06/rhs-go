@@ -16,24 +16,18 @@ struct LatestArticleView: View {
     var body: some View {
         VStack {
             
-            NavigationLink("", isActive: $showAllArticles) {
-                GiganteaFeed()
-            }
-
-            
             if let gigantea = gigantea {
                 if let firstArticle = gigantea.articles.first {
                     VStack(spacing: 20) {
                         HStack {
-                            Text("🗞")
-                                .font(.system(size: 30))
-                                .padding(5)
-                                .background(Color.theme.darkRed)
-                                .cornerRadius(10)
+//                            Text("🗞")
+//                                .font(.system(size: 30))
+//                                .padding(5)
+//                                .background(Color.theme.lapiz)
+//                                .cornerRadius(10)
                             
-                            Spacer()
-                            
-                            VStack(alignment: .trailing, spacing: 2) {
+                            VStack(alignment: .leading, spacing: 2) {
+                                
                                 Text("The Latest and Greatest")
                                     .font(.custom("PublicSans-SemiBold", size: 24))
                                     .foregroundColor(Color.theme.white)
@@ -42,14 +36,31 @@ struct LatestArticleView: View {
                                     .font(.custom("PublicSans-Regular", size: 18))
                                     .foregroundColor(Color.theme.white)
                                 
-                                Button("view all articles") {
-                                    showAllArticles = true
-                                }
                             }
+                            
+                            Spacer()
+                            
                         }
                         
-                        Text(firstArticle.title)
-                            .foregroundColor(Color.theme.white)
+                        VStack(alignment: .leading, spacing: 3) {
+                            Text(firstArticle.title)
+                                .font(.custom("PublicSans-Medium", size: 20))
+                            
+                            Text("By " + firstArticle.author)
+                                .font(.custom("PublicSans-Regular", size: 17))
+                        }
+                        .foregroundColor(Color.white)
+                        .padding(10)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .background(Color.theme.lightPurple.cornerRadius(5))
+                        
+                        Button(action: { showAllArticles = true } ) {
+                            Text("Read more")
+                                .underline()
+                                .foregroundColor(.white)
+                                .font(.custom("PublicSans-Normal", size: 16))
+                                .frame(maxWidth: .infinity, alignment: .trailing)
+                        }
                         
                     }
                     .padding(20)
@@ -59,8 +70,17 @@ struct LatestArticleView: View {
                 }
             }
         }
-        .background(Color.theme.candyPurple)
-        
+        .background(
+            ZStack {
+                NavigationLink("", isActive: $showAllArticles) {
+                    GiganteaFeed()
+                        .navigationBarTitle("")
+                        .navigationBarHidden(true)
+                }
+                
+                Color.theme.purple
+            }
+        )
     }
 }
 

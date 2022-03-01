@@ -21,12 +21,18 @@ struct ToggleField: View {
                     .foregroundColor(.white)
                     .frame(width: 16, height: 16)
                     .matchedGeometryEffect(id: "toggle", in: animation)
+                    .onTapGesture {
+                        isOn = true
+                    }
                     
             } else {
                 Circle()
                     .foregroundColor(.theme.lightBlue)
                     .frame(width: 16, height: 16)
                     .matchedGeometryEffect(id: "toggle", in: animation)
+                    .onTapGesture {
+                        isOn = false
+                    }
 
             }
         }

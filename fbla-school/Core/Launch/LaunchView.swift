@@ -28,7 +28,7 @@ struct LaunchView: View {
             Color.theme.lapiz.ignoresSafeArea()
             
             VStack(spacing: 0) {
-                Image("rhs_blue")
+                Image("rhs_logo")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(maxWidth: 100, maxHeight: 100)
@@ -74,14 +74,20 @@ struct LaunchView: View {
     
     func foodFetchingHandler() {
         
+        // Marks the loading property as "true"
+        data.foodDataManager.isUpdating = true
+        
         // Make sure to switch date to today
-        let targetDate = Date()//.fromDateComponents(month: 10, day: 15, year: 2021)
+        let targetDate = Date().fromDateComponents(month: 10, day: 15, year: 2021)
         
         data.database.fetchReference { (refDate, error) in
             if let error = error {
                 print(error)
-                data.foodDataManager = FoodUserDefaultsManager(lastUpdated: Date(), foods: nil)
-                FoodUserDefaultsManager.set(manager: data.foodDataManager)
+                data.foodDataManager = FoodDataManager(lastUpdated: Date(), foods: nil)
+                FoodDataManager.set(manager: data.foodDataManager)
+                
+                data.foodDataManager.isUpdating = false
+                
                 return
             }
             
@@ -90,8 +96,10 @@ struct LaunchView: View {
                 data.database.fetchReferenceFoodWeek { (refWeek, error) in
                     if let error = error {
                         print(error)
-                        data.foodDataManager = FoodUserDefaultsManager(lastUpdated: Date(), foods: nil)
-                        FoodUserDefaultsManager.set(manager: data.foodDataManager)
+                        data.foodDataManager = FoodDataManager(lastUpdated: Date(), foods: nil)
+                        FoodDataManager.set(manager: data.foodDataManager)
+                        
+                        data.foodDataManager.isUpdating = false
                         return
                     }
                     
@@ -105,15 +113,18 @@ struct LaunchView: View {
                             
                             if let error = error {
                                 print(error)
-                                data.foodDataManager = FoodUserDefaultsManager(lastUpdated: Date(), foods: nil)
-                                FoodUserDefaultsManager.set(manager: data.foodDataManager)
+                                data.foodDataManager = FoodDataManager(lastUpdated: Date(), foods: nil)
+                                FoodDataManager.set(manager: data.foodDataManager)
+                                
+                                data.foodDataManager.isUpdating = false
                                 return
                             }
                             
                             if let food = food {
-                                data.foodDataManager = FoodUserDefaultsManager(lastUpdated: Date(), foods: food)
+                                data.foodDataManager = FoodDataManager(lastUpdated: Date(), foods: food)
                                 
-                                FoodUserDefaultsManager.set(manager: data.foodDataManager)
+                                FoodDataManager.set(manager: data.foodDataManager)
+                                data.foodDataManager.isUpdating = false
                             }
                         }
                     }
@@ -147,9 +158,26 @@ struct LaunchView: View {
     }
     
     func calendarFetchingHandler() -> Bool {
-        CalendarAPIManager.sendPublicGETRequest() { (calendar) in
+        
+        data.calendarDataManager.isUpdating = true
+        
+        CalendarAPIManager.sendPublicGETRequest() { (calendar, error) in
             
+            guard let calendar = calendar else {
+                
+                if let error = error {
+                    print("ERROR :\(error.localizedDescription)")
+                } else {
+                    print("Unknown error occured when fetching calendar data")
+                }
+
+                data.calendarDataManager.isUpdating = false
+                return
+            }
+
             data.calendarDataManager = CalendarDataManager(lastUpdated: Date(), calendar: calendar)
+            
+            data.calendarDataManager.isUpdating = false
             
         }
         
@@ -186,10 +214,9 @@ struct LaunchView: View {
     }
     
     func scheduleUserDefaultsHandler() -> Bool {
-        guard let scheduleDataManager = ScheduleDataManager.get() else { print("nope"); return true }
+        guard var scheduleDataManager = ScheduleDataManager.get() else { return true }
         
-        print("got it!")
-        print(scheduleDataManager)
+        scheduleDataManager.cache = SchoolClassesCache()
         data.scheduleDataManager = scheduleDataManager
         
         return true

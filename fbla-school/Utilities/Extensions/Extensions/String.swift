@@ -14,6 +14,7 @@ public extension String {
         case ddMMyyyy = "dd/MM/yyyy HH:mm"
         case RFC3339 = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
         case yyyyMMdd = "yyyy-MM-dd"
+    
     }
     // Returns a Date from the String executed on. If failed, returns Jan 1 1900.
     func toDate(format: DateFormats = DateFormats.ddMMyyyy) -> Date {

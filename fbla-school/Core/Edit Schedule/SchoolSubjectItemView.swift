@@ -26,11 +26,20 @@ struct ShowingAddClassSheetKey: EnvironmentKey {
     static let defaultValue: Binding<Bool>? = nil
 }
 
+struct ContentTypeKey: EnvironmentKey {
+    static let defaultValue: MessageContentTypes? = nil
+}
+
 extension EnvironmentValues {
     var showingSheet: Binding<Bool>? {
             get { self[ShowingAddClassSheetKey.self] }
             set { self[ShowingAddClassSheetKey.self] = newValue }
         }
+    
+    var contentType: MessageContentTypes? {
+        get { self[ContentTypeKey.self] }
+        set { self[ContentTypeKey.self] = newValue }
+    }
 }
 
 struct SchoolSubjectItemView: View {
@@ -44,12 +53,10 @@ struct SchoolSubjectItemView: View {
     let classPeriod: ClassPeriod
     
     var body: some View {
-        VStack {
-            NavigationLink("", isActive: $showSelectionScreen) {
-                SchoolClassSelectionView(associatedEnum: associatedSubjectEnum, classPeriod: classPeriod)
-            }
+    
             
-            HStack(alignment: .top) {
+            
+            HStack(alignment: .center) {
                 
                 Text(associatedSubjectEnum.emoji)
                     .padding()
@@ -78,7 +85,12 @@ struct SchoolSubjectItemView: View {
             .onTapGesture {
                 showSelectionScreen = true
             }
-        }
+            .background {
+                NavigationLink("", isActive: $showSelectionScreen) {
+                    SchoolClassSelectionView(childPaddingAmount: $childPaddingAmount, associatedEnum: associatedSubjectEnum, classPeriod: classPeriod)
+                }
+            }
+        
     }
 }
 

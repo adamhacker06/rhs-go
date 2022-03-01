@@ -6,22 +6,17 @@
 //
 
 import SwiftUI
+import Social
 
 extension TodaysClassesView {
     private func editButton(labelText: String) -> some View {
-        NavigationLink(
-            destination:
-                EditScheduleView()
-                .navigationTitle("")
-                .navigationBarHidden(true)
-            ,
-            isActive: $showEditSchedule,
-            label: {
-                Text(labelText)
-                    .underline()
-                    .foregroundColor(.white)
-                    .font(.custom("PublicSans-Normal", size: 16))
-            })
+        
+        Button(action: { showEditSchedule = true } ) {
+            Text(labelText)
+                .underline()
+                .foregroundColor(.white)
+                .font(.custom("PublicSans-Normal", size: 16))
+        }
     }
 }
 
@@ -29,6 +24,8 @@ struct TodaysClassesView: View {
     
     @EnvironmentObject var data: DataManager
     @Binding var showEditSchedule: Bool
+    
+    @State private var showSharingScreen: Bool = false
     
     var body: some View {
         VStack(spacing: 0) {
@@ -40,9 +37,7 @@ struct TodaysClassesView: View {
                     .font(.custom("PublicSans-SemiBold", size: 18))
                 
                 editButton(labelText: "Edit")
-
-//                Image(systemName: "chevron.down")
-//                    .foregroundColor(.white)
+                
             }
             
             CustomDivider(color: .white, thickness: 5)
@@ -50,11 +45,14 @@ struct TodaysClassesView: View {
             
             VStack(spacing: 0) {
                 
-                if data.scheduleDataManager.schedule != [:] {
+                if !data.scheduleDataManager.schedule.isEmpty {
                     
-                    ForEach((data.scheduleDataManager.hasPrefirst ? 0 : 1)..<7) { classPeriod in
-                        ClassOverView(schoolClass: data.scheduleDataManager.schedule[ClassPeriod(rawValue: classPeriod)!] ?? SchoolClass(teacher: "Unselected", namePrefix: .mr, className: "Unselected"), classPeriod: ClassPeriod(rawValue: classPeriod)!)
-                            .padding(.top, 18)
+                    ForEach(0..<7) { classPeriod in
+                        
+                        if let schoolClass = data.scheduleDataManager.schedule.get(for: ClassPeriod(rawValue: classPeriod)!) {
+                            ClassOverView(schoolClass: schoolClass, classPeriod: ClassPeriod(rawValue: classPeriod)!)
+                                .padding(.top, 18)
+                        }
                     }
                     
                 } else {
@@ -64,15 +62,62 @@ struct TodaysClassesView: View {
                     
                 }
             }
+            .padding(.bottom)
+            
+            CustomDivider(color: Color(hex: 0xf5f5f5), thickness: 5)
+            
+            HStack(spacing: 10) {
+                Spacer()
+                Image(systemName: "square.and.arrow.up")
+                    .foregroundColor(.white)
+                    .font(.title)
+                    .onTapGesture {
+                        
+                    showSharingScreen = true
+                    
+                    }
+                
+            }
+            .padding(.top)
+            
         }
         .frame(maxWidth: .infinity)
         .padding([.top, .horizontal], 15)
         .padding(.bottom, 18)
-        .background(Color.theme.lapiz)
+        .background(
+            
+            ZStack {
+                
+                NavigationLink("", isActive: $showSharingScreen) {
+                    ShareScheduleView()
+                        .navigationTitle("")
+                        .navigationBarHidden(true)
+                    
+                }
+                
+                NavigationLink("", isActive: $showEditSchedule) {
+                    EditScheduleView()
+                    .navigationTitle("")
+                    .navigationBarHidden(true)
+                }
+                
+                Color.theme.lapiz
+                
+            }
+        )
         .cornerRadius(10)
         
-        
     }
+}
+
+func actionSheet(image: UIImage) {
+    let activityVC = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+    
+    let scenes = UIApplication.shared.connectedScenes
+    let windowScene = scenes.first as? UIWindowScene
+    
+    windowScene?.windows.first?.rootViewController?
+        .present(activityVC, animated: true, completion: nil)
 }
 
 struct ClassOverView: View {
@@ -82,20 +127,21 @@ struct ClassOverView: View {
     
     var body: some View {
         HStack(spacing: 0) {
-            Text(classPeriod.getTime(for: .starting))
+            Text("\(classPeriod.rawValue)" +  " | " + classPeriod.getTime(for: .starting))
                 .font(.custom("PublicSans-SemiBold", size: 18))
                 .foregroundColor(.white)
                 .frame(maxWidth: .infinity)
             
             VStack(alignment: .trailing, spacing: 4) {
-                Text(schoolClass.className)
+                Text(schoolClass.title)
                     .foregroundColor(.theme.lapiz)
                     .multilineTextAlignment(.trailing)
                     .font(.custom("PublicSans-SemiBold", size: 14))
                 
-                Text(schoolClass.namePrefix.rawValue + " " + schoolClass.teacher.lastName())
+                Text(schoolClass.namePrefix.rawValue + " " + schoolClass.administrator.lastName())
+                    .foregroundColor(Color.black)
                     .font(.custom("PublicSans-Regular", size: 12))
-                    .opacity(schoolClass.className == "Unselected" ? 0 : 1)
+                    .opacity(schoolClass.title == "Unselected" ? 0 : 1)
                 
             }
             .padding(6)
@@ -111,10 +157,11 @@ struct YourDayView_Previews: PreviewProvider {
         ZStack {
             Color.white.ignoresSafeArea()
             
-            let data = DataManager(withDevUser: DevUser(email: "test@test.com", firstName: "Adam", lastName: "Hacker"), schedule: nil)
-            let data2 = DataManager(withDevUser: DevUser(email: "test@test.com", firstName: "Adam", lastName: "Hacker"), schedule: [.first:SchoolClass(teacher: "Mr. Guerror", namePrefix: .mr, className: "Spanish 2")])
+//            let data = DataManager(withDevUser: DevUser(email: "test@test.com", firstName: "Adam", lastName: "Hacker"), schedule: nil)
+//            let data2 = DataManager(withDevUser: DevUser(email: "test@test.com", firstName: "Adam", lastName: "Hacker"), schedule: [.first:SchoolClass(teacher: "Mr. Guerror", namePrefix: .mr, className: "Spanish 2", email: "Unknown")])
             
-            TodaysClassesView(showEditSchedule: .constant(false)).environmentObject(data2)
+            TodaysClassesView(showEditSchedule: .constant(false))
+//                .environmentObject(data2)
         }
     }
 }

@@ -50,33 +50,25 @@ struct FoodInfoView: View {
                     
                     Spacer()
                     
-                    Text("!")
-                        .foregroundColor(.white)
-                        .font(.custom("PublicSans-Medium", size: 16))
-                        .frame(maxWidth: 30, maxHeight: 30)
-                        .background(
-                            Circle()
-                                .strokeBorder(Color.theme.darkRed, lineWidth: 1)
-                                .frame(maxWidth: 40, maxHeight: 40)
-                                .background(Color.theme.orange.cornerRadius(.infinity))
-                        )
+//                    Text("!")
+//                        .foregroundColor(.white)
+//                        .font(.custom("PublicSans-Medium", size: 16))
+//                        .frame(maxWidth: 30, maxHeight: 30)
+//                        .background(
+//                            Circle()
+//                                .strokeBorder(Color.theme.darkRed, lineWidth: 1)
+//                                .frame(maxWidth: 40, maxHeight: 40)
+//                                .background(Color.theme.orange.cornerRadius(.infinity))
+//                        )
                 }
                 .padding(.horizontal, 20)
                 
                 VStack(spacing: 0) {
                     
-                    AsyncImage(url: URL(string: "https://picsum.photos/200")) { image in
-                        image
-                            .resizable()
-                            .padding()
-                            .background(Color.gray)
-                            .clipShape(Circle())
-                            .frame(maxWidth: 150, maxHeight: 150)
-                            .padding(.bottom, 15)
-                        
-                    } placeholder: {
-                        ProgressView()
-                    }
+                    Text(Date.now.withCustomFormat("M/d"))
+                        .foregroundColor(Color.theme.orange)
+                        .font(.custom("PublicSans-Bold", size: 40))
+                        .padding(.vertical)
                     
                     Text(food.name!)
                         .font(.custom("PublicSans-Medium", size: 24))
@@ -95,12 +87,19 @@ struct FoodInfoView: View {
                     ScrollView(.vertical, showsIndicators: false) {
                         
                         VStack(spacing: 10) {
-                            FoodNutritionLabel(nutritionType: .portion, value: food.portion ?? "Unknown")
-                            FoodNutritionLabel(nutritionType: .calories, value: food.calories ?? "Unknown")
-                            FoodNutritionLabel(nutritionType: .sugars, value: food.sugars ?? "Unknown")
-                            FoodNutritionLabel(nutritionType: .proteins, value: food.protein ?? "Unknown")
-                            FoodNutritionLabel(nutritionType: .carbs, value: food.carbs ?? "Unknown")
-                            FoodNutritionLabel(nutritionType: .transFat, value: food.transFat ?? "Unknown")
+                            FoodNutritionLabel(nutritionType: .portion, value: food.portion)
+                            FoodNutritionLabel(nutritionType: .calories, value: food.calories)
+                            FoodNutritionLabel(nutritionType: .sugars, value: food.sugars)
+                            FoodNutritionLabel(nutritionType: .proteins, value: food.protein)
+                            FoodNutritionLabel(nutritionType: .carbs, value: food.carbs)
+                            FoodNutritionLabel(nutritionType: .transFat, value: food.transFat)
+                            
+                            Text("The data contained within this report should not be used for and does not provide menu planning for a child with a medical condition or food allergy. Please consult a medical professional for assistance in planning for or treating medical conditions.")
+                                .font(.custom("PublicSans-Light", size: 14))
+                                .italic()
+                                .multilineTextAlignment(.center)
+                                .foregroundColor(Color.white)
+                            
                                 .background(
                                     GeometryReader { geo in
                                         Color.clear.preference(key: FoodNutritionOverflowPreferenceKey.self, value: (Screen.main.bounds.height - getSafeArea().bottom < geo.frame(in: .global).maxY ? true : false))

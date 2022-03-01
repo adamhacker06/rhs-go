@@ -8,30 +8,28 @@
 import Foundation
 import FirebaseFirestore
 
-class SchoolClassesCache: Codable {
+enum FirestoreSubjectFetchError: Error {
+    case invalidPath
+}
+
+class SchoolClassesCache: Cache {
+    typealias CacheType = SchoolClass
+    typealias CacheEnumType = SubjectsEnum
     
-    enum FirestoreSubjectFetchError: Error {
-        case invalidPath
-    }
+    private var asbCache: [CacheType]? = nil
+    private var academiesCache: [CacheType]? = nil
+    private var cteCache: [CacheType]? = nil
+    private var englishCache: [CacheType]? = nil
+    private var foreignLanguageCache: [CacheType]? = nil
+    private var mathCache: [CacheType]? = nil
+    private var peCache: [CacheType]? = nil
+    private var scienceCache: [CacheType]? = nil
+    private var socialScienceCache: [CacheType]? = nil
+    private var specialEducationCache: [CacheType]? = nil
+    private var visualAndPerformingArtsCache: [CacheType]? = nil
+    private var otherCache: [CacheType]? = nil
     
-    private var asbCache: [SchoolClass]? = nil
-    private var academiesCache: [SchoolClass]? = nil
-    private var cteCache: [SchoolClass]? = nil {
-        didSet {
-            print("set ctecache")
-        }
-    }
-    private var englishCache: [SchoolClass]? = nil
-    private var foreignLanguageCache: [SchoolClass]? = nil
-    private var mathCache: [SchoolClass]? = nil
-    private var peCache: [SchoolClass]? = nil
-    private var scienceCache: [SchoolClass]? = nil
-    private var socialScienceCache: [SchoolClass]? = nil
-    private var specialEducationCache: [SchoolClass]? = nil
-    private var visualAndPerformingArtsCache: [SchoolClass]? = nil
-    private var otherCache: [SchoolClass]? = nil
-    
-    private func associatedCache(schoolSubject: SubjectsEnum) -> [SchoolClass]? {
+    internal func associatedCache(of schoolSubject: CacheEnumType) -> [CacheType]? {
         switch schoolSubject {
         case .ASB:
             return asbCache
@@ -60,428 +58,45 @@ class SchoolClassesCache: Codable {
         }
     }
     
-    func get(schoolSubject: SubjectsEnum, forceRefresh: Bool = false, completion: @escaping ([SchoolClass]?, FirestoreSubjectFetchError?) -> Void) {
+    func get(contentsOf item: CacheEnumType, forceRefresh: Bool = false, completion: @escaping ([CacheType]?, FirestoreSubjectFetchError?) -> Void) {
         
-        switch schoolSubject {
+        cacheHandler(item: item, collectionName: "subjects", documentName: item.rawValue, subCollectionName: "classes", forceRefresh: forceRefresh) { (classes, error) in
+            
+            completion(classes, error)
+            
+        }
+
+    }
+    
+    func set(items: [CacheType], for type: CacheEnumType) {
+        switch type {
         case .ASB:
-            
-            guard let cache = associatedCache(schoolSubject: schoolSubject) else {
-                FirestoreDatabaseManager.retrieveSubjects(subject: schoolSubject) { (classes, error) in
-                    guard let classes = classes else {
-                        completion(nil, .invalidPath)
-                        return
-                    }
-                    
-                    completion(classes, nil)
-                    
-                }
-                
-                return
-                
-            }
-            
-            if forceRefresh {
-                FirestoreDatabaseManager.retrieveSubjects(subject: schoolSubject) { (classes, error) in
-                    guard let classes = classes else {
-                        completion(nil, .invalidPath)
-                        return
-                    }
-                    
-                    completion(classes, nil)
-
-                }
-            } else {
-                completion(cache, nil)
-            }
-            
+            asbCache = items
         case .academies:
-            
-            guard let cache = associatedCache(schoolSubject: schoolSubject) else {
-                FirestoreDatabaseManager.retrieveSubjects(subject: schoolSubject) { (classes, error) in
-                    guard let classes = classes else {
-                        completion(nil, .invalidPath)
-                        return
-                    }
-                    
-                    completion(classes, nil)
-
-                }
-                
-                return
-            }
-            
-            if forceRefresh {
-                FirestoreDatabaseManager.retrieveSubjects(subject: schoolSubject) { (classes, error) in
-                    guard let classes = classes else {
-                        completion(nil, .invalidPath)
-                        return
-                    }
-                    
-                    completion(classes, nil)
-
-                }
-            } else {
-                completion(cache, nil)
-            }
-            
+            academiesCache = items
         case .CTE:
-           print("CTE!!")
-            guard let cache = associatedCache(schoolSubject: schoolSubject) else {
-                FirestoreDatabaseManager.retrieveSubjects(subject: schoolSubject) { (classes, error) in
-                    guard let classes = classes else {
-                        completion(nil, .invalidPath)
-                        return
-                    }
-                    
-                    print("got from firebase")
-                    completion(classes, nil)
-
-                }
-                
-                return
-            }
-            
-            if forceRefresh {
-                FirestoreDatabaseManager.retrieveSubjects(subject: schoolSubject) { (classes, error) in
-                    guard let classes = classes else {
-                        completion(nil, .invalidPath)
-                        return
-                    }
-                    
-                    completion(classes, nil)
-
-                }
-            } else {
-                print("got from cache")
-                completion(cache, nil)
-            }
-            
+            cteCache = items
         case .english:
-            
-            guard let cache = associatedCache(schoolSubject: schoolSubject) else {
-                FirestoreDatabaseManager.retrieveSubjects(subject: schoolSubject) { (classes, error) in
-                    guard let classes = classes else {
-                        completion(nil, .invalidPath)
-                        return
-                    }
-                    
-                    completion(classes, nil)
-
-                }
-                
-                return
-            }
-            
-            if forceRefresh {
-                FirestoreDatabaseManager.retrieveSubjects(subject: schoolSubject) { (classes, error) in
-                    guard let classes = classes else {
-                        completion(nil, .invalidPath)
-                        return
-                    }
-                    
-                    completion(classes, nil)
-
-                }
-            } else {
-                completion(cache, nil)
-            }
-            
+            englishCache = items
         case .foreignLanguage:
-            
-            guard let cache = associatedCache(schoolSubject: schoolSubject) else {
-                FirestoreDatabaseManager.retrieveSubjects(subject: schoolSubject) { (classes, error) in
-                    guard let classes = classes else {
-                        completion(nil, .invalidPath)
-                        return
-                    }
-                    
-                    completion(classes, nil)
-
-                }
-                
-                return
-            }
-            
-            if forceRefresh {
-                FirestoreDatabaseManager.retrieveSubjects(subject: schoolSubject) { (classes, error) in
-                    guard let classes = classes else {
-                        completion(nil, .invalidPath)
-                        return
-                    }
-                    
-                    completion(classes, nil)
-
-                }
-            } else {
-                completion(cache, nil)
-            }
-            
+            foreignLanguageCache = items
         case .math:
-            
-            guard let cache = associatedCache(schoolSubject: schoolSubject) else {
-                FirestoreDatabaseManager.retrieveSubjects(subject: schoolSubject) { (classes, error) in
-                    guard let classes = classes else {
-                        completion(nil, .invalidPath)
-                        return
-                    }
-                    
-                    completion(classes, nil)
-
-                }
-                
-                return
-            }
-            
-            if forceRefresh {
-                FirestoreDatabaseManager.retrieveSubjects(subject: schoolSubject) { (classes, error) in
-                    guard let classes = classes else {
-                        completion(nil, .invalidPath)
-                        return
-                    }
-                    
-                    completion(classes, nil)
-
-                }
-            } else {
-                completion(cache, nil)
-            }
-            
+            mathCache = items
         case .PE:
-            
-            guard let cache = associatedCache(schoolSubject: schoolSubject) else {
-                FirestoreDatabaseManager.retrieveSubjects(subject: schoolSubject) { (classes, error) in
-                    guard let classes = classes else {
-                        completion(nil, .invalidPath)
-                        return
-                    }
-                    
-                    completion(classes, nil)
-
-                }
-                
-                return
-            }
-            
-            if forceRefresh {
-                FirestoreDatabaseManager.retrieveSubjects(subject: schoolSubject) { (classes, error) in
-                    guard let classes = classes else {
-                        completion(nil, .invalidPath)
-                        return
-                    }
-                    
-                    completion(classes, nil)
-
-                }
-            } else {
-                completion(cache, nil)
-            }
-            
+            peCache = items
         case .science:
-            
-            guard let cache = associatedCache(schoolSubject: schoolSubject) else {
-                FirestoreDatabaseManager.retrieveSubjects(subject: schoolSubject) { (classes, error) in
-                    guard let classes = classes else {
-                        completion(nil, .invalidPath)
-                        return
-                    }
-                    
-                    completion(classes, nil)
-
-                }
-                
-                return
-            }
-            
-            if forceRefresh {
-                FirestoreDatabaseManager.retrieveSubjects(subject: schoolSubject) { (classes, error) in
-                    guard let classes = classes else {
-                        completion(nil, .invalidPath)
-                        return
-                    }
-                    
-                    completion(classes, nil)
-
-                }
-            } else {
-                completion(cache, nil)
-            }
-            
+             scienceCache = items
         case .socialScience:
-            
-            guard let cache = associatedCache(schoolSubject: schoolSubject) else {
-                FirestoreDatabaseManager.retrieveSubjects(subject: schoolSubject) { (classes, error) in
-                    guard let classes = classes else {
-                        completion(nil, .invalidPath)
-                        return
-                    }
-                    
-                    completion(classes, nil)
-
-                }
-                
-                return
-            }
-            
-            if forceRefresh {
-                FirestoreDatabaseManager.retrieveSubjects(subject: schoolSubject) { (classes, error) in
-                    guard let classes = classes else {
-                        completion(nil, .invalidPath)
-                        return
-                    }
-                    
-                    completion(classes, nil)
-
-                }
-            } else {
-                completion(cache, nil)
-            }
-            
+            socialScienceCache = items
         case .specialEduation:
-            
-            guard let cache = associatedCache(schoolSubject: schoolSubject) else {
-                FirestoreDatabaseManager.retrieveSubjects(subject: schoolSubject) { (classes, error) in
-                    guard let classes = classes else {
-                        completion(nil, .invalidPath)
-                        return
-                    }
-                    
-                    completion(classes, nil)
-
-                }
-                
-                return
-            }
-            
-            if forceRefresh {
-                FirestoreDatabaseManager.retrieveSubjects(subject: schoolSubject) { (classes, error) in
-                    guard let classes = classes else {
-                        completion(nil, .invalidPath)
-                        return
-                    }
-                    
-                    completion(classes, nil)
-
-                }
-            } else {
-                completion(cache, nil)
-            }
-            
+            specialEducationCache = items
         case .visualAndPerformingArts:
-        
-            guard let cache = associatedCache(schoolSubject: schoolSubject) else {
-                FirestoreDatabaseManager.retrieveSubjects(subject: schoolSubject) { (classes, error) in
-                    guard let classes = classes else {
-                        completion(nil, .invalidPath)
-                        return
-                    }
-                    
-                    completion(classes, nil)
-
-                }
-                
-                return
-            }
-            
-            if forceRefresh {
-                FirestoreDatabaseManager.retrieveSubjects(subject: schoolSubject) { (classes, error) in
-                    guard let classes = classes else {
-                        completion(nil, .invalidPath)
-                        return
-                    }
-                    
-                    completion(classes, nil)
-
-                }
-            } else {
-                completion(cache, nil)
-            }
-            
+            visualAndPerformingArtsCache = items
         case .other:
-            
-            guard let cache = associatedCache(schoolSubject: schoolSubject) else {
-                FirestoreDatabaseManager.retrieveSubjects(subject: schoolSubject) { (classes, error) in
-                    guard let classes = classes else {
-                        completion(nil, .invalidPath)
-                        return
-                    }
-                    
-                    completion(classes, nil)
-
-                }
-                
-                return
-            }
-            
-            if forceRefresh {
-                FirestoreDatabaseManager.retrieveSubjects(subject: schoolSubject) { (classes, error) in
-                    guard let classes = classes else {
-                        completion(nil, .invalidPath)
-                        return
-                    }
-                    
-                    completion(classes, nil)
-
-                }
-            } else {
-                completion(cache, nil)
-            }
-            
+            otherCache = items
         }
     }
     
-    func set(schoolClasses: [SchoolClass], schoolSubject: SubjectsEnum) {
-        switch schoolSubject {
-        case .ASB:
-            asbCache = schoolClasses
-        case .academies:
-            academiesCache = schoolClasses
-        case .CTE:
-            cteCache = schoolClasses
-        case .english:
-            englishCache = schoolClasses
-        case .foreignLanguage:
-            foreignLanguageCache = schoolClasses
-        case .math:
-            mathCache = schoolClasses
-        case .PE:
-            peCache = schoolClasses
-        case .science:
-             scienceCache = schoolClasses
-        case .socialScience:
-            socialScienceCache = schoolClasses
-        case .specialEduation:
-            specialEducationCache = schoolClasses
-        case .visualAndPerformingArts:
-            visualAndPerformingArtsCache = schoolClasses
-        case .other:
-            otherCache = schoolClasses
-        }
-    }
-}
-
-struct FirestoreDatabaseManager {
-    
-    static func retrieveSubjects(subject: SubjectsEnum, completion: @escaping ([SchoolClass]?, Error?) -> Void) {
-        
-        let db = Firestore.firestore()
-        
-        db.collection("subjects").document(subject.rawValue).collection("classes").getDocuments { (snapshot, error) in
-            
-            guard let documents = snapshot?.documents else {
-                print("No chores (documents) found in user's Firestore document.")
-                return
-            }
-            
-            let classes = documents.compactMap({ (queryDocumentSnapshot) -> SchoolClass? in
-                
-                return try? queryDocumentSnapshot.data(as: SchoolClass.self)
-                
-            })
-            
-            completion(classes, nil)
-            
-        }
-    }
 }
 
 //struct RealtimeDatabaseManager {

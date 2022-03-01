@@ -15,7 +15,7 @@ typealias Screen = UIScreen
 struct LoginView: View {
     
     @EnvironmentObject var data: DataManager
-    @EnvironmentObject var auth: AuthManager
+//    @EnvironmentObject var auth: AuthManager
     
     var body: some View {
         ZStack {
@@ -27,7 +27,7 @@ struct LoginView: View {
                     
                     VStack(spacing: 20) {
                         
-                        googleSignInButton
+//                        googleSignInButton
                         
                         emailSignInButton
                         
@@ -68,6 +68,10 @@ extension LoginView {
     private var emailSignInButton: some View {
         Button(action: {
             
+//            auth.signInWithEmailAndPassword(email: "adamhack2006@gmail.com", password: "Brookeadam06") { user in
+//                data.user = user
+//            }
+            
         }, label: {
             
             HStack(spacing: 0) {
@@ -90,11 +94,11 @@ extension LoginView {
         .buttonStyle(GeneralButtonStyle())
     }
     
-    private var googleSignInButton: some View {
-        Button(action: { auth.signIn { user in
-            print(user.googleUser)
+    /*private var googleSignInButton: some View {
+        Button(action: { auth.signInWithGoogle { user in
+            print(user)
             data.user = user
-            print(data.user?.googleUser)
+//            print(data.user?.googleUser)
             
         } }) {
             
@@ -124,7 +128,7 @@ extension LoginView {
         //                .offset(y: 50)
         //
         //        )
-    }
+    }*/
     
     private var signInBackground: some View {
         ZStack {
@@ -141,15 +145,15 @@ struct LoginView_Previews: PreviewProvider {
         Group {
             ContentView()
                 .environmentObject(DataManager())
-                .environmentObject(AuthManager())
+//                .environmentObject(AuthManager())
             
             ContentView()
                 .environmentObject(DataManager()).previewDevice("iPod touch (7th generation)")
-                .environmentObject(AuthManager())
+//                .environmentObject(AuthManager())
             
             ContentView()
                 .environmentObject(DataManager()).previewDevice("iPhone SE (2nd generation)")
-                .environmentObject(AuthManager())
+//                .environmentObject(AuthManager())
         }
     }
 }

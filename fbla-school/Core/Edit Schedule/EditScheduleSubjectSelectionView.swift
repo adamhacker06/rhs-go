@@ -16,7 +16,7 @@ struct EditScheduleFooterCompartmentSizePreferenceKey: PreferenceKey {
     }
 }
 
-struct EditScheduleSubjectSelectorView: View {
+struct EditScheduleSubjectSelectionView: View {
     
     @EnvironmentObject var data: DataManager
     @Environment(\.presentationMode) var presentationMode
@@ -29,10 +29,17 @@ struct EditScheduleSubjectSelectorView: View {
         ZStack {
             
             NavigationView {
-                ScrollView {
-                    ForEach(SubjectsEnum.allCases) { subjectEnum in
-                        SchoolSubjectItemView(associatedSubjectEnum: subjectEnum, childPaddingAmount: $childPaddingSize, classPeriod: classPeriod)
-                            .padding()
+                ScrollView(.vertical, showsIndicators: false) {
+                    
+                    VStack(spacing: 0) {
+                        clearButton
+                        
+                        CustomDivider(color: Color.init(hex: 0xf5f5f5), thickness: 5)
+                        
+                        ForEach(SubjectsEnum.allCases) { subjectEnum in
+                            SchoolSubjectItemView(associatedSubjectEnum: subjectEnum, childPaddingAmount: $childPaddingSize, classPeriod: classPeriod)
+                                .padding()
+                        }
                     }
                 }
                 .navigationTitle("")
@@ -50,13 +57,13 @@ struct EditScheduleSubjectSelectorView: View {
 //                        .frame(width: 20, height: 20)
 //                        .foregroundColor(Color.theme.darkRed)
 //
-//                    Spacer()
+                    Spacer()
                     
                     Text("Editing Period \(classPeriod.rawValue)")
                         .font(.custom("PublicSans-Bold", size: 24))
                         .foregroundColor(Color.theme.white)
                     
-//                    Spacer()
+                    Spacer()
 //
 //                    Image(systemName: "checkmark")
 //                        .resizable()
@@ -68,14 +75,13 @@ struct EditScheduleSubjectSelectorView: View {
                 .padding()
                 .background {
                     GeometryReader { proxy in
-                        Color.theme.lapiz.cornerRadius(10)
+                        Color.theme.lapiz.ignoresSafeArea()
                             .preference(key: EditScheduleFooterCompartmentSizePreferenceKey.self, value: proxy.size.height)
                             .onPreferenceChange(EditScheduleFooterCompartmentSizePreferenceKey.self) { preferences in
                                 childPaddingSize = preferences
                             }
                     }
                 }
-                .padding()
                 .shadow(radius: 10)
                 
             }
@@ -83,9 +89,39 @@ struct EditScheduleSubjectSelectorView: View {
     }
 }
 
+extension EditScheduleSubjectSelectionView {
+    private var clearButton: some View {
+        
+        Button(action: {
+            presentationMode.wrappedValue.dismiss()
+            
+            data.scheduleDataManager.schedule.set(for: classPeriod, class: nil)
+            
+            ScheduleDataManager.set(manager: data.scheduleDataManager)
+        }) {
+            
+            HStack {
+                
+                Spacer()
+                
+                Text("Reset Period")
+                    .font(.custom("PublicSans-Bold", size: 18))
+                    .foregroundColor(Color.theme.darkRed)
+                
+                Image(systemName: "xmark")
+                    .font(.largeTitle)
+                    .foregroundColor(Color.theme.darkRed)
+        
+            }
+            .padding()
+            
+        }
+    }
+}
+
 struct EditScheduleClassSelector_Previews: PreviewProvider {
     static var previews: some View {
-        EditScheduleSubjectSelectorView(classPeriod: .first)
+        EditScheduleSubjectSelectionView(classPeriod: .first)
             .environmentObject(DataManager())
     }
 }

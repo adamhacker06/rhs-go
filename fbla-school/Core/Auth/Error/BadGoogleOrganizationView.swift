@@ -9,7 +9,7 @@ import SwiftUI
 
 struct BadGoogleOrganizationView: View {
     
-    @EnvironmentObject var authObj: AuthManager
+//    @EnvironmentObject var authObj: AuthManager
     
     var body: some View {
         ZStack {
@@ -36,7 +36,7 @@ struct BadGoogleOrganizationView: View {
                         .frame(maxWidth: Screen.main.bounds.width * 0.9)
                     Spacer()
                     Button("Sign Out") {
-                        authObj.signOut()
+//                        authObj.signOut()
                     }
                     .buttonStyle(GeneralButtonStyle())
                     Spacer()
@@ -58,7 +58,9 @@ struct BadGoogleOrganizationView: View {
 
 struct BadGoogleOrganizationView_Previews: PreviewProvider {
     static var previews: some View {
-        BadGoogleOrganizationView().environmentObject(AuthManager())
-        BadGoogleOrganizationView().environmentObject(AuthManager()).previewDevice("iPod touch (7th generation)")
+        
+        EmptyView()
+//        BadGoogleOrganizationView().environmentObject(AuthManager())
+//        BadGoogleOrganizationView().environmentObject(AuthManager()).previewDevice("iPod touch (7th generation)")
     }
 }

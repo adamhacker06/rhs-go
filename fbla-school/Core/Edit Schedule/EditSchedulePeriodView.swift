@@ -11,7 +11,7 @@ struct EditSchedulePeriodView: View {
     @EnvironmentObject var data: DataManager
     
     let period: ClassPeriod
-    @Binding var test: Bool
+//    @Binding var test: Bool
     
     @State private var showSheet: Bool = false
     
@@ -64,17 +64,17 @@ struct EditSchedulePeriodView: View {
 //                if let schedule = data.scheduleDataManager.schedule {
                 VStack(alignment: .trailing, spacing: 2) {
                         
-                        Text(data.scheduleDataManager.schedule[period]?.className ?? "Unselected")
+                    Text(data.scheduleDataManager.schedule.get(for: period)?.title ?? "Unselected")
                             .font(.custom("PublicSans-SemiBold", size: 16))
                             .multilineTextAlignment(.trailing)
                         
-                        Text(data.scheduleDataManager.schedule[period]?.teacher ?? "")
+                    Text(data.scheduleDataManager.schedule.get(for: period)?.administrator ?? "")
                             .font(.custom("PublicSans-Regular", size: 14))
                             .multilineTextAlignment(.trailing)
                     }
                     .frame(maxWidth: .infinity, alignment: .trailing)
                     .sheet(isPresented: $showSheet) {
-                        EditScheduleSubjectSelectorView(classPeriod: period)
+                        EditScheduleSubjectSelectionView(classPeriod: period)
                             .environment(\.showingSheet, $showSheet)
                     }
                     
@@ -98,6 +98,6 @@ struct EditSchedulePeriodView: View {
 
 struct EditSchedulePeriodView_Previews: PreviewProvider {
     static var previews: some View {
-        EditSchedulePeriodView(period: .first, test: .constant(false))
+        EditSchedulePeriodView(period: .first)
     }
 }

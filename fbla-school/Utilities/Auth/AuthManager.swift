@@ -10,7 +10,7 @@ import Firebase
 import FirebaseAuth
 import GoogleSignIn
 
-extension AuthManager {
+/*extension AuthManager {
     func getLoginViewWindow() -> UIViewController {
         let scenes = UIApplication.shared.connectedScenes
         guard let windowScene = scenes.first as? UIWindowScene else {
@@ -37,14 +37,14 @@ class AuthManager: ObservableObject {
     @Published var state: SignInState = .signedOut
     
     // Handles the sign in process
-    func signIn(completion: @escaping (User) -> Void) {
+    func signInWithGoogle(completion: @escaping (User) -> Void ) {
         
         print("Signing in..")
         
         // Checks if there is a user logged in
         if GIDSignIn.sharedInstance.currentUser == nil {
             
-            // If no user is longed in, Google Sign-In starts the sign-in flow
+            // If no user is logged in, Google Sign-In starts the sign-in flow
             GIDSignIn.sharedInstance.signIn(with: signInConfig, presenting: getLoginViewWindow()) { [self] user, error in
                 if error == nil {
                     
@@ -57,9 +57,9 @@ class AuthManager: ObservableObject {
                     }
                     
                     // If there is no error, sign the user in using Firebase
-                    self.firebaseAuth(withUser: user!)
-                    
-                    completion(User(withUser: user!))
+                    self.firebaseAuth(withGoogleUser: user!) { firebaseUser in
+                        completion(User(user: firebaseUser))
+                    }
                     
                 } else {
                     
@@ -69,9 +69,33 @@ class AuthManager: ObservableObject {
             }
         }
     }
+    func signInWithEmailAndPassword(email: String, password: String, completion: @escaping (User) -> Void) {
+        firebaseAuth(withEmail: email, password: password) { user in
+            completion(User(user: user))
+        }
+    }
+    
+    private func firebaseAuth(withEmail email: String, password: String, completion: @escaping (FirebaseAuth.User) -> Void) {
+        Auth.auth().signIn(withEmail: email, password: password) { (authResult, error) in
+            
+            guard let authResult = authResult else {
+                guard let error = error else {
+                    print("Unknown error occured when signing into firebase with email")
+                    return
+                }
+                        
+                print(error.localizedDescription)
+                return
+            }
+        
+            print(authResult.user)
+            completion(authResult.user)
+            withAnimation { self.state = .signedIn }
+        }
+    }
     
     // Takes in a user and signs them in with Firebase
-    private func firebaseAuth(withUser user: GIDGoogleUser) {
+    private func firebaseAuth(withGoogleUser user: GIDGoogleUser, completion: @escaping (FirebaseAuth.User) -> ()) {
     
         // Stores the authentication information for the provided user
         let authentication = user.authentication
@@ -80,18 +104,22 @@ class AuthManager: ObservableObject {
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken!, accessToken: authentication.accessToken)
         
         // Signs the user in with Firebase using the credential
-        Auth.auth().signIn(with: credential) { (_, error) in
-            if let error = error {
+        Auth.auth().signIn(with: credential) { (authResult, error) in
+            
+            guard let authResult = authResult else {
+                if let error = error {
+                    print("error: \(error.localizedDescription)")
+                }
                 
-                // If there is an error, print the error out to the console
-                print(error.localizedDescription)
-            } else {
-                
-                // User is logged in if there is no error automatically
-                
-                // Change the sign-in state to signedIn
-                withAnimation { self.state = .signedIn }
+                return
             }
+            
+            // User is logged in if there is no error automatically
+            completion(authResult.user)
+            
+            // Change the sign-in state to signedIn
+            withAnimation { self.state = .signedIn }
+    
         }
     }
     
@@ -114,7 +142,7 @@ class AuthManager: ObservableObject {
             print(signOutError.localizedDescription)
         }
     }
-}
+}*/
 
 struct GeneralButtonStyle: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {

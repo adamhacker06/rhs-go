@@ -19,7 +19,7 @@ enum FoodNutritionType: String, CaseIterable {
 struct FoodNutritionLabel: View {
     
     let nutritionType: FoodNutritionType
-    let value: String
+    let value: String?
     
     var body: some View {
         VStack(spacing: 0) {
@@ -29,12 +29,16 @@ struct FoodNutritionLabel: View {
                 .padding(.bottom, 3)
                 .frame(maxWidth: .infinity, alignment: .leading)
             
-            Text(value)
+            Text(value ?? "Unknown")
                 .font(.custom("PublicSans-Regular", size: 14))
                 .foregroundColor(.black)
                 .padding(10)
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .background(RoundedRectangle(cornerRadius: 10).strokeBorder(Color.theme.darkRed, lineWidth: 1).background(Color.white.cornerRadius(10)))
+                .background(
+                    RoundedRectangle(cornerRadius: 10)
+                        .strokeBorder(Color.theme.darkRed, lineWidth: 1)
+                        .background(Color.white.cornerRadius(10))
+                )
             
         }
     }

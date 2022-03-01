@@ -11,6 +11,7 @@ import simd
 struct TodaysFoodView: View {
     
     @Binding var foods: [Food]?
+    @Binding var isUpdating: Bool
     
     @State private var showAllFood: Bool = false
     
@@ -67,19 +68,34 @@ struct TodaysFoodView: View {
                     HStack(alignment: .center, spacing: 15) {
                         
                         if let foods = foods {
+                            
                             ForEach(foods.indices, id: \.self) { index in
                                 
-                                FoodHomeTileView(food: foods[index])
-                                    .onTapGesture {
-                                        targetFood = foods[index]
-                                        showTargetFood = true
-                                    }
+                                FoodTileView(food: foods[index])
+                                    .frame(width: 300, height: 150)
                                 
                             }
+                            
+//                            ForEach(foods.indices, id: \.self) { index in
+//
+//
+//
+//                                FoodHomeTileView(food: foods[index])
+//                                    .onTapGesture {
+//                                        targetFood = foods[index]
+//                                        showTargetFood = true
+//                                    }
+//
+//                            }
                         } else {
-                            Text("Unable to get today's lunch")
-                                .frame(maxWidth: .infinity, alignment: .center)
-                                .foregroundColor(.white)
+                            
+                            if isUpdating {
+                                ProgressView()
+                            } else {
+                                Text("Unable to get today's lunch")
+                                    .frame(maxWidth: .infinity, alignment: .center)
+                                    .foregroundColor(.white)
+                            }
                         }
                     }
                     .padding(.horizontal, 20)
@@ -120,6 +136,6 @@ struct FoodHomeTileView: View {
 
 struct TodaysFoodView_Previews: PreviewProvider {
     static var previews: some View {
-        TodaysFoodView(foods: .constant([Development.chickenSandwich, Development.chickenSandwich, Development.chickenSandwich]))
+        TodaysFoodView(foods: .constant([Development.chickenSandwich, Development.chickenSandwich, Development.chickenSandwich]), isUpdating: .constant(false))
     }
 }

@@ -5,7 +5,8 @@
         {
           "teacher": "Haily Aston",
           "namePrefix": "Mrs.",
-          "className": "ASB"
+          "className": "ASB",
+          "email":"haston@vusd.org"
         }
       ]
     },
@@ -14,102 +15,123 @@
         {
           "teacher": "Jacob Avila",
           "namePrefix": "Mr.",
-          "className": "Foundations of Business"
+          "className": "Foundations of Business",
+          "email":"javila01@vusd.org"
         },
         {
           "teacher": "Jacob Avila",
           "namePrefix": "Mr.",
-          "className": "Digital Literacy"
+          "className": "Digital Literacy",
+          "email":"javila01@vusd.org"
+        
         },
         {
           "teacher": "Jacob Avila",
           "namePrefix": "Mr.",
-          "className": "Empowering Entrepreneurs"
+          "className": "Empowering Entrepreneurs",
+          "email":"javila01@vusd.org"
         },
         {
           "teacher": "Pam Buldo",
           "namePrefix": "Mrs.",
-          "className": "Life Managment"
+          "className": "Life Managment",
+          "email":"pbuldo@vusd.org"
         },
         {
           "teacher": "Pam Buldo",
           "namePrefix": "Mrs.",
-          "className": "Human Development"
+          "className": "Human Development",
+          "email":"pbuldo@vusd.org"
         },
         {
           "teacher": "John Coon",
           "namePrefix": "Mr.",
-          "className": "Ag Mechanics 1"
+          "className": "Ag Mechanics 1",
+          "email":"jcoon@vusd.org"
         },
         {
           "teacher": "John Coon",
           "namePrefix": "Mr.",
-          "className": "Ag Mechanics 2"
+          "className": "Ag Mechanics 2",
+          "email":"jcoon@vusd.org"
         },
         {
           "teacher": "John Coon",
           "namePrefix": "Mr.",
-          "className": "Ag Mechanics 3"
+          "className": "Ag Mechanics 3",
+          "email":"jcoon@vusd.org"
         },
         {
           "teacher": "John Coon",
           "namePrefix": "Mr.",
-          "className": "Ag Mechanics 4"
+          "className": "Ag Mechanics 4",
+          "email":"jcoon@vusd.org"
         },
         {
           "teacher": "Ken Cox",
           "namePrefix": "Mr.",
-          "className": "Introduction to Auto"
+          "className": "Introduction to Auto",
+          "email":"kcox@vusd.org"
         },
         {
           "teacher": "Ken Cox",
           "namePrefix": "Mr.",
-          "className": "Advance Auto-Mechanics"
+          "className": "Advance Auto-Mechanics",
+          "email":"kcox@vusd.org"
         },
         {
           "teacher": "Jeff Eastman",
           "namePrefix": "Mr.",
-          "className": "Wood Production Construction"
+          "className": "Wood Production Construction",
+          "email":"jeastman@vusd.org"
         },
         {
           "teacher": "Diana Garcia",
           "namePrefix": "Mrs.",
-          "className": "Culinary Arts"
+          "className": "Culinary Arts",
+          "email":"dgarcia02@vusd.org"
         },
         {
           "teacher": "Diana Garcia",
           "namePrefix": "Mrs.",
-          "className": "Foods and Nutrition"
+          "className": "Foods and Nutrition",
+          "email":"dgarcia02@vusd.org"
         },
         {
           "teacher": "Diana Garcia",
           "namePrefix": "Mrs.",
-          "className": "Food Services and Hospitality"
+          "className": "Food Services and Hospitality",
+          "email":"dgarcia02@vusd.org"
         },
         {
           "teacher": "William Henshaw",
           "namePrefix": "Mr.",
-          "className": "Introduction to Video"
+          "className": "Introduction to Video",
+          "email":"whenshaw@vusd.org"
         },
         {
           "teacher": "William Henshaw",
           "namePrefix": "Mr.",
-          "className": "Advance Film Making"
+          "className": "Advance Film Making",
+          "email":"whenshaw@vusd.org"
         },
         {
           "teacher": "William Henshaw",
           "namePrefix": "Mr.",
-          "className": "Digital Media"
+          "className": "Digital Media",
+          "email":"whenshaw@vusd.org"
         },
         {
           "teacher": "Robert Rooney",
           "namePrefix": "Mr.",
-          "className": "Introduction to Metal"
+          "className": "Introduction to Metal",
+          "email":"rrooney@vusd.org"
         },
         {
           "teacher": "Robert Rooney",
           "namePrefix": "Mr.",
-          "className": "Metal Manufacturing"
+          "className": "Metal Manufacturing",
+          "email":"rrooney@vusd.org"
         }
       ]
     },
@@ -118,112 +140,152 @@
         {
           "teacher": "Melissa Adalian",
           "namePrefix": "Mrs.",
-          "className": "English 1 Honors"
+          "className": "English 1 Honors",
+          "email":"madalian@vusd.org"
         },
         {
           "teacher": "Theresa Audino",
           "namePrefix": "Ms.",
-          "className": "Expository Reading & Writing"
+          "className": "Expository Reading & Writing",
+          "email":"taudino@vusd.org"
         },
         {
           "teacher": "Theresa Audino",
           "namePrefix": "Ms.",
-          "className": "COS English"
+          "className": "COS English",
+          "email":"taudino@vusd.org"
         },
         {
           "teacher": "Jason Cain",
           "namePrefix": "Mr.",
-          "className": "Expository Reading & Writing"
+          "className": "Expository Reading & Writing",
+          "email":"jcain@vusd.org"
         },
         {
           "teacher": "Jason Cain",
           "namePrefix": "Mr.",
-          "className": "English 2"
+          "className": "English 2",
+          "email":"jcain@vusd.org"
         },
         {
           "teacher": "Georgette Cheatwood",
           "namePrefix": "Mrs.",
-          "className": "English 1 Honors"
+          "className": "English 1 Honors",
+          "email":"gcheatwood@vusd.org"
         },
         {
           "teacher": "David Clements",
           "namePrefix": "Mr.",
-          "className": "English 1"
+          "className": "English 1",
+          "email":"dclements@vusd.org"
         },
         {
           "teacher": "Amanda Fariss",
           "namePrefix": "Mrs.",
-          "className": "English 1"
+          "className": "English 1",
+          "email":"afariss@vusd.org"
         },
         {
           "teacher": "Amanda Fariss",
           "namePrefix": "Mrs.",
-          "className": "Reading Improvement"
+          "className": "Reading Improvement",
+          "email":"afariss@vusd.org"
         },
         {
           "teacher": "Kelli Feehan",
           "namePrefix": "Mrs.",
-          "className": "English 2 Honors"
+          "className": "English 2",
+          "email":"kfeehan@vusd.org"
+        },
+        {
+          "teacher": "Kelli Feehan",
+          "namePrefix": "Mrs.",
+          "className": "English 2 Honors",
+          "email":"kfeehan@vusd.org"
         },
         {
           "teacher": "Elizabeth Forsythe",
           "namePrefix": "Mrs.",
-          "className": "American Literature and Composition"
+          "className": "American Literature and Composition",
+          "email":"eforsythe@vusd.org"
         },
         {
           "teacher": "Stacy Gonzales",
           "namePrefix": "Mrs.",
-          "className": "English 1"
+          "className": "English 1",
+          "email":"swright@vusd.org"
         },
         {
           "teacher": "Mieke Howell",
           "namePrefix": "Ms.",
-          "className": "English 1"
+          "className": "English 1",
+          "email":"mhowell@vusd.org"
+        },
+        {
+          "teacher": "Adam Johnson",
+          "namePrefix": "Mr.",
+          "className": "English 2",
+          "email":"ajohnson04@vusd.org"
         },
         {
           "teacher": "Ashley Jurica",
           "namePrefix": "Mrs.",
-          "className": "American Literature and Composition"
+          "className": "American Literature and Composition",
+          "email":"ajurica@vusd.org"
         },
         {
           "teacher": "Melissa Link",
           "namePrefix": "Mrs.",
-          "className": "Expository Reading and Writing (ERWC)"
+          "className": "Expository Reading and Writing (ERWC)",
+          "email":"mlink@vusd.org"
         },
         {
           "teacher": "Nick Miller",
           "namePrefix": "Mr.",
-          "className": "AP English Literature"
+          "className": "AP English Literature",
+          "email":"nmiller@vusd.org"
         },
         {
           "teacher": "Nick Miller",
           "namePrefix": "Mr.",
-          "className": "Journalism"
+          "className": "Journalism",
+          "email":"nmiller@vusd.org"
         },
         {
           "teacher": "Tina Moran",
           "namePrefix": "Ms.",
-          "className": "American Lit"
+          "className": "American Lit",
+          "email":"tmoran@vusd.org"
         },
         {
           "teacher": "Michael McNitt",
           "namePrefix": "Mr.",
-          "className": "English 2 Honors"
+          "className": "English 2 Honors",
+          "email":"mmcnitt@vusd.org"
         },
         {
           "teacher": "Ana Romo",
           "namePrefix": "Mrs.",
-          "className": "ELD Academic Assist"
+          "className": "ELD Academic Assist",
+          "email":"aromo@vusd.org"
+        },
+        {
+          "teacher": "Bethany Tolbert",
+          "namePrefix": "Mrs.",
+          "className": "AP English Language",
+          "email":"btolbert@vusd.org"
         },
         {
           "teacher": "Nicole Vieira",
           "namePrefix": "Mrs.",
-          "className": "English 2 Honors"
+          "className": "English 2 Honors",
+          "email":"nsaputo@vusd.org"
         },
         {
           "teacher": "Nicole Vieira",
           "namePrefix": "Mrs.",
-          "className": "AP Literature"
+          "className": "AP Literature",
+          "email":"nsaputo@vusd.org"
         }
       ]
     },
@@ -232,231 +294,252 @@
         {
           "teacher": "Lizbeth Browning",
           "namePrefix": "Mrs.",
-          "className": "Spanish 3"
+          "className": "Spanish 3",
+          "email":"lbrowning@vusd.org"
         },
         {
           "teacher": "Lizbeth Browning",
           "namePrefix": "Mrs.",
-          "className": "Ap Spanish Language"
+          "className": "Ap Spanish Language",
+          "email":"lbrowning@vusd.org"
         },
         {
           "teacher": "Calvin Feehan",
           "namePrefix": "Mr.",
-          "className": "Spanish 1"
+          "className": "Spanish 1",
+          "email":"cfeehan@vusd.org"
         },
         {
           "teacher": "Calvin Feehan",
           "namePrefix": "Mr.",
-          "className": "Spanish 2"
+          "className": "Spanish 2",
+          "email":"cfeehan@vusd.org"
         },
         {
           "teacher": "Daniel Guerrero",
           "namePrefix": "Mr.",
-          "className": "Spanish 2"
+          "className": "Spanish 2",
+          "email":"dguerrero@vusd.org"
         },
         {
           "teacher": "Martha Loera",
           "namePrefix": "Mrs.",
-          "className": "Literatuure for SS"
+          "className": "Literatuure for SS",
+          "email":"mloera@vusd.org"
         },
         {
           "teacher": "Martha Loera",
           "namePrefix": "Mrs.",
-          "className": "AP Spanish Literature and Culture"
+          "className": "AP Spanish Literature and Culture",
+          "email":"mloera@vusd.org"
         },
         {
           "teacher": "Martha Loera",
           "namePrefix": "Mrs.",
-          "className": "Spanish 3"
+          "className": "Spanish 3",
+          "email":"mloera@vusd.org"
         },
         {
           "teacher": "Luz Medina",
           "namePrefix": "Mrs.",
-          "className": "Spanish 1 (SS)"
+          "className": "Spanish 1 (SS)",
+          "email":"lmedina@vusd.org"
         },
         {
           "teacher": "Luz Medina",
           "namePrefix": "Mrs.",
-          "className": "Spanish 2 (SS)"
+          "className": "Spanish 2 (SS)",
+          "email":"lmedina@vusd.org"
         },
         {
           "teacher": "Jean Newman",
           "namePrefix": "Mrs.",
-          "className": "French 1"
+          "className": "French 1",
+          "email":"jnewman@vusd.org"
         },
         {
           "teacher": "Jean Newman",
           "namePrefix": "Mrs.",
-          "className": "French 2"
+          "className": "French 2",
+          "email":"jnewman@vusd.org"
         },
         {
           "teacher": "Jean Newman",
           "namePrefix": "Mrs.",
-          "className": "French 3"
+          "className": "French 3",
+          "email":"jnewman@vusd.org"
         },
         {
           "teacher": "Jean Newman",
           "namePrefix": "Mrs.",
-          "className": "French 4"
+          "className": "French 4",
+          "email":"jnewman@vusd.org"
         },
         {
           "teacher": "Rosalba Perez-Montes",
           "namePrefix": "Mrs.",
-          "className": "Spanish 1"
+          "className": "Spanish 1",
+          "email":"rperez-montes@vusd.org"
         },
         {
           "teacher": "Rosalba Perez-Montes",
           "namePrefix": "Mrs.",
-          "className": "Spanish 2"
+          "className": "Spanish 2",
+          "email":"rperez-montes@vusd.org"
         },
         {
           "teacher": "Victoria Sanchez",
           "namePrefix": "Mrs.",
-          "className": "Spanish 1"
+          "className": "Spanish 1",
+          "email":"vsanchez3@vusd.org"
         },
         {
           "teacher": "David Sandoval",
           "namePrefix": "Mr.",
-          "className": "Spanish 2"
+          "className": "Spanish 2",
+          "email":"dsandoval@vusd.org"
         }
       ]
     },
     {
       "Math": [
         {
-          "teacher": "Samuel Adalian",
-          "namePrefix": "Mr.",
-          "className": "Int. Math 1"
-        },
-        {
-          "teacher": "Samuel Adalian",
-          "namePrefix": "Mr.",
-          "className": "Math Assist"
+          "teacher": "Natalie Blair",
+          "namePrefix": "Mrs.",
+          "className": "Ap Statistics",
+          "email":"nblair@vusd.org"
         },
         {
           "teacher": "Natalie Blair",
           "namePrefix": "Mrs.",
-          "className": "Ap Statistics"
-        },
-        {
-          "teacher": "Natalie Blair",
-          "namePrefix": "Mrs.",
-          "className": "Math 3"
+          "className": "Math 3",
+          "email":"nblair@vusd.org"
         },
         {
           "teacher": "Ryan Blair",
           "namePrefix": "Mr.",
-          "className": "Math 2"
+          "className": "Math 2",
+          "email":"rblair@vusd.org"
         },
         {
           "teacher": "Russell Brown",
           "namePrefix": "Mr.",
-          "className": "Pre-Calculus"
+          "className": "Pre-Calculus",
+          "email":"rbrown@vusd.org"
         },
         {
           "teacher": "John Buenafe",
           "namePrefix": "Mr.",
-          "className": "Int. Math 3 Honors"
+          "className": "Math 3 Honors",
+          "email":"jbuenafe@vusd.org"
         },
         {
           "teacher": "John Buenafe",
           "namePrefix": "Mr.",
-          "className": "Pre-Calculus"
+          "className": "Pre-Calculus",
+          "email":"jbuenafe@vusd.org"
         },
         {
           "teacher": "Sergio Dussan",
           "namePrefix": "Mr.",
-          "className": "Math 1"
+          "className": "Math 1",
+          "email":"sdussan@vusd.org"
         },
         {
           "teacher": "Sergio Dussan",
           "namePrefix": "Mr.",
-          "className": "Math 2"
+          "className": "Math 2",
+          "email":"sdussan@vusd.org"
         },
         {
           "teacher": "Sergio Dussan",
           "namePrefix": "Mr.",
-          "className": "Math Assist"
+          "className": "Math Assist",
+          "email":"sdussan@vusd.org"
         },
         {
-          "teacher": "Shannon Fox",
-          "namePrefix": "Mrs.",
-          "className": "Math 1"
+          "teacher": "Bryan Hutchings",
+          "namePrefix": "Mr.",
+          "className": "Math Principles",
+          "email":"bhutchings@vusd.org"
         },
         {
-          "teacher": "Shannon Fox",
-          "namePrefix": "Mrs.",
-          "className": "Math 1 Assist"
+          "teacher": "Bryan Hutchings",
+          "namePrefix": "Mr.",
+          "className": "Math 1",
+          "email":"bhutchings@vusd.org"
         },
         {
           "teacher": "Patrica Jordan",
           "namePrefix": "Ms.",
-          "className": "Math 1"
+          "className": "Math 1",
+          "email":"pjordan@vusd.org"
         },
         {
           "teacher": "Patrica Jordan",
           "namePrefix": "Ms.",
-          "className": "Math 1 Assist"
+          "className": "Math 1 Assist",
+          "email":"pjordan@vusd.org"
         },
         {
           "teacher": "Leanora Kasun",
           "namePrefix": "Mrs.",
-          "className": "AP Calculus"
+          "className": "AP Calculus",
+          "email":"lkasun@vusd.org"
         },
         {
           "teacher": "Leanora Kasun",
           "namePrefix": "Mrs.",
-          "className": "AP Physics"
+          "className": "AP Physics",
+          "email":"lkasun@vusd.org"
         },
         {
           "teacher": "Leanora Kasun",
           "namePrefix": "Mrs.",
-          "className": "Math 2 Honors"
-        },
-        {
-          "teacher": "Walter Kasun",
-          "namePrefix": "Mr.",
-          "className": "Math 3 Honors"
-        },
-        {
-          "teacher": "Walter Kasun",
-          "namePrefix": "Mr.",
-          "className": "Pre-Calculus"
+          "className": "Math 2 Honors",
+          "email":"lkasun@vusd.org"
         },
         {
           "teacher": "Rich James",
           "namePrefix": "Mr.",
-          "className": "Math 1"
+          "className": "Math 1",
+          "email":"rjames@vusd.org"
         },
         {
           "teacher": "Rodrigo Miguel",
           "namePrefix": "Mr.",
-          "className": "Math 2"
+          "className": "Math 2",
+          "email":"rmiguel@vusd.org"
         },
         {
           "teacher": "Brenda Miligan",
           "namePrefix": "Mrs.",
-          "className": "Math 1"
+          "className": "Math 1",
+          "email":"bmiligan@vusd.org"
         },
         {
           "teacher": "Brenda Miligan",
           "namePrefix": "Mrs.",
-          "className": "Math 3"
+          "className": "Math 3",
+          "email":"bmiligan@vusd.org"
         },
         {
           "teacher": "Bill Phelps",
           "namePrefix": "Mr.",
-          "className": "Math 1"
+          "className": "Math 1",
+          "email":"wphelps@vusd.org"
         },
         {
           "teacher": "Cindy Spalding",
           "namePrefix": "Mrs.",
-          "className": "Math 1"
+          "className": "Math 1",
+          "email":"cspalding@vusd.org"
         },
         {
           "teacher": "Javier Quezada",
           "namePrefix": "Mr.",
-          "className": "Math 3 Honors"
+          "className": "Math 3 Honors",
+          "email":"jquezada@vusd.org"
         }
       ]
     },
@@ -465,62 +548,74 @@
         {
           "teacher": "Darryl Hardwick",
           "namePrefix": "Mr.",
-          "className": "PE 2"
+          "className": "PE 2",
+          "email":"dhardwick@vusd.org"
         },
         {
           "teacher": "Darryl Hardwick",
           "namePrefix": "Mr.",
-          "className": "Weight Training"
+          "className": "Weight Training",
+          "email":"dhardwick@vusd.org"
         },
         {
           "teacher": "Brian MacDonald",
           "namePrefix": "Mr.",
-          "className": "PE 2"
+          "className": "PE 2",
+          "email":"bmacdonald@vusd.org"
         },
         {
           "teacher": "Brian MacDonald",
           "namePrefix": "Mr.",
-          "className": "Core PE"
+          "className": "Core PE",
+          "email":"bmacdonald@vusd.org"
         },
         {
           "teacher": "Brian MacDonald",
           "namePrefix": "Mr.",
-          "className": "Weight Training"
+          "className": "Weight Training",
+          "email":"bmacdonald@vusd.org"
         },
         {
           "teacher": "Travis Roebuck",
           "namePrefix": "Mr.",
-          "className": "Core PE"
+          "className": "Core PE",
+          "email":"troebuck@vusd.org"
         },
         {
           "teacher": "Kevin Scharton",
           "namePrefix": "Mr.",
-          "className": "Weight Training"
+          "className": "Weight Training",
+          "email":"kscharton@vusd.org"
         },
         {
           "teacher": "Kevin Scharton",
           "namePrefix": "Mr.",
-          "className": "Integrated Core PE"
+          "className": "Integrated Core PE",
+          "email":"kscharton@vusd.org"
         },
         {
           "teacher": "Cole Sprague",
           "namePrefix": "Mr.",
-          "className": "Core PE"
+          "className": "Core PE",
+          "email":"csprague@vusd.org"
         },
         {
           "teacher": "Dave Watts",
           "namePrefix": "Mr.",
-          "className": "Integrated Core PE"
+          "className": "Integrated Core PE",
+          "email":"dwatts@vusd.org"
         },
         {
           "teacher": "Victoria Wall",
           "namePrefix": "Mrs.",
-          "className": "Core PE"
+          "className": "Core PE",
+          "email":"vwall@vusd.org"
         },
         {
           "teacher": "Victoria Wall",
           "namePrefix": "Mrs.",
-          "className": "Sports Therapy and Fitness"
+          "className": "Sports Therapy and Fitness",
+          "email":"vwall@vusd.org"
         }
       ]
     },
@@ -529,166 +624,174 @@
         {
           "teacher": "Susan Batchelor",
           "namePrefix": "Ms.",
-          "className": "Biology"
+          "className": "Biology",
+          "email":"sbatchelor@vusd.org"
         },
         {
           "teacher": "Lizel Bettencourt",
           "namePrefix": "Mrs.",
-          "className": "Chemistry"
+          "className": "Chemistry",
+          "email":"lbettencourt01@vusd.org"
         },
         {
           "teacher": "Lizel Bettencourt",
           "namePrefix": "Mrs.",
-          "className": "AP Chemistry"
-        },
-        {
-          "teacher": "Colleen Duerksen",
-          "namePrefix": "Mrs.",
-          "className": "Biology"
+          "className": "AP Chemistry",
+          "email":"lbettencourt01@vusd.org"
         },
         {
           "teacher": "Joe Hawthorne",
           "namePrefix": "Mr.",
-          "className": "Health"
+          "className": "Health",
+          "email":"jhawthorne@vusd.org"
         },
         {
           "teacher": "Joe Hawthorne",
           "namePrefix": "Mr.",
-          "className": "Physical Earth Science"
-        },
-        {
-          "teacher": "McKenzie Langlie",
-          "namePrefix": "Ms.",
-          "className": "Biology"
+          "className": "Physical Earth Science",
+          "email":"jhawthorne@vusd.org"
         },
         {
           "teacher": "Mary Laufer",
           "namePrefix": "Mrs.",
-          "className": "Chemistry"
+          "className": "Chemistry",
+          "email":"mlaufer@vusd.org"
+        },
+        {
+          "teacher": "Melissa Prins",
+          "namePrefix": "Mr.",
+          "className": "Biology",
+          "email":"mprins@vusd.org"
+        },
+        {
+          "teacher": "Arthur Ruiz",
+          "namePrefix": "Mr.",
+          "className": "Biology",
+          "email":"aruiz01@vusd.org"
         },
         {
           "teacher": "Michaela Sanchez",
           "namePrefix": "Ms.",
-          "className": "Health"
+          "className": "Health",
+          "email":"msanchez02@vusd.org"
         },
         {
           "teacher": "Samantha Stuller",
           "namePrefix": "Mrs.",
-          "className": "Physical Earth Science"
+          "className": "Physical Earth Science",
+          "email":"sstuller@vusd.org"
         },
         {
           "teacher": "Samantha Stuller",
           "namePrefix": "Mrs.",
-          "className": "Biology"
+          "className": "Biology",
+          "email":"sstuller@vusd.org"
         },
         {
           "teacher": "Mike White",
           "namePrefix": "Mr.",
-          "className": "Chemistry"
+          "className": "Chemistry",
+          "email":"mwhite@vusd.org"
         },
         {
           "teacher": "Mike White",
           "namePrefix": "Mr.",
-          "className": "AP Environmental Science"
+          "className": "AP Environmental Science",
+          "email":"mwhite@vusd.org"
         },
         {
           "teacher": "Jonathan Woodbury",
           "namePrefix": "Mr.",
-          "className": "Biology"
+          "className": "Biology",
+          "email":"jwoodbury@vusd.org"
         },
         {
           "teacher": "Jonathan Woodbury",
           "namePrefix": "Mr.",
-          "className": "AP Biology"
+          "className": "AP Biology",
+          "email":"jwoodbury@vusd.org"
         }
       ]
     },
     {
       "Social Science": [
         {
-          "teacher": "Zach Adams",
-          "namePrefix": "Mr.",
-          "className": "World History"
-        },
-        {
           "teacher": "Alyssa Aguilar",
           "namePrefix": "Ms.",
-          "className": "World History"
-        },
-        {
-          "teacher": "Jennifer Brooks",
-          "namePrefix": "Ms.",
-          "className": "US History"
+          "className": "World History",
+          "email":"aaguilar01@vusd.org"
         },
         {
           "teacher": "Sal Cazarez",
           "namePrefix": "Mr.",
-          "className": "US History"
+          "className": "US History",
+          "email":"scazarez@vusd.org"
         },
         {
           "teacher": "Ross Eskridge",
           "namePrefix": "Mr.",
-          "className": "AP US History"
-        },
-        {
-          "teacher": "Sal Cazarez",
-          "namePrefix": "Mr.",
-          "className": "Economics"
+          "className": "AP US History",
+          "email":"reskridge@vusd.org"
         },
         {
           "teacher": "Eric Fuller",
           "namePrefix": "Mr.",
-          "className": "Economics"
+          "className": "Economics",
+          "email":"efuller@vusd.org"
         },
         {
           "teacher": "Eric Fuller",
           "namePrefix": "Mr.",
-          "className": "Civics"
+          "className": "Civics",
+          "email":"efuller@vusd.org"
         },
         {
           "teacher": "Celina Hinojosa",
           "namePrefix": "Mrs.",
-          "className": "World History"
+          "className": "World History",
+          "email":"chinojosa@vusd.org"
         },
         {
           "teacher": "Celina Hinojosa",
           "namePrefix": "Mrs.",
-          "className": "AP European History"
+          "className": "AP European History",
+          "email":"chinojosa@vusd.org"
         },
         {
           "teacher": "Jacob Huerta",
           "namePrefix": "Mr.",
-          "className": "US History"
+          "className": "US History",
+          "email":"jhuerta02@vusd.org"
         },
         {
           "teacher": "Jacob Huerta",
           "namePrefix": "Mr.",
-          "className": "Ethnic Studies"
+          "className": "Ethnic Studies",
+          "email":"jhuerta02@vusd.org"
         },
         {
-          "teacher": "Roy Orosco",
-          "namePrefix": "Mr.",
-          "className": "World History"
-        },
-        {
-          "teacher": "Roy Orosco",
-          "namePrefix": "Mr.",
-          "className": "AP European History"
+          "teacher": "Jennifer McFadden",
+          "namePrefix": "Ms.",
+          "className": "US History",
+          "email":"jmcfadden@vusd.org"
         },
         {
           "teacher": "Cole Schieferle",
           "namePrefix": "Mr.",
-          "className": "Economics"
+          "className": "Economics",
+          "email":"cschieferle@vusd.org"
         },
         {
           "teacher": "Cole Schieferle",
           "namePrefix": "Mr.",
-          "className": "AP Government and Politics"
+          "className": "AP Government and Politics",
+          "email":"cschieferle@vusd.org"
         },
         {
           "teacher": "Jason Vieira",
           "namePrefix": "Mr.",
-          "className": "AP US History"
+          "className": "AP US History",
+          "email":"jvieira@vusd.org"
         }
       ]
     },
@@ -697,62 +800,74 @@
         {
           "teacher": "Michelle Avila",
           "namePrefix": "Mr.",
-          "className": "English 1 S"
+          "className": "Biology S",
+          "email":"mavila@vusd.org"
         },
         {
           "teacher": "Michelle Avila",
           "namePrefix": "Mrs.",
-          "className": "Life Skills 3 S"
+          "className": "Physical Earth Science S",
+          "email":"mavila@vusd.org"
+        },
+        {
+          "teacher": "Matt Bese",
+          "namePrefix": "Mr.",
+          "className": "English 1 S",
+          "email":"mbese@vusd.org"
         },
         {
           "teacher": "Joey Chica",
           "namePrefix": "Mr.",
-          "className": "US History S"
+          "className": "US History S",
+          "email":"jchica@vusd.org"
         },
         {
           "teacher": "Joey Chica",
           "namePrefix": "Mr.",
-          "className": "World History 1 S"
+          "className": "World History 1 S",
+          "email":"jchica@vusd.org"
         },
         {
           "teacher": "Erika Villar",
           "namePrefix": "Mr.",
-          "className": "English 2 S"
+          "className": "American Lit S",
+          "email":"edelvillar@vusd.org"
+        },
+        {
+          "teacher": "Ross Eddings",
+          "namePrefix": "Mr.",
+          "className": "Health S",
+          "email":"reddings@vusd.org"
         },
         {
           "teacher": "Julie Fulmer",
           "namePrefix": "Mrs.",
-          "className": "English 4 S"
+          "className": "English 4 S",
+          "email":"jfulmer@vusd.org"
+        },
+        {
+          "teacher": "Rachel Oliveira",
+          "namePrefix": "Mrs.",
+          "className": "Math 1 2YAB S",
+          "email":"roliveira@vusd.org"
         },
         {
           "teacher": "Julie Fulmer",
           "namePrefix": "Mrs.",
-          "className": "Economics S"
-        },
-        {
-          "teacher": "Julie Fulmer",
-          "namePrefix": "Mrs.",
-          "className": "Civics S"
-        },
-        {
-          "teacher": "Kari Latimer",
-          "namePrefix": "Ms.",
-          "className": "English 2 S"
-        },
-        {
-          "teacher": "Kari Latimer",
-          "namePrefix": "Ms.",
-          "className": "American Literature S"
+          "className": "Economics/Civics S",
+          "email":"jfulmer@vusd.org"
         },
         {
           "teacher": "Brad Pendergast",
           "namePrefix": "Mr.",
-          "className": "Int. Math 1 S"
+          "className": "Math 1 S",
+          "email":"bpendergast@vusd.org"
         },
         {
-          "teacher": "Rachel Oliverira",
-          "namePrefix": "Mrs.",
-          "className": "Int. Math 1 S"
+          "teacher": "Linda Rendon",
+          "namePrefix": "Ms.",
+          "className": "English 2 S",
+          "email":"lrendon@vusd.org"
         }
       ]
     },
@@ -761,147 +876,176 @@
         {
           "teacher": "Elisa Bardonnex",
           "namePrefix": "Mrs.",
-          "className": "Introduction to Dance"
+          "className": "Introduction to Dance",
+          "email":"ebardonnex@vusd.org"
         },
         {
           "teacher": "Elisa Bardonnex",
           "namePrefix": "Mrs.",
-          "className": "Intermediate Dance"
+          "className": "Intermediate Dance",
+          "email":"ebardonnex@vusd.org"
         },
         {
           "teacher": "Elisa Bardonnex",
           "namePrefix": "Mrs.",
-          "className": "International Dance"
+          "className": "International Dance",
+          "email":"ebardonnex@vusd.org"
         },
         {
           "teacher": "Mel Carrillo",
           "namePrefix": "Mr.",
-          "className": "Vocal Ensemble"
+          "className": "Vocal Ensemble",
+          "email":"mcarrillo03@vusd.org"
         },
         {
           "teacher": "Mel Carrillo",
           "namePrefix": "Mr.",
-          "className": "Bass Clef Choir"
+          "className": "Bass Clef Choir",
+          "email":"mcarrillo03@vusd.org"
         },
         {
           "teacher": "Mel Carrillo",
           "namePrefix": "Mr.",
-          "className": "Beginner Soprano/Alto"
+          "className": "Beginner Soprano/Alto",
+          "email":"mcarrillo03@vusd.org"
         },
         {
           "teacher": "Mel Carrillo",
           "namePrefix": "Mr.",
-          "className": "Intermediate Soprano/Alto"
+          "className": "Intermediate Soprano/Alto",
+          "email":"mcarrillo03@vusd.org"
         },
         {
           "teacher": "Stacy Galvan",
           "namePrefix": "Mrs.",
-          "className": "Drama 1"
+          "className": "Drama 1",
+          "email":"sgalvan@vusd.org"
         },
         {
           "teacher": "Stacy Galvan",
           "namePrefix": "Mrs.",
-          "className": "Drama 2"
+          "className": "Drama 2",
+          "email":"sgalvan@vusd.org"
         },
         {
           "teacher": "Stacy Galvan",
           "namePrefix": "Mrs.",
-          "className": "Drama 3"
+          "className": "Drama 3",
+          "email":"sgalvan@vusd.org"
         },
         {
           "teacher": "Stacy Galvan",
           "namePrefix": "Mrs.",
-          "className": "Stagecraft"
+          "className": "Stagecraft",
+          "email":"sgalvan@vusd.org"
         },
         {
           "teacher": "Steve Harris",
           "namePrefix": "Mr.",
-          "className": "Studio Art 1"
+          "className": "Studio Art 1",
+          "email":"sharris01@vusd.org"
         },
         {
           "teacher": "Steve Harris",
           "namePrefix": "Mr.",
-          "className": "Studio Art 2"
+          "className": "Studio Art 2",
+          "email":"sharris01@vusd.org"
         },
         {
           "teacher": "Steve Harris",
           "namePrefix": "Mr.",
-          "className": "Studio Art 3"
+          "className": "Studio Art 3",
+          "email":"sharris01@vusd.org"
         },
         {
           "teacher": "Steve Harris",
           "namePrefix": "Mr.",
-          "className": "Studio Art 4"
+          "className": "Studio Art 4",
+          "email":"sharris01@vusd.org"
         },
         {
           "teacher": "Michele Lapp",
           "namePrefix": "Mrs.",
-          "className": "Advance Dance"
+          "className": "Advance Dance",
+          "email":"mlapp@vusd.org"
         },
         {
           "teacher": "Michele Lapp",
           "namePrefix": "Mrs.",
-          "className": "Dance Performance"
+          "className": "Dance Performance",
+          "email":"mlapp@vusd.org"
         },
         {
           "teacher": "Michele Lapp",
           "namePrefix": "Mrs.",
-          "className": "Intermediate Dance"
+          "className": "Intermediate Dance",
+          "email":"mlapp@vusd.org"
         },
         {
           "teacher": "Michele Lapp",
           "namePrefix": "Mrs.",
-          "className": "Hip Hop Dance"
+          "className": "Hip Hop Dance",
+          "email":"mlapp@vusd.org"
         },
         {
           "teacher": "Jordan Ray",
           "namePrefix": "Mr.",
-          "className": "Jazz Band"
+          "className": "Jazz Band",
+          "email":"jray@vusd.org"
         },
         {
           "teacher": "Jordan Ray",
           "namePrefix": "Mr.",
-          "className": "Intermediate Band"
+          "className": "Intermediate Band",
+          "email":"jray@vusd.org"
         },
         {
           "teacher": "Jordan Ray",
           "namePrefix": "Mr.",
-          "className": "Advanced Band"
+          "className": "Advanced Band",
+          "email":"jray@vusd.org"
         },
         {
           "teacher": "Jordan Ray",
           "namePrefix": "Mr.",
-          "className": "Wind Ensemble"
+          "className": "Wind Ensemble",
+          "email":"jray@vusd.org"
         },
         {
-          "teacher": "Lyssa Yates",
-          "namePrefix": "Mrs.",
-          "className": "3D Art 1"
+          "teacher": "Kari Latimer",
+          "namePrefix": "Ms.",
+          "className": "3D Art 1",
+          "email":"klatimer@vusd.org"
         },
         {
-          "teacher": "Lyssa Yates",
-          "namePrefix": "Mrs.",
-          "className": "3D Art 2"
+          "teacher": "Kari Latimer",
+          "namePrefix": "Ms.",
+          "className": "3D Art 2",
+          "email":"klatimer@vusd.org"
         },
         {
-          "teacher": "Lyssa Yates",
-          "namePrefix": "Mrs.",
-          "className": "3D Art 3"
+          "teacher": "Kari Latimer",
+          "namePrefix": "Ms.",
+          "className": "3D Art 3",
+          "email":"klatimer@vusd.org"
         },
         {
-          "teacher": "Lyssa Yates",
-          "namePrefix": "Mrs.",
-          "className": "3D Art 4"
+          "teacher": "Kari Latimer",
+          "namePrefix": "Ms.",
+          "className": "3D Art 4",
+          "email":"klatimer@vusd.org"
         },
         {
           "teacher": "Rodney Yokota",
           "namePrefix": "Mr.",
-          "className": "Advance Orchestra"
+          "className": "Advance Orchestra",
+          "email":"ryokota@vusd.org"
         },
         {
           "teacher": "Rodney Yokota",
           "namePrefix": "Mr.",
-          "className": "Orchestra"
+          "className": "Orchestra",
+          "email":"ryokota@vusd.org"
         }
       ]
     },
@@ -910,42 +1054,50 @@
         {
           "teacher": "Robert Rooney",
           "namePrefix": "Mr.",
-          "className": "Construction Management"
+          "className": "Construction Management",
+          "email":"rrooney@vusd.org"
         },
         {
           "teacher": "Ryan Blair",
           "namePrefix": "Mr.",
-          "className": "Introduction to Engineering"
+          "className": "Introduction to Engineering",
+          "email":"rblair@vusd.org"
         },
         {
           "teacher": "Russell Brown",
           "namePrefix": "Mr.",
-          "className": "Civil Engineering and Architecture"
+          "className": "Civil Engineering and Architecture",
+          "email":"rbrown@vusd.org"
         },
         {
           "teacher": "Russell Brown",
           "namePrefix": "Mr.",
-          "className": "Engineering Design and Development"
+          "className": "Engineering Design and Development",
+          "email":"rbrown@vusd.org"
         },
         {
           "teacher": "Zach Adams",
           "namePrefix": "Mr.",
-          "className": "Foundations of Law"
+          "className": "Foundations of Law",
+          "email":"zadams@vusd.org"
         },
         {
           "teacher": "Zach Adams",
           "namePrefix": "Mr.",
-          "className": "Civil Law"
+          "className": "Civil Law",
+          "email":"zadams@vusd.org"
         },
         {
-          "teacher": "Jennifer Brooks",
+          "teacher": "Jennifer McFadden",
           "namePrefix": "Ms.",
-          "className": "Foundations of Law"
+          "className": "Foundations of Law",
+          "email":"jmcfadden@vusd.org"
         },
         {
           "teacher": "Sal Cazarez",
           "namePrefix": "Mr.",
-          "className": "Constitutional Law"
+          "className": "Constitutional Law",
+          "email":"scazarez@vusd.org"
         }
       ]
     },
@@ -954,27 +1106,32 @@
         {
           "teacher": "Tina Moran",
           "namePrefix": "Ms.",
-          "className": "AVID"
+          "className": "AVID",
+          "email":"tmoran@vusd.org"
         },
         {
           "teacher": "Ana Romo",
           "namePrefix": "Mrs.",
-          "className": "AVID"
+          "className": "AVID",
+          "email":"aromo@vusd.org"
         },
         {
           "teacher": "Calvin Feehan",
           "namePrefix": "Mr.",
-          "className": "Yearbook"
+          "className": "Yearbook",
+          "email":"cfeehan@vusd.org"
         },
         {
           "teacher": "Travis Roebuck",
           "namePrefix": "Mr.",
-          "className": "AVID"
+          "className": "AVID",
+          "email":"troebuck@vusd.org"
         },
         {
-          "teacher": "Shaun Ball",
-          "namePrefix": "Ms.",
-          "className": "College and Careers"
+          "teacher": "Michael Wright",
+          "namePrefix": "Mr.",
+          "className": "College and Careers",
+          "email":"mwright@vusd.org"
         }
       ]
     }

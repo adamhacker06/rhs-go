@@ -10,21 +10,21 @@ import GoogleSignIn
 
 struct HTMLTestView: View {
     
-    @EnvironmentObject var auth: AuthManager
+//    @EnvironmentObject var auth: AuthManager
     @EnvironmentObject var data: DataManager
     
     var body: some View {
         VStack {
             Text("Hello!")
             
-            Button("Test") {
-                CalendarAPIManager.sendPublicGETRequest() { response in
-                    print(response)
-                }
-            }
+//            Button("Test") {
+//                CalendarAPIManager.sendPublicGETRequest() { response in
+//                    print(response)
+//                }
+//            }
             
             Button("Sign Out") {
-                auth.signOut()
+//                auth.signOut()
             }
         }
     }

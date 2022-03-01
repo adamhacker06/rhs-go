@@ -14,7 +14,7 @@ import GoogleSignIn
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @StateObject var data = DataManager()
-    @StateObject var auth = AuthManager()
+//    @StateObject var auth = AuthManager()
     
     @State private var finishedLoading: Bool = false
     
@@ -23,7 +23,7 @@ import GoogleSignIn
             ZStack {
                 ContentView()
                     .environmentObject(data)
-                    .environmentObject(auth)
+//                    .environmentObject(auth)
                     .preferredColorScheme(.light)
                 
     //            NavigationView {

@@ -13,7 +13,7 @@ struct GoogleAPICalendar: Codable {
 }
 
 // MARK: - Item
-struct CalendarItem: Codable {
+struct CalendarItem: Codable, Identifiable {
     let kind, etag, id, status: String
     let htmlLink: String
     let created, updated, summary: String
