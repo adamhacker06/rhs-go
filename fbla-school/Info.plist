@@ -2,12 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>GOOGLE_CALENDAR_API_KEY</key>
-	<string>$(GOOGLE_CALENDAR_API_KEY)</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Redwood HS Helper</string>
+	<string>RHS Go</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -16,8 +14,6 @@
 	<string>6.0</string>
 	<key>CFBundleName</key>
 	<string>$(PRODUCT_NAME)</string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>We need to write photos</string>
 	<key>CFBundlePackageType</key>
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
@@ -29,20 +25,24 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.441467913319-21ucjl65flnb9dkntvlpooa5k3aju7pv</string>
+				<string>com.googleusercontent.apps.441467913319-i267pdcu9pokprttg029p01n36puqdi3</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>GOOGLE_CALENDAR_API_KEY</key>
+	<string>$(GOOGLE_CALENDAR_API_KEY)</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>instagram</string>
-        <string>instagram-stories</string>
-        <string>twitter</string>
+		<string>instagram-stories</string>
+		<string>twitter</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>We need to write photos</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>PublicSans-Black.ttf</string>

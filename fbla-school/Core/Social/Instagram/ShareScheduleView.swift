@@ -86,7 +86,7 @@ extension ShareScheduleView {
         
         HStack {
             Button(action: {
-                Redwood_HS_Helper.actionSheet(image: schedule.snapshot())
+                RHS_Go.actionSheet(image: schedule.snapshot())
             }) {
                 RoundedRectangle(cornerRadius: 5)
                     .overlay {

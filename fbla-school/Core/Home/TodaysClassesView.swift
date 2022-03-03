@@ -64,21 +64,26 @@ struct TodaysClassesView: View {
             }
             .padding(.bottom)
             
-            CustomDivider(color: Color(hex: 0xf5f5f5), thickness: 5)
-            
-            HStack(spacing: 10) {
-                Spacer()
-                Image(systemName: "square.and.arrow.up")
-                    .foregroundColor(.white)
-                    .font(.title)
-                    .onTapGesture {
-                        
-                    showSharingScreen = true
-                    
-                    }
+            if !data.scheduleDataManager.schedule.isEmpty {
                 
+                CustomDivider(color: Color(hex: 0xf5f5f5), thickness: 5)
+                
+                HStack(spacing: 10) {
+                    Spacer()
+                    Image(systemName: "square.and.arrow.up")
+                        .foregroundColor(.white)
+                        .font(.title)
+                        .onTapGesture {
+                            
+                        showSharingScreen = true
+                        
+                        }
+                    
+                }
+                .padding(.top)
             }
-            .padding(.top)
+            
+            
             
         }
         .frame(maxWidth: .infinity)

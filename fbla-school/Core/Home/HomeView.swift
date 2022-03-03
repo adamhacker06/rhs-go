@@ -259,7 +259,7 @@ struct HomeView: View {
                     
                     self.tileTypes = [TodaysClassesView.self, TodaysFoodView.self, TodaysCalendarView.self, LatestArticleView.self, FeaturedExtracurricularsView.self]
                     
-                    self.tileTypesString = ["Schedule", "Food", "Gigantea", "Featured Extracurriculars", "Upcoming Events"]
+                    self.tileTypesString = ["Schedule", "Food", "Gigantea", "Upcoming Events", "Featured Extracurriculars"]
                 }
             }
         }
