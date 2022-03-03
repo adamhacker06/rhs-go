@@ -32,6 +32,9 @@ struct ColorTheme {
     let paleBlue = Color("PaleBlueColor")
     let darkBlue = Color("DarkBlueColor")
     
+    let rubyRed = Color("RubyRedColor")
+    let radicalRed = Color("RadicalRedColor")
+    
     let black = Color("BlackColor")
     let white = Color("WhiteColor")
     let darkerGreen = Color("DarkerGreenColor")
@@ -46,7 +49,7 @@ struct ColorTheme {
     let darkRed = Color("DarkRedColor")
     
     var asArray: [Color] {
-        return [lapiz, black, white, darkerGreen, darkGreen, lightGreen, purple, lightPurple, candyPurple, lightBlue, skyBlue, paleBlue, darkBlue]
+        return [lapiz, black, white, darkerGreen, darkGreen, lightGreen, purple, lightPurple, candyPurple, lightBlue, skyBlue, paleBlue, darkBlue, rubyRed, radicalRed]
     }
     
 }

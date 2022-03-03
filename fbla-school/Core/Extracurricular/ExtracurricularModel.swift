@@ -13,12 +13,16 @@ struct ExtracurricularModel: AnyInformation, Codable, Hashable {
     let title: String
     let administrator: String
     let description: String?
+    let igHandle: String?
+    let twitterHandle: String?
     
     enum CodingKeys: String, CodingKey {
         case email = "advisorEmail"
         case title = "clubName"
         case administrator = "advisor"
         case description = "description"
+        case igHandle = "igHandle"
+        case twitterHandle = "twitterHandle"
     }
     
 }

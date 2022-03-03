@@ -10,7 +10,7 @@ import MessageUI
 
 class MessagingViewModel: ObservableObject {
     
-    @Published var emailReceipiantType: ReceipiantTypes = .bcc
+    @Published var emailReceipiantType: EmailComponents.ReceipiantTypes = .bcc
     @Published var selectedItems: Array<AnyInformation> = []
     
     var recipientList: [String] {
@@ -30,18 +30,21 @@ class MessagingViewModel: ObservableObject {
         
     }
     
-    enum ReceipiantTypes {
-        case cc
-        case bcc
-    }
+    
 }
 
 struct EmailComponents {
     
+    enum ReceipiantTypes {
+        case cc
+        case bcc
+        case to
+    }
+    
     let subject: String
 //    let senderEmail: String
     let recipients: [String]
-    let receipiantType: MessagingViewModel.ReceipiantTypes
+    let receipiantType: EmailComponents.ReceipiantTypes
     let bodyContent: String
 
 }
@@ -95,6 +98,9 @@ struct SendMailView: UIViewControllerRepresentable {
             
         case .cc:
             vc.setCcRecipients(components.recipients)
+            
+        case .to:
+            vc.setToRecipients(components.recipients)
         }
         
         vc.setMessageBody(components.bodyContent, isHTML: false)

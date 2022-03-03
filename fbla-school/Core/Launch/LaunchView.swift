@@ -78,7 +78,7 @@ struct LaunchView: View {
         data.foodDataManager.isUpdating = true
         
         // Make sure to switch date to today
-        let targetDate = Date().fromDateComponents(month: 10, day: 15, year: 2021)
+        let targetDate = Date.now
         
         data.database.fetchReference { (refDate, error) in
             if let error = error {
@@ -207,6 +207,24 @@ struct LaunchView: View {
              
                 data.giganteaDataManager = GiganteaDataManager(lastUpdated: Date(), gigantea: GiganteaModel(articles: articleStore))
                 
+            }
+        }
+        
+        return true
+    }
+    
+    func featuredExtraCurricularsFetchingHandler() -> Bool {
+        
+        data.extracurricularsDataManager.cache.get(contentsOf: .featured) { (extracurriculars, error) in
+            if let error = error {
+                print("error: \(error.localizedDescription)")
+                
+            } else {
+                if let extracurriculars = extracurriculars {
+                    
+                    data.extracurricularsDataManager.cache.set(items: extracurriculars, for: .featured)
+                    
+                }
             }
         }
         

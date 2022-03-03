@@ -48,10 +48,13 @@ private struct AllCalendarEventsTileView: View {
         HStack {
             
             VStack(alignment: .leading) {
+                
                 Text(event.summary)
+                    .font(.custom("PublicSans-Bold", size: 20))
                 
                 if let location = event.location {
                     Text(location)
+                        .font(.custom("PublicSans-Medium", size: 16))
                 }
                 
                 HStack(spacing: 0) {
@@ -77,26 +80,26 @@ private struct AllCalendarEventsTileView: View {
 
                     }
                     
+                    Spacer()
+                    
+                    if let allDayEventDateString = event.start.date {
+                        Text(allDayEventDateString.toDate(format: .yyyyMMdd).asShortDateString())
+                            .font(.custom("PublicSans-Medium", size: 20))
+                    } else {
+                        if let dateString = event.start.dateTime {
+                            Text(dateString.toDate(format: .RFC3339).asShortDateString())
+                                .font(.custom("PublicSans-Medium", size: 20))
+                        }
+                    }
+                    
                 }
+                .font(.custom("PublicSans-Regular", size: 16))
+                .padding(.top)
             }
+            .foregroundColor(Color.white)
             
             Spacer()
             
-            VStack {
-                if let allDayEventDateString = event.start.date {
-                    Text(allDayEventDateString.toDate(format: .yyyyMMdd).asShortDateString())
-                        .font(.custom("PublicSans-Medium", size: 20))
-                        .foregroundColor(Color.theme.white)
-                } else {
-                    if let dateString = event.start.dateTime {
-                        Text(dateString.toDate(format: .RFC3339).asShortDateString())
-                            .font(.custom("PublicSans-Medium", size: 20))
-                            .foregroundColor(Color.theme.white)
-                    }
-                }
-                
-                Spacer()
-            }
             
             
         }

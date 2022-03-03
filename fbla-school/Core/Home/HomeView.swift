@@ -10,19 +10,6 @@ import SwiftUI
 
 extension HomeView {
     
-    private func instagramViewerHandler() {
-        let instagramURL = URL(string: "instagram://user?username=rhsrangers")!
-        let application = UIApplication.shared
-        
-        if application.canOpenURL(instagramURL) {
-            application.open(instagramURL)
-        } else {
-            // if Instagram app is not installed, open URL inside Safari
-            let webURL = URL(string: "https://instagram.com/rhsrangers")!
-            application.open(webURL)
-        }
-    }
-    
     var headerComponents: some View {
         VStack(spacing: 0) {
             
@@ -68,33 +55,7 @@ extension HomeView {
                     Spacer()
                     
                     Button(action: {
-                        //                        instagramViewerHandler()
-                        
-                        //                        let appURL = NSURL(string: "twitter://user?screen_name=RedwoodFBLA_")!
-                        //                        let webURL = NSURL(string: "https://twitter.com/RedwoodFBLA_")!
-                        //
-                        //                        let application = UIApplication.shared
-                        //
-                        //                        if application.canOpenURL(appURL as URL) {
-                        //                            application.open(appURL as URL)
-                        //                        } else {
-                        //                            application.open(webURL as URL)
-                        //                        }
-                        
-                        let tweetText = "hello!"
-                        let tweetURL = "https://www.brainiacsmentoring.com"
-                        
-                        let shareString = "https://twitter.com/intent/tweet?text=\(tweetText)&url=\(tweetURL)"
-                        
-                        // encode a space to %20 for example
-                        let escapedShareString = shareString.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
-                        
-                        // cast to an url
-                        let url = URL(string: escapedShareString)
-                        
-                        // open in safari
-                        UIApplication.shared.open(url!)
-                        
+                        InstagramManager.openInstagramProfile(handle: "rhsrangers")
                         
                     } ) {
                         HStack {
@@ -145,7 +106,7 @@ extension HomeView {
             GeometryReader { geo in
                 ZStack {
                     NavigationLink("", isActive: $showProfile) {
-                        ProfileView()
+                        SettingsView(viewArray: $tileTypes, items: $tileTypesString)
                     }
                     
                 }
@@ -187,7 +148,8 @@ struct HomeView: View {
     
     @State private var headerSize: CGSize = .zero
     
-    var tileTypes: [Any] = [TodaysFoodView.self, TodaysCalendarView.self, LatestArticleView.self, TodaysClassesView.self]
+    @State private var tileTypes: [Any] = []
+    @State private var tileTypesString: [String] = []
     
     var showHeader: Bool {
         switch scrollOffset {
@@ -222,7 +184,7 @@ struct HomeView: View {
                                 .transition(.move(edge: .top))
                         }
                         
-                        ForEach(0..<tileTypes.count) { index in
+                        ForEach(0..<tileTypes.count, id: \.self) { index in
                             self.buildView(types: tileTypes, index: index)
                         }
                         
@@ -267,6 +229,40 @@ struct HomeView: View {
         }
         .animation(Animation.spring(), value: showHeader)
         .animation(Animation.spring(), value: headerSize)
+        .onAppear {
+            
+            if tileTypes.isEmpty || tileTypesString.isEmpty {
+                
+                self.tileTypes = []
+                self.tileTypesString = []
+                
+                let defaults = UserDefaults.standard
+                
+                if let tileOrderData = defaults.object(forKey: "tileOrder") as? Data {
+                
+                    let decoder = JSONDecoder()
+                    
+                    if let loadedTileOrderStrings = try? decoder.decode([String].self, from: tileOrderData) {
+                        
+                        for tileString in loadedTileOrderStrings {
+                            
+                            self.tileTypes.append(TileTypesEnum.init(rawValue: tileString)!.type())
+                            self.tileTypesString.append(tileString)
+                            
+                        }
+
+                    }
+                    
+                } else {
+                    
+                    print("uh oh!!!kh")
+                    
+                    self.tileTypes = [TodaysClassesView.self, TodaysFoodView.self, TodaysCalendarView.self, LatestArticleView.self, FeaturedExtracurricularsView.self]
+                    
+                    self.tileTypesString = ["Schedule", "Food", "Gigantea", "Featured Extracurriculars", "Upcoming Events"]
+                }
+            }
+        }
     }
     
     func buildView(types: [Any], index: Int) -> AnyView {
@@ -286,6 +282,10 @@ struct HomeView: View {
             
         case is LatestArticleView.Type: return AnyView (
             LatestArticleView(gigantea: $data.giganteaDataManager.gigantea)
+        )
+        
+        case is FeaturedExtracurricularsView.Type: return AnyView (
+            FeaturedExtracurricularsView()
         )
             
         default: return AnyView(EmptyView())

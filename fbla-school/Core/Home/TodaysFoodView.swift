@@ -71,13 +71,12 @@ struct TodaysFoodView: View {
                             
                             ForEach(foods.indices, id: \.self) { index in
                                 
-                                FoodTileView(food: foods[index])
+                                FoodTileView(food: foods[index], showBorder: false)
                                     .frame(width: 300, height: 150)
                                 
                             }
                             
 //                            ForEach(foods.indices, id: \.self) { index in
-//
 //
 //
 //                                FoodHomeTileView(food: foods[index])
@@ -114,7 +113,6 @@ struct FoodHomeTileView: View {
     
     var body: some View {
         VStack(spacing: 10) {
-            
             
             RoundedRectangle(cornerRadius: 15)
                 .frame(idealWidth: 125, maxWidth: .infinity, idealHeight: 105)
