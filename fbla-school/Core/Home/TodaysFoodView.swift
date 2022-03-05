@@ -52,7 +52,7 @@ struct TodaysFoodView: View {
                             Text("See all")
                                 .underline()
                                 .foregroundColor(.white)
-                                .font(.custom("PublicSans-Normal", size: 16))
+                                .font(.custom("PublicSans-Regular", size: 16))
                                 .onTapGesture {
                                     showAllFood = true
                                 }

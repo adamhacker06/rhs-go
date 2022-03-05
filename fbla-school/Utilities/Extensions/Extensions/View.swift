@@ -64,40 +64,6 @@ public extension View {
             }
         }
     
-    func takeScreenshot(origin: CGPoint, size: CGSize) -> UIImage? {
-
-        // Get the main window.
-        guard let window = UIApplication.shared.windows.first else {
-          print("View.takeScreenshot: No main window found")
-          return nil
-        }
-
-        // Create an image of the entire window. Note how we're using `window.bounds` for this
-        // to capture the entire window.
-        UIGraphicsBeginImageContextWithOptions(window.bounds.size, false, 0.0)
-        let renderer = UIGraphicsImageRenderer(bounds: window.bounds, format: UIGraphicsImageRendererFormat())
-        let image = renderer.image { (context) in
-          window.drawHierarchy(in: window.bounds, afterScreenUpdates: true)
-        }
-        UIGraphicsEndImageContext()
-        
-        /*
-        At this point we have a screenshot of the entire window.
-        Now we're going to crop it to just include the part of the screen
-        we want.
-        */
-
-        return image
-        
-        // Scale is the pixel density of the screen. E.g. 3.0 on iPhone 12 Pro which has a 3x display.
-        // This will be used in the UIImage extension below.
-        let scale = UIScreen.main.scale
-        let rect = CGRect(x: origin.x, y: origin.y, width: size.width, height: size.height)
-        let croppedImage = image.cropped(boundingBox: rect, scale: scale)
-
-        return croppedImage
-      }
-    
     func getRect() -> CGRect {
         return UIScreen.main.bounds
     }

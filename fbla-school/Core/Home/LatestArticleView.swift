@@ -29,11 +29,11 @@ struct LatestArticleView: View {
                             VStack(alignment: .leading, spacing: 2) {
                                 
                                 Text("The Latest and Greatest")
-                                    .font(.custom("PublicSans-SemiBold", size: 24))
+                                    .font(.custom("PublicSans-SemiBold", size: 18))
                                     .foregroundColor(Color.theme.white)
                                     
                                 Text("From the Redwood Gigantea")
-                                    .font(.custom("PublicSans-Regular", size: 18))
+                                    .font(.custom("PublicSans-Regular", size: 16))
                                     .foregroundColor(Color.theme.white)
                                 
                             }
@@ -58,7 +58,7 @@ struct LatestArticleView: View {
                             Text("Read more")
                                 .underline()
                                 .foregroundColor(.white)
-                                .font(.custom("PublicSans-Normal", size: 16))
+                                .font(.custom("PublicSans-Regular", size: 16))
                                 .frame(maxWidth: .infinity, alignment: .trailing)
                         }
                         

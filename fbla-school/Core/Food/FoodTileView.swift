@@ -58,7 +58,7 @@ struct ExtracurricularTileView: View {
                     .zIndex(1)
                 
                 if showBorder {
-                    Color.theme.darkRed
+                    Color.theme.radicalRed
                         .cornerRadius(5)
                 }
                 

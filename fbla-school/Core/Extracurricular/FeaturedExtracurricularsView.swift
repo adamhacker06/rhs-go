@@ -13,7 +13,7 @@ struct FeaturedExtracurricularsView: View {
     
     @State private var loadedItems: [ExtracurricularModel] = []
     
-    //    @State private var showAllFood: Bool = false
+    @State private var showAllExtracurriculars: Bool = false
     
     //    @State private var showTargetExtracurricular: Bool = false
     //    @State private var targetFood: Food = Food(type: .entree, name: "Unknown", portion: "Unknown", calories: "Unknown", sugars: "Unknown", protein: "Unknown", carbs: "Unknown", transFat: "Unknown")
@@ -31,6 +31,16 @@ struct FeaturedExtracurricularsView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                     
                     Spacer()
+                    
+                    if !loadedItems.isEmpty {
+                        Text("See all")
+                            .underline()
+                            .foregroundColor(.white)
+                            .font(.custom("PublicSans-Regular", size: 16))
+                            .onTapGesture {
+                                showAllExtracurriculars = true
+                            }
+                    }
                     
                 }
                 
@@ -66,7 +76,16 @@ struct FeaturedExtracurricularsView: View {
             
         }
         .padding(.vertical, 20)
-        .background( Color.theme.rubyRed )
+        .background {
+            ZStack {
+                
+                NavigationLink("", isActive: $showAllExtracurriculars) {
+                    AllExtracurricularsView()
+                }
+                
+                Color.theme.rubyRed
+            }
+        }
         .onAppear {
             data.extracurricularsDataManager.cache.get(contentsOf: .featured) { (extracurriculars, error) in
                 

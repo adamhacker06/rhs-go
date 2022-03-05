@@ -33,7 +33,7 @@ struct TodaysCalendarView: View {
                             Text("See all")
                                 .underline()
                                 .foregroundColor(.white)
-                                .font(.custom("PublicSans-Normal", size: 16))
+                                .font(.custom("PublicSans-Regular", size: 16))
                                 .onTapGesture {
                                     showAllCalendarEvents = true
                                 }
@@ -67,6 +67,13 @@ struct TodaysCalendarView: View {
                     }
                     
                 }
+                
+                Text("Retrieved with Google Calendar")
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+                    .font(.custom("PublicSans-Regular", size: 16))
+                    .foregroundColor(Color.theme.white)
+                    .padding(.vertical)
+                
             } else {
                 if isUpdating {
                     ProgressView()
@@ -112,7 +119,7 @@ struct TodaysCalendarView: View {
         }
         .frame(maxWidth: .infinity)
         .padding([.top, .horizontal], 15)
-        .padding(.bottom, 18)
+//        .padding(.bottom, 18)
         .background(Color.theme.darkGreen)
         .cornerRadius(10)
     }

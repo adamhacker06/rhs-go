@@ -66,7 +66,7 @@ struct SchoolClassSelectionView: View {
                 
 
             }
-            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
+            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search by name or class...")
             .onAppear {
                 
                 data.scheduleDataManager.cache.get(contentsOf: associatedEnum) { (classes, error) in

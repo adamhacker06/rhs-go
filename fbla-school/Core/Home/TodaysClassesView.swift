@@ -15,7 +15,7 @@ extension TodaysClassesView {
             Text(labelText)
                 .underline()
                 .foregroundColor(.white)
-                .font(.custom("PublicSans-Normal", size: 16))
+                .font(.custom("PublicSans-Regular", size: 16))
         }
     }
 }
@@ -72,7 +72,7 @@ struct TodaysClassesView: View {
                     Spacer()
                     Image(systemName: "square.and.arrow.up")
                         .foregroundColor(.white)
-                        .font(.title)
+                        .font(.title2)
                         .onTapGesture {
                             
                         showSharingScreen = true

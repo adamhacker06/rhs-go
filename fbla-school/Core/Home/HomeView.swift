@@ -17,12 +17,21 @@ extension HomeView {
                 VStack(spacing: 20) {
                     HStack(spacing: 0) {
                         VStack(alignment: .leading, spacing: 0) {
-                            
-                            Text("Welcome Back")
+                            HStack {
+                                
+                                Text("Welcome Back")
+                                
+                                Image("rhs_logo")
+                                    .resizable()
+                                    .frame(width: 50, height: 50)
+                                    .cornerRadius(10)
+                            }
                             
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .font(.custom("PublicSans-Bold", size: 24))
+                        
+                        
                         
                         Button(action: { showProfile = true } ) {
                             Circle()
@@ -59,10 +68,11 @@ extension HomeView {
                         
                     } ) {
                         HStack {
-                            Text("View Instagram")
+                            Text("RHS On Instagram")
                                 .font(.custom("PublicSans-Medium", size: 16))
                             
                             Image("instagram")
+                                .font(.title)
                         }
                         .foregroundColor(Color.theme.lapiz)
                     }
@@ -78,6 +88,7 @@ extension HomeView {
                                 .font(.custom("PublicSans-Medium", size: 16))
                             
                             Image(systemName: "paperplane")
+                                .font(.title)
                         }
                         .foregroundColor(Color.theme.lapiz)
                     }

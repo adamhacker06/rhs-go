@@ -192,7 +192,7 @@ class DatabaseManager: ObservableObject {
                         nextFood.portion = data.replacingOccurrences(of: ",", with: ".")
                         
                     case "ca":
-                        nextFood.calories = data.replacingOccurrences(of: ",", with: ".") + " kcal"
+                        nextFood.calories = data.replacingOccurrences(of: ",", with: ".") + " cal"
                         
                     case "s":
                         nextFood.sugars = data.replacingOccurrences(of: ",", with: ".") + " grams"

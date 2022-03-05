@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct InstagramScheduleView: View {
+struct SharedScheduleView: View {
     
     let schedule: ClassSchedule
     
@@ -58,9 +58,17 @@ struct InstagramScheduleView: View {
                 
                 CustomDivider(color: Color(hex: 0xf5f5f5), thickness: 5)
                 
-                Text("Created by Redwood High School Helper")
-                    .foregroundColor(.white)
-                    .padding(.vertical)
+                HStack(spacing: 10) {
+                    Text("Created by RHS Go")
+                        .foregroundColor(.white)
+                        .padding(.vertical)
+                    
+                    Image("rhs_logo")
+                        .resizable()
+                        .frame(width: 50, height: 50)
+                        .cornerRadius(10)
+                }
+                .padding(.vertical)
                 
             }
             .padding(.horizontal, 15)

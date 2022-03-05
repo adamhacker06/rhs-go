@@ -16,7 +16,7 @@ struct ShareScheduleView: View {
     @State private var size: CGSize = CGSize()
 
     var schedule: some View {
-        InstagramScheduleView(schedule: data.scheduleDataManager.schedule)
+        SharedScheduleView(schedule: data.scheduleDataManager.schedule)
     }
     
     var body: some View {
@@ -108,18 +108,13 @@ extension ShareScheduleView {
             }) {
                 RoundedRectangle(cornerRadius: 5)
                     .overlay {
-                        HStack {
+                        HStack(spacing: 5) {
                             
-                            HStack(spacing: 0) {
-                                Image("instagram")
-                                    .font(.title3)
-                                
-                                Text("Share")
-                                    .fontWeight(.bold)
-                            }
-                            
-                            Image(systemName: "arrow.right")
+                            Image("instagram")
                                 .font(.title3)
+                            
+                            Text("Share")
+                                .fontWeight(.bold)
                             
                         }
                         .foregroundColor(Color.theme.lapiz)

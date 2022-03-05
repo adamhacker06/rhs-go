@@ -18,20 +18,42 @@ struct ExtracurricularInfoView: View {
     
     var body: some View {
         
-        VStack {
+        VStack(spacing: 0) {
          
             headerComponents
             
             ScrollView(.vertical, showsIndicators: false) {
-                description
-                    .foregroundColor(.black)
                 
-                HStack {
-                    emailButton
-                    twitterButton
-                    instagramButton
+                VStack(alignment: .leading) {
+                    
+                    advisor
+                    
+                    description
+                        .foregroundColor(.black)
+                        .font(.custom("PublicSans-Regular", size: 18))
+                    
+                    
+                    
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding()
             }
+            .background(Color.white.ignoresSafeArea())
+            .overlay(
+                VStack {
+                    
+                    HStack {
+                        twitterButton
+                        instagramButton
+                    }
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+                    
+                    emailButton
+                }
+                .padding()
+                
+                , alignment: .bottom
+            )
         }
         .sheet(isPresented: $showMailView) {
             SendMailView(result: $emailResult, components: createEmailComponents())
@@ -79,6 +101,29 @@ extension ExtracurricularInfoView {
         }
     }
     
+    private var advisor: some View {
+        
+        VStack(alignment: .leading) {
+            
+            Text("Advisor")
+                .font(.custom("PublicSans-SemiBold", size: 18))
+            
+            HStack {
+                Text(extracurricular.administrator)
+                    .font(.custom("PublicSans-Regular", size: 16))
+                
+                Text(extracurricular.email)
+                    .font(.custom("PublicSans-Thin", size: 14))
+            }
+            
+        }
+        .foregroundColor(Color.white)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding()
+        .background(Color.theme.rubyRed.cornerRadius(10))
+        
+    }
+    
     private var description: Text {
         if let description = extracurricular.description {
             return Text(description)
@@ -92,9 +137,19 @@ extension ExtracurricularInfoView {
         Button(action: {
             showMailView = true
         }) {
-            Text("send email")
+            HStack {
+                Text("Send an Email")
+                    .font(.custom("PublicSans-SemiBold", size: 18))
+                
+                Image(systemName: "paperplane")
+                    .font(.system(size: 18))
+            }
+            .foregroundColor(Color.white)
         }
-        
+        .frame(maxWidth: .infinity, alignment: .center)
+        .padding()
+        .background(Color.theme.radicalRed)
+        .cornerRadius(10)
     }
     
     private var twitterButton: some View {
@@ -107,7 +162,17 @@ extension ExtracurricularInfoView {
                     TwitterManager.openTwitterProfile(handle: twitterHandle)
                     
                 }) {
-                    Text("Open in twitter")
+                    HStack {
+                        Image("twitterFill")
+                            .font(.title)
+                            .foregroundColor(Color.init(hex: 0x1DA1F2))
+                        
+                        Text("\(extracurricular.title) on Twitter")
+                            .foregroundColor(Color.white)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .padding()
+                    .background(Color.theme.rubyRed.cornerRadius(10))
                 }
             
             )
@@ -130,7 +195,19 @@ extension ExtracurricularInfoView {
                     InstagramManager.openInstagramProfile(handle: instagramHandle)
                     
                 }) {
-                    Text("Open in instagram")
+                    
+                    HStack {
+                        Image("instagram")
+                            .font(.title)
+                            .foregroundColor(.white)
+                        
+                        Text("\(extracurricular.title) on Instagram")
+                            .foregroundColor(Color.white)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .padding()
+                    .background(Color.theme.rubyRed.cornerRadius(10))
+
                 }
             
             )
