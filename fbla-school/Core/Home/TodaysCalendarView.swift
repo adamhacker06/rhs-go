@@ -16,132 +16,82 @@ struct TodaysCalendarView: View {
     @State private var showAllCalendarEvents: Bool = false
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
+        
+        VStack(spacing: 0) {
             
-            if let calendar = calendarDataManager.calendar {
-                VStack(spacing: 5) {
-                    HStack(alignment: .lastTextBaseline, spacing: 0) {
-                        
-                        Text("Upcoming Events")
-                            .font(.custom("PublicSans-SemiBold", size: 18))
-                            .foregroundColor(.white)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        
-                        Spacer()
-                        
-                        if calendar.items.count != 0 {
-                            Text("See all")
-                                .underline()
-                                .foregroundColor(.white)
-                                .font(.custom("PublicSans-Regular", size: 16))
-                                .onTapGesture {
-                                    showAllCalendarEvents = true
-                                }
-                        }
-                    }
+            // header
+            HStack(alignment: .top) {
+                VStack(alignment: .leading,  spacing: 3) {
                     
-                    CustomDivider(color: .white, thickness: 5)
-                }
-                .background {
-                    NavigationLink("", isActive: $showAllCalendarEvents) {
-                        AllCalendarEventsView(calendar: calendar)
-                    }
-                }
-                
-                // Calendar Items below
-                VStack(alignment: .leading, spacing: 15) {
+                    Text("Upcoming Events")
+                        .bold()
+                        .font(.publicSans, weight: .medium, size: 18)
                     
-                    if calendar.items.isEmpty {
-                        Text("There are no upcoming events. Check back later!")
-                            .foregroundColor(.white)
-                            .padding(.top)
-                        
-                    } else {
-                        
-                        ForEach(calendar.items.indices[..<( calendar.items.count <= 3 ? calendar.items.count : 3 ) ] , id: \.self) { index in
-                            
-                            let event = calendar.items[index]
-                            
-                            // Tile View
-                            CalendarEventTileView(eventIndex: index, event: event)
-                            
-                        }
-                    }
+                    Text("As of \(Date.now.asShortDateString())")
+                        .font(.publicSans, weight: .regular, size: 16)
                     
                 }
+                .foregroundColor(.white)
+                .font(.custom("PublicSans-Bold", size: 20))
                 
-                Text("Retrieved with Google Calendar")
-                    .frame(maxWidth: .infinity, alignment: .trailing)
-                    .font(.custom("PublicSans-Regular", size: 16))
-                    .foregroundColor(Color.theme.white)
-                    .padding(.vertical)
+                Spacer()
                 
-            } else {
-                
-                VStack(spacing: 5) {
-                    HStack(alignment: .lastTextBaseline, spacing: 0) {
-                        
-                        Text("Upcoming Events")
-                            .font(.custom("PublicSans-SemiBold", size: 18))
-                            .foregroundColor(.white)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        
-                        Spacer()
-                        
-                    }
+                VStack(spacing: 0) {
+                    // see all button
                     
-                    CustomDivider(color: .white, thickness: 5)
-                }
-                
-                if isUpdating {
-                    ProgressView()
-                        .foregroundColor(Color.white)
-                } else {
-                    HStack {
-                        Text("Please check your internet connection.")
-                            .frame(maxWidth: .infinity, alignment: .center)
-                            .foregroundColor(.white)
-                            .multilineTextAlignment(.leading)
-                        
-                        Spacer()
-                        
-                        Button(action : {
-                            
-                            calendarDataManager.isUpdating = true
-                            
-                            CalendarAPIManager.sendPublicGETRequest() { (calendar, error) in
-                                
-                                guard let calendar = calendar else {
-                                    
-                                    if let error = error {
-                                        print("ERROR :\(error.localizedDescription)")
-                                    } else {
-                                        print("Unknown error occured when fetching calendar data")
-                                    }
-                                    
-                                    calendarDataManager.isUpdating = false
-                                    return
-                                }
-                                
-                                calendarDataManager = CalendarDataManager(lastUpdated: Date(), calendar: calendar)
-                                
-                                calendarDataManager.isUpdating = false
-                                
+                    if let calendar = calendarDataManager.calendar {
+                        if calendar.items.count > 3 {
+                            Button(action: { showAllCalendarEvents = true }) {
+                                Text("See all")
+                                    .foregroundColor(.white)
+                                    .font(.publicSans, weight: .regular, size: 16)
+                                    .underline()
                             }
-                        }) {
-                            Image(systemName: "arrow.clockwise")
-                                .foregroundColor(Color.white)
+                            .background (
+                                
+                                NavigationLink("", isActive: $showAllCalendarEvents) {
+                                    AllCalendarEventsView(calendar: calendar)
+                                        .navigationTitle("")
+                                        .navigationBarHidden(true)
+                                }
+                                
+                            )
                         }
                     }
-                    .padding()
                 }
             }
+            .padding()
+            .background(
+                
+                Color.theme.darkGreen
+                
+            )
+            
+            
+            // body
+            VStack(spacing: 20) {
+                
+                if let calendar = calendarDataManager.calendar {
+                    
+                    ForEach(calendar.items.indices[..<( calendar.items.count <= 3 ? calendar.items.count : 3 ) ] , id: \.self) { index in
+                        
+                        let event = calendar.items[index]
+                        
+                        // Tile View
+                        CalendarEventTileView(eventIndex: index, event: event)
+                        
+                    }
+                    
+                } else {
+                    Text("Unable to load events")
+                }
+            }
+            .padding([.horizontal, .bottom])
+            .background(Color.white)
         }
-        .frame(maxWidth: .infinity)
-        .padding([.top, .horizontal], 15)
-//        .padding(.bottom, 18)
-        .background(Color.theme.darkGreen)
         .cornerRadius(10)
+        .shadow(radius: 5)
+        
     }
 }
 
@@ -151,12 +101,14 @@ extension TodaysCalendarView {
     }
 }
 
-//struct TodaysCurrentCalendarView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TodaysCalendarView(calendarDa: .constant(GoogleAPICalendar(kind: "", etag: "", summary: "", updated: "", timeZone: "", accessRole: "", defaultReminders: [], nextSyncToken: nil, nextPageToken: nil, items: [
-//
-//            CalendarItem(kind: "", etag: "", id: "", status: "", htmlLink: "", created: "", updated: "", summary: "Football Game", creator: CalendarCreator(email: "", displayName: ""), organizer: CalendarOrganizer(email: "", displayName: "", organizerSelf: false), start: CalendarDate(date: "", dateTime: nil), end: CalendarDate(date: "", dateTime: nil), transparency: nil, iCalUID: "", sequence: 1, eventType: "", location: "Redwood High School")
-//
-//        ])), isUpdating: .constant(false))
-//    }
-//}
+struct TodaysCurrentCalendarView_Previews: PreviewProvider {
+    static var previews: some View {
+        ZStack {
+            
+            Color.init(hex: 0xf5f5f5).ignoresSafeArea()
+            
+            TodaysCalendarView(calendarDataManager: .constant(Development.calendarDataManager), isUpdating: .constant(false))
+                .padding(.horizontal, 20)
+        }
+    }
+}

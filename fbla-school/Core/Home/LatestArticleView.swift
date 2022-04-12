@@ -16,76 +16,105 @@ struct LatestArticleView: View {
     var body: some View {
         VStack {
             
-            if let gigantea = gigantea {
-                if let firstArticle = gigantea.articles.first {
-                    VStack(spacing: 20) {
-                        HStack {
-//                            Text("🗞")
-//                                .font(.system(size: 30))
-//                                .padding(5)
-//                                .background(Color.theme.lapiz)
-//                                .cornerRadius(10)
-                            
-                            VStack(alignment: .leading, spacing: 2) {
-                                
-                                Text("The Latest and Greatest")
-                                    .font(.custom("PublicSans-SemiBold", size: 18))
-                                    .foregroundColor(Color.theme.white)
-                                    
-                                Text("From the Redwood Gigantea")
-                                    .font(.custom("PublicSans-Regular", size: 16))
-                                    .foregroundColor(Color.theme.white)
-                                
-                            }
-                            
-                            Spacer()
-                            
-                        }
+            VStack(spacing: 0) {
+                
+                // header
+                HStack(alignment: .top) {
+                    
+                    VStack(alignment: .leading, spacing: 2) {
                         
-                        VStack(alignment: .leading, spacing: 3) {
-                            Text(firstArticle.title)
-                                .font(.custom("PublicSans-Medium", size: 20))
+                        Text("The Latest and Greatest")
+                            .font(.publicSans, weight: .medium, size: 18)
+                            .foregroundColor(Color.theme.white)
                             
-                            Text("By " + firstArticle.author)
-                                .font(.custom("PublicSans-Regular", size: 17))
-                        }
-                        .foregroundColor(Color.white)
-                        .padding(10)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .background(Color.theme.lightPurple.cornerRadius(5))
-                        
-                        Button(action: { showAllArticles = true } ) {
-                            Text("Read more")
-                                .underline()
-                                .foregroundColor(.white)
-                                .font(.custom("PublicSans-Regular", size: 16))
-                                .frame(maxWidth: .infinity, alignment: .trailing)
-                        }
+                        Text("From the Redwood Gigantea")
+                            .font(.custom("PublicSans-Regular", size: 16))
+                            .foregroundColor(Color.theme.white)
                         
                     }
-                    .padding(20)
                     
-                } else {
-                    Text("No articles")
+                    Spacer()
+                    
+                    if let gigantea = gigantea {
+                        if gigantea.articles.count > 1 {
+                            Button(action: { showAllArticles = true } ) {
+                                Text("Read more")
+                                    .font(.custom("PublicSans-Regular", size: 16))
+                                    .foregroundColor(.white)
+                                    .underline()
+
+                            }
+                        }
+                    }
+
                 }
-            }
-        }
-        .background(
-            ZStack {
-                NavigationLink("", isActive: $showAllArticles) {
-                    GiganteaFeed()
-                        .navigationBarTitle("")
-                        .navigationBarHidden(true)
-                }
+                .padding()
+                .background(
+                    ZStack {
+                        NavigationLink("", isActive: $showAllArticles) {
+                            GiganteaFeed()
+                                .navigationBarTitle("")
+                                .navigationBarHidden(true)
+                        }
+                        
+                        Color.theme.purple
+                    }
+                )
                 
-                Color.theme.purple
+                if let gigantea = gigantea {
+                    if let firstArticle = gigantea.articles.first {
+                        // body
+                        VStack(alignment: .leading, spacing: 3) {
+                            Text(firstArticle.title)
+                                .font(.publicSans, weight: .medium, size: 16)
+                            
+                            Text("By " + firstArticle.author)
+                                .font(.publicSans, weight: .regular, size: 14)
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .foregroundColor(Color.white)
+                        .padding(10)
+                        .background(Color.theme.lightPurple.cornerRadius(5))
+                        .padding()
+                        
+                        .background(Color.white)
+                        
+                    }
+//                    else {
+//                        Text("Unable to load articles")
+//                            .font(.publicSans, weight: .regular, size: 16)
+//                            .frame(maxWidth: .infinity, alignment: .center)
+//                            .padding()
+//                            .background(Color.white)
+//                    }
+//
+                }
+//                else {
+//                    Text("Unable to load articles")
+//                        .font(.publicSans, weight: .regular, size: 16)
+//                        .frame(maxWidth: .infinity, alignment: .center)
+//                        .padding()
+//                        .background(Color.white)
+//                }
+                
             }
-        )
+            .cornerRadius(10)
+            .shadow(radius: 5)
+            
+        }
     }
 }
 
 struct LatestArticleView_Previews: PreviewProvider {
     static var previews: some View {
-        LatestArticleView(gigantea: .constant(GiganteaModel()))
+        
+        ZStack {
+            
+            Color.init(hex: 0xf5f5f5).ignoresSafeArea()
+            
+            LatestArticleView(gigantea: .constant(Development.gigantea))
+                .padding(.horizontal, 20)
+            
+        }
     }
 }

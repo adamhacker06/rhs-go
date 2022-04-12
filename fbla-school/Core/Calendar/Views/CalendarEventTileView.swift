@@ -52,13 +52,13 @@ struct CalendarEventTileView: View {
             }
             
         }
-        .padding(.vertical, eventIndex % 2 == 0 ? 5 : 0)
-        .padding(.horizontal, 5)
+        .padding(10)
+        //.padding(.vertical, eventIndex % 2 == 0 ? 5 : 0)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background (
             
             Color.theme.darkerGreen.cornerRadius(5)
-                .opacity(eventIndex % 2 == 0 ? 1 : 0)
+                //.opacity(eventIndex % 2 == 0 ? 1 : 0)
             
         )
         .padding(.top, eventIndex == 0 ? 18 : 0)

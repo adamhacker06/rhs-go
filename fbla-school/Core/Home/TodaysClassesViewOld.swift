@@ -133,7 +133,7 @@ struct ClassOverView: View {
         HStack(spacing: 0) {
             Text("\(classPeriod.rawValue)" +  " | " + classPeriod.getTime(for: .starting))
                 .font(.custom("PublicSans-SemiBold", size: 18))
-                .foregroundColor(Color.theme.lapiz)
+                .foregroundColor(Color.black)
                 .frame(maxWidth: .infinity)
             
             VStack(alignment: .trailing, spacing: 4) {

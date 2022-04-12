@@ -94,7 +94,7 @@ struct TodaysClassesView: View {
                 }
             )
             
-            // classes
+            // body
             VStack(spacing: 0) {
                 
                 if !data.scheduleDataManager.schedule.isEmpty {

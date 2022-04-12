@@ -14,7 +14,7 @@ extension HomeView {
         VStack(spacing: 0) {
             
             if showHeader {
-                VStack(spacing: 20) {
+                VStack(spacing: 10) {
                     HStack(spacing: 0) {
                         VStack(alignment: .leading, spacing: 0) {
                             HStack {
@@ -196,11 +196,11 @@ struct HomeView: View {
                 ScrollViewOffset {
                     VStack(spacing: 0) {
                         
-                        if showHeader {
+                        //if showHeader {
                             Color.clear
                                 .frame(width: headerSize.width, height: headerSize.height)
-                                .transition(.move(edge: .top))
-                        }
+//                                .transition(.move(edge: .top))
+                       // }
                         
                         ForEach(0..<tileTypes.count, id: \.self) { index in
                             self.buildView(types: tileTypes, index: index)
@@ -294,6 +294,7 @@ struct HomeView: View {
             
         case is LatestArticleView.Type: return AnyView (
             LatestArticleView(gigantea: $data.giganteaDataManager.gigantea)
+                .padding(.horizontal, 20)
         )
         
         case is FeaturedExtracurricularsView.Type: return AnyView (
@@ -350,6 +351,8 @@ struct ScrollViewOffset<Content: View>: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         
+        let dataManager = DataManager()
+        
         //        NavigationView {
         //            HomeView()
         //                /*.environmentObject(DataManager(withDevUser: DevUser(email: "test@test.com", firstName: "Adam", lastName: "Hacker"), schedule: nil))*/
@@ -359,6 +362,9 @@ struct HomeView_Previews: PreviewProvider {
         //        }
         
         HomeView()
-            .environmentObject(DataManager())
+            .onAppear {
+                dataManager.scheduleDataManager.schedule = Development.schedule
+            }
+            .environmentObject(dataManager)
     }
 }
