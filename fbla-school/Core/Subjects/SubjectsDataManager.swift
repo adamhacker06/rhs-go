@@ -12,9 +12,13 @@ enum FirestoreSubjectFetchError: Error {
     case invalidPath
 }
 
-class SchoolClassesCache: Cache {
+class SchoolClassesCache: FirebaseCache {
+    
     typealias CacheType = SchoolClass
     typealias CacheEnumType = SubjectsEnum
+    
+    var collectionName: String = "subjects"
+    var subCollectionName: String = "classes"
     
     private var asbCache: [CacheType]? = nil
     private var academiesCache: [CacheType]? = nil
@@ -56,16 +60,6 @@ class SchoolClassesCache: Cache {
         case .other:
             return otherCache
         }
-    }
-    
-    func get(contentsOf item: CacheEnumType, forceRefresh: Bool = false, completion: @escaping ([CacheType]?, FirestoreSubjectFetchError?) -> Void) {
-        
-        cacheHandler(item: item, collectionName: "subjects", documentName: item.rawValue, subCollectionName: "classes", forceRefresh: forceRefresh) { (classes, error) in
-            
-            completion(classes, error)
-            
-        }
-
     }
     
     func set(items: [CacheType], for type: CacheEnumType) {

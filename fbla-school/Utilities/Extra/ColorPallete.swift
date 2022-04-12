@@ -26,7 +26,7 @@ struct ColorPallete: View {
             Color.gray.ignoresSafeArea()
             
             LazyVGrid(columns: grid) {
-                ForEach(colors.asArray.indices) { index in
+                ForEach(colors.asArray.indices, id: \.self) { index in
                     
                     VStack {
                         RoundedRectangle(cornerRadius: 15)

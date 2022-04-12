@@ -57,13 +57,27 @@ struct EditScheduleSubjectSelectionView: View {
 //                        .frame(width: 20, height: 20)
 //                        .foregroundColor(Color.theme.darkRed)
 //
-                    Spacer()
+                    Spacer(minLength: 10)
+                    
+                    Button(action: {
+                        presentationMode.wrappedValue.dismiss()
+                    }) {
+                        Text("Close")
+                            .foregroundColor(Color.theme.lapiz)
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(RoundedRectangle(cornerRadius: 10))
+                    }
+                    
+                    Spacer(minLength: 10)
                     
                     Text("Editing Period \(classPeriod.rawValue)")
                         .font(.custom("PublicSans-Bold", size: 24))
-                        .foregroundColor(Color.theme.white)
+                        .foregroundColor(Color.white)
+                        .frame(maxWidth: .infinity)
                     
-                    Spacer()
+                    Spacer(minLength: 10)
+                    
 //
 //                    Image(systemName: "checkmark")
 //                        .resizable()

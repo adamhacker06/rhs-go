@@ -7,13 +7,16 @@
 
 import Foundation
 
-class ExtracurricularsCache: Cache {
+class ExtracurricularsCache: FirebaseCache {
     
     typealias CacheType = ExtracurricularModel
     typealias CacheEnumType = ExtracurricularsTypesEnum
     
     private var clubsCache: [CacheType]? = nil
     private var featuredCache: [CacheType]? = nil
+    
+    internal var collectionName: String = "extracurriculars"
+    internal var subCollectionName: String = "clubs"
     
     internal func associatedCache(of type: CacheEnumType) -> [CacheType]? {
         switch type {
@@ -25,13 +28,8 @@ class ExtracurricularsCache: Cache {
         }
     }
     
-    func get(contentsOf item: CacheEnumType, forceRefresh: Bool = false, completion: @escaping ([CacheType]?, FirestoreSubjectFetchError?) -> Void) {
-        cacheHandler(item: item, collectionName: "extracurriculars", documentName: item.rawValue, subCollectionName: "clubs", forceRefresh: forceRefresh) { (extracurriculars, error) in
-            completion(extracurriculars, error)
-        }
-    }
-    
     func set(items: [CacheType], for type: CacheEnumType) {
+        
         switch type {
         case .clubs:
             clubsCache = items

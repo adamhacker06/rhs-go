@@ -57,7 +57,9 @@ struct TodaysCalendarView: View {
                             .padding(.top)
                         
                     } else {
-                        ForEach(calendar.items.indices[..<3], id: \.self) { index in
+                        
+                        ForEach(calendar.items.indices[..<( calendar.items.count <= 3 ? calendar.items.count : 3 ) ] , id: \.self) { index in
+                            
                             let event = calendar.items[index]
                             
                             // Tile View
@@ -75,6 +77,22 @@ struct TodaysCalendarView: View {
                     .padding(.vertical)
                 
             } else {
+                
+                VStack(spacing: 5) {
+                    HStack(alignment: .lastTextBaseline, spacing: 0) {
+                        
+                        Text("Upcoming Events")
+                            .font(.custom("PublicSans-SemiBold", size: 18))
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        
+                        Spacer()
+                        
+                    }
+                    
+                    CustomDivider(color: .white, thickness: 5)
+                }
+                
                 if isUpdating {
                     ProgressView()
                         .foregroundColor(Color.white)
@@ -84,6 +102,8 @@ struct TodaysCalendarView: View {
                             .frame(maxWidth: .infinity, alignment: .center)
                             .foregroundColor(.white)
                             .multilineTextAlignment(.leading)
+                        
+                        Spacer()
                         
                         Button(action : {
                             
@@ -113,7 +133,7 @@ struct TodaysCalendarView: View {
                                 .foregroundColor(Color.white)
                         }
                     }
-                    .padding(.top)
+                    .padding()
                 }
             }
         }

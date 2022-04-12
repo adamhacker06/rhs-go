@@ -9,10 +9,17 @@ import Foundation
 import SwiftUI
 
 
-protocol Cache: Codable {
+protocol FirebaseCache: Codable {
     associatedtype CacheType: Codable, Hashable
-    associatedtype CacheEnumType: CaseIterable, Identifiable
     
+    associatedtype CacheEnumType: RawRepresentable, CaseIterable, Identifiable where CacheEnumType.RawValue == String
+    
+    var collectionName: String { get set }
+    var subCollectionName: String { get set }
+    
+    /// - Parameters:
+    ///     - contentsOf: The type of the `enum` which represents the data you want to retrieve
+    ///     - forceRefresh: Determines whether the `
     func get(contentsOf item: CacheEnumType, forceRefresh: Bool, completion: @escaping ([CacheType]?, FirestoreSubjectFetchError?) -> Void)
     
     func set(items: [CacheType], for type: CacheEnumType)
@@ -20,7 +27,7 @@ protocol Cache: Codable {
     func associatedCache(of type: CacheEnumType) -> [CacheType]?
 }
 
-extension Cache {
+extension FirebaseCache {
     
     func cacheHandler(item: CacheEnumType, collectionName: String, documentName: String, subCollectionName: String, forceRefresh: Bool, completion: @escaping ([CacheType]?, FirestoreSubjectFetchError?) -> Void) {
         
@@ -51,6 +58,12 @@ extension Cache {
             }
         } else {
             completion(cache, nil)
+        }
+    }
+    
+    func get(contentsOf item: CacheEnumType, forceRefresh: Bool = false, completion: @escaping ([CacheType]?, FirestoreSubjectFetchError?) -> Void) {
+        cacheHandler(item: item, collectionName: collectionName, documentName: item.rawValue, subCollectionName: subCollectionName, forceRefresh: forceRefresh) { (extracurriculars, error) in
+            completion(extracurriculars, error)
         }
     }
     

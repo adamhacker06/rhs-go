@@ -52,6 +52,17 @@ struct ScheduleDataManager: Codable {
 }
 
 struct ClassSchedule: Codable {
+    
+    init(prefirst: SchoolClass? = nil, first: SchoolClass? = nil, second: SchoolClass? = nil, third: SchoolClass? = nil, fourth: SchoolClass? = nil, fifth: SchoolClass? = nil, sixth: SchoolClass? = nil) {
+        self.prefirst = prefirst
+        self.first = first
+        self.second = second
+        self.third = third
+        self.fourth = fourth
+        self.fifth = fifth
+        self.sixth = sixth
+    }
+    
     private var prefirst: SchoolClass? = nil
     private var first: SchoolClass? = nil
     private var second: SchoolClass? = nil

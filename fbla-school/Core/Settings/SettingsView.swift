@@ -326,7 +326,7 @@ extension SettingsView {
         }
         .padding()
         .background {
-            Color.theme.lightPurple.ignoresSafeArea()
+            Color.theme.lapiz.ignoresSafeArea()
                 .shadow(radius: 5)
         }
     }

@@ -21,31 +21,16 @@ extension HomeView {
                                 
                                 Text("Welcome Back")
                                 
-                                Image("rhs_logo")
-                                    .resizable()
-                                    .frame(width: 50, height: 50)
-                                    .cornerRadius(10)
+//                                Image("rhs_logo")
+//                                    .resizable()
+//                                    .frame(width: 50, height: 50)
+//                                    .cornerRadius(10)
                             }
                             
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .font(.custom("PublicSans-Bold", size: 24))
                         
-                        
-                        
-                        Button(action: { showProfile = true } ) {
-                            Circle()
-                                .strokeBorder(Color.init(hex: 0xf5f5f5), lineWidth: 2)
-                                .background(Circle().foregroundColor(.white))
-                                .frame(maxWidth: 50, maxHeight: 50)
-                                .overlay {
-                                    
-                                    Image(systemName: "gear")
-                                        .foregroundColor(Color.theme.lapiz)
-                                        .font(.title)
-                                    
-                                }
-                        }
                     }
                     
                     Text("It's a great day to be a Ranger!")
@@ -55,44 +40,59 @@ extension HomeView {
                 .padding(.horizontal, 20)
                 .padding(.vertical, 10)
                 .foregroundColor(.white)
-                .background(Color.theme.lapiz.ignoresSafeArea())
+                .background {
+                    ZStack {
+                        
+                        Color.theme.lapiz.ignoresSafeArea()
+                        
+//                        Image("rhs_logo")
+//                            .resizable()
+//                            .aspectRatio(contentMode: .fill)
+//                            .opacity(0)
+                        
+                    }
+                }
+//                .clipped()
                 .transition(.move(edge: .top))
             }
             
             VStack(spacing: 0) {
-                HStack {
-                    Spacer()
+                HStack(spacing: 20) {
                     
                     Button(action: {
                         InstagramManager.openInstagramProfile(handle: "rhsrangers")
                         
                     } ) {
                         HStack {
-                            Text("RHS On Instagram")
-                                .font(.custom("PublicSans-Medium", size: 16))
                             
                             Image("instagram")
-                                .font(.title)
+                                .font(.system(size: 20))
+                            
+                            Text("Instagram")
+                                .font(.custom("PublicSans-Medium", size: 15))
+                            
                         }
                         .foregroundColor(Color.theme.lapiz)
                     }
-                    .frame(maxWidth: UIScreen.main.bounds.width * 0.5)
+                    //.frame(maxWidth: UIScreen.main.bounds.width * 0.5)
                     
-                    Rectangle()
-                        .frame(width: 2.5, height: 30)
-                        .foregroundColor(Color.init(hex: 0xf5f5f5))
+//                    Rectangle()
+//                        .frame(width: 2.5, height: 30)
+//                        .foregroundColor(Color.init(hex: 0xf5f5f5))
                     
                     Button(action: { showMessaging = true } ) {
                         HStack {
-                            Text("Send a Message")
-                                .font(.custom("PublicSans-Medium", size: 16))
                             
                             Image(systemName: "paperplane")
-                                .font(.title)
+                                .font(.system(size: 20))
+                            
+                            Text("Message")
+                                .font(.custom("PublicSans-Medium", size: 15))
+                            
                         }
                         .foregroundColor(Color.theme.lapiz)
                     }
-                    .frame(maxWidth: UIScreen.main.bounds.width * 0.5)
+                    //.frame(maxWidth: UIScreen.main.bounds.width * 0.5)
                     .background {
                         NavigationLink("", isActive: $showMessaging) {
                             MessagingView()
@@ -100,12 +100,19 @@ extension HomeView {
                     }
                     
                     Spacer()
-                }
-                .padding()
+                    
+                    Button(action: { showProfile = true }) {
+                        Image(systemName: "gear")
+                            .foregroundColor(Color.theme.lapiz)
+                            .font(.system(size: 20))
+                    }
                 
-                Rectangle()
-                    .frame(height: 5)
-                    .foregroundColor(Color.init(hex: 0xf5f5f5))
+                }
+                .padding(10)
+                
+//                Rectangle()
+//                    .frame(height: 5)
+//                    .foregroundColor(Color.init(hex: 0xf5f5f5))
             }
             
             .background(Color.white.ignoresSafeArea())
@@ -198,31 +205,13 @@ struct HomeView: View {
                         ForEach(0..<tileTypes.count, id: \.self) { index in
                             self.buildView(types: tileTypes, index: index)
                         }
-                        
-                        /*Group {
-                            TodaysClassesView(showEditSchedule: $showEditSchedule)
-                                .padding(.horizontal, 20)
-                            
-                            TodaysFoodView(foods: $data.foodDataManager.foods, isUpdating: $data.foodDataManager.isUpdating)
-                            
-                            TodaysCalendarView(calendarDataManager: $data.calendarDataManager, isUpdating: $data.calendarDataManager.isUpdating)
-                                .padding(.horizontal, 20)
-                            
-                            LatestArticleView(gigantea: $data.giganteaDataManager.gigantea)
-                            
-                            Button("Sign out") {
-                                auth.signOut()
-                                data.user = nil
-                            }
-                            
-                        }*/
                         .padding(.top, 20)
                         .background {
                             GeometryReader { proxy in
                                 Color.clear
                                     .preference(
                                         key: OffsetPreferenceKey.self,
-                                        value: proxy.frame(in: .named("frameLayer")).minY // 👈🏻
+                                        value: proxy.frame(in: .named("frameLayer")).minY
                                     )
                             }
                         }
@@ -230,8 +219,10 @@ struct HomeView: View {
                 } onOffsetChange: { offset in
                     scrollOffset = offset
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(Color.white.ignoresSafeArea())
+                .frame(maxWidth: .infinity
+                       //, minHeight: Screen.main.bounds.height
+                       , maxHeight: .infinity)
+                .background(Color.init(hex: 0xf5f5f5).ignoresSafeArea())
                 
                 
             }
@@ -266,8 +257,6 @@ struct HomeView: View {
                     
                 } else {
                     
-                    print("uh oh!!!kh")
-                    
                     self.tileTypes = [TodaysClassesView.self, TodaysFoodView.self, TodaysCalendarView.self, LatestArticleView.self, FeaturedExtracurricularsView.self]
                     
                     self.tileTypesString = ["Schedule", "Food", "Gigantea", "Upcoming Events", "Featured Extracurriculars"]
@@ -278,10 +267,22 @@ struct HomeView: View {
     
     func buildView(types: [Any], index: Int) -> AnyView {
         switch types[index].self {
+        
         case is TodaysClassesView.Type: return AnyView (
+        
             TodaysClassesView(showEditSchedule: $showEditSchedule)
+//                .onAppear {
+//
+//                    data.scheduleDataManager.schedule = Development.schedule
+//
+//                }
                 .padding(.horizontal, 20)
         )
+            
+//        case is TodaysClassesView.Type: return AnyView (
+//            TodaysClassesView(showEditSchedule: $showEditSchedule)
+//                .padding(.horizontal, 20)
+//        )
             
         case is TodaysFoodView.Type: return AnyView (
             TodaysFoodView(foods: $data.foodDataManager.foods, isUpdating: $data.foodDataManager.isUpdating)
@@ -328,7 +329,7 @@ struct ScrollViewOffset<Content: View>: View {
         ScrollView(.vertical, showsIndicators: false) {
             offsetReader
             content()
-                .padding(.top, -8) // 👈🏻 places the real content as if our `offsetReader` was not there.
+                .padding(.top, -8)
         }
         .coordinateSpace(name: "frameLayer")
         .onPreferenceChange(OffsetPreferenceKey.self, perform: onOffsetChange)
@@ -357,6 +358,7 @@ struct HomeView_Previews: PreviewProvider {
         //                .navigationBarHidden(true)
         //        }
         
-        HomeView().headerComponents
+        HomeView()
+            .environmentObject(DataManager())
     }
 }

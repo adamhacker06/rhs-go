@@ -17,12 +17,11 @@ struct ArticleView: View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack(alignment: .leading) {
                 
-                ForEach(article.paragraphContent.indices) { index in
+                ForEach(article.paragraphContent.indices, id: \.self) { index in
                     Text(article.paragraphContent[index])
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .foregroundColor(.theme.lapiz)
                         .padding(.bottom)
-                    
                     
                 }
             }

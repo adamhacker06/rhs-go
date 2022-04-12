@@ -61,9 +61,7 @@ struct GoogleProfileInfo {
             self.fullName = user.profile!.name
             self.firstName = user.profile!.givenName ?? nil
             self.lastName = user.profile!.familyName ?? nil
-        
-        print("First: \(firstName)")
-        print("Last: \(lastName)")
+
     }
      
     init(withDevUser user: DevUser) {

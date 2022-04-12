@@ -21,20 +21,15 @@ struct FacultyModel: AnyInformation, Codable, Equatable, Hashable {
     }
 }
 
-class FacultyCache: Cache {
+class FacultyCache: FirebaseCache {
     typealias CacheType = FacultyModel
     typealias CacheEnumType = FacultyTypesEnum
     
+    internal var collectionName: String = "faculty"
+    internal var subCollectionName: String = "people"
+    
     private var adminCache: [CacheType]? = nil
     private var counselorsCache: [CacheType]? = nil
-    
-    func get(contentsOf item: CacheEnumType, forceRefresh: Bool = false, completion: @escaping ([CacheType]?, FirestoreSubjectFetchError?) -> Void) {
-        
-        cacheHandler(item: item, collectionName: "faculty", documentName: item.rawValue, subCollectionName: "people", forceRefresh: forceRefresh) { (people, error) in
-            completion(people, error)
-        }
-        
-    }
     
     func set(items: [CacheType], for type: CacheEnumType) {
         switch type {

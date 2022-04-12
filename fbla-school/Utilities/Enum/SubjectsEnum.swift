@@ -66,7 +66,7 @@ enum SubjectsEnum: String, ContentSubType, CustomLabelInformation, Identifiable,
             return "🎭"
             
         case .other:
-            return ""
+            return "🏫"
         }
     }
     var description: String {
