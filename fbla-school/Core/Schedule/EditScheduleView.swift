@@ -82,12 +82,12 @@ struct EditScheduleView: View {
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(spacing: 0) {
                     
-                    ForEach(ClassPeriod.allCases.indices, id:
+                    ForEach(ClassPeriodEnum.allCases.indices, id:
                                 \.self) { classPeriod in
                         
                         VStack(spacing: 0) {
                             
-                            if let classPeriod = ClassPeriod(rawValue: classPeriod) {
+                            if let classPeriod = ClassPeriodEnum(rawValue: classPeriod) {
                                 
                                 //                                    if classPeriod == .prefirst {
                                 //

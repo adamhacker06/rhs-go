@@ -48,8 +48,8 @@ struct TodaysClassesViewOld: View {
                     
                     ForEach(0..<7) { classPeriod in
                         
-                        if let schoolClass = data.scheduleDataManager.schedule.get(for: ClassPeriod(rawValue: classPeriod)!) {
-                            ClassOverView(schoolClass: schoolClass, classPeriod: ClassPeriod(rawValue: classPeriod)!)
+                        if let schoolClass = data.scheduleDataManager.schedule.get(for: ClassPeriodEnum(rawValue: classPeriod)!) {
+                            ClassOverView(classPeriod: ClassPeriodEnum(rawValue: classPeriod)!, bellSchedule: data.scheduleDataManager.schedule.bellSchedule, schoolClass: schoolClass)
                                 .padding(.top, 18)
                         }
                     }
@@ -111,48 +111,6 @@ struct TodaysClassesViewOld: View {
         )
         .cornerRadius(10)
         
-    }
-}
-
-func actionSheet(image: UIImage) {
-    let activityVC = UIActivityViewController(activityItems: [image], applicationActivities: nil)
-    
-    let scenes = UIApplication.shared.connectedScenes
-    let windowScene = scenes.first as? UIWindowScene
-    
-    windowScene?.windows.first?.rootViewController?
-        .present(activityVC, animated: true, completion: nil)
-}
-
-struct ClassOverView: View {
-    
-    var schoolClass: SchoolClass
-    var classPeriod: ClassPeriod
-    
-    var body: some View {
-        HStack(spacing: 0) {
-            Text("\(classPeriod.rawValue)" +  " | " + classPeriod.getTime(for: .starting))
-                .font(.custom("PublicSans-SemiBold", size: 18))
-                .foregroundColor(Color.black)
-                .frame(maxWidth: .infinity)
-            
-            VStack(alignment: .trailing, spacing: 4) {
-                Text(schoolClass.title)
-                    .foregroundColor(.theme.lapiz)
-                    .multilineTextAlignment(.trailing)
-                    .font(.custom("PublicSans-SemiBold", size: 14))
-                
-                Text(schoolClass.namePrefix.rawValue + " " + schoolClass.administrator.lastName())
-                    .foregroundColor(Color.black)
-                    .font(.custom("PublicSans-Regular", size: 12))
-                    .opacity(schoolClass.title == "Unselected" ? 0 : 1)
-                
-            }
-            .padding(6)
-            .frame(maxWidth: .infinity, alignment: .trailing)
-            .background(Color.init(hex: 0xf5f5f5))
-            .cornerRadius(5)
-        }
     }
 }
 

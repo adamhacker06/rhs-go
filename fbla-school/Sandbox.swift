@@ -8,10 +8,13 @@
 import SwiftUI
 import FirebaseStorage
 import MessageUI
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 struct Sandbox: View {
     
-//    @EnvironmentObject var auth: AuthManager
+    //    @EnvironmentObject var auth: AuthManager
+    
     
     var vm = SandboxViewModel()
     
@@ -61,15 +64,15 @@ struct Sandbox: View {
         //        }
         //        .foregroundColor(.blue)
         
-//        Button(action: {
-//            self.isShowingMailView.toggle()
-//        }) {
-//            Text("Tap Me")
-//        }
-//        .disabled(!MFMailComposeViewController.canSendMail())
-//        .sheet(isPresented: $isShowingMailView) {
-//            SendMailView(result: $result)
-//        }
+        //        Button(action: {
+        //            self.isShowingMailView.toggle()
+        //        }) {
+        //            Text("Tap Me")
+        //        }
+        //        .disabled(!MFMailComposeViewController.canSendMail())
+        //        .sheet(isPresented: $isShowingMailView) {
+        //            SendMailView(result: $result)
+        //        }
         
         
         Text("")

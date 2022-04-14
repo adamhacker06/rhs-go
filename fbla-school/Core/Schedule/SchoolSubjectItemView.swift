@@ -50,7 +50,7 @@ struct SchoolSubjectItemView: View {
     
     @State private var showSelectionScreen: Bool = false
     
-    let classPeriod: ClassPeriod
+    let classPeriod: ClassPeriodEnum
     
     var body: some View {
     

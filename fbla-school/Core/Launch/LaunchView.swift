@@ -232,11 +232,38 @@ struct LaunchView: View {
     }
     
     func scheduleUserDefaultsHandler() -> Bool {
-        guard var scheduleDataManager = ScheduleDataManager.get() else { return true }
+        var scheduleDataManager: ScheduleDataManager = ScheduleDataManager.get() ?? ScheduleDataManager(lastUpdated: Date())
         
         scheduleDataManager.cache = SchoolClassesCache()
-        data.scheduleDataManager = scheduleDataManager
         
+        FirebaseScheduleManager.getDaysFromFirebase { (arg0, error) in
+            
+            if let error = error {
+                
+                // error present
+                print("Retrieved an error from FirebaseScheduleManager: \(error) (printed from LaunchView)")
+                
+            } else {
+                if let arg0 = arg0 {
+                    
+                    let dates = arg0.0
+                    let bellSchedule = arg0.1
+                    
+                    scheduleDataManager.schedule.bellSchedule = BellSchedule(dates: dates, oldSchedule: bellSchedule)
+                    
+                    print("right before setting the schedule data manager")
+                    
+                    data.scheduleDataManager = scheduleDataManager
+                    
+                } else {
+                    
+                    // error with tuple data
+                    print("Retrieved a nil tuple from FirebaseScheduleManager (printed from LaunchView)")
+                    
+                }
+            }
+        }
+
         return true
         
     }

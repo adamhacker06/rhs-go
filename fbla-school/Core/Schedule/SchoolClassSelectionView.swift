@@ -18,7 +18,7 @@ struct SchoolClassSelectionView: View {
     @State private var loadedClasses: [SchoolClass] = []
     
     let associatedEnum: SubjectsEnum
-    let classPeriod: ClassPeriod
+    let classPeriod: ClassPeriodEnum
     
     private var searchResults: [SchoolClass] {
         if searchText.isEmpty {

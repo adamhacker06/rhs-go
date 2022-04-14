@@ -32,11 +32,11 @@ struct SharedScheduleView: View {
                         
                         ForEach(0..<7) { classPeriodInt in
                             
-                            let classPeriod = ClassPeriod(rawValue: classPeriodInt)!
+                            let classPeriod = ClassPeriodEnum(rawValue: classPeriodInt)!
                             
                             if let schoolClass = schedule.get(for: classPeriod) {
                                 
-                                ClassOverView(schoolClass: schoolClass, classPeriod: classPeriod)
+                                ClassOverView(classPeriod: classPeriod, bellSchedule: schedule.bellSchedule, schoolClass: schoolClass)
                                     .padding(.top)
                                 
                             }

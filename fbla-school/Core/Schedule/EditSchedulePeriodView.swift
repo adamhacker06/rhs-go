@@ -10,7 +10,7 @@ import SwiftUI
 struct EditSchedulePeriodView: View {
     @EnvironmentObject var data: DataManager
     
-    let period: ClassPeriod
+    let period: ClassPeriodEnum
 //    @Binding var test: Bool
     
     @State private var showSheet: Bool = false
@@ -39,7 +39,7 @@ struct EditSchedulePeriodView: View {
             
             HStack(spacing: 0) {
                 VStack(spacing: 8) {
-                    Text(period.getTime(for: .starting))
+                    Text(period.getTime(schedule: data.scheduleDataManager.schedule.bellSchedule, for: .starting))
                         .font(.custom("PublicSans-SemiBold", size: 18))
                     
                     Button(action: {

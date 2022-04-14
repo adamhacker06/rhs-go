@@ -23,7 +23,7 @@ struct EditScheduleSubjectSelectionView: View {
     
     @State private var childPaddingSize: CGFloat = .zero
     
-    var classPeriod: ClassPeriod
+    var classPeriod: ClassPeriodEnum
     
     var body: some View {
         ZStack {

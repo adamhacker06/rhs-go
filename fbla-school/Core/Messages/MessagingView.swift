@@ -93,7 +93,7 @@ extension MessagingView {
                 VStack(spacing: 5) {
                     ForEach(0..<7, id: \.self) { periodNumber in
                         
-                        if let classPeriod = ClassPeriod(rawValue: periodNumber) {
+                        if let classPeriod = ClassPeriodEnum(rawValue: periodNumber) {
                             
                             HStack(spacing: 10) {
                                 

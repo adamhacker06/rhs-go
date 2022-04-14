@@ -71,7 +71,9 @@ struct ClassSchedule: Codable {
     private var fifth: SchoolClass? = nil
     private var sixth: SchoolClass? = nil
     
-    mutating func set(for period: ClassPeriod, class item: SchoolClass?) {
+    var bellSchedule = BellSchedule.regularSchedule
+    
+    mutating func set(for period: ClassPeriodEnum, class item: SchoolClass?) {
         switch period {
         case .prefirst:
             prefirst = item
@@ -94,7 +96,7 @@ struct ClassSchedule: Codable {
         (prefirst == nil) && (first == nil) && (second == nil) && (third == nil) && (fourth == nil) && (fifth == nil) && (sixth == nil)
     }
     
-    func get(for period: ClassPeriod) -> SchoolClass? {
+    func get(for period: ClassPeriodEnum) -> SchoolClass? {
         switch period {
         case .prefirst:
             return prefirst

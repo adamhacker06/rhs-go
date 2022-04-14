@@ -16,4 +16,26 @@ extension Text {
             .lineLimit(1)
             .multilineTextAlignment(.center)
     }
+    
+    enum Fonts: String {
+        case publicSans = "PublicSans"
+        
+        enum CustomWeights: String {
+            case thin = "Thin"
+            case extraLight = "ExtraLight"
+            case light = "Light"
+            case regular = "Regular"
+            case medium = "Medium"
+            case semiBold = "SemiBold"
+            case bold = "Bold"
+            case extraBold = "ExtraBold"
+            case black = "Black"
+        }
+    }
+    
+    func font(_ font: Fonts, weight: Fonts.CustomWeights, size: CGFloat) -> Text {
+        self.font(.custom("\(font.rawValue)-\(weight.rawValue)", size: size))
+    }
+    
 }
+

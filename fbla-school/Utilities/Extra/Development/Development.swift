@@ -94,4 +94,6 @@ class Development {
             location: "Everyschool High School, 3421 W Everystreet St, Visalia, CA 93292, USA")
         
         ])
+    
+    static var bellSchedule = BellSchedule.regularSchedule
 }
